@@ -9,7 +9,10 @@ networkx
 
 # Qiskit:
 qiskit
+## D-Wave Qiskit:
 dwave-qiskit-plugin
+## IBMQ Qiskit:
+qiskit-ibmq-provider
 
 # AWS Braket Dependencies:
 amazon-braket-ocean-plugin
