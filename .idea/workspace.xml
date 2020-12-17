@@ -44,6 +44,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="209" y="177" key="FileChooserDialogImpl" timestamp="1608189194866">
+      <screen x="0" y="31" width="1280" height="689" />
+    </state>
+    <state x="209" y="177" key="FileChooserDialogImpl/0.31.1280.689@0.31.1280.689" timestamp="1608189194866" />
     <state x="142" y="30" key="SettingsEditor" timestamp="1608148691610">
       <screen x="0" y="31" width="1280" height="689" />
     </state>
@@ -56,5 +60,16 @@
       <screen x="0" y="31" width="1280" height="689" />
     </state>
     <state x="303" y="41" key="search.everywhere.popup/0.31.1280.689@0.31.1280.689" timestamp="1608178383935" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/qbitkit/error/error.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
