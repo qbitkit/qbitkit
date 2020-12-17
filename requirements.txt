@@ -1,0 +1,24 @@
+# D-Wave Dependencies:
+dwave-ocean-sdk
+dimod
+dwavebinarycsp
+dwave-networkx
+
+# Graph Dependencies:
+networkx
+
+# Qiskit:
+qiskit
+dwave-qiskit-plugin
+
+# AWS Braket Dependencies:
+amazon-braket-ocean-plugin
+
+# General-Purpose:
+matplotlib
+numpy
+pandas
+datetime
+
+# Logging dependencies:
+elasticsearch
