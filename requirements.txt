@@ -22,6 +22,8 @@ matplotlib
 numpy
 pandas
 datetime
+modin
 
 # Logging dependencies:
 elasticsearch
+eland
