@@ -1,5 +1,6 @@
 import elasticsearch as es
 from datetime import datetime as dt
+
 class es_connect:
     def get_connection(api_key=None,
                        api_id=None,
@@ -15,29 +16,33 @@ class es_connect:
                                          )
         return es_connection
 class es_read:
-    def read(connection=es_connect.get_connection(),
-             index='qbitkit-*',
-             query={"query": {"match_all": {}}}
-             ):
-        return None
+    class classic:
+        def read(connection=es_connect.get_connection(),
+                 index='qbitkit-*',
+                 query={"query": {"match_all": {}}}
+                 ):
+            return None
 class es_doc:
-    def doc(qpu_sampling_time=None,
-            qpu_access_times=None,
-            qpu_programming_times=None,
-            qpu_anneal_time_per_samples=None,
-            results=None):
-        {
-            'timestamp': str(dt.now()),
-            'qpu_access_times' : qpu_access_times,
-            'qpu_programming_times' : qpu_programming_times,
-            'qpu_anneal_time_per_samples' : qpu_anneal_time_per_samples,
-            'results' : results,
-        }
+    class classic:
+        def doc(qpu_sampling_time=None,
+                qpu_access_times=None,
+                qpu_programming_times=None,
+                qpu_anneal_time_per_samples=None,
+                results=None):
+            doc = {
+                    'timestamp': str(dt.now()),
+                    'qpu_access_times' : qpu_access_times,
+                    'qpu_programming_times' : qpu_programming_times,
+                    'qpu_anneal_time_per_samples' : qpu_anneal_time_per_samples,
+                    'results' : results,
+            }
+            return doc
 class es_write:
-    def write(connection=es_connect.get_connection(),
-             index='qbitkit-*',
-             doc=None):
-        result = {'timestamp' : str(dt.now()),
-               }
-        print(result)
-        return result
+    class classic:
+        def write(connection=es_connect.get_connection(),
+                 index='qbitkit-*',
+                 doc=None):
+            result = {'timestamp' : str(dt.now()),
+                   }
+            print(result)
+            return result

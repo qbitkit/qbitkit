@@ -1,12 +1,8 @@
 # Importing standard Qiskit libraries
-from qiskit.tools.monitor import job_monitor
+from qiskit import execute, IBMQ
 from qiskit.providers.ibmq import *
-from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister, execute, Aer, IBMQ
-from qiskit.compiler import transpile, assemble
-from qiskit.tools.jupyter import *
 from qiskit.visualization import *
-from qiskit.extensions import Initialize
-import numpy as np
+
 
 # Loading your IBM Q account(s)
 class ibmq_connect:
@@ -34,4 +30,6 @@ class ibmq_job:
         elif show_graph == True:
             meas_result = result
             plot_histogram(meas_result)
+            return result
+        else:
             return result
