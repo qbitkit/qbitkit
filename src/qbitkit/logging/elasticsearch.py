@@ -29,13 +29,11 @@ class es_doc:
                 qpu_programming_times=None,
                 qpu_anneal_time_per_samples=None,
                 results=None):
-            doc = {
-                    'timestamp': str(dt.now()),
-                    'qpu_access_times' : qpu_access_times,
-                    'qpu_programming_times' : qpu_programming_times,
+            doc = {'timestamp': str(dt.now()),
+                   'qpu_access_times' : qpu_access_times,
+                   'qpu_programming_times' : qpu_programming_times,
                     'qpu_anneal_time_per_samples' : qpu_anneal_time_per_samples,
-                    'results' : results,
-            }
+                   'results' : results,}
             return doc
 class es_write:
     class classic:
