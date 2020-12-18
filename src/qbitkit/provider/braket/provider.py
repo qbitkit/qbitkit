@@ -41,7 +41,7 @@ class device:
     def get_device(arn=get_sim_arn):
         device = AwsDevice(arn)
         return device
-    def get_device_ops(device=device.get_device(),
+    def get_device_ops(device=qbitkit.braket.provider.device.get_device(),
                        print_result=False):
         device_operations = device.properties.dict()['action']['braket.ir.jaqcd.program']['supportedOperations']
         if print_result == True:
@@ -53,4 +53,8 @@ class device:
         else:
             return device_operations
 class job():
-    def get_job(circuit=circuitry.Circuit, s3loc=connection.get_bucket(), shots=):
+    def get_job(circuit=circuitry.Circuit,
+                s3loc=connection.get_bucket(),
+                shots=1000, qubit_reqiring=False):
+        my_task = device.run(circuit, s3loc, shots=shots, disable_qubit_rewiring=True)
+        return my_task
