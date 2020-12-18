@@ -2,11 +2,13 @@ import itertools
 from itertools import combinations
 from dwave.system.composites import EmbeddingComposite
 from braket.ocean_plugin import BraketDWaveSampler
-import time
 from datetime import datetime as dt
 import pandas as pd
 import dimod
 from math import log2, floor
+from circuit import circuitry
+
+from braket.aws import AwsDevice
 
 
 # notebook specific config
@@ -36,3 +38,19 @@ class device:
     def get_sim_arn(vendor='amazon', device='sv1'):
         arn = 'arn:aws:braket:::device/quantum-simulator/' + vendor + device
         return arn
+    def get_device(arn=get_sim_arn):
+        device = AwsDevice(arn)
+        return device
+    def get_device_ops(device=device.get_device(),
+                       print_result=False):
+        device_operations = device.properties.dict()['action']['braket.ir.jaqcd.program']['supportedOperations']
+        if print_result == True:
+            print('Quantum Gates supported by {}:\n {}'.format(device_name,
+                                                               device_operations))
+            return device_operations
+        elif print_result == False:
+            return device_operations
+        else:
+            return device_operations
+class job():
+    def get_job(circuit=circuitry.Circuit, s3loc=connection.get_bucket(), shots=):
