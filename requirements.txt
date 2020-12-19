@@ -22,7 +22,10 @@ matplotlib
 numpy
 pandas
 datetime
+
+# Modin Scalable Pandas:
 modin
+modin[ray]
 
 # Logging dependencies:
 elasticsearch
