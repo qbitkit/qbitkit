@@ -5,11 +5,11 @@ from qiskit.visualization import *
 
 
 # Loading your IBM Q account(s)
-class ibmq_connect:
+class connect:
     def get_provider(self):
         provider = IBMQ.get_account()
         return provider
-class ibmq_job:
+class job:
     def get_job(circuit=None,
               backend=None,
               shots=8192):

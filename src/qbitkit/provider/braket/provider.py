@@ -52,7 +52,7 @@ class device:
             return device_operations
         else:
             return device_operations
-class job():
+class job:
     def get_job(circuit=circuitry.Circuit,
                 s3loc=connection.get_bucket(),
                 shots=1000, qubit_reqiring=False):
