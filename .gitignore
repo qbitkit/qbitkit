@@ -1,3 +1,7 @@
+# Example Virtual Environment in README.md
+venv
+venv/*
+
 # JetBrains PyCharm
 .idea
 .idea/*
