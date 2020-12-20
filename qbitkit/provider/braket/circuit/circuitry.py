@@ -9,12 +9,64 @@ class translate:
     def translate_instruction(op=None,
                               input_circuit=braket_circuit(),
                               targetA=0,
-                              targetB=0,
-                              targetC=0,
+                              targetB=1,
+                              targetC=2,
                               angle=0.15,
-                              phi=0.15):
+                              phi=0.15,
+                              theta=0.15):
         if op == 'h':
             input_circuit = input_circuit.h(targetA)
+        if op == 'x':
+            input_circuit = input_circuit.x(targetA)
+        if op == 'y':
+            input_circuit = input_circuit.y(targetA)
+        if op == 'z':
+            input_circuit = input_circuit.z(targetA)
+        if op == 'xx':
+            input_circuit = input_circuit.xx(targetA,
+                                             targetB,
+                                             theta)
+        if op == 'xy':
+            input_circuit = input_circuit.xx(targetA,
+                                             targetB,
+                                             theta)
+        if op == 'yy':
+            input_circuit = input_circuit.yy(targetA,
+                                             targetB,
+                                             theta)
+        if op == 'zz':
+            input_circuit = input_circuit.zz(targetA,
+                                             targetB,
+                                             theta)
+        if op == 'cx':
+            input_circuit = input_circuit.cx(targetA,
+                                             targetB)
+        if op == 'iswap':
+            input_circuit = input_circuit.iswap(targetA,
+                                                targetB)
+        if op == 'phaseshift':
+            input_circuit = input_circuit.phaseshift(targetA,
+                                                     phi)
+        if op == 'cy':
+            input_circuit = input_circuit.cy(targetA,
+                                             targetB)
+        if op == 'cz':
+            input_circuit = input_circuit.cz(targetA,
+                                             targetB)
+        if op == 'i':
+            input_circuit = input_circuit.i(targetA)
+        if op == 'rx':
+            input_circuit = input_circuit.rx(targetA,
+                                             angle)
+        if op == 'ry':
+            input_circuit = input_circuit.ry(targetA,
+                                             angle)
+        if op == 'rz':
+            input_circuit = input_circuit.rz(targetA,
+                                             angle)
+        if op == 'swap':
+            input_circuit = input_circuit.swap(targetA,
+                                               targetB)
         if op == 'cnot':
             input_circuit = input_circuit.cnot(targetA,
                                                targetB)
@@ -47,6 +99,6 @@ class translate:
                                                 targetB,
                                                 phi)
         else:
-            print(f'[ERROR]: Gate {op} not found. Returning an empty object.')
+            print(f'[ERROR]: Gate {op} not found. Returning an empty object with a value of None.')
             input_circuit = None
         return input_circuit
