@@ -1,1 +1,1 @@
-from qbitkit import *
+from qbikit import *
