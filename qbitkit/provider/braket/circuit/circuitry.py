@@ -59,9 +59,6 @@ class translate:
             input_circuit = input_circuit.zz(targetA,
                                              targetB,
                                              theta)
-        if op == 'cx':
-            input_circuit = input_circuit.cx(targetA,
-                                             targetB)
         if op == 'iswap':
             input_circuit = input_circuit.iswap(targetA,
                                                 targetB)
