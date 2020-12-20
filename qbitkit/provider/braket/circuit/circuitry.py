@@ -1,6 +1,9 @@
 from braket.circuits import Circuit as braket_circuit
 from braket.circuits import Gate as braket_gate
+import numpy as np
 import string
+
+
 class info:
         def get_gates(self):
             gate_set = [attr for attr in dir(braket_gate) if attr[0] in string.ascii_uppercase]
@@ -13,7 +16,13 @@ class translate:
                               targetC=2,
                               angle=0.15,
                               phi=0.15,
-                              theta=0.15):
+                              theta=0.15,
+                              unitary_matrix=np.array([[0,1],
+                                                       [1,0]]),
+                              unitary_targets=[0]):
+        if op == 'unitary':
+            input_circuit = input_circuit.unitary(matrix=unitary_matrix,
+                                                  targets=unitary_targets)
         if op == 'h':
             input_circuit = input_circuit.h(targetA)
         if op == 'x':
@@ -22,6 +31,19 @@ class translate:
             input_circuit = input_circuit.y(targetA)
         if op == 'z':
             input_circuit = input_circuit.z(targetA)
+        if op == 's':
+            input_circuit = input_circuit.s(targetA)
+        if op == 't':
+            input_circuit = input_circuit.t(targetA)
+        if op == 'v':
+            input_circuit = input_circuit.v(targetA)
+        if op == 'vi':
+            input_circuit = input_circuit.vi(targetA)
+        if op == 'si':
+            input_circuit = input_circuit.si(targetA)
+        if op == 'ti':
+            input_circuit = input_circuit.ti(targetA)
+
         if op == 'xx':
             input_circuit = input_circuit.xx(targetA,
                                              targetB,
