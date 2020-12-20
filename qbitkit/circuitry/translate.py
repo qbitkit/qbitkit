@@ -6,9 +6,9 @@ class to_provider:
                targetA=None,
                targetB=None,
                targetC=None):
-        translated = translate_braket.translate_instruction(op,
-                                                            input_circuit,
-                                                            targetA,
-                                                            targetB,
-                                                            targetC)
+        translated = translate_braket.translate_gate(op,
+                                                     input_circuit,
+                                                     targetA,
+                                                     targetB,
+                                                     targetC)
         return translated

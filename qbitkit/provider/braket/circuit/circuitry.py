@@ -9,7 +9,7 @@ class info:
             gate_set = [attr for attr in dir(braket_gate) if attr[0] in string.ascii_uppercase]
             return gate_set
 class translate:
-    def translate_instruction(op=None,
+    def translate_gate(op=None,
                               input_circuit=braket_circuit(),
                               targetA=0,
                               targetB=1,
@@ -43,7 +43,6 @@ class translate:
             input_circuit = input_circuit.si(targetA)
         if op == 'ti':
             input_circuit = input_circuit.ti(targetA)
-
         if op == 'xx':
             input_circuit = input_circuit.xx(targetA,
                                              targetB,
