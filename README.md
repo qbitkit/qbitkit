@@ -61,5 +61,7 @@ Universal Quantum Toolkit for Humans
 * Status:
     * Active development as of December 16th
 * Health:
-    * Red (unhealthy)
-    * not yet in minimum viable product stage
+    * Yelllow (unhealthy)
+    * nearing minimum viable product stage
+    * while there's theoretically enough of `qbitkit` working at this point, core features are still missing or underdeveloped.
+    * extensive testing will still be necessary prior to public release
