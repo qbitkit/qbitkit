@@ -1,5 +1,5 @@
 import modin.pandas as pd
-import file as f
+import qbitkit.io.file as f
 class frame:
     def get_frame(data=None):
         df = pd.DataFrame(data=data)
