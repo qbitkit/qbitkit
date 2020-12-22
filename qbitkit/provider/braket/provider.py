@@ -19,10 +19,10 @@ class device:
         if device == None:
             print('Warning: No quantum device specified')
             status = 0
-        arn = 'arn:aws:braket:::device/qpu/' + vendor + device
+        arn = 'arn:aws:braket:::device/qpu/' + vendor + '/' + device
         return arn, status
     def get_sim_arn(vendor='amazon', device='sv1'):
-        arn = 'arn:aws:braket:::device/quantum-simulator/' + vendor + device
+        arn = 'arn:aws:braket:::device/quantum-simulator/' + vendor + '/' + device
         return arn
     def get_device(arn=get_sim_arn):
         device = AwsDevice(arn)
