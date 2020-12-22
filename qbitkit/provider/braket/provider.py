@@ -27,7 +27,7 @@ class device:
     def get_device(arn=get_sim_arn):
         device = AwsDevice(arn)
         return device
-    def get_device_ops(device=get_device(),
+    def get_device_ops(device=None,
                        print_result=False):
         device_operations = device.properties.dict()['action']['braket.ir.jaqcd.program']['supportedOperations']
         if print_result == True:
