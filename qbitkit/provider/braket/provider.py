@@ -1,19 +1,13 @@
+import time
 from qbitkit.provider.braket.circuit import circuitry
-
 from braket.aws import AwsDevice
 
-
-# notebook specific config
-dwave_qpu = 'Advantage_system1'
-notebook_start_time = time.time()
-#AWS specific config
-# Please enter the S3 bucket you created during onboarding in the code below
 class connection:
     def get_bucket(bucket=None, prefix=None):
         if bucket == None:
             bucket = None
         if prefix == None:
-            my_prefix = "results" # the name of the folder in the bucket
+            my_prefix = "results"
         s3_folder = (bucket, prefix)
         return s3_folder
 class device:
