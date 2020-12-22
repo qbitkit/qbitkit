@@ -31,7 +31,7 @@ class device:
                        print_result=False):
         device_operations = device.properties.dict()['action']['braket.ir.jaqcd.program']['supportedOperations']
         if print_result == True:
-            print('Quantum Gates supported by {}:\n {}'.format(device_name,
+            print('Quantum Gates supported by {}:\n {}'.format(device,
                                                                device_operations))
             return device_operations
         elif print_result == False:
