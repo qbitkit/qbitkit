@@ -104,7 +104,7 @@ class translate:
             input_circuit = input_circuit.cphaseshift01(targetA,
                                                         targetB,
                                                         angle)
-        if op == 'chphaseshift10':
+        if op == 'cphaseshift10':
             input_circuit = input_circuit.cphaseshift10(targetA,
                                                         targetB,
                                                         angle)
