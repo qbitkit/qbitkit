@@ -1,5 +1,5 @@
-from ..io.frame import frame as f
-from ..error import error as e
+from qbitkit.io.frame import frame as f
+from qbitkit.error import error as e
 class single_qubit:
     def gate(append=False,
              append_df=f.get_frame(),
