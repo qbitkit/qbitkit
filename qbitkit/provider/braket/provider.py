@@ -1,4 +1,4 @@
-from circuit import circuitry
+from qbitkit.provider.braket.circuit import circuitry
 
 from braket.aws import AwsDevice
 
