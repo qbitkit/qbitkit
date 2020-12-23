@@ -19,7 +19,7 @@ amazon-braket-ocean-plugin
 
 # General-Purpose:
 matplotlib
-numpy
+numpy==1.19.3
 pandas
 datetime
 
