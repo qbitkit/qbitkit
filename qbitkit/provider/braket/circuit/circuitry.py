@@ -140,12 +140,12 @@ class translate:
                                                         angle)
             return input_circuit
         if op == 'cswap':
-            input_circuit = input_circuit.ccnot(targetA,
+            input_circuit = input_circuit.cswap(targetA,
                                                 targetB,
                                                 targetC)
             return input_circuit
         if op == 'pswap':
-            input_circuit = input_circuit.ccnot(targetA,
+            input_circuit = input_circuit.pswap(targetA,
                                                 targetB,
                                                 phi)
             return input_circuit
