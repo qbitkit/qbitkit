@@ -41,6 +41,10 @@ class device:
 class job:
     def get_job(circuit=circuitry.braket_circuit(),
                 s3loc=connection.get_bucket(),
-                shots=1000, qubit_reqiring=False):
-        my_task = device.run(circuit, s3loc, shots=shots, disable_qubit_rewiring=True)
+                shots=1000,
+                qubit_rewiring=False):
+        my_task = device.run(circuit,
+                             s3loc,
+                             shots=shots,
+                             disable_qubit_rewiring=True)
         return my_task
