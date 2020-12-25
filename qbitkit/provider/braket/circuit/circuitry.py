@@ -152,7 +152,7 @@ class translate:
         else:
             print(f'[ERROR]: Gate {op} not found. Returning an empty object with a value of None.')
             input_circuit = None
-        return input_circuit
+            return input_circuit
     def df_circuit(df=fr.get_frame(),
                    input_circuit=braket_circuit()):
         for index, row in df.iterrows():
