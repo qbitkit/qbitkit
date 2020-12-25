@@ -39,8 +39,8 @@ class device:
         else:
             return device_operations
 class job:
-    def get_job(device=device.get_sim_arn(vendor='amazon',
-                                          device='sv1'),
+    def get_job(device=device.get_device(arn=device.get_sim_arn(vendor='amazon',
+                                          device='sv1')),
                 circuit=circuitry.braket_circuit(),
                 s3loc=connection.get_bucket(),
                 shots=1000,
