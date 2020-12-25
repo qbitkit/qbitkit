@@ -1,5 +1,6 @@
 from braket.circuits import Circuit as braket_circuit
 from braket.circuits import Gate as braket_gate
+from qbitkit.io.frame import frame as fr
 import numpy as np
 import string
 
@@ -152,3 +153,16 @@ class translate:
             print(f'[ERROR]: Gate {op} not found. Returning an empty object with a value of None.')
             input_circuit = None
         return input_circuit
+    def df_circuit(df=fr.get_frame(),
+                   input_circuit=braket_circuit()):
+        for index, row in df.iterrows():
+            qcgates = str(row['gate'])
+            targetA = row['targetA']
+            targetB = row['targetB']
+            targetC = row['targetC']
+            circuit = translate.translate_gate(input_cir=input_circuit,
+                                               op=qcgates,
+                                               targetA=targetA,
+                                               targetB=targetB,
+                                               targetC=targetC)
+            return circuit
