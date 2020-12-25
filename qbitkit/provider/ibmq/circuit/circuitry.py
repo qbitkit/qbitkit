@@ -10,12 +10,12 @@ class info:
 class circuit:
     def new(nqreg=int(2),
             ncreg=int(2),
-            nancl=int(None):
+            nancl=int(None)):
         qreg = QuantumRegister(nqreg, 'qreg')
         ancl = QuantumRegister(nancl, 'ancl')
         creg = ClassicalRegister(ncreg, 'creg')
         qcir = QuantumCircuit(qreg, creg, ancl)
-    return qcir
+        return qcir
 class translate:
     def translate_gate(op=None,
                               input_circuit=circuit.new(2,2,None),
