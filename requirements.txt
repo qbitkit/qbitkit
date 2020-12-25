@@ -15,7 +15,7 @@ qiskit
 qiskit-ibmq-provider
 
 # AWS Braket Dependencies:
-amazon-braket-ocean-plugin
+#amazon-braket-ocean-plugin
 
 # General-Purpose:
 #matplotlib
