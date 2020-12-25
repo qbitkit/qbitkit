@@ -23,10 +23,6 @@ numpy==1.19.3
 pandas
 datetime
 
-# Modin Scalable Pandas:
-modin
-modin[ray]
-
 # Logging dependencies:
 elasticsearch
 eland

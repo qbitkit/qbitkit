@@ -1,4 +1,4 @@
-import modin.pandas as pd
+import pandas as pd
 import qbitkit.io.file as f
 class frame:
     def get_frame(data=None):
