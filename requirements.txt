@@ -1,16 +1,16 @@
 # D-Wave Dependencies:
-dwave-ocean-sdk
-dimod
-dwavebinarycsp
-dwave-networkx
+#dwave-ocean-sdk
+#dimod
+#dwavebinarycsp
+#dwave-networkx
 
 # Graph Dependencies:
-networkx
+#networkx
 
 # Qiskit:
 qiskit
 ## D-Wave Qiskit:
-dwave-qiskit-plugin
+#dwave-qiskit-plugin
 ## IBMQ Qiskit:
 qiskit-ibmq-provider
 
@@ -18,11 +18,11 @@ qiskit-ibmq-provider
 amazon-braket-ocean-plugin
 
 # General-Purpose:
-matplotlib
+#matplotlib
 numpy==1.19.3
 pandas
 datetime
 
 # Logging dependencies:
 elasticsearch
-eland
+#eland
