@@ -165,4 +165,4 @@ class translate:
                                                targetA=targetA,
                                                targetB=targetB,
                                                targetC=targetC)
-            return circuit
+        return circuit
