@@ -39,7 +39,7 @@ class device:
         else:
             return device_operations
 class job:
-    def get_job(circuit=circuitry.braket_circuit,
+    def get_job(circuit=circuitry.braket_circuit(),
                 s3loc=connection.get_bucket(),
                 shots=1000, qubit_reqiring=False):
         my_task = device.run(circuit, s3loc, shots=shots, disable_qubit_rewiring=True)
