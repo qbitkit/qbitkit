@@ -1,4 +1,4 @@
-import modin.pandas as pd
+import pandas as pd
 
 
 class csv:
