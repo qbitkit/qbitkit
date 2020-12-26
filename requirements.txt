@@ -26,3 +26,5 @@ datetime
 # Logging dependencies:
 elasticsearch
 #eland
+
+# Qbitkit CLI
