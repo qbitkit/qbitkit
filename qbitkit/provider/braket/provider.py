@@ -47,5 +47,5 @@ class job:
         my_task = device.run(circuit,
                              s3loc,
                              shots=shots,
-                             disable_qubit_rewiring=True)
+                             disable_qubit_rewiring=disable_qubit_rewiring)
         return my_task
