@@ -1,4 +1,3 @@
-import time
 from qbitkit.provider.braket.circuit import circuitry
 from braket.aws import AwsDevice
 
