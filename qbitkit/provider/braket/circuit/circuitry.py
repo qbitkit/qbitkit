@@ -160,7 +160,7 @@ class translate:
             targetA = row['targetA']
             targetB = row['targetB']
             targetC = row['targetC']
-            circuit = translate.translate_gate(input_cir=input_circuit,
+            circuit = translate.translate_gate(input_circuit=input_circuit,
                                                op=qcgates,
                                                targetA=targetA,
                                                targetB=targetB,
