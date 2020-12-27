@@ -1,4 +1,5 @@
-# `qbitkit`
+<img src="https://raw.githubusercontent.com/brianlechthaler/qbitkit/origin/doc/assets/qbitkit-logo-rasterized.svg?token=AAP7F43SB4JJGFMPT2AMRXK747USU">
+
 Universal Quantum Toolkit for Humans
 
 ## Installing `qbitkit`
