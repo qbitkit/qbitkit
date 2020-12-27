@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/brianlechthaler/qbitkit/origin/doc/assets/qbitkit-logo-rasterized.svg?token=AAP7F43SB4JJGFMPT2AMRXK747USU">
+<img src="https://gist.githubusercontent.com/brianlechthaler/8137558340cc322e2d3acc1a740540d6/raw/1da63bfff411b1647e277e9b265939346fc5c845/qbitkit.svg">
 
 Universal Quantum Toolkit for Humans
 
