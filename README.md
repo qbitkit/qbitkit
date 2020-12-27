@@ -2,6 +2,29 @@
 
 Universal Quantum Toolkit for Humans
 
+## Example
+Here we make a Bell State and submit it to the SV1 Quantum Simulator on AWS Braket.
+```
+from qbitkit.provider.braket.circuit import circuitry as c
+from qbitkit.provider.braket import provider as p
+from qbitkit.io.frame import frame as f
+
+# Define circuit dataframe
+bellFrame = f.get_frame(data={'gate' : ['h','cnot'], 
+                              'targetA' : [0,0], 
+			      'targetB' : [None, 1], 
+			      'targetC' : [None, None],})
+
+# Translate the dataframe into a circuit we can run on AWS Braket
+bellCircuit = c.translate.df_circuit(df=bellFrame)
+
+# Send job to quantum processor (in this case a simulated one)
+j = p.job.get_job(circuit=bellCircuit)
+
+# Show probabilities (should come out as close to 50/50)
+print(j.result.measurement_probabilities())
+```
+
 ## Installing `qbitkit`
 ### Anaconda3 (Windows/Mac/Linux)
 1) Download Anaconda3:
