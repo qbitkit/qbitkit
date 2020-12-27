@@ -2,20 +2,20 @@ from qbitkit.provider.braket.circuit import circuitry
 from braket.aws import AwsDevice
 
 class connection:
-    def get_bucket(bucket=None,
-                   prefix=None):
-        if bucket == None:
-            bucket = None
-        if prefix == None:
-            my_prefix = "results"
-        s3_folder = (bucket,
-                     prefix)
-        return s3_folder
-    def default_bucket(self):
+    def default_bucket(folder='results'):
         aws_account_id = boto3.client("sts").get_caller_identity()["Account"]
         s3_folder = (f"amazon-braket-{aws_account_id}",
                      "results")
         return s3_folder
+    def get_bucket(bucket=None,
+                   prefix=None):
+        if prefix == None:
+            my_prefix = "results"
+        if bucket == None:
+            bucket = connection.default_bucket(folder=my_prefix)
+        s3 = (bucket,
+                     prefix)
+        return s3
 
 class device:
     def get_qpu_arn(vendor=None,
