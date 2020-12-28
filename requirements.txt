@@ -15,6 +15,8 @@ qiskit
 qiskit-ibmq-provider
 
 # AWS Braket Dependencies:
+boto3
+botocore
 #amazon-braket-ocean-plugin
 
 # General-Purpose:
