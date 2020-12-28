@@ -1,6 +1,7 @@
 from qbitkit.provider.braket.circuit import circuitry
 from braket.aws import AwsDevice
 from braket.devices import local_simulator as localsim
+import boto3
 
 class connection:
     def default_bucket(folder='results'):
