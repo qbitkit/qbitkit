@@ -1,5 +1,6 @@
 from qbitkit.provider.braket.circuit import circuitry
 from braket.aws import AwsDevice
+from braket.devices import local_simulator as localsim
 
 class connection:
     def default_bucket(folder='results'):
@@ -16,6 +17,11 @@ class connection:
         s3 = (bucket,
                      prefix)
         return s3
+
+class local:
+    def sim(self):
+        device = localsim("default")
+        return device
 
 class device:
     def get_qpu_arn(vendor=None,
