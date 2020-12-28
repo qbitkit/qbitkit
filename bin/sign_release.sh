@@ -7,7 +7,7 @@ alias crypt=gpgBinary
 export filename=$1.sig.asc
 
 echo "Signing file $1 with $gpgBinary and saving to $filename"
-cat $1 | gpg --sign --armor > $filename
+cat $1 | crypt --sign --armor > $filename
 
 echo "Detached Signature for file $1:"
 cat $filename
