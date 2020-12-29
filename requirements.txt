@@ -31,6 +31,3 @@ elasticsearch
 
 # qbitctl Dependencies
 click
-
-# Documentation Dependencies
-sphinx
