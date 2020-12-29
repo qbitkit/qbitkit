@@ -18,6 +18,7 @@ python3 -m virtualenv --python python3 $venv_name
 . venv/bin/activate
 
 # Install Dependencies
+python3 -m pip install -U pip
 python3 -m pip install -U $venv_pkg
 python3 -m pip install -U -r requirements.txt
 # Build python package
