@@ -1,5 +1,29 @@
-# `qbitkit`
-Universal Quantum Toolkit for Humans
+<img src="https://gist.githubusercontent.com/brianlechthaler/8137558340cc322e2d3acc1a740540d6/raw/1da63bfff411b1647e277e9b265939346fc5c845/qbitkit.svg" alt="qbitkit Official Logo (you may need to enable JavaScript to see this!)">
+
+#### The Truly Universal Quantum Toolkit for Humans
+
+## Example
+Here we make a Bell State and submit it to the SV1 Quantum Simulator on AWS Braket.
+```python
+from qbitkit.provider.braket.circuit import circuitry as c
+from qbitkit.provider.braket import provider as p
+from qbitkit.io.frame import frame as f
+
+# Define circuit dataframe
+bellFrame = f.get_frame(data={'gate' : ['h','cnot'], 
+                              'targetA' : [0,0], 
+			      'targetB' : [None, 1], 
+			      'targetC' : [None, None],})
+
+# Translate the dataframe into a circuit we can run on AWS Braket
+bellCircuit = c.translate.df_circuit(df=bellFrame)
+
+# Send job to quantum processor (in this case a simulated one)
+j = p.job.get_job(circuit=bellCircuit)
+
+# Show probabilities (should come out as close to 50/50 because the qubit we are measuring is superpositioned between 1 and 0)
+print(j.result.measurement_probabilities())
+```
 
 ## Installing `qbitkit`
 ### Anaconda3 (Windows/Mac/Linux)
@@ -13,7 +37,7 @@ Universal Quantum Toolkit for Humans
 * Download Git for Windows from git-scm.org using [this link](https://git-scm.com/download/win)
 * Open the installer, complete the installation.
 * Reminder: paths listed below, for example `venv/bin/activate` work for Mac and Linux, but on Windows you must change any `/` to `\` before running a command *unless* that `/` is in a URL, in which case leave it alone. Consider installing Debian alongside or in place of Windows if this bothers you.
-#### Pip (availible at launch)
+#### Pip (available at launch)
 1) Make sure `pip` is up-to-date, then install using `pip`: 
 * `pip install -U pip`
 * `pip install -U qbitkit`
@@ -38,7 +62,7 @@ Universal Quantum Toolkit for Humans
 * `alias 'pip=python3 -m pip'`
 3) You may need `git` if it isn't yet installed, for example on Debian-based systems:
 * `sudo apt-get install -qq -y git`
-#### Pip (availible at launch)
+#### Pip (available at launch)
 1) Make sure `pip` is up-to-date, then install `qbitkit`:
 * with root, system install: `sudo -H pip install -U qbitkit`
 * without root, user install: `pip install --user -U qbitkit`
@@ -61,7 +85,7 @@ Universal Quantum Toolkit for Humans
 * Status:
     * Active development as of December 16th
 * Health:
-    * Yelllow (unhealthy)
+    * Yellow (unhealthy)
     * nearing minimum viable product stage
     * while there's theoretically enough of `qbitkit` working at this point, core features are still missing or underdeveloped.
     * extensive testing will still be necessary prior to public release

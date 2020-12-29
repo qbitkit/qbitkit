@@ -1,0 +1,34 @@
+# Start from the base-notebook Jupyter Docker image
+FROM jupyter/base-notebook:latest
+
+# Switch to root user
+USER root
+
+# Make sure all apt packages are up-to-date
+RUN apt-get update -y -qq
+RUN apt-get upgrade -y -qq
+
+# Make sure pip is up-to-date
+RUN pip install -q -U pip
+
+# Make sure /git exists
+RUN mkdir -p /git
+
+# Make sure the default user for the container has access to /git/qbitkit
+RUN chown -R jovyan:jovyan /git/qbitkit
+
+# Switch user back to container default to avoid accidentally running the container with the root user in the container
+USER jovyan
+
+# Configure container startup
+ENTRYPOINT ["tini", "-g", "--"]
+CMD ["start-notebook.sh"]
+
+# Copy the repository root to /git/qbitkit inside the container
+COPY . /git/qbitkit
+
+# Install pip dependencies
+RUN pip install -U -r /git/qbitkit
+
+# Setup and install qbitkit
+RUN cd /git/qbitkit ; python setup.py build ; python setup.py install
