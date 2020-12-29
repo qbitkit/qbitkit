@@ -11,6 +11,8 @@ class connection:
 
         Keyword arguments:
         folder -- folder within S3 bucket to save results to and read results from (default 'results')"""
+        warning = 'WARNING: This function is experimental and may cause unexpected errors or not even be functional. Use with caution.'
+        print(warning)
         aws_account_id = boto3.client("sts").get_caller_identity()["Account"]
         s3_folder = (f"amazon-braket-{aws_account_id}",
                      "results")
@@ -24,8 +26,6 @@ class connection:
         bucket -- name of the AWS S3 bucket you want to save/read results with (default None)
         results -- name of the folder inside the bucket to save/read results with(default None)
         default_bucket -- try to use the default bucket. Experimental feature, don't switch to True unless you're ok with things being likely to break and know what you're doing. (default False)"""
-        warning = 'WARNING: This function is experimental and may cause unexpected errors or not even be functional. Use with caution.'
-        print(warning)
         if prefix == None:
             prefix = "results"
         if default_bucket == True:
