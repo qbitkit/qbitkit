@@ -7,6 +7,8 @@ class connection:
     def default_bucket(folder='results'):
         """Get the default AWS S3 Bucket using boto3.
 
+        Warning: This function is experimental and may cause unexpected errors or not even be functional. Use with caution.
+
         Keyword arguments:
         folder -- folder within S3 bucket to save results to and read results from (default 'results')"""
         aws_account_id = boto3.client("sts").get_caller_identity()["Account"]
@@ -20,6 +22,8 @@ class connection:
         Keyword arguments:
         bucket -- name of the AWS S3 bucket you want to save/read results with (default None)
         results -- name of the folder inside the bucket to save/read results with(default None)"""
+        warning = 'WARNING: This function is experimental and may cause unexpected errors or not even be functional. Use with caution.'
+        print(warning)
         if prefix == None:
             prefix = "results"
         if bucket == None:
