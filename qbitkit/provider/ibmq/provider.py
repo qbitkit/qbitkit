@@ -61,7 +61,8 @@ class job:
 
         Keyword arguments:
         circuit -- the circuit to be run on the QPU. (default None)
-        job -- the job object to run on the QPU. (default None)"""
+        job -- the job object to run on the QPU. (default None)
+        show_graph -- whether or not to show a graph of the measurement probabilities. (default False)"""
         result = job.result()
         if show_graph == False:
             return result
