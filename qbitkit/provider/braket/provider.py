@@ -37,7 +37,7 @@ class local:
 class device:
     def get_qpu_arn(vendor='ionq',
                     device='ionQdevice'):
-        """Get ARN for a QPU based on specified vendor and device and return it.
+        """Get ARN for a QPU based on specified vendor and device and return the ARN along with a status code (status 0=fail, status 1=success).
 
         Keyword arguments:
         vendor -- the vendor you would like to choose a QPU from. (default 'ionq')
