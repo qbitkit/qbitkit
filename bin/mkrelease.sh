@@ -22,8 +22,8 @@ python3 -m pip install -U setuptools wheel
 python3 -m pip install -U -r requirements.txt
 # Build python package
 python3 setup.py build
-# Install Python package
-python3 setup.py install
+# Build Python package
+python3 setup.py sdist bdist_wheel
 # Save current directory as env var, and use it to get the full path of our venv that we created
 export dir=$(pwd)
 export venv_dir=$dir/$venv_name
