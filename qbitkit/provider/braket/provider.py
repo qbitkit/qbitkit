@@ -16,17 +16,19 @@ class connection:
                      "results")
         return s3_folder
     def get_bucket(bucket=None,
-                   prefix=None):
+                   prefix=None,
+                   default_bucket=False):
         """Get bucket from specified keyword arguments.
 
         Keyword arguments:
         bucket -- name of the AWS S3 bucket you want to save/read results with (default None)
-        results -- name of the folder inside the bucket to save/read results with(default None)"""
+        results -- name of the folder inside the bucket to save/read results with(default None)
+        default_bucket -- try to use the default bucket. Experimental feature, don't switch to True unless you're ok with things being likely to break and know what you're doing. (default False)"""
         warning = 'WARNING: This function is experimental and may cause unexpected errors or not even be functional. Use with caution.'
         print(warning)
         if prefix == None:
             prefix = "results"
-        if bucket == None:
+        if default_bucket == True:
             bucket = connection.default_bucket(folder=prefix)
         s3 = (bucket,
               prefix)
