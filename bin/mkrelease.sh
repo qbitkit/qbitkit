@@ -1,6 +1,5 @@
 #!/bin/sh
 # Set runtime variables
-export venv_pkg=setuptools
 export install_project=qbitkit
 export venv_name=venv
 # Set aliases
@@ -16,13 +15,15 @@ cd ..
 python3 -m virtualenv --python python3 $venv_name
 # Activate the virtual environment
 . venv/bin/activate
+
 # Install Dependencies
-python3 -m pip install -U -r $venv_pkg
+python3 -m pip install -U pip
+python3 -m pip install -U setuptools wheel
 python3 -m pip install -U -r requirements.txt
 # Build python package
 python3 setup.py build
-# Install Python package
-python3 setup.py install
+# Build Python package
+python3 setup.py sdist bdist_wheel
 # Save current directory as env var, and use it to get the full path of our venv that we created
 export dir=$(pwd)
 export venv_dir=$dir/$venv_name
