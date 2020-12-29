@@ -23,7 +23,7 @@ class connection:
         if prefix == None:
             prefix = "results"
         if bucket == None:
-            bucket = connection.default_bucket(folder=my_prefix)
+            bucket = connection.default_bucket(folder=prefix)
         s3 = (bucket,
               prefix)
         return s3
