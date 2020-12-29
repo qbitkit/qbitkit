@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setuptools.setup(
     name="qbitkit", # Replace with your own username
     version="1.0.0-beta",
-    author="Brian Lechthaler",
+    author="qbitkit Team",
     author_email="brianlechthaler@protonmail.ch",
     description="Easy Quantum Computing Framework",
     long_description=long_description,
