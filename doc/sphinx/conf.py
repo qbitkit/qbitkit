@@ -11,6 +11,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 from os.path import sep as pathsep
+from datetime import datetime as dt
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
@@ -19,7 +20,7 @@ from os.path import sep as pathsep
 
 project = 'qbitkit'
 author = f'{project} Team'
-copyright = f'2021, {author}'
+copyright = f'{dt.now().year}, {author}'
 
 # -- General configuration ---------------------------------------------------
 
