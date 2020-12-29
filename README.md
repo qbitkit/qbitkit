@@ -4,7 +4,7 @@ Universal Quantum Toolkit for Humans
 
 ## Example
 Here we make a Bell State and submit it to the SV1 Quantum Simulator on AWS Braket.
-```
+```python
 from qbitkit.provider.braket.circuit import circuitry as c
 from qbitkit.provider.braket import provider as p
 from qbitkit.io.frame import frame as f
