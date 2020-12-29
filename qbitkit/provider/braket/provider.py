@@ -40,7 +40,7 @@ class local:
         device = localsim("default")
         return device
 
-class device:
+class quantum_device:
     def get_qpu_arn(vendor='ionq',
                     device='ionQdevice'):
         """Get ARN for a QPU based on specified vendor and device and return the ARN along with a status code (status 0=fail, status 1=success).
@@ -86,8 +86,8 @@ class device:
         else:
             return device_operations
 class job:
-    def get_job(device=device.get_device(arn=device.get_sim_arn(vendor='amazon',
-                                          device='sv1')),
+    def get_job(device=quantum_device.get_device(arn=quantum_device.get_sim_arn(vendor='amazon',
+                                                                                device='sv1')),
                 circuit=circuitry.braket_circuit(),
                 s3loc=connection.get_bucket(),
                 shots=1000,
