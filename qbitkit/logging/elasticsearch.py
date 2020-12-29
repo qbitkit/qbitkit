@@ -22,19 +22,6 @@ class es_read:
                  query={"query": {"match_all": {}}}
                  ):
             return None
-class es_doc:
-    class classic:
-        def doc(qpu_sampling_time=None,
-                qpu_access_times=None,
-                qpu_programming_times=None,
-                qpu_anneal_time_per_samples=None,
-                results=None):
-            doc = {'timestamp': str(dt.now()),
-                   'qpu_access_times' : qpu_access_times,
-                   'qpu_programming_times' : qpu_programming_times,
-                    'qpu_anneal_time_per_samples' : qpu_anneal_time_per_samples,
-                   'results' : results,}
-            return doc
 class es_write:
     class classic:
         def write(connection=es_connect.get_connection(),
