@@ -14,6 +14,9 @@ cd ..
 python3 -m virtualenv --python python3 $venv_name
 # Activate the virtual environment
 . venv/bin/activate
+# Make sure pip and setuptools inside the virtualenv are up-to-date
+python3 -m pip install -U pip
+python3 -m pip install -U setuptools
 # Install Dependencies
 python3 -m pip install -U -r requirements.txt
 # Build python package
