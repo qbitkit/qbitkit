@@ -1,28 +1,25 @@
 #!/bin/bash
 # Set runtime variables
-export python_cmd=python3
 export install_project=qbitkit
 export venv_name=venv
-# Set aliases
-alias py=$python_cmd
 # Update Pip
-py -m pip install -U --user pip
+python3 -m pip install -U --user pip
 # Install virtualenv
-py -m pip install -U --user virtualenv
+python3 -m pip install -U --user virtualenv
 # Save current directory as env var
 export origin_dir=$(pwd)
 # Go to the parent directory where the root of the repo should be
 cd ..
 # Create a virtual environment
-py -m virtualenv --python $python_cmd $venv_name
+python3 -m virtualenv --python $python_cmd $venv_name
 # Activate the virtual environment
 . venv/bin/activate
 # Install Dependencies
-py -m pip install -U -r requirements.txt
+python3 -m pip install -U -r requirements.txt
 # Build python package
-py setup.py build
+python3 setup.py build
 # Install Python package
-py setup.py install
+python3 setup.py install
 # Save current directory as env var, and use it to get the full path of our venv that we created
 export dir=$(pwd)
 export venv_dir=$dir/$venv_name
