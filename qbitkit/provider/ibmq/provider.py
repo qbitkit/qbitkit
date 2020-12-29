@@ -7,8 +7,8 @@ from qiskit.visualization import *
 
 
 # Loading your IBM Q account(s)
-class connect:
-    def get_provider(self):
+class quantum_device:
+    def get_device(self):
         provider = IBMQ.get_account()
         return provider
 class local:
