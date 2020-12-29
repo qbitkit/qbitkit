@@ -21,7 +21,7 @@ bellCircuit = c.translate.df_circuit(df=bellFrame)
 # Send job to quantum processor (in this case a simulated one)
 j = p.job.get_job(circuit=bellCircuit)
 
-# Show probabilities (should come out as close to 50/50)
+# Show probabilities (should come out as close to 50/50 because the qubit we are measuring is superpositioned between 1 and 0)
 print(j.result.measurement_probabilities())
 ```
 
