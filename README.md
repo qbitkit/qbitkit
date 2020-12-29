@@ -1,6 +1,6 @@
 <img src="https://gist.githubusercontent.com/brianlechthaler/8137558340cc322e2d3acc1a740540d6/raw/1da63bfff411b1647e277e9b265939346fc5c845/qbitkit.svg" alt="qbitkit Official Logo (you may need to enable JavaScript to see this!)">
 
-Universal Quantum Toolkit for Humans
+#### The Truly Universal Quantum Toolkit for Humans
 
 ## Example
 Here we make a Bell State and submit it to the SV1 Quantum Simulator on AWS Braket.
