@@ -1,6 +1,5 @@
 #!/bin/sh
 # Set runtime variables
-export venv_pkg=setuptools
 export install_project=qbitkit
 export venv_name=venv
 # Set aliases
@@ -19,7 +18,7 @@ python3 -m virtualenv --python python3 $venv_name
 
 # Install Dependencies
 python3 -m pip install -U pip
-python3 -m pip install -U $venv_pkg
+python3 -m pip install -U setuptools wheel
 python3 -m pip install -U -r requirements.txt
 # Build python package
 python3 setup.py build
