@@ -21,11 +21,11 @@ class connection:
         bucket -- name of the AWS S3 bucket you want to save/read results with (default None)
         results -- name of the folder inside the bucket to save/read results with(default None)"""
         if prefix == None:
-            my_prefix = "results"
+            prefix = "results"
         if bucket == None:
             bucket = connection.default_bucket(folder=my_prefix)
         s3 = (bucket,
-                     prefix)
+              prefix)
         return s3
 
 class local:
