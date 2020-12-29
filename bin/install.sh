@@ -11,7 +11,7 @@ export origin_dir=$(pwd)
 # Go to the parent directory where the root of the repo should be
 cd ..
 # Create a virtual environment
-python3 -m virtualenv --python $python_cmd $venv_name
+python3 -m virtualenv --python python3 $venv_name
 # Activate the virtual environment
 . venv/bin/activate
 # Install Dependencies
