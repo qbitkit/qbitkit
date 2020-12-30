@@ -1,4 +1,6 @@
 #!/bin/sh
+# Print usage
+echo "mkdocs.sh <make argument>"
 # Change directory to where we have our docs to build
 cd ..
 cd doc
@@ -11,5 +13,7 @@ virtualenv -p python3 venv
 pip install -U pip
 # Install dependencies for building documentation
 pip install -Ur requirements.txt
+# Build documentation
+make $1
 # Reset shell to deactivate the virtual environment we are in
 source ~/.bashrc
