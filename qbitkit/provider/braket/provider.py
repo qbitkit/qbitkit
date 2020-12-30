@@ -7,25 +7,31 @@ class connection:
     def default_bucket(folder='results'):
         """Get the default AWS S3 Bucket using boto3.
 
+        Warning: This function is experimental and may cause unexpected errors or not even be functional. Use with caution.
+
         Keyword arguments:
         folder -- folder within S3 bucket to save results to and read results from (default 'results')"""
+        warning = 'WARNING: This function is experimental and may cause unexpected errors or not even be functional. Use with caution.'
+        print(warning)
         aws_account_id = boto3.client("sts").get_caller_identity()["Account"]
         s3_folder = (f"amazon-braket-{aws_account_id}",
                      "results")
         return s3_folder
     def get_bucket(bucket=None,
-                   prefix=None):
+                   prefix=None,
+                   default_bucket=False):
         """Get bucket from specified keyword arguments.
 
         Keyword arguments:
         bucket -- name of the AWS S3 bucket you want to save/read results with (default None)
-        results -- name of the folder inside the bucket to save/read results with(default None)"""
+        results -- name of the folder inside the bucket to save/read results with(default None)
+        default_bucket -- try to use the default bucket. Experimental feature, don't switch to True unless you're ok with things being likely to break and know what you're doing. (default False)"""
         if prefix == None:
-            my_prefix = "results"
-        if bucket == None:
-            bucket = connection.default_bucket(folder=my_prefix)
+            prefix = "results"
+        if default_bucket == True:
+            bucket = connection.default_bucket(folder=prefix)
         s3 = (bucket,
-                     prefix)
+              prefix)
         return s3
 
 class local:
@@ -34,10 +40,10 @@ class local:
         device = localsim("default")
         return device
 
-class device:
+class quantum_device:
     def get_qpu_arn(vendor='ionq',
                     device='ionQdevice'):
-        """Get ARN for a QPU based on specified vendor and device and return it.
+        """Get ARN for a QPU based on specified vendor and device and return the ARN along with a status code (status 0=fail, status 1=success).
 
         Keyword arguments:
         vendor -- the vendor you would like to choose a QPU from. (default 'ionq')
@@ -80,8 +86,8 @@ class device:
         else:
             return device_operations
 class job:
-    def get_job(device=device.get_device(arn=device.get_sim_arn(vendor='amazon',
-                                          device='sv1')),
+    def get_job(device=quantum_device.get_device(arn=quantum_device.get_sim_arn(vendor='amazon',
+                                                                                device='sv1')),
                 circuit=circuitry.braket_circuit(),
                 s3loc=connection.get_bucket(),
                 shots=1000,
