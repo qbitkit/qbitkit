@@ -13,6 +13,8 @@ virtualenv -p python3 venv
 pip install -U pip
 # Install dependencies for building documentation
 pip install -Ur requirements.txt
+# Set default AWS region
+aws configure set region us-east-1
 # Build documentation
 make $1
 # Reset shell to deactivate the virtual environment we are in
