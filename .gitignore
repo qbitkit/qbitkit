@@ -1,3 +1,6 @@
+# Ignore untitled Jupyter Notebooks
+Untitled*.ipynb
+
 # Example Virtual Environment in README.md
 venv
 venv/*
