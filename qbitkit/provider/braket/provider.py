@@ -43,20 +43,17 @@ class local:
 class quantum_device:
     def get_qpu_arn(vendor='ionq',
                     device='ionQdevice'):
-        """Get ARN for a QPU based on specified vendor and device and return the ARN along with a status code (status 0=fail, status 1=success).
+        """Get ARN for a QPU based on specified vendor and device and return the ARN.
 
         Keyword arguments:
         vendor -- the vendor you would like to choose a QPU from. (default 'ionq')
         device -- the device you would like to choose as your QPU (default 'ionQdevice')"""
-        status = 1
         if vendor == None:
             print('Warning: No quantum vendor specified')
-            status = 0
         if device == None:
             print('Warning: No quantum device specified')
-            status = 0
         arn = 'arn:aws:braket:::device/qpu/' + vendor + '/' + device
-        return arn, status
+        return arn
     def get_sim_arn(vendor='amazon',
                     device='sv1'):
         """Get ARN for a simulator from the specified vendor and device and return it.
