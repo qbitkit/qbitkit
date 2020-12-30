@@ -3,18 +3,17 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to qbitkit's documentation!
+qbitkit Official Documentation
 ===================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+qbitkit is a framework that makes quantum computing a little easier by offering developers high-level abstractions to perform various tasks useful to quantum computing.
 
 
 
 Indices and tables
 ==================
 
+* :doc:`_apidoc/modules`
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
