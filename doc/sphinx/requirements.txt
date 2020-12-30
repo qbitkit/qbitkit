@@ -1,0 +1,4 @@
+# Documentation Dependencies
+sphinx
+sphinxcontrib-apidoc
+sphinx_rtd_theme
