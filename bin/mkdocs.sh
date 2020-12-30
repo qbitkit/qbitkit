@@ -1,7 +1,7 @@
 #!/bin/sh
 # Change directory to where we have our docs to build
 cd ..
-cd docs
+cd doc
 cd sphinx
 # Create a new virtual environment
 virtualenv -p python3 venv
