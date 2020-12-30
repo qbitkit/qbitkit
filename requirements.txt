@@ -18,7 +18,6 @@ qiskit-ibmq-provider
 amazon-braket-sdk
 boto3
 botocore
-awscli
 #amazon-braket-ocean-plugin
 
 # General-Purpose:
