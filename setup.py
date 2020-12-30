@@ -11,7 +11,7 @@ setuptools.setup(
     description="Easy Quantum Computing Framework",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/brianlechthaler/qbitkit",
+    url="https://github.com/qbitkit/qbitkit",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
