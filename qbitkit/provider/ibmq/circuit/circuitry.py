@@ -11,7 +11,7 @@ class info:
 class circuit:
     def new(nqreg=int(2),
             ncreg=int(2),
-            nancl=int(None)):
+            nancl=None):
         """Create a new quantum circuit from a specified number of quantum, classical, and ancilla registers.
 
         Keyword arguments:
