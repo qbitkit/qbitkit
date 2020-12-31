@@ -22,6 +22,13 @@ class es_connect:
                         password=None,
                         elasticsearch_host='127.0.0.1',
                         timeout=60):
+        """Connect to Elasticsearch using an Elasticsearch HTTP username and password. To learn how to generate API keys to authenticate to Elasticsearch, refer to Elastic's documentation regarding using API keys: https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html
+
+        Keyword arguments:
+        username -- The username you would like to use when connecting to Elasticsearch with HTTP authentication. (default 'elastic')
+        password -- The password you would like to use when connecting to Elasticsearch with HTTP authentication. (default None)
+        elasticsearch_host -- The hostname or IP address of the Elasticsearch server you are trying to authenticate to. (default '127.0.0.1')
+        timeout -- The timeout in seconds to use when waiting for the Elasticsearch server to respond. (default 60)"""
         es_connection = es.Elasticsearch([elasticsearch_host],
                                          http_auth=(username,
                                                     password),
