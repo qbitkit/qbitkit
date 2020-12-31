@@ -15,7 +15,8 @@ class es_connect:
         timeout -- The timeout in seconds to use when waiting for the Elasticsearch server to respond. (default 60)"""
         es_connection = es.Elasticsearch([elasticsearch_host],
                                         api_key=(api_key,
-                                                 api_id))
+                                                 api_id),
+                                         timeout=timeout)
         return es_connection
     def using_http_auth(username='elastic',
                         password=None,
