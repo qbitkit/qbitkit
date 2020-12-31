@@ -4,8 +4,8 @@ from qbitkit.error import error as qbitkit_error
 
 def get_support_status(self):
     fileIO_support_status = 'experimental'
-    qbitkit_error.errors.experimental_feature(feature_state=fileIO_support_status,
-                                              resource_name='file I/O')
+    qbitkit_error.errors.support_status(feature_state=fileIO_support_status,
+                                        resource_name='file I/O')
     return fileIO_support_status
 
 get_support_status()

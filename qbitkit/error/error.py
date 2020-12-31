@@ -30,9 +30,9 @@ class errors:
         message = f'{level}: No {resource} has been specified.'
         log.msg(msg=message, print_msg=True)
         return message
-    def experimental_feature(feature_state='experimental',
-                             resource_name='this qbitkit feature',
-                             additional_notes=None):
+    def support_status(feature_state='experimental',
+                       resource_name='this qbitkit feature',
+                       additional_notes=None):
         """Generate a warning based on specified keyword arguments that warns users that a certain feature is at a certain support stage.
 
         Keyword arguments:
