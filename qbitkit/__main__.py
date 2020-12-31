@@ -6,7 +6,7 @@ class qbitctl:
 
     def get_support_status(self):
         qbitctl_support_status = 'experimental'
-        qbitkit_error.errors.experimental_feature(feature_state=elasticsearch_support_status,
+        qbitkit_error.errors.experimental_feature(feature_state=qbitctl_support_status,
                                                   resource_name='qbitctl',
                                                   additional_notes='For more information on forthcoming Elasticsearch support, see https://github.com/brianlechthaler/qbitkit/issues/4')
         return qbitctl_support_status
