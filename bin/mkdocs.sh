@@ -15,6 +15,16 @@ pip install -U pip
 pip install -Ur requirements.txt
 # Set default AWS region
 aws configure set region us-east-1
+# Go to repository root
+cd ../..
+# Install qbitkit dependencies
+pip install -Ur requirements.txt
+# Build qbitkit
+python setup.py build
+# Install qbitkit
+python setup.py install
+# Go back to the folder containing the documentation we're going to compile
+cd doc/sphinx
 # Build documentation
 make $1
 # Reset shell to deactivate the virtual environment we are in
