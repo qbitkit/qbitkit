@@ -1,6 +1,6 @@
 import click as ck
 from qbitkit.io.file import csv, json, excel
-class qbitctl():
+class qbitctl:
     def __init__(self):
         print('WARNING: qbitctl is still in development. Use with caution and avoid usage in production environments.')
     class functions:
