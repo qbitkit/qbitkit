@@ -30,3 +30,11 @@ class errors:
         message = f'{level}: No {resource} has been specified.'
         log.msg(msg=message, print_msg=True)
         return message
+    def experimental_feature(feature_state='experimental',
+                             resource_name='this qbitkit feature',
+                             additional_notes=None):
+        message = f"Support for {resource_name} is still in the '{feature_state}' stage. Please use with caution. "
+        message = message + additional_notes
+        log.msg(msg=message,
+                print_msg=True)
+        return message
