@@ -2,6 +2,14 @@ import elasticsearch as es
 from datetime import datetime as dt
 
 class es_connect:
+    def using_api_key(api_key=None,
+                      api_id=None,
+                      elasticsearch_host='127.0.0.1',
+                      timeout = 60):
+        es_connection = es.Elasticsearch([elasticsearch_host],
+                                        api_key=(api_key,
+                                                 api_id))
+        return es_connection
     def get_connection(api_key=None,
                        api_id=None,
                        elasticsearch_host='127.0.0.1',
