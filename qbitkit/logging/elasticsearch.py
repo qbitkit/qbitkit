@@ -1,5 +1,15 @@
 import elasticsearch as es
 from datetime import datetime as dt
+from qbitkit.error import error as qbitkit_error
+
+def get_support_status(self):
+    elasticsearch_support_status = 'experimental'
+    qbitkit_error.errors.experimental_feature(feature_state=elasticsearch_support_status,
+                                              resource_name='Elasticsearch',
+                                              additional_notes='For more information on forthcoming Elasticsearch support, see https://github.com/brianlechthaler/qbitkit/issues/4')
+    return elasticsearch_support_status
+
+get_support_status()
 
 class es_connect:
     def using_api_key(api_key=None,
