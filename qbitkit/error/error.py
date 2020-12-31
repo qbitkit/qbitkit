@@ -33,6 +33,12 @@ class errors:
     def experimental_feature(feature_state='experimental',
                              resource_name='this qbitkit feature',
                              additional_notes=None):
+        """Generate a warning based on specified keyword arguments that warns users that a certain feature is at a certain support stage.
+
+        Keyword arguments:
+        feature_state -- The state of the feature, such as experimental or beta. (default 'experimental')
+        resource_name -- The name of the feature (resource) to display the feature state of. (default 'this qbitkit feature')
+        additional_notes -- Tack on a note to the end of the warning (default None)"""
         message = f"Support for {resource_name} is still in the '{feature_state}' stage. Please use with caution. "
         message = message + additional_notes
         log.msg(msg=message,
