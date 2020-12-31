@@ -10,6 +10,15 @@ class es_connect:
                                         api_key=(api_key,
                                                  api_id))
         return es_connection
+    def using_http_auth(username='elastic',
+                        password=None,
+                        elasticsearch_host='127.0.0.1',
+                        timeout=60):
+        es_connection = es.Elasticsearch([elasticsearch_host],
+                                         http_auth=(username,
+                                                    password),
+                                         timeout=timeout)
+        return es_connection
     def get_connection(api_key=None,
                        api_id=None,
                        elasticsearch_host='127.0.0.1',
