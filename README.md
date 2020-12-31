@@ -85,7 +85,7 @@ print(j.result.measurement_probabilities())
 * Status:
     * Active development as of December 16th
 * Health:
-    * Yellow (unhealthy)
-    * nearing minimum viable product stage
-    * while there's theoretically enough of `qbitkit` working at this point, core features are still missing or underdeveloped.
-    * extensive testing will still be necessary prior to public release
+    * Green (healthy)
+    * Preparing for v1.0.0 (stable)
+    * Code examples needed  
+    * Extensive testing will still be necessary prior to public release
