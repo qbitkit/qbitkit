@@ -1,7 +1,6 @@
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
 import numpy as np
 import string
-int
 
 class info:
         def get_gates(self):
