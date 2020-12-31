@@ -1,5 +1,15 @@
 import pandas as pd
 import os as pyos
+from qbitkit.error import error as qbitkit_error
+
+def get_support_status(self):
+    fileIO_support_status = 'experimental'
+    qbitkit_error.errors.experimental_feature(feature_state=fileIO_support_status,
+                                              resource_name='file I/O',
+                                              additional_notes='For more information on forthcoming Elasticsearch support, see https://github.com/brianlechthaler/qbitkit/issues/4')
+    return fileIO_support_status
+
+get_support_status()
 
 class csv:
     def read(data_path=None):
