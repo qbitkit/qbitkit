@@ -27,7 +27,7 @@ class es_connect:
 class es_read:
     class classic:
 
-        def read(connection=es_connect.get_connection(),
+        def read(connection=None,
                  index='qbitkit-*',
                  query={"query": {"match_all": {}}}
                  ):
@@ -40,7 +40,7 @@ class es_read:
 class es_write:
     class classic:
 
-        def write(connection=es_connect.get_connection(),
+        def write(connection=None,
                  index='qbitkit-*',
                  doc=None):
             """Add a timestamp field with the current time and date to a new query containing specified data, sends the query to the specified Elasticsearch host, and returns the result of the indexing query.
