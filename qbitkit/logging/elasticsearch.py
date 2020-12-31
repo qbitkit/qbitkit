@@ -6,6 +6,13 @@ class es_connect:
                       api_id=None,
                       elasticsearch_host='127.0.0.1',
                       timeout = 60):
+        """Connect to Elasticsearch using an elasticsearch API key and API ID. To learn how to generate API keys to authenticate to Elasticsearch, refer to Elastic's documentation regarding using API keys: https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html
+
+        Keyword arguments:
+        api_key -- The API key for authenticating to Elasticsearch. (default None)
+        api_id -- The API ID for authenticating to Elasticsearch. (default None)
+        elasticsearch_host -- The hostname or IP address of the Elasticsearch server you are trying to authenticate to. (default '127.0.0.1')
+        timeout -- The timeout in seconds to use when waiting for the Elasticsearch server to respond. (default 60)"""
         es_connection = es.Elasticsearch([elasticsearch_host],
                                         api_key=(api_key,
                                                  api_id))
