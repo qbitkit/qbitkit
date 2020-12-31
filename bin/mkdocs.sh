@@ -2,9 +2,7 @@
 # Print usage
 echo "mkdocs.sh <make argument>"
 # Change directory to where we have our docs to build
-cd ..
-cd doc
-cd sphinx
+cd ../doc/sphinx
 # Create a new virtual environment
 virtualenv -p python3 venv
 # Activate virtual environment
