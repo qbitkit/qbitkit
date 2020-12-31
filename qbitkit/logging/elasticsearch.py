@@ -5,7 +5,7 @@ class es_connect:
     def using_api_key(api_key=None,
                       api_id=None,
                       elasticsearch_host='127.0.0.1',
-                      timeout = 60):
+                      timeout=60):
         """Connect to Elasticsearch using an elasticsearch API key and API ID. To learn how to generate API keys to authenticate to Elasticsearch, refer to Elastic's documentation regarding using API keys: https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html
 
         Keyword arguments:
