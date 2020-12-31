@@ -4,7 +4,16 @@ from qiskit.providers.ibmq import *
 from qiskit.providers import aer as a
 from qiskit.providers import basicaer as ba
 from qiskit.visualization import *
+from qbitkit.error import error as qbitkit_error
 
+def get_support_status(self):
+    ibmq_support_status = 'experimental'
+    qbitkit_error.errors.experimental_feature(feature_state=ibmq_support_status,
+                                              resource_name='Elasticsearch',
+                                              additional_notes='For more information on forthcoming Elasticsearch support, see https://github.com/brianlechthaler/qbitkit/issues/4')
+    return ibmq_support_status
+
+get_support_status()
 
 # Loading your IBM Q account(s)
 class connection:
