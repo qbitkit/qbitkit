@@ -7,10 +7,10 @@ from qiskit.visualization import *
 
 
 # Loading your IBM Q account(s)
-class quantum_device:
-    def get_device(self):
+class connection:
+    def get_provider(hub='ibm-q'):
         """Create an IBMQ provider with Qiskit to be used as a device in qbitkit"""
-        provider = IBMQ.get_account()
+        provider = IBMQ.get_account(hub)
         return provider
 class local:
     def aer(simulator='qasm_simulator'):
