@@ -1,8 +1,19 @@
 import click as ck
 from qbitkit.io.file import csv, json, excel
+from qbitkit.error import error as qbitkit_error
+
 class qbitctl:
+
+    def get_support_status(self):
+        qbitctl_support_status = 'experimental'
+        qbitkit_error.errors.experimental_feature(feature_state=elasticsearch_support_status,
+                                                  resource_name='qbitctl',
+                                                  additional_notes='For more information on forthcoming Elasticsearch support, see https://github.com/brianlechthaler/qbitkit/issues/4')
+        return qbitctl_support_status
+
+        get_support_status()
     def __init__(self):
-        print('WARNING: qbitctl is still in development. Use with caution and avoid usage in production environments.')
+        qbitctl.get_support_status()
     class functions:
         @ck.command()
         @ck.option('--fileType',
