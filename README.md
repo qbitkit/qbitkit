@@ -12,17 +12,22 @@ from qbitkit.io.frame import frame as f
 # Define circuit dataframe
 bellFrame = f.get_frame(data={'gate' : ['h','cnot'], 
                               'targetA' : [0,0], 
-			      'targetB' : [None, 1], 
-			      'targetC' : [None, None],})
+			                  'targetB' : [None, 1], 
+			                  'targetC' : [None, None],})
 
 # Translate the dataframe into a circuit we can run on AWS Braket
 bellCircuit = c.translate.df_circuit(df=bellFrame)
 
-# Send job to quantum processor (in this case a simulated one)
-j = p.job.get_job(circuit=bellCircuit)
+# Get the Amazon SV1 Quantum Simulator to test our circuit on (this constitutes free-tier usage, so don't worry about cost!)
+device = p.quantum_device.get_device(
+         p.quantum_device.get_sim_arn(device='sv1'))
 
+# Send job to quantum processor (in this case a simulated one)
+job = device.run(bellCircuit, shots=10000,
+                    s3_destination_folder=p.connection.get_bucket(
+                    bucket='Your_AWS_Braket_Bucket_Here-Check_Your_S3_Console_After_Onboarding'))
 # Show probabilities (should come out as close to 50/50 because the qubit we are measuring is superpositioned between 1 and 0)
-print(j.result.measurement_probabilities())
+print(job.result().measurement_probabilities)
 ```
 
 ## Installing `qbitkit`
