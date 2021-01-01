@@ -39,8 +39,7 @@ class errors:
         feature_state -- The state of the feature, such as experimental or beta. (default 'experimental')
         resource_name -- The name of the feature (resource) to display the feature state of. (default 'this qbitkit feature')
         additional_notes -- Tack on a note to the end of the warning (default None)"""
-        message = f"Support for {resource_name} is still in the '{feature_state}' stage. Please use with caution. "
-        message = message + additional_notes
+        message = f"Support for {resource_name} is still in the '{feature_state}' stage. Please use with caution. {additional_notes}"
         log.msg(msg=message,
                 print_msg=True)
         return message
