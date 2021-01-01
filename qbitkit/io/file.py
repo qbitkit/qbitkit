@@ -2,7 +2,7 @@ import pandas as pd
 import os as pyos
 from qbitkit.error import error as qbitkit_error
 
-def get_support_status(self):
+def get_support_status():
     fileIO_support_status = 'experimental'
     qbitkit_error.errors.support_status(feature_state=fileIO_support_status,
                                         resource_name='file I/O')
