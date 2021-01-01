@@ -6,7 +6,7 @@ from qiskit.providers import basicaer as ba
 from qiskit.visualization import *
 from qbitkit.error import error as qbitkit_error
 
-def get_support_status(self):
+def get_support_status():
     ibmq_support_status = 'experimental'
     resource_name = 'IBM Quantum Experience'
     qbitkit_error.errors.support_status(feature_state=ibmq_support_status,
