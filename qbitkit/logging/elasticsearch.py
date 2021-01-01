@@ -2,7 +2,7 @@ import elasticsearch as es
 from datetime import datetime as dt
 from qbitkit.error import error as qbitkit_error
 
-def get_support_status(self):
+def get_support_status():
     elasticsearch_support_status = 'experimental'
     qbitkit_error.errors.support_status(feature_state=elasticsearch_support_status,
                                         resource_name='Elasticsearch',
