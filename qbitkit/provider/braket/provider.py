@@ -37,7 +37,7 @@ class connection:
 class local:
     def sim():
         """Create a local simulator for AWS braket and return it."""
-        device = localsim("default")
+        device = localsim
         return device
 
 class quantum_device:
