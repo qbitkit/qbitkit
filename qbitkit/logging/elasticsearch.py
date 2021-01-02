@@ -84,14 +84,17 @@ class es_write:
 
         def write(connection=None,
                  index='qbitkit-*',
-                 doc=None):
+                 doc=None,
+                 refresh=True):
             """Add a timestamp field with the current time and date to a new query containing specified data, sends the query to the specified Elasticsearch host, and returns the result of the indexing query.
 
             Keyword arguments:
             connection -- specify a connection to use when communicating with the Elasticsearch host. (default es_connect.get_connection())
-            index -- specify the index template to use when writing to Elasticsearch. (defaul"""
+            index -- specify the index template to use when writing to Elasticsearch. (default 'qbitkit-*)
+            refresh -- when set to True, Elasticsearch will immediately refresh indices after we write to it. This makes documents available to search queries as soon as we send them to Elasticsearch. (default True)"""
             result = es.Elasticsearch.index(index=index,
                                             body=doc)
-            es.indices.refresh(index=index)
+            if refresh == True:
+                es.indices.refresh(index=index)
             print(result)
             return result
