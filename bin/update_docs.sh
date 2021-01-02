@@ -10,3 +10,4 @@ python setup.py install
 cd doc/sphinx/
 rm -rf _*
 make -j $(nproc) $1
+/bin/sh ../../bin/copy_docs.sh _build/html /var/www/html nginx
