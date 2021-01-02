@@ -71,11 +71,16 @@ print(job.result().measurement_probabilities)
 * `alias 'pip=python3 -m pip'`
 3) You may need `git` if it isn't yet installed, for example on Debian-based systems:
 * `sudo apt-get install -qq -y git`
+#### Installer Script (recommended)
+1) Change directory into qbitkit/bin
+* `cd bin`
+2) Run script
+* `/bin/sh install.sh`
 #### Pip (coming soon)
 1) Make sure `pip` is up-to-date, then install `qbitkit`:
 * with root, system install: `sudo -H pip install -U qbitkit`
 * without root, user install: `pip install --user -U qbitkit`
-#### Python Virtual Environment (recommended)
+#### Python Virtual Environment
 1) Clone `qbitkit` locally, then `cd` to the directory you just cloned:
 * `git clone https://github.com/brianlechthaler/qbitkit.git`
 * `cd qbitkit`
@@ -83,6 +88,7 @@ print(job.result().measurement_probabilities)
 * `virtualenv --python=python3 venv && . venv/bin/activate`
 3) Install requirements, then use `setup.py` to build `qbitkit` then install `qbitkit` into the virtualenv: 
 * `pip install -r requirements.txt && python setup.py build && python setup.py install`
+
 
 ## Project Lifecycle
 * Visibility: 
