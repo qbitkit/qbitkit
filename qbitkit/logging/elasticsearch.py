@@ -90,7 +90,8 @@ class es_write:
             Keyword arguments:
             connection -- specify a connection to use when communicating with the Elasticsearch host. (default es_connect.get_connection())
             index -- specify the index template to use when writing to Elasticsearch. (defaul"""
-            result = {'timestamp' : str(dt.now()),
-                   }
+            result = es.Elasticsearch.index(index=index,
+                                            body=doc)
+            es.indices.refresh(index=index)
             print(result)
             return result
