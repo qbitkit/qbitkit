@@ -3,4 +3,3 @@ sphinx
 sphinxcontrib-apidoc
 sphinx_rtd_theme
 awscli
--e git://github.com/qbitkit/qbitkit.git#egg=qbitkit
