@@ -46,7 +46,7 @@ print(job.result().measurement_probabilities)
 * Download Git for Windows from git-scm.org using [this link](https://git-scm.com/download/win)
 * Open the installer, complete the installation.
 * Reminder: paths listed below, for example `venv/bin/activate` work for Mac and Linux, but on Windows you must change any `/` to `\` before running a command *unless* that `/` is in a URL, in which case leave it alone. Consider installing Debian alongside or in place of Windows if this bothers you.
-#### Pip (available at launch)
+#### Pip (coming soon)
 1) Make sure `pip` is up-to-date, then install using `pip`: 
 * `pip install -U pip`
 * `pip install -U qbitkit`
@@ -71,7 +71,7 @@ print(job.result().measurement_probabilities)
 * `alias 'pip=python3 -m pip'`
 3) You may need `git` if it isn't yet installed, for example on Debian-based systems:
 * `sudo apt-get install -qq -y git`
-#### Pip (available at launch)
+#### Pip (coming soon)
 1) Make sure `pip` is up-to-date, then install `qbitkit`:
 * with root, system install: `sudo -H pip install -U qbitkit`
 * without root, user install: `pip install --user -U qbitkit`
