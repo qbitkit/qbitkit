@@ -3,8 +3,8 @@
 #### The Truly Universal Quantum Toolkit for Humans
 
 ## Documentation
-All of qbitkit's documentation is availible over on ReadTheDocs: 
-* https://qbitkit.readthedocs.io/en/latest/
+For the time being, documentation is hosted at:
+* https://qbitkit-docs-temporary.neutralthreat.com
 
 ## Example
 Here we make a Bell State and submit it to the SV1 Quantum Simulator on AWS Braket.
