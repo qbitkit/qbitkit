@@ -25,15 +25,15 @@ class translate:
         """Translate individual circuit elements from a Circuit DataFrame into a Braket Circuit, returns a Braket Circuit.
 
         Keyword arguments:
-        input_circuit -- specify a circuit to append the translated circuit to. (default braket_circuit())
-        targetA -- specify the first target qubit. Can be a positive integer or an array for specifying multiple targets. (default 0)
-        targetB -- specify the second target qubit for a two-qubit or three-qubit gate. Can be a positive integer or an array for specifying multiple targets. (default 1)
-        targetC -- specify the third target qubit for a three-qubit gate. Can be a positive integer or an array for specifying multiple targets. (default 2)
-        angle -- specify the angle for a gate. (default 0.15)
-        phi -- specify the phi for a gate. (default 0.15)
-        theta -- specify the theta for a gate. (default 0.15)
-        unitary_matrix -- specify a NumPy array with values for the unitary matrix. (default np.array([[0,1],[1,0]]))
-        unitary_targets -- a list of targets for the unitary. (default [0])"""
+        - input_circuit -- specify a circuit to append the translated circuit to. (default braket_circuit())
+        - targetA -- specify the first target qubit. Can be a positive integer or an array for specifying multiple targets. (default 0)
+        - targetB -- specify the second target qubit for a two-qubit or three-qubit gate. Can be a positive integer or an array for specifying multiple targets. (default 1)
+        - targetC -- specify the third target qubit for a three-qubit gate. Can be a positive integer or an array for specifying multiple targets. (default 2)
+        - angle -- specify the angle for a gate. (default 0.15)
+        - phi -- specify the phi for a gate. (default 0.15)
+        - theta -- specify the theta for a gate. (default 0.15)
+        - unitary_matrix -- specify a NumPy array with values for the unitary matrix. (default np.array([[0,1],[1,0]]))
+        - unitary_targets -- a list of targets for the unitary. (default [0])"""
         if op == 'unitary':
             input_circuit = input_circuit.unitary(matrix=unitary_matrix,
                                                   targets=unitary_targets)
@@ -171,8 +171,8 @@ class translate:
         """Converts a Circuit DataFrame into a Braket Circuit by iterating over the DataFrame and turning each row of the dataframe into a gate or set of gates.
 
         Keyword arguments:
-        df -- specify a Circuit DataFrame to convert to a Braket Circuit. (default fr.get_frame())
-        input_circuit -- specify a circuit to append the translated circuit's contents to. (default braket_circuit())"""
+        - df -- specify a Circuit DataFrame to convert to a Braket Circuit. (default fr.get_frame())
+        - input_circuit -- specify a circuit to append the translated circuit's contents to. (default braket_circuit())"""
         for index, row in df.iterrows():
             qcgates = str(row['gate'])
             targetA = row['targetA']
