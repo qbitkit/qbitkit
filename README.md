@@ -85,12 +85,9 @@ print(job.result().measurement_probabilities)
 * `pip install -r requirements.txt && python setup.py build && python setup.py install`
 
 ## Project Lifecycle
-* Minimum Viable Product Target Deadline:
-    * January 1-15th, 2021
 * Visibility: 
-    * Contents considered confidential until publicly released
-    * Private
-    * Release ETA: Q1 2021
+    * Public
+    * Released: January 1st, 2021
 * Status:
     * Active development as of December 16th
 * Health:
