@@ -1,0 +1,18 @@
+FROM alpine:edge
+RUN apk update
+RUN apk upgrade
+RUN apk add py3-pip
+RUN apk add make
+RUN python3 -m pip install -U pip
+RUN mkdir -p /qbitkit
+ENTRYPOINT cat /tmp/doc.tar
+COPY ../../requirements.txt /qbitkit/core-requirements.txt
+COPY ./requirements.txt /qbitkit/docs-requirements.txt
+RUN python3 -m pip install -Ur /qbitkit/core-requirements.txt
+RUN python3 -m pip install -Ur /qbitkit/docs-requirements.txt
+RUN rm -rf /qbitkit/*
+COPY ../.. /qbitkit/
+RUN cd /qbitkit/ ; python3 setup.py build
+RUN cd /qbitkit/ ; python3 setup.py install
+RUN cd /qbitkit/doc/sphinx ; make -j $(nproc) html
+RUN tar -cvf /tmp/doc.tar /qbitkit/doc/sphinx/_build
