@@ -25,6 +25,7 @@ class translate:
         """Translate individual circuit elements from a Circuit DataFrame into a Braket Circuit, returns a Braket Circuit.
 
         Args:
+            op (str): The instruction to translate into a gate. Default is a Hadamard gate represented as 'h'. (default 'h')
             input_circuit (braket.circuits.Circuit): specify a circuit to append the translated circuit to. (default braket_circuit())
             targetA (int): specify the first target qubit. Can be a positive integer or an array for specifying multiple targets. (default 0)
             targetB (int): specify the second target qubit for a two-qubit or three-qubit gate. Can be a positive integer or an array for specifying multiple targets. (default 1)
