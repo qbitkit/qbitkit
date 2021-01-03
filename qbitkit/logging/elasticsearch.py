@@ -1,5 +1,4 @@
 import elasticsearch as es
-from datetime import datetime as dt
 from qbitkit.error import error as qbitkit_error
 
 def get_support_status():
