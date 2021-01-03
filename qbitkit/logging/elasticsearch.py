@@ -102,6 +102,6 @@ class es_write:
             result = connection.index(index=index,
                                       body=doc)
             if refresh == True:
-                es.indices.refresh(index=index)
+                connection.indices.refresh(index=index)
             print(result)
             return result
