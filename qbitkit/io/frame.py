@@ -31,3 +31,4 @@ class frame:
         if file_type == 'excel':
             f.excel.write(data_path=pth,
                         df=frame)
+        return pth
