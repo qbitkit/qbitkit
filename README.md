@@ -1,12 +1,15 @@
 <img src="https://gist.githubusercontent.com/brianlechthaler/8137558340cc322e2d3acc1a740540d6/raw/1da63bfff411b1647e277e9b265939346fc5c845/qbitkit.svg" alt="qbitkit Official Logo (you may need to enable JavaScript to see this!)">
 
-#### The Truly Universal Quantum Toolkit for Humans
 
-## Documentation
-For the time being, documentation is hosted at:
-* https://qbitkit-docs-temporary.neutralthreat.com
 
-## Example
+# `qbitkit`
+#### *⚛ Quantum Computing, for Humans.*
+`qbitkit` is a set of high-level abstractions to make writing software for quantum computers easier. 
+Gates are defined using a Pandas DataFrame that can be automatically translated to your platform of choice.
+Once you've translated a DataFrame to your platform of choice, for example AWS Braket or IBMQ, all you have to do is run it and check the results.
+All of this, in just 3 lines of code (not counting import statements, comments, whitespace lines, or printing results.) 
+
+### Example
 Here we make a Bell State and submit it to the SV1 Quantum Simulator on AWS Braket.
 ```python
 from qbitkit.provider.braket.circuit import circuitry as c
@@ -33,6 +36,12 @@ job = device.run(bellCircuit, shots=10000,
 # Show probabilities (should come out as close to 50/50 because the qubit we are measuring is superpositioned between 1 and 0)
 print(job.result().measurement_probabilities)
 ```
+
+## Documentation
+For the time being, documentation is hosted at:
+* https://qbitkit-docs-temporary.neutralthreat.com
+
+
 
 ## Installing `qbitkit`
 ### Anaconda3 (Windows/Mac/Linux)
