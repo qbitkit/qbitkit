@@ -6,7 +6,7 @@ def get_support_status():
     elasticsearch_support_status = 'experimental'
     qbitkit_error.errors.support_status(feature_state=elasticsearch_support_status,
                                         resource_name='Elasticsearch',
-                                        additional_notes='For more information on forthcoming Elasticsearch support, see https://github.com/brianlechthaler/qbitkit/issues/4')
+                                        additional_notes='For more information on forthcoming Elasticsearch support, see https://github.com/qbitkit/qbitkit/issues/4')
     return elasticsearch_support_status
 
 get_support_status()
