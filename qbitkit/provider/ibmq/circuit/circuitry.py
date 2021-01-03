@@ -49,6 +49,7 @@ class translate:
         """Translate individual circuit elements (gates) from a qbitkit Circuit DataFrame.
 
         Args:
+            op (str): The instruction to translate into a gate. Default is a Hadamard gate represented as 'h'. (default 'h')
             targetA (int): the first qubit to target in a 1,2 or 3 qubit gate. (default 0)
             targetB (int): the second qubit to target in a 2 or 3 qubit gate. (default 1)
             targetC (int): the third qubit to target in a 3 qubit gate. (default 2)
