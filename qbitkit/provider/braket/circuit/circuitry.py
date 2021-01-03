@@ -11,7 +11,7 @@ class info:
             gate_set = [attr for attr in dir(braket_gate) if attr[0] in string.ascii_uppercase]
             return gate_set
 class translate:
-    def translate_gate(op=None,
+    def translate_gate(op='h',
                               input_circuit=braket_circuit(),
                               targetA=0,
                               targetB=1,
