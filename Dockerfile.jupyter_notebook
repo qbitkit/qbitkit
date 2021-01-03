@@ -28,7 +28,7 @@ CMD ["start-notebook.sh"]
 COPY . /git/qbitkit
 
 # Install pip dependencies
-RUN pip install -U -r /git/qbitkit
+RUN pip install -U -r /git/qbitkit/requirements.txt
 
 # Setup and install qbitkit
 RUN cd /git/qbitkit ; python setup.py build ; python setup.py install
