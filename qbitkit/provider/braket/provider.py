@@ -40,7 +40,9 @@ class connection:
 
 class local:
     def sim():
-        """Create a local simulator for AWS braket and return it."""
+        """Create a local simulator for AWS braket and return it.
+        Returns:
+            braket.devices.localsim: the local simulator device for Braket"""
         device = localsim
         return device
 
@@ -51,7 +53,9 @@ class quantum_device:
 
         Args:
             vendor (str) the vendor you would like to choose a QPU from. (default 'ionq')
-            device (str) the device you would like to choose as your QPU (default 'ionQdevice')"""
+            device (str) the device you would like to choose as your QPU (default 'ionQdevice')
+        Returns:
+            str: selected QPU ARN"""
         if vendor == None:
             print('Warning: No quantum vendor specified')
         if device == None:
@@ -75,7 +79,7 @@ class quantum_device:
         Args:
             arn (str) the ARN of the device you would like to use (default get_sim_arn())
         Returns:
-            braket.AwsDevice: AWS Quantum Device from specified ARN
+            braket.aws.AwsDevice: AWS Quantum Device from specified ARN
         """
         device = AwsDevice(arn)
         return device
@@ -99,12 +103,14 @@ class job:
                 disable_qubit_rewiring=False):
         """Create job from specified keyword arguments.
 
-        Keyword arguments:
+        Args:
             device (str): the AwsDevice() of the QPU or simulated QPU of your choice. (default device.get_device(arn=device.get_sim_arn()))
             circuit (braket.circuits.Circuit): the braket_circuit() of the translated circuit you wish to run on the QPU or simulated QPU. (default braket_circuit())
             shots (int): the number of shots, or reads that will be taken while executing the job on the QPU or simulated QPU (default 1000)
             s3loc (str): the bucket and result folder you wish to save/read results with (default connection.get_bucket())
-            disable_qubit_rewiring (bool): whether or not to disable qubit rewiring. You probably will not need to worry about using this argument in most cases. (default False)"""
+            disable_qubit_rewiring (bool): whether or not to disable qubit rewiring. You probably will not need to worry about using this argument in most cases. (default False)
+        Returns:
+            braket.aws.AwsQuantumTask"""
         my_task = device.run(circuit,
                              s3loc,
                              shots=shots,
