@@ -35,7 +35,7 @@ class circuit:
         qcir = QuantumCircuit(qreg, creg, ancl)
         return qcir
 class translate:
-    def translate_gate(op=None,
+    def translate_gate(op='h',
                               input_circuit=circuit.new(2,2,None),
                               targetA=0,
                               targetB=1,
