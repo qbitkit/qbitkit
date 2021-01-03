@@ -97,8 +97,8 @@ class es_write:
                 refresh (bool): when set to True, Elasticsearch will immediately refresh indices after we write to it. This makes documents available to search queries as soon as we send them to Elasticsearch. (default True)
             Returns:
                 dict: the response from the query we sent Elasticsearch"""
-            result = es.Elasticsearch.index(index=index,
-                                            body=doc)
+            result = connection.index(index=index,
+                                      body=doc)
             if refresh == True:
                 es.indices.refresh(index=index)
             print(result)
