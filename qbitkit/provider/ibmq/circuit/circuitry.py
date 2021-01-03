@@ -24,10 +24,12 @@ class circuit:
             nancl=None):
         """Create a new quantum circuit from a specified number of quantum, classical, and ancilla registers.
 
-        Keyword arguments:
-        - nqreg -- a positive integer describing the number of Qubits that will be used in the new quantum circuit. Also known as the number of quantum registers. (default 2)
-        - ncreg -- a positive integer describing the number of classical bits that will be used in the new quantum circuit. Also known as the number of classical registers. (default 2)
-        - nancl -- a positive integer describing the number of ancilla registers that will be used in the new quantum circuit. (default None)"""
+        Args:
+            nqreg (int): a positive integer describing the number of Qubits that will be used in the new quantum circuit. Also known as the number of quantum registers. (default 2)
+            ncreg (int): -- a positive integer describing the number of classical bits that will be used in the new quantum circuit. Also known as the number of classical registers. (default 2)
+            nancl (int): a positive integer describing the number of ancilla registers that will be used in the new quantum circuit. (default None)
+        Returns:
+            qiskit.QuantumCircuit: an empty Qiskit quantum circuit"""
         qreg = QuantumRegister(nqreg, 'qreg')
         ancl = QuantumRegister(nancl, 'ancl')
         creg = ClassicalRegister(ncreg, 'creg')
@@ -47,15 +49,17 @@ class translate:
                               unitary_targets=[0]):
         """Translate individual circuit elements (gates) from a qbitkit Circuit DataFrame.
 
-        Keyword arguments:
-        - targetA -- the first qubit to target in a 1,2 or 3 qubit gate. (default 0)
-        - targetB -- the second qubit to target in a 2 or 3 qubit gate. (default 1)
-        - targetC -- the third qubit to target in a 3 qubit gate. (default 2)
-        - angle -- the angle to set for the gate specified as a float. (default 0.15)
-        - phi -- the phi to set for the gate specified as a float. (default 0.15)
-        - theta -- the theta to set for the gate specified as a float. (default 0.15)
-        - unitary_matrix -- a numpy array defining the matrix to use for a unitary gate. (default np.array([[0,1]],[1,0]]))
-        - unitary_targets -- a list defining the targets to use for a unitary gate. (default [0])"""
+        Args:
+            targetA (int): the first qubit to target in a 1,2 or 3 qubit gate. (default 0)
+            targetB (int): the second qubit to target in a 2 or 3 qubit gate. (default 1)
+            targetC (int): the third qubit to target in a 3 qubit gate. (default 2)
+            angle (float): the angle to set for the gate specified as a float. (default 0.15)
+            phi (float): the phi to set for the gate specified as a float. (default 0.15)
+            theta (float): the theta to set for the gate specified as a float. (default 0.15)
+            unitary_matrix (np.array): a numpy array defining the matrix to use for a unitary gate. (default np.array([[0,1]],[1,0]]))
+            unitary_targets (list): a list defining the targets to use for a unitary gate. (default [0])
+        Returns:
+            braket.circuits.Circuit: Qiskit circuit with translated gate appended to it"""
         if op == 'h':
             input_circuit = input_circuit.h(targetA)
             return input_circuit
