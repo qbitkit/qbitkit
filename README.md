@@ -2,6 +2,10 @@
 
 #### The Truly Universal Quantum Toolkit for Humans
 
+## Documentation
+For the time being, documentation is hosted at:
+* https://qbitkit-docs-temporary.neutralthreat.com
+
 ## Example
 Here we make a Bell State and submit it to the SV1 Quantum Simulator on AWS Braket.
 ```python
@@ -12,17 +16,22 @@ from qbitkit.io.frame import frame as f
 # Define circuit dataframe
 bellFrame = f.get_frame(data={'gate' : ['h','cnot'], 
                               'targetA' : [0,0], 
-			      'targetB' : [None, 1], 
-			      'targetC' : [None, None],})
+			                  'targetB' : [None, 1], 
+			                  'targetC' : [None, None],})
 
 # Translate the dataframe into a circuit we can run on AWS Braket
 bellCircuit = c.translate.df_circuit(df=bellFrame)
 
-# Send job to quantum processor (in this case a simulated one)
-j = p.job.get_job(circuit=bellCircuit)
+# Get the Amazon SV1 Quantum Simulator to test our circuit on (this constitutes free-tier usage, so don't worry about cost!)
+device = p.quantum_device.get_device(
+         p.quantum_device.get_sim_arn(device='sv1'))
 
+# Send job to quantum processor (in this case a simulated one)
+job = device.run(bellCircuit, shots=10000,
+                    s3_destination_folder=p.connection.get_bucket(
+                    bucket='Your_AWS_Braket_Bucket_Here-Check_Your_S3_Console_After_Onboarding'))
 # Show probabilities (should come out as close to 50/50 because the qubit we are measuring is superpositioned between 1 and 0)
-print(j.result.measurement_probabilities())
+print(job.result().measurement_probabilities)
 ```
 
 ## Installing `qbitkit`
@@ -37,7 +46,7 @@ print(j.result.measurement_probabilities())
 * Download Git for Windows from git-scm.org using [this link](https://git-scm.com/download/win)
 * Open the installer, complete the installation.
 * Reminder: paths listed below, for example `venv/bin/activate` work for Mac and Linux, but on Windows you must change any `/` to `\` before running a command *unless* that `/` is in a URL, in which case leave it alone. Consider installing Debian alongside or in place of Windows if this bothers you.
-#### Pip (available at launch)
+#### Pip (coming soon)
 1) Make sure `pip` is up-to-date, then install using `pip`: 
 * `pip install -U pip`
 * `pip install -U qbitkit`
@@ -62,11 +71,16 @@ print(j.result.measurement_probabilities())
 * `alias 'pip=python3 -m pip'`
 3) You may need `git` if it isn't yet installed, for example on Debian-based systems:
 * `sudo apt-get install -qq -y git`
-#### Pip (available at launch)
+#### Installer Script (recommended)
+1) Change directory into qbitkit/bin
+* `cd bin`
+2) Run script
+* `/bin/sh install.sh`
+#### Pip (coming soon)
 1) Make sure `pip` is up-to-date, then install `qbitkit`:
 * with root, system install: `sudo -H pip install -U qbitkit`
 * without root, user install: `pip install --user -U qbitkit`
-#### Python Virtual Environment (recommended)
+#### Python Virtual Environment
 1) Clone `qbitkit` locally, then `cd` to the directory you just cloned:
 * `git clone https://github.com/brianlechthaler/qbitkit.git`
 * `cd qbitkit`
@@ -75,13 +89,11 @@ print(j.result.measurement_probabilities())
 3) Install requirements, then use `setup.py` to build `qbitkit` then install `qbitkit` into the virtualenv: 
 * `pip install -r requirements.txt && python setup.py build && python setup.py install`
 
+
 ## Project Lifecycle
-* Minimum Viable Product Target Deadline:
-    * January 1-15th, 2021
 * Visibility: 
-    * Contents considered confidential until publicly released
-    * Private
-    * Release ETA: Q1 2021
+    * Public
+    * Released: January 1st, 2021
 * Status:
     * Active development as of December 16th
 * Health:
