@@ -19,10 +19,10 @@ class es_connect:
         """Connect to Elasticsearch using an elasticsearch API key and API ID. To learn how to generate API keys to authenticate to Elasticsearch, refer to Elastic's documentation regarding using API keys: https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html
 
         Keyword arguments:
-        api_key -- The API key for authenticating to Elasticsearch. (default None)
-        api_id -- The API ID for authenticating to Elasticsearch. (default None)
-        elasticsearch_host -- The hostname or IP address of the Elasticsearch server you are trying to authenticate to. (default '127.0.0.1')
-        timeout -- The timeout in seconds to use when waiting for the Elasticsearch server to respond. (default 60)"""
+        - api_key -- The API key for authenticating to Elasticsearch. (default None)
+        - api_id -- The API ID for authenticating to Elasticsearch. (default None)
+        - elasticsearch_host -- The hostname or IP address of the Elasticsearch server you are trying to authenticate to. (default '127.0.0.1')
+        - timeout -- The timeout in seconds to use when waiting for the Elasticsearch server to respond. (default 60)"""
         es_connection = es.Elasticsearch([elasticsearch_host],
                                         api_key=(api_key,
                                                  api_id),
@@ -52,12 +52,12 @@ class es_connect:
         """Create a new connection to an Elasticsearch host to use for interacting with Elasticsearch.
 
         Keyword arguments:
-        api_key -- the Elasticsearch API key you wish to use to authenticate to Elasticsearch. (default None)
-        api_id -- the Elasticsearch API ID you wish to use to authenticate to Elasticsearch. (default None)
-        elasticsearch_host -- the Elasticsearch host you wish to connect to. make sure to specify the hostname or IP of your Elasticsearch host here. (default '127.0.0.1')
-        timeout -- set a timeout, in case you need to run queries that exceed the default timeout. (default None)
-        http_user -- set the username to use when authenticating to Elasticsearch over HTTP. (default 'elastic')
-        http_password -- set the password to use with authenticating to Elasticsearch over HTTP. (default None)"""
+        - api_key -- the Elasticsearch API key you wish to use to authenticate to Elasticsearch. (default None)
+        - api_id -- the Elasticsearch API ID you wish to use to authenticate to Elasticsearch. (default None)
+        - elasticsearch_host -- the Elasticsearch host you wish to connect to. make sure to specify the hostname or IP of your Elasticsearch host here. (default '127.0.0.1')
+        - timeout -- set a timeout, in case you need to run queries that exceed the default timeout. (default None)
+        - http_user -- set the username to use when authenticating to Elasticsearch over HTTP. (default 'elastic')
+        - http_password -- set the password to use with authenticating to Elasticsearch over HTTP. (default None)"""
         es_connection = es.Elasticsearch([elasticsearch_host],
                                          api_key=(api_key,
                                                   api_id),
