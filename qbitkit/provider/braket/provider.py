@@ -9,8 +9,10 @@ class connection:
 
         Warning: This function is experimental and may cause unexpected errors or not even be functional. Use with caution.
 
-        Keyword arguments:
-        - folder -- folder within S3 bucket to save results to and read results from (default 'results')"""
+        Args:
+            folder (str): folder within S3 bucket to save results to and read results from (default 'results')
+        Returns:
+            str: S3 bucket for communicating with Braket"""
         warning = 'WARNING: This function is experimental and may cause unexpected errors or not even be functional. Use with caution.'
         print(warning)
         aws_account_id = boto3.client("sts").get_caller_identity()["Account"]
@@ -22,10 +24,12 @@ class connection:
                    default_bucket=False):
         """Get bucket from specified keyword arguments.
 
-        Keyword arguments:
-        - bucket -- name of the AWS S3 bucket you want to save/read results with (default None)
-        - results -- name of the folder inside the bucket to save/read results with(default None)
-        - default_bucket -- try to use the default bucket. Experimental feature, don't switch to True unless you're ok with things being likely to break and know what you're doing. (default False)"""
+        Args:
+            bucket (str): name of the AWS S3 bucket you want to save/read results with (default None)
+            results (str): name of the folder inside the bucket to save/read results with(default None)
+            default_bucket (str): try to use the default bucket. Experimental feature, don't switch to True unless you're ok with things being likely to break and know what you're doing. (default False)
+        Returns:
+            str: S3 bucket for communicating with Braket"""
         if prefix == None:
             prefix = "results"
         if default_bucket == True:
@@ -45,9 +49,9 @@ class quantum_device:
                     device='ionQdevice'):
         """Get ARN for a QPU based on specified vendor and device and return the ARN.
 
-        Keyword arguments:
-        - vendor -- the vendor you would like to choose a QPU from. (default 'ionq')
-        - device -- the device you would like to choose as your QPU (default 'ionQdevice')"""
+        Args:
+            vendor (str) the vendor you would like to choose a QPU from. (default 'ionq')
+            device (str) the device you would like to choose as your QPU (default 'ionQdevice')"""
         if vendor == None:
             print('Warning: No quantum vendor specified')
         if device == None:
@@ -58,16 +62,20 @@ class quantum_device:
                     device='sv1'):
         """Get ARN for a simulator from the specified vendor and device and return it.
 
-        Keyword arguments:
-        - vendor -- the name of the vendor from which you wish to choose a simulator from (default 'amazon')
-        - device -- the name of the simulator you wish to use as your (simulated) QPU (default 'sv1')"""
+        Args:
+            vendor (str) the name of the vendor from which you wish to choose a simulator from (default 'amazon')
+            device (str) the name of the simulator you wish to use as your (simulated) QPU (default 'sv1')
+        Returns:
+            str: ARN of selected simulator."""
         arn = 'arn:aws:braket:::device/quantum-simulator/' + vendor + '/' + device
         return arn
     def get_device(arn=get_sim_arn()):
         """Get device from specified ARN and return it as an AwsDevice().
 
-        Keyword arguments:
-        - arn -- the ARN of the device you would like to use (default get_sim_arn())
+        Args:
+            arn (str) the ARN of the device you would like to use (default get_sim_arn())
+        Returns:
+            braket.AwsDevice: AWS Quantum Device from specified ARN
         """
         device = AwsDevice(arn)
         return device
@@ -92,11 +100,11 @@ class job:
         """Create job from specified keyword arguments.
 
         Keyword arguments:
-        - device -- the AwsDevice() of the QPU or simulated QPU of your choice. (default device.get_device(arn=device.get_sim_arn()))
-        - circuit -- the braket_circuit() of the translated circuit you wish to run on the QPU or simulated QPU. (default braket_circuit())
-        - shots -- the number of shots, or reads that will be taken while executing the job on the QPU or simulated QPU (default 1000)
-        - s3loc -- the bucket and result folder you wish to save/read results with (default connection.get_bucket())
-        - disable_qubit_rewiring -- whether or not to disable qubit rewiring. You probably will not need to worry about using this argument in most cases. (default False)"""
+            device (str): the AwsDevice() of the QPU or simulated QPU of your choice. (default device.get_device(arn=device.get_sim_arn()))
+            circuit (braket.circuits.Circuit): the braket_circuit() of the translated circuit you wish to run on the QPU or simulated QPU. (default braket_circuit())
+            shots (int): the number of shots, or reads that will be taken while executing the job on the QPU or simulated QPU (default 1000)
+            s3loc (str): the bucket and result folder you wish to save/read results with (default connection.get_bucket())
+            disable_qubit_rewiring (bool): whether or not to disable qubit rewiring. You probably will not need to worry about using this argument in most cases. (default False)"""
         my_task = device.run(circuit,
                              s3loc,
                              shots=shots,
