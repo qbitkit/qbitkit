@@ -17,7 +17,7 @@ class es_connect:
                       timeout=60):
         """Connect to Elasticsearch using an elasticsearch API key and API ID. To learn how to generate API keys to authenticate to Elasticsearch, refer to Elastic's documentation regarding using API keys: https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html
 
-        Keyword arguments:
+        Args:
             api_key (str): The API key for authenticating to Elasticsearch. (default None)
             api_id (str): The API ID for authenticating to Elasticsearch. (default None)
             elasticsearch_host (str): The hostname or IP address of the Elasticsearch server you are trying to authenticate to. (default '127.0.0.1')
@@ -33,11 +33,13 @@ class es_connect:
                         timeout=60):
         """Connect to Elasticsearch using an Elasticsearch HTTP username and password. To learn how to generate API keys to authenticate to Elasticsearch, refer to Elastic's documentation regarding using API keys: https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html
 
-        Keyword arguments:
+        Args:
             username (str): The username you would like to use when connecting to Elasticsearch with HTTP authentication. (default 'elastic')
             password (str): The password you would like to use when connecting to Elasticsearch with HTTP authentication. (default None)
             elasticsearch_host (str) The hostname or IP address of the Elasticsearch server you are trying to authenticate to. (default '127.0.0.1')
-            timeout (int) The timeout in seconds to use when waiting for the Elasticsearch server to respond. (default 60)"""
+            timeout (int) The timeout in seconds to use when waiting for the Elasticsearch server to respond. (default 60)
+        Returns:
+            elasticsearch.Elasticsearch: Elasticsearch connection object for reading/writing data to Elasticsearch"""
         es_connection = es.Elasticsearch([elasticsearch_host],
                                          http_auth=(username,
                                                     password),
