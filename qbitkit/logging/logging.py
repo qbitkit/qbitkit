@@ -12,7 +12,7 @@ class braket:
             meas_probabilities = job.result().measurement_probabilities
             meas_counts = job.result().measurement_counts
             meas_qubits = job.result().measured_qubits
-            metadata = job.result().task_metadata
+            metadata = job.metadata()
             doc = {
                 'measurement_probabilities': meas_probabilities,
                 'measurement_counts': meas_counts,
