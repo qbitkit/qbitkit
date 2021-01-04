@@ -26,7 +26,7 @@ class connection:
 
         Args:
             bucket (str): name of the AWS S3 bucket you want to save/read results with (default None)
-            results (str): name of the folder inside the bucket to save/read results with(default None)
+            prefix (str): name of the folder inside the bucket to save/read results with(default None)
             default_bucket (str): try to use the default bucket. Experimental feature, don't switch to True unless you're ok with things being likely to break and know what you're doing. (default False)
         Returns:
             str: S3 bucket for communicating with Braket"""
