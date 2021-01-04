@@ -1,5 +1,6 @@
 import elasticsearch as es
 from qbitkit.error import error as qbitkit_error
+from datetime import datetime as dt
 
 class util():
     def get_support_status():
@@ -12,6 +13,18 @@ class util():
                                         resource_name='Elasticsearch',
                                         additional_notes='For more information on forthcoming Elasticsearch support, see https://github.com/qbitkit/qbitkit/issues/4')
         return elasticsearch_support_status
+    def auto_ilm(index='qbitkit',
+                 strftime='%Y-%m-%d'):
+        """Automatically generates an index name for Elasticsearch to use when logging data to Elasticsearch. Doing this allows users to set up Index Lifecycle Management within Elasticsearch to define what happens to data past pre-defined retention periods.
+
+        Args:
+            index (str): an Elasticsearch index to append formatted timestamp to (default 'qbitkit')
+            strftime (str): strftime formatting to use when representing timestamp in index name
+        Returns:
+            str: index template formatted for ILM"""
+        date = dt.now().strftime(strftime)
+        ilm_index=f"{index}-{date}"
+        return ilm_index
 
 print(util.get_support_status())
 
