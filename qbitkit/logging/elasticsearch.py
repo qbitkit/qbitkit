@@ -1,14 +1,19 @@
 import elasticsearch as es
 from qbitkit.error import error as qbitkit_error
 
-def get_support_status():
-    elasticsearch_support_status = 'experimental'
-    qbitkit_error.errors.support_status(feature_state=elasticsearch_support_status,
+class util():
+    def get_support_status():
+        """Gets the support status for Elasticsearch. Takes no Keyword Arguments.
+
+        Returns:
+            str: a warning message containing the current support status"""
+        elasticsearch_support_status = 'experimental'
+        qbitkit_error.errors.support_status(feature_state=elasticsearch_support_status,
                                         resource_name='Elasticsearch',
                                         additional_notes='For more information on forthcoming Elasticsearch support, see https://github.com/qbitkit/qbitkit/issues/4')
-    return elasticsearch_support_status
+        return elasticsearch_support_status
 
-get_support_status()
+print(util.get_support_status())
 
 class es_connect:
     def using_api_key(api_key=None,
