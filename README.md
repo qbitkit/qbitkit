@@ -29,8 +29,9 @@ job = p.job.get_job(
                         p.quantum_device.get_qpu_arn(
                             vendor='rigetti', device='Aspen-8')),
                     circuit=circuit,
-                    s3loc=p.connection.get_bucket(bucket=b),
-                    shots=10000
+                    s3loc=p.connection.get_bucket(
+                      bucket='amazon-braket-YourID'), #You will need to check your S3 console after Braket onboarding, then paste the name of that bucket here.
+                    shots=10000 # Warning: Running this will cost a little under $4
                     )
 # Show all of the results
 print(job.result())
