@@ -91,7 +91,7 @@ For the time being, documentation is hosted at:
 * without root, user install: `pip install --user -U qbitkit`
 #### Python Virtual Environment
 1) Clone `qbitkit` locally, then `cd` to the directory you just cloned:
-* `git clone https://github.com/brianlechthaler/qbitkit.git`
+* `git clone https://github.com/qbitkit/qbitkit.git`
 * `cd qbitkit`
 2) Create a virtual environment, then activate it: 
 * `virtualenv --python=python3 venv && . venv/bin/activate`
