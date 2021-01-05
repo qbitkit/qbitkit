@@ -12,29 +12,28 @@ All of this, in just 3 lines of code (not counting import statements, comments, 
 ### Example
 Here we make a Bell State and submit it to the SV1 Quantum Simulator on AWS Braket.
 ```python
+# Import relevant qbitkit Libraries
 from qbitkit.provider.braket.circuit import circuitry as c
 from qbitkit.provider.braket import provider as p
 from qbitkit.io.frame import frame as f
 
-# Define circuit dataframe
-bellFrame = f.get_frame(data={'gate' : ['h','cnot'], 
-                              'targetA' : [0,0], 
-			                  'targetB' : [None, 1], 
-			                  'targetC' : [None, None],})
-
-# Translate the dataframe into a circuit we can run on AWS Braket
-bellCircuit = c.translate.df_circuit(df=bellFrame)
-
-# Get the Amazon SV1 Quantum Simulator to test our circuit on (this constitutes free-tier usage, so don't worry about cost!)
-device = p.quantum_device.get_device(
-         p.quantum_device.get_sim_arn(device='sv1'))
-
-# Send job to quantum processor (in this case a simulated one)
-job = device.run(bellCircuit, shots=10000,
-                    s3_destination_folder=p.connection.get_bucket(
-                    bucket='Your_AWS_Braket_Bucket_Here-Check_Your_S3_Console_After_Onboarding'))
-# Show probabilities (should come out as close to 50/50 because the qubit we are measuring is superpositioned between 1 and 0)
-print(job.result().measurement_probabilities)
+# Define your DataFrame as a circuit, then translate it to your platform of choice.
+circuit = c.translate.df_circuit(df=f.get_frame
+                                 (data={'gate' : ['h','cnot'], 
+                                        'targetA' : [0,0], 
+                                        'targetB' : [None, 1], 
+                                        'targetC' : [None, None],}))
+# Run the circuit on the Rigetti Aspen-8 hosted on AWS Braket
+job = p.job.get_job(
+                    device=p.quantum_device.get_device(
+                        p.quantum_device.get_qpu_arn(
+                            vendor='rigetti', device='Aspen-8')),
+                    circuit=circuit,
+                    s3loc=p.connection.get_bucket(bucket=b),
+                    shots=10000
+                    )
+# Show all of the results
+print(job.result())
 ```
 
 ## Documentation
