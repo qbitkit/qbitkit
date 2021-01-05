@@ -13,6 +13,7 @@ qbitkit is a framework that makes quantum computing a little easier by offering 
 Indices and tables
 ==================
 
+* Quantum :ref:`gates` compatible with qbitkit
 * :doc:`_apidoc/modules`
 * :ref:`genindex`
 * :ref:`modindex`
