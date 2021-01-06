@@ -9,6 +9,6 @@ curl -C - https://pkg.cloudflare.com/pubkey.gpg | sudo apt-key add -
 echo 'deb http://pkg.cloudflare.com/ $1 main' | sudo tee /etc/apt/sources.list.d/cloudflare-main.list
 sudo apt update
 sudo apt install -y cloudflared
+cloudflared tunnel login
 /bin/sh ./mkdocs.sh
 /bin/sh ./update_docs.sh
-cloudflared tunnel login
