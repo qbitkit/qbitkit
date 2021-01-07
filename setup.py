@@ -8,7 +8,7 @@ setuptools.setup(
     version="origin",
     author="qbitkit Team",
     author_email="brianlechthaler@protonmail.ch",
-    description="Easy Quantum Computing Framework",
+    description="Quantum Computing, for Humans.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/qbitkit/qbitkit",

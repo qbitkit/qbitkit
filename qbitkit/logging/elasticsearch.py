@@ -1,14 +1,32 @@
 import elasticsearch as es
 from qbitkit.error import error as qbitkit_error
+from datetime import datetime as dt
 
-def get_support_status():
-    elasticsearch_support_status = 'experimental'
-    qbitkit_error.errors.support_status(feature_state=elasticsearch_support_status,
+class util():
+    def get_support_status():
+        """Gets the support status for Elasticsearch. Takes no Keyword Arguments.
+
+        Returns:
+            str: a warning message containing the current support status"""
+        elasticsearch_support_status = 'experimental'
+        qbitkit_error.errors.support_status(feature_state=elasticsearch_support_status,
                                         resource_name='Elasticsearch',
                                         additional_notes='For more information on forthcoming Elasticsearch support, see https://github.com/qbitkit/qbitkit/issues/4')
-    return elasticsearch_support_status
+        return elasticsearch_support_status
+    def auto_ilm(index='qbitkit',
+                 strftime='%Y-%m-%d'):
+        """Automatically generates an index name for Elasticsearch to use when logging data to Elasticsearch. Doing this allows users to set up Index Lifecycle Management within Elasticsearch to define what happens to data past pre-defined retention periods.
 
-get_support_status()
+        Args:
+            index (str): an Elasticsearch index to append formatted timestamp to (default 'qbitkit')
+            strftime (str): strftime formatting to use when representing timestamp in index name
+        Returns:
+            str: index template formatted for ILM"""
+        date = dt.now().strftime(strftime)
+        ilm_index=f"{index}-{date}"
+        return ilm_index
+
+print(util.get_support_status())
 
 class es_connect:
     def using_api_key(api_key=None,
@@ -17,7 +35,7 @@ class es_connect:
                       timeout=60):
         """Connect to Elasticsearch using an elasticsearch API key and API ID. To learn how to generate API keys to authenticate to Elasticsearch, refer to Elastic's documentation regarding using API keys: https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html
 
-        Keyword arguments:
+        Args:
             api_key (str): The API key for authenticating to Elasticsearch. (default None)
             api_id (str): The API ID for authenticating to Elasticsearch. (default None)
             elasticsearch_host (str): The hostname or IP address of the Elasticsearch server you are trying to authenticate to. (default '127.0.0.1')
@@ -33,11 +51,13 @@ class es_connect:
                         timeout=60):
         """Connect to Elasticsearch using an Elasticsearch HTTP username and password. To learn how to generate API keys to authenticate to Elasticsearch, refer to Elastic's documentation regarding using API keys: https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html
 
-        Keyword arguments:
+        Args:
             username (str): The username you would like to use when connecting to Elasticsearch with HTTP authentication. (default 'elastic')
             password (str): The password you would like to use when connecting to Elasticsearch with HTTP authentication. (default None)
             elasticsearch_host (str) The hostname or IP address of the Elasticsearch server you are trying to authenticate to. (default '127.0.0.1')
-            timeout (int) The timeout in seconds to use when waiting for the Elasticsearch server to respond. (default 60)"""
+            timeout (int) The timeout in seconds to use when waiting for the Elasticsearch server to respond. (default 60)
+        Returns:
+            elasticsearch.Elasticsearch: Elasticsearch connection object for reading/writing data to Elasticsearch"""
         es_connection = es.Elasticsearch([elasticsearch_host],
                                          http_auth=(username,
                                                     password),
@@ -86,20 +106,20 @@ class es_write:
     class classic:
 
         def write(connection=None,
-                 index='qbitkit-*',
+                 index=util.auto_ilm(),
                  doc=None,
                  refresh=True):
             """Sends the query to the specified Elasticsearch host, and returns the result of the indexing query we sent.
 
             Args:
                 connection (dict): specify a connection to use when communicating with the Elasticsearch host. (default es_connect.get_connection())
-                index (str): specify the index template to use when writing to Elasticsearch. (default 'qbitkit-*)
+                index (str): specify the index template to use when writing to Elasticsearch. (default util.auto_ilm())
                 refresh (bool): when set to True, Elasticsearch will immediately refresh indices after we write to it. This makes documents available to search queries as soon as we send them to Elasticsearch. (default True)
             Returns:
                 dict: the response from the query we sent Elasticsearch"""
-            result = es.Elasticsearch.index(index=index,
-                                            body=doc)
+            result = connection.index(index=index,
+                                      body=doc)
             if refresh == True:
-                es.indices.refresh(index=index)
+                connection.indices.refresh(index=index)
             print(result)
             return result
