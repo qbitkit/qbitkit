@@ -119,6 +119,22 @@ class translate:
                                                 targetB,
                                                 targetC)
             return input_circuit
+        if op == 'crz':
+            input_circuit = input_circuit.crz(control_qubit=targetA,
+                                              target_qubit=targetB)
+        if op == 'ch':
+            input_circuit = input_circuit.ch(control_qubit=targetA,
+                                             target_qubit=targetB)
+            return input_circuit
+        if op == 'i':
+            input_circuit = input_circuit.id(targetA)
+            return input_circuit
+        if op == 'si':
+            input_circuit = input_circuit.sdg(targetA)
+            return input_circuit
+        if op == 'ti':
+            input_circuit = input_circuit.tdg(targetA)
+            return input_circuit
         else:
             print(f'[ERROR]: Gate {op} not found. Returning an empty object with a value of None.')
             input_circuit = None
