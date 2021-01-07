@@ -14,3 +14,15 @@ def circuit(circuit=None,
     for x in range(iterations):
         circuit = provider.circuit.scale.append(circuit)
     return circuit
+def frame(frame=f.frame.get_frame(),
+          iterations=1):
+    """Scale a circuit Pandas DataFrame by appending a given Pandas DataFrame to iteself for a specified number of iterations
+
+    Args:
+        frame(pandas.DataFrame): the Pandas DataFrame to append to itself.
+        iterations(int): the number of times to append the Pandas DataFrame to itself.
+    Returns:
+        pd.DataFrame: scaled up Pandas DataFrame"""
+    for x in range(iterations):
+        frame = frame.append(frame)
+    return frame
