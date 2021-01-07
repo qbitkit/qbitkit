@@ -7,7 +7,7 @@ def get_support_status():
     resource_name = 'IBM Quantum Experience'
     qbitkit_error.errors.support_status(feature_state=ibmq_support_status,
                                         resource_name=resource_name,
-                                        additional_notes=f'For more information on forthcoming {resource_name} support, see https://github.com/brianlechthaler/qbitkit/issues/2')
+                                        additional_notes=f'For more information on forthcoming {resource_name} support, see https://github.com/qbitkit/qbitkit/issues/2')
     return ibmq_support_status
 
 get_support_status()
