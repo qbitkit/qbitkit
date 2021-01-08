@@ -10,6 +10,7 @@ RUN apk upgrade
 RUN apk add py3-pip
 RUN apk add make
 RUN apk add git
+RUN apk add sudo
 
 # Make Sure Python 3.x Pip is up-to-date:
 RUN python3 -m pip install -U pip
