@@ -25,5 +25,7 @@ python setup.py install
 cd doc/sphinx
 # Build documentation
 make $1
+# Just in case we're running on a system without Bash installed, let's create an empty file at ~/.bashrc so that the next command won't cause the image build to fail.
+touch ~/.bashrc
 # Reset shell to deactivate the virtual environment we are in
 source ~/.bashrc
