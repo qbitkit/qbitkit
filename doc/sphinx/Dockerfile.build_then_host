@@ -1,18 +1,24 @@
+# Start From NGINX Running on Alpine Linux (stable):
 FROM nginx:stable-alpine
+
+# Set Build Configuration Variables:
+ENV GIT_BRANCH=origin
+
+# Get Alpine Linux Package Manager (APK) Dependencies:
 RUN apk update
 RUN apk upgrade
 RUN apk add py3-pip
 RUN apk add make
-RUN apk add nginx
+RUN apk add git
+
+# Make Sure Python 3.x Pip is up-to-date:
 RUN python3 -m pip install -U pip
-RUN mkdir -p /qbitkit
-COPY ../../requirements.txt /qbitkit/core-requirements.txt
-COPY ./requirements.txt /qbitkit/docs-requirements.txt
-RUN python3 -m pip install -Ur /qbitkit/core-requirements.txt
-RUN python3 -m pip install -Ur /qbitkit/docs-requirements.txt
-RUN rm -rf /qbitkit/*
-COPY ../.. /qbitkit/
-RUN cd /qbitkit/ ; python3 setup.py build
-RUN cd /qbitkit/ ; python3 setup.py install
-RUN cd /qbitkit/doc/sphinx ; make -j $(nproc) html
-RUN cp -r /qbitkit/doc/sphinx/_build/html/* /var/www/html/
+
+# Clone the qbitkit repository on the specified $GIT_BRANCH:
+RUN git clone -b $GIT_BRANCH https://github.com/qbitkit/qbitkit.git /qk
+
+# Build the Documentation for the first time:
+RUN cd /qk/bin;/bin/sh mkdocs.sh html
+
+# Re-build documentation and copy it to where NGINX will serve content from:
+RUN cd /qk/bin;/bin/sh update_docs.sh html
