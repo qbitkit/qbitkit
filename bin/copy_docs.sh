@@ -5,4 +5,3 @@ export output=$2
 export webserver=$3
 rm -rf $output/*
 cp -r $input/* $output
-service $webserver restart
