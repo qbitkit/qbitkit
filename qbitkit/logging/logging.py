@@ -1,5 +1,3 @@
-from qbitkit.logging import elasticsearch as es
-from datetime import datetime as dt
 class braket:
     class gate_model:
         def doc(job=None):
