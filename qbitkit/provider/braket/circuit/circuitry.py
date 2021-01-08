@@ -7,7 +7,10 @@ import string
 
 class info:
         def get_gates(self):
-            """Return all usable gates from the Braket SDK. Takes no keyword arguments."""
+            """Return all usable gates from the Braket SDK. Takes no keyword arguments.
+
+            Returns:
+                list: a list of all quantum logic gates in the Braket Python SDK."""
             gate_set = [attr for attr in dir(braket_gate) if attr[0] in string.ascii_uppercase]
             return gate_set
 class translate:
