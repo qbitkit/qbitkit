@@ -1,6 +1,6 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build','-t','gcr.io/$PROJECT_ID/qbitkit-notebook:latest','-f','Dockerfile','.']
+    args: ['build','-t','gcr.io/$PROJECT_ID/qbitkit-notebook:latest','-f','Dockerfile.jupyter_notebook','.']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build','-t','gcr.io/$PROJECT_ID/qbitkit-docs-server:latest','-f','doc/sphinx/Dockerfile.for_hosting_docs','./doc/sphinx/']
   - name: 'gcr.io/cloud-builders/docker'
