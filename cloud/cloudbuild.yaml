@@ -5,7 +5,7 @@ steps:
     args: ['build','-t','us.gcr.io/$PROJECT_ID/qbitkit-build-then-host-docs:latest','-f','doc/sphinx/Dockerfile.build_then_host','./doc/sphinx/']
 timeout: 300s
 options:
-  machine_type: 'N1_HIGHCPU_8'
+  machine_type: 'N1_HIGHCPU_32'
 images:
   - 'us.gcr.io/$PROJECT_ID/qbitkit-notebook:latest'
   - 'us.gcr.io/$PROJECT_ID/qbitkit-build-then-host-docs:latest'
