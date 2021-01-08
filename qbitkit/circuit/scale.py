@@ -8,7 +8,7 @@ def circuit(circuit=None,
     Args:
         circuit(provider_specific_quantum_circuit): input circuit to scale up. (default None)
         iterations(int): number of times to append the circuit onto itself. (default 1)
-        provider(qbitkit_provider): specify a provider from qbitkit to use when appending gates
+        provider(qbitkit_provider): specify a provider from qbitkit to use when appending gates (default None)
     Returns:
         provider_specific_quantum_circuit: scaled up provider-specific quantum circuit"""
     for x in range(iterations):
@@ -19,8 +19,8 @@ def frame(frame=f.frame.get_frame(),
     """Scale a circuit Pandas DataFrame by appending a given Pandas DataFrame to iteself for a specified number of iterations
 
     Args:
-        frame(pandas.DataFrame): the Pandas DataFrame to append to itself.
-        iterations(int): the number of times to append the Pandas DataFrame to itself.
+        frame(pandas.DataFrame): the Pandas DataFrame to append to itself. (default qbitkit.io.frame.frame.get_frame())
+        iterations(int): the number of times to append the Pandas DataFrame to itself. (default 1)
     Returns:
         pd.DataFrame: scaled up Pandas DataFrame"""
     for x in range(iterations):
