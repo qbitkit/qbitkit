@@ -2,7 +2,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build','-t','us.gcr.io/$PROJECT_ID/qbitkit-notebook:latest','-f','Dockerfile.jupyter_notebook','.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build','-t','us.gcr.io/$PROJECT_ID/qbitkit-docs-static:latest','-f','doc/sphinx/Dockerfile.for_building_docs','./doc/sphinx/']
+    args: ['build','-t','us.gcr.io/$PROJECT_ID/qbitkit-docs-static:latest','-f','doc/sphinx/Dockerfile.for_building_docs_without_mounts','./doc/sphinx/']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build','-t','us.gcr.io/$PROJECT_ID/qbitkit-build-then-host-docs:latest','-f','doc/sphinx/Dockerfile.build_then_host','./doc/sphinx/']
 timeout: 300s
