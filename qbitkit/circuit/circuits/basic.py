@@ -31,10 +31,10 @@ def ghz(append=None):
                                  'targetB':[None,1,2],
                                  'targetC':[None,None,None]})
     if append == None:
-        return bellFrame
+        return ghzFrame
     elif append != None:
-        bellFrameAppended = append.append(bellFrame)
-        return bellFrameAppended
+        ghzFrameAppended = append.append(ghzFrame)
+        return ghzFrameAppended
     else:
-        bellFrameAppended = append.append(bellFrame)
-        return bellFrameAppended
+        ghzFrameAppended = append.append(ghzFrame)
+        return ghzFrameAppended
