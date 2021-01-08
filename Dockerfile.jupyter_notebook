@@ -15,7 +15,7 @@ RUN pip install -q -U pip
 RUN mkdir -p /git
 
 # Make sure the default user for the container has access to /git/qbitkit
-RUN chown -R jovyan:jovyan /git/qbitkit
+RUN chown -R jovyan /git/qbitkit
 
 # Switch user back to container default to avoid accidentally running the container with the root user in the container
 USER jovyan
