@@ -9,4 +9,3 @@ options:
 images:
   - 'us.gcr.io/$PROJECT_ID/qbitkit-notebook:latest'
   - 'us.gcr.io/$PROJECT_ID/qbitkit-docs-static:latest'
-  - 'us.gcr.io/$PROJECT_ID/qbitkit-docs-server:latest'
