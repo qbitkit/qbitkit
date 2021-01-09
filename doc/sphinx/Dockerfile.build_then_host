@@ -29,3 +29,9 @@ RUN cd /qk/bin;/bin/sh update_docs.sh html /usr/share/nginx/html
 
 # Clean up where we cloned qbitkit to in order to significantly reduce final image size:
 RUN rm -rf /qk
+
+# Remove packages we only needed for building docs, this makes the built docker image a little smaller.
+RUN apk del py3-pip
+RUN apk del make
+RUN apk del git
+RUN apk del sudo
