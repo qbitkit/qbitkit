@@ -25,7 +25,7 @@ RUN git clone -b $GIT_BRANCH https://github.com/qbitkit/qbitkit.git /qk
 RUN cd /qk/bin;/bin/sh mkdocs.sh html
 
 # Re-build documentation and copy it to where NGINX will serve content from:
-RUN cd /qk/bin;/bin/sh update_docs.sh html
+RUN cd /qk/bin;/bin/sh update_docs.sh html /usr/share/nginx/html
 
 # Clean up where we cloned qbitkit to in order to significantly reduce final image size:
 RUN rm -rf /qk
