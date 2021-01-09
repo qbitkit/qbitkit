@@ -10,8 +10,8 @@
 ### `copy_docs.sh`
 * Description: Copies compiled documentation to a specified folder, for example `/var/www/html`.
 * Pre-requisites: You need Python3.x with the latest version of `pip` and `virtualenv` installed.
-### `update_docs.sh`
-* Description: Pulls new changes from `git`, wipes /var/www/html, and copies documentation to it. Exactly like the syntax of `mkdocs.sh`, you **must** specify the type of docs to output, for example `html`: `./update_docs.sh html`
+### `update_docs.sh <make subcommand> <copy docs to this path>`
+* Description: Pulls new changes from `git`, wipes <copy docs to this path>, and copies documentation to it. Exactly like the syntax of `mkdocs.sh`, you **must** specify the type of docs to output, for example `html`: `./update_docs.sh html /var/www/html`
 * Pre-requisites: You need Python3.x with the latest version of `pip` and `virtualenv` installed.
 * Notes: Once you've verified running this script works, add a `cron` job to your system's `crontab` to make sure you're always hosting the latest version of `qbitkit`'s documentation.
 ### `mkrelease.sh`
