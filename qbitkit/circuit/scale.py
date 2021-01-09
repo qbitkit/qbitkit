@@ -22,7 +22,7 @@ def frame(frame=f.frame.get_frame(),
         frame(pandas.DataFrame): the Pandas DataFrame to append to itself. (default qbitkit.io.frame.frame.get_frame())
         iterations(int): the number of times to append the Pandas DataFrame to itself. (default 1)
     Returns:
-        pd.DataFrame: scaled up Pandas DataFrame"""
+        pandas.DataFrame: scaled up Pandas DataFrame"""
     for x in range(iterations):
         frame = frame.append(frame)
     return frame
