@@ -139,3 +139,24 @@ class translate:
             print(f'[ERROR]: Gate {op} not found. Returning an empty object with a value of None.')
             input_circuit = None
         return input_circuit
+
+    def df_circuit(df=fr.get_frame(),
+                   input_circuit=QuantumCircuit()):
+        """Converts a Circuit DataFrame into a Qiskit QuantumCircuit by iterating over the DataFrame and turning each row of the dataframe into a gate or set of gates.
+
+        Args:
+            df (pandas.DataFrame): specify a Circuit DataFrame to convert to a Qiskit QuantumCircuit. (default qbitkit.io.frame.get_frame())
+            input_circuit (qiskit.QuantumCircuit): specify a circuit to append the translated circuit's contents to. (default ())
+        Returns:
+            qiskit.QuantumCircuit: Qiskit QuantumCircuit translated from specified DataFrame"""
+        for index, row in df.iterrows():
+            qcgates = str(row['gate'])
+            targetA = row['targetA']
+            targetB = row['targetB']
+            targetC = row['targetC']
+            circuit = translate.translate_gate(input_circuit=input_circuit,
+                                               op=qcgates,
+                                               targetA=targetA,
+                                               targetB=targetB,
+                                               targetC=targetC)
+        return circuit
