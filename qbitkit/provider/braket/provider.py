@@ -39,7 +39,7 @@ class connection:
         return s3
 
 class local:
-    def sim():
+    def sim(self):
         """Create a local simulator for AWS braket and return it.
         Returns:
             braket.devices.localsim: the local simulator device for Braket"""
