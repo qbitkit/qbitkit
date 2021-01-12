@@ -116,3 +116,10 @@ class job:
                              shots=shots,
                              disable_qubit_rewiring=disable_qubit_rewiring)
         return my_task
+class annealing:
+    def get_sampler(sampler=None,
+                    bucket=None,
+                    dwave_qpu="Advantage_system1"):
+        new_sampler = sampler(s3_destination_folder=bucket,
+                              arn=f"arn:aws:braket:::device/qpu/d-wave/{dwave_qpu}")
+        return new_sampler
