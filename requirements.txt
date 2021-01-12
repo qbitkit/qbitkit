@@ -1,5 +1,5 @@
 # D-Wave Dependencies:
-#dwave-ocean-sdk
+dwave-ocean-sdk
 #dimod
 #dwavebinarycsp
 #dwave-networkx
@@ -18,7 +18,7 @@ qiskit-ibmq-provider
 amazon-braket-sdk
 boto3
 botocore
-#amazon-braket-ocean-plugin
+amazon-braket-ocean-plugin
 
 # General-Purpose:
 #matplotlib
