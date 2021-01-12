@@ -120,6 +120,12 @@ class annealing:
     def get_sampler(sampler=None,
                     bucket=None,
                     dwave_qpu="Advantage_system1"):
+        """Create a new D-Wave Sampler for Braket based on a specified D-Wave QPU.
+
+        Args:
+            sampler(braket.ocean_plugin.BraketDWaveSampler): a D-Wave Sampler from the Braket Ocean SDK plugin.
+            bucket (str): the s3 bucket you wish to use for communication with the D-Wave QPU
+            dwave_qpu (str): the D-Wave QPU model you wish to use for Quantum Annealing (default 'Advantage_system1')"""
         new_sampler = sampler(s3_destination_folder=bucket,
                               arn=f"arn:aws:braket:::device/qpu/d-wave/{dwave_qpu}")
         return new_sampler
