@@ -6,3 +6,6 @@ class convert:
     def to_qubo(self):
         qubo = self.to_qubo()
         return qubo
+    def to_bqm(self):
+        bqm = _dbc.stitch(self)
+        return bqm
