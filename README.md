@@ -2,7 +2,8 @@
 
 
 
-# `qbitkit`
+# `qbitkit` ![CodeQL](https://github.com/qbitkit/qbitkit/workflows/CodeQL/badge.svg)
+
 #### ⚛ Quantum Computing, for Humans.
 `qbitkit` is a set of high-level abstractions to make writing software for quantum computers easier. 
 Gates are defined using a Pandas DataFrame that can be automatically translated to your platform of choice.
