@@ -1,1 +1,1 @@
-from qbitkit.error import error
+from qbitkit.error import *
