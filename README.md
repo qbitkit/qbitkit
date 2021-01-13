@@ -100,6 +100,11 @@ For the time being, documentation is hosted at:
 3) Install requirements, then use `setup.py` to build `qbitkit` then install `qbitkit` into the virtualenv: 
 * `pip install -r requirements.txt && python setup.py build && python setup.py install`
 
+## Features of `qbitkit`
+* With such a diverse range of quantum hardware and cloud services providing that hardware to end users, having to rewrite the same circuits 2-3 times is not uncommon. With `qbitkit`, hardware and cloud providers are abstracted and made as simple to use as possible. Stop re-inventing the wheel, and start actually innovating with the ease of use and flexibility of `qbitkit`.
+* Define your circuit using a Pandas DataFrame, translate it to your quantum provider of choice, and run it -- in just a few lines of code.
+* Running quantum circuits often requires costly hardware access and long wait times. It is therefore beneficial to keep track of your results so you don't have to re-run experiments to reproduce the results. For this reason, we included support for **logging** to Elasticsearch, with support for other ways to log your data coming soon.
+* Check the *Issues* tab at the top of this repository's page to see features we're working on now and the status of implementing those features into `qbitkit`
 
 ## Project Lifecycle
 * Visibility: 
