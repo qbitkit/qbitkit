@@ -9,3 +9,6 @@ class convert:
     def to_bqm(self):
         bqm = _dbc.stitch(self)
         return bqm
+    def to_ising(self):
+        ising = self.to_ising()
+        return ising
