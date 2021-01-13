@@ -11,11 +11,11 @@ RUN apt-get upgrade -y -qq
 # Make sure pip is up-to-date
 RUN pip install -q -U pip
 
-# Make sure /git exists
-RUN mkdir -p /git
+# Make sure /git/qbitkit exists
+RUN mkdir -p /git/qbitkit
 
 # Make sure the default user for the container has access to /git/qbitkit
-RUN chown -R jovyan:jovyan /git/qbitkit
+RUN chown -R jovyan /git/qbitkit
 
 # Switch user back to container default to avoid accidentally running the container with the root user in the container
 USER jovyan
