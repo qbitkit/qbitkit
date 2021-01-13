@@ -1,1 +1,1 @@
-from qbitkit.provider.ibmq import provider
+from qbitkit.provider.ibmq import *
