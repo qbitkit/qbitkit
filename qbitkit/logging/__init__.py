@@ -1,2 +1,1 @@
-from qbitkit.logging import elasticsearch
-from qbitkit.logging import logging
+from qbitkit.logging import *
