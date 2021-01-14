@@ -36,8 +36,8 @@ class quantum_device:
         """Get ARN for a QPU based on specified vendor and device and return the ARN.
 
         Args:
-            vendor (str) the vendor you would like to choose a QPU from. (default 'ionq')
-            device (str) the device you would like to choose as your QPU (default 'ionQdevice')
+            vendor (str): the vendor you would like to choose a QPU from. (default 'ionq')
+            device (str): the device you would like to choose as your QPU (default 'ionQdevice')
         Returns:
             str: selected QPU ARN"""
         if vendor == None:
