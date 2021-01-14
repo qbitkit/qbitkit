@@ -8,7 +8,8 @@ class convert:
         bqm = _dbc.stitch(self)
         return bqm
     def to_ising(self):
-        ising = self.to_ising()
+        bqm = convert.to_bqm(self)
+        ising = bqm.to_ising()
         return ising
     def to_qubo(self):
         """Convert a given Constraint Solving Problem to a QUBO.
