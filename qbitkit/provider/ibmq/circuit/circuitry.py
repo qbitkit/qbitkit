@@ -142,7 +142,7 @@ class translate:
         return input_circuit
 
     def df_circuit(df=fr.get_frame(),
-                   input_circuit=QuantumCircuit()):
+                   input_circuit=circuit.new()):
         """Converts a Circuit DataFrame into a Qiskit QuantumCircuit by iterating over the DataFrame and turning each row of the dataframe into a gate or set of gates.
 
         Args:
