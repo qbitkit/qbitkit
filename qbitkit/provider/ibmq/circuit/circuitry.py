@@ -35,7 +35,8 @@ class translate:
                               targetA=0,
                               targetB=1,
                               targetC=2,
-                              angle=0.15):
+                              angle=0.15,
+                              theta=0.15):
         """Translate individual circuit elements (gates) from a qbitkit Circuit DataFrame.
 
         Args:
@@ -44,6 +45,7 @@ class translate:
             targetB (int): the second qubit to target in a 2 or 3 qubit gate. (default 1)
             targetC (int): the third qubit to target in a 3 qubit gate. (default 2)
             angle (float): the angle to set for the gate specified as a float. (default 0.15)
+            theta (float): the theta to set for the gate specified as a float. (default 0.15)
         Returns:
             braket.circuits.Circuit: Qiskit circuit with translated gate appended to it"""
         if op == 'h':
@@ -107,7 +109,8 @@ class translate:
             return input_circuit
         if op == 'crz':
             input_circuit = input_circuit.crz(control_qubit=targetA,
-                                              target_qubit=targetB)
+                                              target_qubit=targetB,
+                                              theta=theta)
         if op == 'ch':
             input_circuit = input_circuit.ch(control_qubit=targetA,
                                              target_qubit=targetB)
