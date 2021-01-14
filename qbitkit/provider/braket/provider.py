@@ -4,21 +4,6 @@ from braket.devices import local_simulator as localsim
 import boto3
 
 class connection:
-    def default_bucket(folder='results'):
-        """Get the default AWS S3 Bucket using boto3.
-
-        Warning -- This function is experimental and may cause unexpected errors or not even be functional. Use with caution.
-
-        Args:
-            folder (str): folder within S3 bucket to save results to and read results from (default 'results')
-        Returns:
-            str: S3 bucket for communicating with Braket"""
-        warning = 'WARNING: This function is experimental and may cause unexpected errors or not even be functional. Use with caution.'
-        print(warning)
-        aws_account_id = boto3.client("sts").get_caller_identity()["Account"]
-        s3_folder = (f"amazon-braket-{aws_account_id}",
-                     "results")
-        return s3_folder
     def get_bucket(bucket=None,
                    prefix=None,
                    default_bucket=False):
