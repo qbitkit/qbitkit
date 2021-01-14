@@ -13,6 +13,13 @@ def composite(sampler=None):
     return EmbeddingCompositeSampler
 def qubo(sampler=None,
          qubo=None):
+    """Create embedding for a specified sampler from a specified QUBO.
+
+    Args:
+        sampler(dimod.meta.SamplerABCMeta): A D-Wave Ocean SDK Sampler.
+        qubo(tuple): A tuple containing the QUBO to map onto the given sampler's QPU topology.
+    Returns:
+        dict: The given QUBO mapped to the given sampler's QPU topology."""
     _, target_edgelist, target_adjacency = sampler.structure
     embedding = _mm.find_embedding(qubo,
                                    target_edgelist)
