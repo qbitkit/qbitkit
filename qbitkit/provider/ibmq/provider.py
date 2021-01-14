@@ -20,6 +20,9 @@ get_support_status()
 class connection:
     def get_provider(hub='ibm-q'):
         """Create an IBMQ provider with Qiskit to be used as a device in qbitkit
+
+        Args:
+            hub (str): The hub to pick IBM Q machines from. (default 'ibm-q')
         Returns:
             qiskit.providers.BaseProvider: the IBMQ provider"""
         provider = IBMQ.get_account(hub)
