@@ -1,5 +1,6 @@
 from qbitkit.io import frame as __fr
 
+
 def save(frame=__fr.frame.get_frame(),
          file_type='csv',
          pth=f'output'):
