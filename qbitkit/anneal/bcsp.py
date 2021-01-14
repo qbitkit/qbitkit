@@ -8,6 +8,12 @@ class convert:
         bqm = _dbc.stitch(self)
         return bqm
     def to_ising(self):
+        """Convert a given Constraint Solving Problem to an Ising.
+
+        Args:
+            self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Solving Problem to convert to an Ising.
+        Returns:
+            tuple: the specified Constraint Solving Problem expressed as an Ising."""
         bqm = convert.to_bqm(self)
         ising = bqm.to_ising()
         return ising
