@@ -30,11 +30,13 @@ class connection:
 class local:
     def aer(simulator='qasm_simulator'):
         """Create an Aer simulator from Qiskit.
+
         Returns:
             qiskit.providers.BaseBackend: the Aer simulator from Qiskit"""
         a.get_backend(simulator)
     def basic_aer(simulator='qasm_simulator'):
         """Create a Basic Aer simulator from Qiskit.
+        
         Returns:
             qiskit.providers.BaseBackend: the BasicAer simulator from Qiskit"""
         ba.get_backend(simulator)
