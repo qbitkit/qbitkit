@@ -3,6 +3,7 @@ dwave-ocean-sdk
 dimod
 dwavebinarycsp
 #dwave-networkx
+minorminer
 
 # Graph Dependencies:
 #networkx
