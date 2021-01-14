@@ -3,7 +3,7 @@ from qbitkit.io import frame as __fr
 
 def save(frame=__fr.frame.get_frame(),
          file_type='csv',
-         pth=f'output'):
+         pth='output'):
     """Save a given Pandas DataFrame to disk at a given path using a given file format.
 
     Args:
