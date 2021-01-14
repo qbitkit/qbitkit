@@ -95,8 +95,8 @@ class job:
             disable_qubit_rewiring (bool): whether or not to disable qubit rewiring. You probably will not need to worry about using this argument in most cases. (default False)
         Returns:
             braket.aws.AwsQuantumTask: an AWS quantum task object"""
-        my_task = device.run(circuit,
-                             s3loc,
+        my_task = device.run(circuit=circuit,
+                             s3loc=s3loc,
                              shots=shots,
                              disable_qubit_rewiring=disable_qubit_rewiring)
         return my_task
