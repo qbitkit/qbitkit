@@ -36,12 +36,7 @@ class translate:
                               targetA=0,
                               targetB=1,
                               targetC=2,
-                              angle=0.15,
-                              phi=0.15,
-                              theta=0.15,
-                              unitary_matrix=np.array([[0,1],
-                                                       [1,0]]),
-                              unitary_targets=[0]):
+                              angle=0.15):
         """Translate individual circuit elements (gates) from a qbitkit Circuit DataFrame.
 
         Args:
@@ -50,10 +45,6 @@ class translate:
             targetB (int): the second qubit to target in a 2 or 3 qubit gate. (default 1)
             targetC (int): the third qubit to target in a 3 qubit gate. (default 2)
             angle (float): the angle to set for the gate specified as a float. (default 0.15)
-            phi (float): the phi to set for the gate specified as a float. (default 0.15)
-            theta (float): the theta to set for the gate specified as a float. (default 0.15)
-            unitary_matrix (np.array): a numpy array defining the matrix to use for a unitary gate. (default np.array([[0,1]],[1,0]]))
-            unitary_targets (list): a list defining the targets to use for a unitary gate. (default [0])
         Returns:
             braket.circuits.Circuit: Qiskit circuit with translated gate appended to it"""
         if op == 'h':
