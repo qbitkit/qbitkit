@@ -51,8 +51,8 @@ class quantum_device:
         """Get ARN for a simulator from the specified vendor and device and return it.
 
         Args:
-            vendor (str) the name of the vendor from which you wish to choose a simulator from (default 'amazon')
-            device (str) the name of the simulator you wish to use as your (simulated) QPU (default 'sv1')
+            vendor (str): the name of the vendor from which you wish to choose a simulator from (default 'amazon')
+            device (str): the name of the simulator you wish to use as your (simulated) QPU (default 'sv1')
         Returns:
             str: ARN of selected simulator."""
         arn = 'arn:aws:braket:::device/quantum-simulator/' + vendor + '/' + device
@@ -61,7 +61,7 @@ class quantum_device:
         """Get device from specified ARN and return it as an AwsDevice().
 
         Args:
-            arn (str) the ARN of the device you would like to use (default get_sim_arn())
+            arn (str): the ARN of the device you would like to use (default get_sim_arn())
         Returns:
             braket.aws.AwsDevice: AWS Quantum Device from specified ARN
         """
