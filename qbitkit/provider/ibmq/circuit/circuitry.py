@@ -37,7 +37,7 @@ class circuit:
         return qcir
 class translate:
     def translate_gate(op='h',
-                              input_circuit=circuit.new(2,2,None),
+                              input_circuit=circuit.new(2,2,1),
                               targetA=0,
                               targetB=1,
                               targetC=2,
