@@ -56,7 +56,7 @@ class translate:
             angle (float): the angle to set for the gate specified as a float. (default 0.15)
             theta (float): the theta to set for the gate specified as a float. (default 0.15)
         Returns:
-            braket.circuits.Circuit: Qiskit circuit with translated gate appended to it"""
+            qiskit.QuantumCircuit: Qiskit circuit with translated gate appended to it"""
         if op == 'h':
             input_circuit = input_circuit.h(targetA)
             return input_circuit
