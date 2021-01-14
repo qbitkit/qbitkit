@@ -6,12 +6,19 @@ from qbitkit.io.frame import frame as fr
 def get_support_status():
     ibmq_support_status = 'experimental'
     resource_name = 'IBM Quantum Experience'
+    issue_url = 'https://github.com/qbitkit/qbitkit/issues/2'
+    additional_notes = 'For more information on forthcoming '
+    additional_notes = additional_notes + resource_name + ' '
+    additional_notes = additional_notes + 'support, see '
+    additional_notes = additional_notes + issue_url + ' .'
     qbitkit_error.errors.support_status(feature_state=ibmq_support_status,
                                         resource_name=resource_name,
-                                        additional_notes=f'For more information on forthcoming {resource_name} support, see https://github.com/qbitkit/qbitkit/issues/2')
+                                        additional_notes=additional_notes)
     return ibmq_support_status
 
+
 get_support_status()
+
 
 class circuit:
     def new(nqreg=int(2),
