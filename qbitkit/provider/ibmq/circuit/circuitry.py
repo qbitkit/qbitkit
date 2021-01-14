@@ -48,6 +48,7 @@ class translate:
         """Translate individual circuit elements (gates) from a qbitkit Circuit DataFrame.
 
         Args:
+            input_circuit (qiskit.QuantumCircuit): A Qiskit QuantumCircuit() to optionally append the translated gate to. (default qbitkit.provider.ibmq.circuit.circuitry.circuit.new(2,2,1))
             op (str): The instruction to translate into a gate. Default is a Hadamard gate represented as 'h'. (default 'h')
             targetA (int): the first qubit to target in a 1,2 or 3 qubit gate. (default 0)
             targetB (int): the second qubit to target in a 2 or 3 qubit gate. (default 1)
