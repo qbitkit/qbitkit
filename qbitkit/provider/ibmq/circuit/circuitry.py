@@ -13,11 +13,6 @@ def get_support_status():
 
 get_support_status()
 
-class info:
-        def get_gates(self):
-            """Get all usable gates. Not yet implemented (see https://github.com/qbitkit/qbitkit/issues/2)."""
-            gate_set = print('Error: Function Not Yet Implemented')
-            return gate_set
 class circuit:
     def new(nqreg=int(2),
             ncreg=int(2),
