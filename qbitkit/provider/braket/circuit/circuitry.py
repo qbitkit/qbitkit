@@ -171,7 +171,7 @@ class translate:
                                                 phi)
             return input_circuit
         else:
-            print(f'[ERROR]: Gate {op} not found. Returning an empty object with a value of None.')
+            print(f"[ERROR]: Gate {op} not found. Returning an empty object with a value of None.")
             input_circuit = None
             return input_circuit
     def df_circuit(df=fr.get_frame(),
