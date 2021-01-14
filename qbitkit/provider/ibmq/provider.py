@@ -32,7 +32,7 @@ class local:
         """Create an Aer simulator from Qiskit.
 
         Args:
-            simulator(str): Name of the simulator to use
+            simulator(str): Name of the simulator to use (default 'qasm_simulator')
         Returns:
             qiskit.providers.BaseBackend: the Aer simulator from Qiskit"""
         a.get_backend(simulator)
@@ -40,7 +40,7 @@ class local:
         """Create a Basic Aer simulator from Qiskit.
 
         Args:
-            simulator(str): Name of the simulator to use
+            simulator(str): Name of the simulator to use (default 'qasm_simulator')
         Returns:
             qiskit.providers.BaseBackend: the BasicAer simulator from Qiskit"""
         ba.get_backend(simulator)
