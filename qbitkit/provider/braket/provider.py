@@ -63,8 +63,7 @@ class quantum_device:
         Args:
             arn (str): the ARN of the device you would like to use (default get_sim_arn())
         Returns:
-            braket.aws.AwsDevice: AWS Quantum Device from specified ARN
-        """
+            braket.aws.AwsDevice: AWS Quantum Device from specified ARN."""
         device = AwsDevice(arn)
         return device
     def get_device_ops(device=None,
