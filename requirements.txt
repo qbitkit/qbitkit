@@ -1,6 +1,6 @@
 # D-Wave Dependencies:
 dwave-ocean-sdk
-#dimod
+dimod
 dwavebinarycsp
 #dwave-networkx
 
