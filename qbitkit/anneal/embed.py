@@ -15,7 +15,7 @@ def qubo(sampler=None,
          qubo=None):
     _, target_edgelist, target_adjacency = sampler.structure
     embedding = _mm.find_embedding(qubo,
-                                          target_edgelist)
+                                   target_edgelist)
     qubo_embedded = embed_qubo(qubo,
                                embedding,
                                target_adjacency)
