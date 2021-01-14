@@ -1,5 +1,9 @@
 #!/bin/sh
 echo "Usage: ./update_docs.sh <make subcommand> <path to copy docs to>"
+echo "Updating APT..."
+sudo apt-get update > /dev/null
+echo "Upgrading APT..."
+sudo apt-get upgrade -y -qq > /dev/null
 git pull
 . ../doc/sphinx/venv/bin/activate
 pip install -Ur ../requirements.txt
