@@ -97,7 +97,7 @@ class job:
             s3loc (str): the bucket and result folder you wish to save/read results with (default connection.get_bucket())
             disable_qubit_rewiring (bool): whether or not to disable qubit rewiring. You probably will not need to worry about using this argument in most cases. (default False)
         Returns:
-            braket.aws.AwsQuantumTask"""
+            braket.aws.AwsQuantumTask: an AWS quantum task object"""
         my_task = device.run(circuit,
                              s3loc,
                              shots=shots,
