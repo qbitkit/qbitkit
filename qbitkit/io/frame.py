@@ -1,5 +1,5 @@
-import pandas as pd
-import qbitkit.io.file as f
+import pandas as __pd__
+import qbitkit.io.file as __f__
 
 
 class frame:
@@ -11,7 +11,7 @@ class frame:
         Returns:
             pandas.DataFrame: Empty DataFrame or dataframe populated with data specified using the 'data' keyword argument."""
 
-        df = pd.DataFrame(data=data)
+        df = __pd__.DataFrame(data=data)
         return df
 
     def save_frame(frame=get_frame(),
@@ -26,12 +26,12 @@ class frame:
         Returns:
             str: path the data was written to"""
         if file_type == 'csv':
-            f.excel.write(data_path=pth,
-                          df=frame)
+            __f__.excel.write(data_path=pth,
+                              df=frame)
         if file_type == 'json':
-            f.excel.write(data_path=pth,
-                          df=frame)
+            __f__.excel.write(data_path=pth,
+                              df=frame)
         if file_type == 'excel':
-            f.excel.write(data_path=pth,
-                          df=frame)
+            __f__.excel.write(data_path=pth,
+                              df=frame)
         return pth
