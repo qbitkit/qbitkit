@@ -79,19 +79,18 @@ class quantum_device:
         else:
             return device_operations
 class job:
-    def get_job(device=quantum_device.get_device(arn=quantum_device.get_sim_arn(vendor='amazon',
-                                                                                device='sv1')),
-                circuit=circuitry.braket_circuit(),
-                s3loc=connection.get_bucket(),
+    def get_job(device=None,
+                circuit=None,
+                s3loc=None,
                 shots=1000,
                 disable_qubit_rewiring=False):
         """Create job from specified keyword arguments.
 
         Args:
-            device (str): the AwsDevice() of the QPU or simulated QPU of your choice. (default device.get_device(arn=device.get_sim_arn()))
-            circuit (braket.circuits.Circuit): the braket_circuit() of the translated circuit you wish to run on the QPU or simulated QPU. (default braket_circuit())
+            device (str): the AwsDevice() of the QPU or simulated QPU of your choice. (default None)
+            circuit (braket.circuits.Circuit): the braket_circuit() of the translated circuit you wish to run on the QPU or simulated QPU. (default None)
             shots (int): the number of shots, or reads that will be taken while executing the job on the QPU or simulated QPU (default 1000)
-            s3loc (str): the bucket and result folder you wish to save/read results with (default connection.get_bucket())
+            s3loc (str): the bucket and result folder you wish to save/read results with (default None)
             disable_qubit_rewiring (bool): whether or not to disable qubit rewiring. You probably will not need to worry about using this argument in most cases. (default False)
         Returns:
             braket.aws.AwsQuantumTask: an AWS quantum task object"""
