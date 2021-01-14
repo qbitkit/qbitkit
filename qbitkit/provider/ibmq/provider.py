@@ -31,6 +31,8 @@ class local:
     def aer(simulator='qasm_simulator'):
         """Create an Aer simulator from Qiskit.
 
+        Args:
+            simulator(str): Name of the simulator to use
         Returns:
             qiskit.providers.BaseBackend: the Aer simulator from Qiskit"""
         a.get_backend(simulator)
