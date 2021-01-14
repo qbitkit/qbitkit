@@ -4,20 +4,16 @@ from braket.devices import local_simulator as localsim
 
 class connection:
     def get_bucket(bucket=None,
-                   prefix=None,
-                   default_bucket=False):
+                   prefix=None):
         """Get bucket from specified keyword arguments.
 
         Args:
             bucket (str): name of the AWS S3 bucket you want to save/read results with (default None)
             prefix (str): name of the folder inside the bucket to save/read results with(default None)
-            default_bucket (str): try to use the default bucket. Experimental feature, don't switch to True unless you're ok with things being likely to break and know what you're doing. (default False)
         Returns:
             str: S3 bucket for communicating with Braket"""
         if prefix == None:
             prefix = "results"
-        if default_bucket == True:
-            bucket = connection.default_bucket(folder=prefix)
         s3 = (bucket,
               prefix)
         return s3
