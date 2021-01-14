@@ -20,8 +20,8 @@ def qubo(sampler=None,
     """Create embedding for a specified sampler from a specified QUBO.
 
     Args:
-        sampler(dimod.meta.SamplerABCMeta): A D-Wave Ocean SDK Sampler.
-        qubo(tuple): A tuple containing the QUBO to map onto the given sampler's QPU topology.
+        sampler(dimod.meta.SamplerABCMeta): A D-Wave Ocean SDK Sampler. (default None)
+        qubo(tuple): A tuple containing the QUBO to map onto the given sampler's QPU topology. (default None)
     Returns:
         dict: The given QUBO mapped to the given sampler's QPU topology."""
     _, target_edgelist, target_adjacency = sampler.structure
@@ -38,8 +38,8 @@ def ising(sampler=None,
     """Create embedding for a specified sampler from a specified Ising.
 
     Args:
-        sampler(dimod.meta.SamplerABCMeta): A D-Wave Ocean SDK Sampler.
-        ising(tuple): A tuple containing the Ising to map onto the given sampler's QPU topology.
+        sampler(dimod.meta.SamplerABCMeta): A D-Wave Ocean SDK Sampler. (default None)
+        ising(tuple): A tuple containing the Ising to map onto the given sampler's QPU topology. (default None)
     Returns:
         dict: The given Ising mapped to the given sampler's QPU topology."""
     _, target_edgelist, target_adjacency = sampler.structure
