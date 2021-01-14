@@ -1,5 +1,4 @@
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
-import numpy as np
 from qbitkit.error import error as qbitkit_error
 from qbitkit.io.frame import frame as fr
 
