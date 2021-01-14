@@ -17,5 +17,6 @@ class convert:
             self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Solving Problem to convert to a QUBO.
         Returns:
             tuple: the specified CSP converted to a QUBO."""
-        qubo = self.to_qubo()
+        bqm = convert.to_bqm(self)
+        qubo = bqm.to_qubo()
         return qubo
