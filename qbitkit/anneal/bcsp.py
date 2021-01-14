@@ -5,6 +5,13 @@ def new(vartype='BINARY'):
   return dbc
 class convert:
     def to_bqm(self):
+        """Stitch a given Constraint Solving Problem into a BQM.
+
+        Args:
+            self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Solving Problem to stitch into a BQM.
+        Returns:
+            dimod.binary_quadratic_model.BinaryQuadraticModel: BQM stitched together from the given Constraint Solving Problem.
+"""
         bqm = _dbc.stitch(self)
         return bqm
     def to_ising(self):
