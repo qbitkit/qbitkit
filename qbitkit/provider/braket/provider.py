@@ -41,6 +41,9 @@ class connection:
 class local:
     def sim(self):
         """Create a local simulator for AWS braket and return it.
+
+        Args:
+            self(None): An unused argument.
         Returns:
             braket.devices.localsim: the local simulator device for Braket"""
         device = localsim
