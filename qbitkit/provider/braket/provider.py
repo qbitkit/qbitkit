@@ -7,7 +7,7 @@ class connection:
     def default_bucket(folder='results'):
         """Get the default AWS S3 Bucket using boto3.
 
-        Warning: This function is experimental and may cause unexpected errors or not even be functional. Use with caution.
+        Warning -- This function is experimental and may cause unexpected errors or not even be functional. Use with caution.
 
         Args:
             folder (str): folder within S3 bucket to save results to and read results from (default 'results')
