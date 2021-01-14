@@ -3,6 +3,7 @@ import minorminer as _mm
 from dwave.embedding import embed_qubo
 from dwave.embedding import embed_ising as __embed_ising__
 
+
 def composite(sampler=None):
     """Returns EmbeddingComposite based on specified sampler.
 
@@ -12,6 +13,8 @@ def composite(sampler=None):
         dwave.system.composites.EmbeddingComposite: An EmbeddingComposite based on the specified sampler."""
     EmbeddingCompositeSampler = _ec(sampler)
     return EmbeddingCompositeSampler
+
+
 def qubo(sampler=None,
          qubo=None):
     """Create embedding for a specified sampler from a specified QUBO.
