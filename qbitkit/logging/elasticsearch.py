@@ -1,5 +1,4 @@
 import elasticsearch as es
-from qbitkit.error import error as qbitkit_error
 from datetime import datetime as dt
 
 class util:
