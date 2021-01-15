@@ -39,12 +39,12 @@ class circuit:
         return qcir
 class translate:
     def translate_gate(op='h',
-                              input_circuit=circuit.new(2,2,1),
-                              targetA=0,
-                              targetB=1,
-                              targetC=2,
-                              angle=0.15,
-                              theta=0.15):
+                       input_circuit=circuit.new(2,2,1),
+                       targetA=0,
+                       targetB=1,
+                       targetC=2,
+                       angle=0.15,
+                       theta=0.15):
         """Translate individual circuit elements (gates) from a qbitkit Circuit DataFrame.
 
         Args:
