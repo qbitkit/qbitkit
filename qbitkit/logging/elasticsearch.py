@@ -89,7 +89,11 @@ class es_read:
                 query (str): set the query to run against the specified Elasticsearch host. (default {"query": {"match_all": {}}})
             Returns:
                 dict: Response from Elasticsearch to the query you send it."""
-            return None
+            res = connection.search(index=index,
+                                    body=query)
+            return resel
+
+
 class es_write:
     class classic:
 
