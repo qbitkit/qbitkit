@@ -25,7 +25,7 @@ class local:
         Args:
             self(None): An unused argument.
         Returns:
-            braket.devices.localsim: the local simulator device for Braket"""
+            braket.devices.local_simulator: the local simulator device for Braket"""
         device = __local_simulator__
         return device
 
