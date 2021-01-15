@@ -1,5 +1,5 @@
-from braket.aws import AwsDevice
-from braket.devices import local_simulator as localsim
+from braket.aws import AwsDevice as __AWS_Device__
+from braket.devices import local_simulator as __local_simulator__
 
 
 class connection:
@@ -26,7 +26,7 @@ class local:
             self(None): An unused argument.
         Returns:
             braket.devices.localsim: the local simulator device for Braket"""
-        device = localsim
+        device = __local_simulator__
         return device
 
 class quantum_device:
@@ -63,7 +63,7 @@ class quantum_device:
             arn (str): the ARN of the device you would like to use (default get_sim_arn())
         Returns:
             braket.aws.AwsDevice: AWS Quantum Device from specified ARN."""
-        device = AwsDevice(arn)
+        device = __AWS_Device__(arn)
         return device
     def get_device_ops(device=None,
                        print_result=False):
