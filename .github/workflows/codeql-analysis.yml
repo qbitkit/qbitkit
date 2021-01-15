@@ -55,9 +55,9 @@ jobs:
     #    uses a compiled language
 
     - run: |
-      bash
-      cd bin ; bash ./install.sh ; cd ..
-      . venv/bin/activate
+       bash
+       cd bin ; bash ./install.sh ; cd ..
+       . venv/bin/activate
 
 
     - name: Perform CodeQL Analysis
