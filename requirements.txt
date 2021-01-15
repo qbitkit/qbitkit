@@ -2,16 +2,10 @@
 dwave-ocean-sdk
 dimod
 dwavebinarycsp
-#dwave-networkx
 minorminer
-
-# Graph Dependencies:
-#networkx
 
 # Qiskit:
 qiskit
-## D-Wave Qiskit:
-#dwave-qiskit-plugin
 ## IBMQ Qiskit:
 qiskit-ibmq-provider
 
@@ -22,14 +16,12 @@ botocore
 amazon-braket-ocean-plugin
 
 # General-Purpose:
-#matplotlib
 numpy==1.19.3
 pandas
 datetime
 
 # Logging Dependencies:
 elasticsearch
-#eland
 
 # qbitctl Dependencies
 click
