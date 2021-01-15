@@ -2,7 +2,7 @@ import elasticsearch as es
 from qbitkit.error import error as qbitkit_error
 from datetime import datetime as dt
 
-class util():
+class util:
     def get_support_status(self=None):
         """Gets the support status for Elasticsearch. Takes no Keyword Arguments.
 
