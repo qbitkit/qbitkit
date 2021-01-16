@@ -11,7 +11,7 @@ Once you've translated a DataFrame to your platform of choice, for example AWS B
 All of this, in just 3 lines of code (not counting import statements, comments, whitespace lines, or printing results.) 
 
 ### Example
-Here we make a Bell State and submit it to the SV1 Quantum Simulator on AWS Braket.
+Here we make a Bell State and submit it to the Rigetti Aspen-8 Quantum Computer on AWS Braket.
 ```python
 # Import relevant qbitkit Libraries
 from qbitkit.provider.braket.circuit import circuitry as c
