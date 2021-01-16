@@ -27,7 +27,7 @@ def gate(self=str('h'),
         ntargets = ntargets + 1
     for target in targets:
         ngenerated_targets = ngenerated_targets + 1
-        if ngenerated_targets == 0:
+        if ngenerated_targets == 1:
             target_str = str(f' q[{str(target)}],')
         if ngenerated_targets == ntargets:
             target_str = str(f'q[{str(target)}];')
