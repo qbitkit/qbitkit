@@ -38,3 +38,14 @@ def gate(self=str('h'),
         all_targets = all_targets + target_str
     compiled_gate = self + all_targets
     return compiled_gate
+def measurement(qreg=int(0),
+                creg=int(1)):
+    """Generate QASM that takes a measurement from a qubit and stores it in a classical register.
+
+    Args:
+        qreg(int): Number of the Qubit to measure. (default 0)
+        creg(int): Number of the Classical Register to store the measurement to. (default 1)
+    Returns:
+        str: Generated QASM containing measurement instruction."""
+    meas_str = f'measure q[{qreg}] -> c[{creg}];'
+    return meas_str
