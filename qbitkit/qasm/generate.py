@@ -47,5 +47,5 @@ def measurement(qreg=int(0),
         creg(int): Number of the Classical Register to store the measurement to. (default 1)
     Returns:
         str: Generated QASM containing measurement instruction."""
-    meas_str = f'measure q[{qreg}] -> c[{creg}];'
+    meas_str = f'measure q[{str(qreg)}] -> c[{str(creg)}];'
     return meas_str
