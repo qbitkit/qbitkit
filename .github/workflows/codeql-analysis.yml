@@ -56,9 +56,7 @@ jobs:
 
     - run: |
        bash
-       cd bin ; bash ./install.sh ; cd ..
-       . venv/bin/activate
-
+       cd bin ; bash ./install_without_venv.sh
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
