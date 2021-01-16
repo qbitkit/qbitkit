@@ -1,5 +1,5 @@
 #!/bin/sh
-echo "Usage: ./update_docs.sh <make subcommand> <path to copy docs to>"
+echo "Usage: ./update_site.sh <make subcommand> <path to copy site to>"
 echo "Updating APT..."
 sudo apt-get update > /dev/null
 echo "Upgrading APT..."
@@ -19,5 +19,10 @@ cd doc/sphinx/
 rm -rf _*
 echo "Compiling documentation..."
 make -j $(nproc) $1
+echo "Injecting homepage..."
+mkdir -p homepage/docs
+mv _build/html/* homepage/docs
+rm -rf _build/html/*
+mv homepage/* _build/html/
 echo "Copying compiled docs to specified directory..."
 sudo /bin/sh ../../bin/copy_docs.sh _build/html $2 nginx

@@ -1,18 +1,7 @@
 import elasticsearch as es
-from qbitkit.error import error as qbitkit_error
 from datetime import datetime as dt
 
-class util():
-    def get_support_status():
-        """Gets the support status for Elasticsearch. Takes no Keyword Arguments.
-
-        Returns:
-            str: a warning message containing the current support status"""
-        elasticsearch_support_status = 'experimental'
-        qbitkit_error.errors.support_status(feature_state=elasticsearch_support_status,
-                                        resource_name='Elasticsearch',
-                                        additional_notes='For more information on forthcoming Elasticsearch support, see https://github.com/qbitkit/qbitkit/issues/4')
-        return elasticsearch_support_status
+class util:
     def auto_ilm(index='qbitkit',
                  strftime='%Y-%m-%d'):
         """Automatically generates an index name for Elasticsearch to use when logging data to Elasticsearch. Doing this allows users to set up Index Lifecycle Management within Elasticsearch to define what happens to data past pre-defined retention periods.
@@ -26,7 +15,6 @@ class util():
         ilm_index=f"{index}-{date}"
         return ilm_index
 
-print(util.get_support_status())
 
 class es_connect:
     def using_api_key(api_key=None,
@@ -101,7 +89,11 @@ class es_read:
                 query (str): set the query to run against the specified Elasticsearch host. (default {"query": {"match_all": {}}})
             Returns:
                 dict: Response from Elasticsearch to the query you send it."""
-            return None
+            res = connection.search(index=index,
+                                    body=query)
+            return resel
+
+
 class es_write:
     class classic:
 

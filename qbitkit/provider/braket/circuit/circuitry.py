@@ -6,25 +6,27 @@ import string
 
 
 class info:
-        def get_gates(self):
-            """Return all usable gates from the Braket SDK. Takes no keyword arguments.
+    def get_gates(self):
+        """Return all usable gates from the Braket SDK. Takes no keyword arguments.
 
-            Returns:
-                list: a list of all quantum logic gates in the Braket Python SDK."""
-            gate_set = [attr for attr in dir(braket_gate) if attr[0] in string.ascii_uppercase]
-            return gate_set
+        Returns:
+            list: a list of all quantum logic gates in the Braket Python SDK."""
+        gate_set = [attr for attr in dir(braket_gate) if attr[0] in string.ascii_uppercase]
+        return gate_set
+
+
 class translate:
     def translate_gate(op='h',
-                              input_circuit=braket_circuit(),
-                              targetA=0,
-                              targetB=1,
-                              targetC=2,
-                              angle=0.15,
-                              phi=0.15,
-                              theta=0.15,
-                              unitary_matrix=np.array([[0,1],
-                                                       [1,0]]),
-                              unitary_targets=[0]):
+                       input_circuit=braket_circuit(),
+                       targetA=0,
+                       targetB=1,
+                       targetC=2,
+                       angle=0.15,
+                       phi=0.15,
+                       theta=0.15,
+                       unitary_matrix=np.array([[0,1],
+                                                [1,0]]),
+                       unitary_targets=[0]):
         """Translate individual circuit elements from a Circuit DataFrame into a Braket Circuit, returns a Braket Circuit.
 
         Args:
@@ -169,7 +171,7 @@ class translate:
                                                 phi)
             return input_circuit
         else:
-            print(f'[ERROR]: Gate {op} not found. Returning an empty object with a value of None.')
+            print(f"[ERROR]: Gate {op} not found. Returning an empty object with a value of None.")
             input_circuit = None
             return input_circuit
     def df_circuit(df=fr.get_frame(),

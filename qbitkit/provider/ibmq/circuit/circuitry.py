@@ -1,27 +1,29 @@
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
-import numpy as np
 from qbitkit.error import error as qbitkit_error
 from qbitkit.io.frame import frame as fr
+
 
 def get_support_status():
     ibmq_support_status = 'experimental'
     resource_name = 'IBM Quantum Experience'
+    issue_url = 'https://github.com/qbitkit/qbitkit/issues/2'
+    additional_notes = 'For more information on forthcoming '
+    additional_notes = additional_notes + resource_name + ' '
+    additional_notes = additional_notes + 'support, see '
+    additional_notes = additional_notes + issue_url + ' .'
     qbitkit_error.errors.support_status(feature_state=ibmq_support_status,
                                         resource_name=resource_name,
-                                        additional_notes=f'For more information on forthcoming {resource_name} support, see https://github.com/qbitkit/qbitkit/issues/2')
+                                        additional_notes=additional_notes)
     return ibmq_support_status
+
 
 get_support_status()
 
-class info:
-        def get_gates(self):
-            """Get all usable gates. Not yet implemented (see https://github.com/qbitkit/qbitkit/issues/2)."""
-            gate_set = print('Error: Function Not Yet Implemented')
-            return gate_set
+
 class circuit:
     def new(nqreg=int(2),
             ncreg=int(2),
-            nancl=None):
+            nancl=int(2)):
         """Create a new quantum circuit from a specified number of quantum, classical, and ancilla registers.
 
         Args:
@@ -37,30 +39,24 @@ class circuit:
         return qcir
 class translate:
     def translate_gate(op='h',
-                              input_circuit=circuit.new(2,2,None),
-                              targetA=0,
-                              targetB=1,
-                              targetC=2,
-                              angle=0.15,
-                              phi=0.15,
-                              theta=0.15,
-                              unitary_matrix=np.array([[0,1],
-                                                       [1,0]]),
-                              unitary_targets=[0]):
+                       input_circuit=circuit.new(2,2,1),
+                       targetA=0,
+                       targetB=1,
+                       targetC=2,
+                       angle=0.15,
+                       theta=0.15):
         """Translate individual circuit elements (gates) from a qbitkit Circuit DataFrame.
 
         Args:
+            input_circuit (qiskit.QuantumCircuit): A Qiskit QuantumCircuit() to optionally append the translated gate to. (default qbitkit.provider.ibmq.circuit.circuitry.circuit.new(2,2,1))
             op (str): The instruction to translate into a gate. Default is a Hadamard gate represented as 'h'. (default 'h')
             targetA (int): the first qubit to target in a 1,2 or 3 qubit gate. (default 0)
             targetB (int): the second qubit to target in a 2 or 3 qubit gate. (default 1)
             targetC (int): the third qubit to target in a 3 qubit gate. (default 2)
             angle (float): the angle to set for the gate specified as a float. (default 0.15)
-            phi (float): the phi to set for the gate specified as a float. (default 0.15)
             theta (float): the theta to set for the gate specified as a float. (default 0.15)
-            unitary_matrix (np.array): a numpy array defining the matrix to use for a unitary gate. (default np.array([[0,1]],[1,0]]))
-            unitary_targets (list): a list defining the targets to use for a unitary gate. (default [0])
         Returns:
-            braket.circuits.Circuit: Qiskit circuit with translated gate appended to it"""
+            qiskit.QuantumCircuit: Qiskit circuit with translated gate appended to it"""
         if op == 'h':
             input_circuit = input_circuit.h(targetA)
             return input_circuit
@@ -122,7 +118,8 @@ class translate:
             return input_circuit
         if op == 'crz':
             input_circuit = input_circuit.crz(control_qubit=targetA,
-                                              target_qubit=targetB)
+                                              target_qubit=targetB,
+                                              theta=theta)
         if op == 'ch':
             input_circuit = input_circuit.ch(control_qubit=targetA,
                                              target_qubit=targetB)
@@ -142,7 +139,7 @@ class translate:
         return input_circuit
 
     def df_circuit(df=fr.get_frame(),
-                   input_circuit=QuantumCircuit()):
+                   input_circuit=circuit.new()):
         """Converts a Circuit DataFrame into a Qiskit QuantumCircuit by iterating over the DataFrame and turning each row of the dataframe into a gate or set of gates.
 
         Args:

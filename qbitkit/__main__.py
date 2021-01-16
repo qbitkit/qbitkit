@@ -2,6 +2,8 @@ import click as ck
 from qbitkit.io.file import csv, json, excel
 from qbitkit.error import error as qbitkit_error
 
+def __init__(self):
+    none = None
 class qbitctl:
 
     def get_support_status(self):

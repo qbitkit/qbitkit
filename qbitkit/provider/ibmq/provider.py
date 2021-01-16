@@ -20,6 +20,9 @@ get_support_status()
 class connection:
     def get_provider(hub='ibm-q'):
         """Create an IBMQ provider with Qiskit to be used as a device in qbitkit
+
+        Args:
+            hub (str): The hub to pick IBM Q machines from. (default 'ibm-q')
         Returns:
             qiskit.providers.BaseProvider: the IBMQ provider"""
         provider = IBMQ.get_account(hub)
@@ -27,11 +30,17 @@ class connection:
 class local:
     def aer(simulator='qasm_simulator'):
         """Create an Aer simulator from Qiskit.
+
+        Args:
+            simulator(str): Name of the simulator to use (default 'qasm_simulator')
         Returns:
             qiskit.providers.BaseBackend: the Aer simulator from Qiskit"""
         a.get_backend(simulator)
     def basic_aer(simulator='qasm_simulator'):
         """Create a Basic Aer simulator from Qiskit.
+
+        Args:
+            simulator(str): Name of the simulator to use (default 'qasm_simulator')
         Returns:
             qiskit.providers.BaseBackend: the BasicAer simulator from Qiskit"""
         ba.get_backend(simulator)
