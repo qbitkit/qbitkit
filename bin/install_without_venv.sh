@@ -10,4 +10,4 @@ sudo -H python3 -m pip install -U -r requirements.txt
 # Build python package
 python3 setup.py build
 # Install Python package
-python3 setup.py install
+sudo -H python3 setup.py install
