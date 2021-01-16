@@ -19,11 +19,11 @@ from qbitkit.provider.braket import provider as p
 from qbitkit.io.frame import frame as f
 
 # Define your DataFrame as a circuit, then translate it to your platform of choice.
-circuit = c.translate.df_circuit(df=f.get_frame
-                                 (data={'gate' : ['h','cnot'], 
-                                        'targetA' : [0,0], 
-                                        'targetB' : [None, 1], 
-                                        'targetC' : [None, None],}))
+circuit = c.translate.df_circuit(df=f.get_frame(
+    data={'gate' : ['h','cnot'], 
+          'targetA' : [0,0], 
+          'targetB' : [None, 1], 
+          'targetC' : [None, None],}))
 # Run the circuit on the Rigetti Aspen-8 hosted on AWS Braket
 job = p.job.get_job(device=p.quantum_device.get_device(
                         p.quantum_device.get_qpu_arn(
@@ -31,13 +31,12 @@ job = p.job.get_job(device=p.quantum_device.get_device(
                             vendor='rigetti', device='Aspen-8')),
                     circuit=circuit,
                     s3loc=p.connection.get_bucket(
-                      # You'll need to set this to the name of the bucket created at Braket onboarding.
+                      #Use the name of the bucket created at Braket onboarding.
                       # You can always check your S3 Console to find this info.
                       bucket='amazon-braket-YourID'), 
                     # Warning: Running this will cost a little under $4.
                     shots=10000 )
 # Show all of the results
-print(job.result())
 ```
 
 ## Documentation
