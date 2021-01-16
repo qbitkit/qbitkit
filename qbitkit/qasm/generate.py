@@ -10,3 +10,31 @@ def registers(c=2,
     reg_str = f"""qreg q[{str(q)}];
     creg c[{str(c)}];"""
     return reg_str
+def gate(self=str('h'),
+         targets=list([int(0)])):
+    """Generate a gate from it's name as a string passed to self, and a list of targets passed to targets.
+
+    Args:
+        self(str): The name used to represent the gate in QASM. For example, a Hadamard Gate is 'h'. (default str('h'))
+        targets(list): A list of positive integers that will be used as a list of target qubits to apply the gate to. (default list([int(0)]))
+    Returns:
+        str: A string object containing the specified gate as QASM."""
+    ntargets = 0
+    ngenerated_targets = 0
+    target_str = ''
+    all_targets = ''
+    for target in targets:
+        ntargets = ntargets + 1
+    for target in targets:
+        ngenerated_targets = ngenerated_targets + 1
+        if ngenerated_targets == 0:
+            target_str = str(f' q[{str(target)}],')
+        if ngenerated_targets == ntargets:
+            target_str = str(f'q[{str(target)}];')
+        elif ngenerated_targets < ntargets:
+            target_str = str(f'q[{str(target)}],')
+        else:
+            target_str = str('')
+        all_targets = all_targets + target_str
+    compiled_gate = self + all_targets
+    return compiled_gate
