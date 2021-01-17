@@ -75,8 +75,9 @@ class job:
             shots (int): the number of shots or 'reads' to take when executing on QPU. (default 8192)"""
         IBMQ.load_account()
         provider = IBMQ.get_provider(hub='ibm-q')
-        backend = least_busy(provider.backends(filters=lambda b: b.configuration().n_qubits >= 3 and
-                                                                 not b.configuration().simulator and b.status().operational == True))
+        if backend == None:
+            backend = least_busy(provider.backends(filters=lambda b: b.configuration().n_qubits >= 3 and
+                                                                     not b.configuration().simulator and b.status().operational == True))
         job = execute(circuit,
                       backend,
                       shots)
