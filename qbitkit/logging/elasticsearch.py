@@ -52,6 +52,7 @@ class es_connect:
                                                     password),
                                          timeout=timeout)
         return es_connection
+
     def get_connection(api_key=None,
                        api_id=None,
                        elasticsearch_host='127.0.0.1',
@@ -76,6 +77,8 @@ class es_connect:
                                                     http_password)
                                          )
         return es_connection
+
+
 class es_read:
     class classic:
 
