@@ -1,5 +1,5 @@
 # Importing standard Qiskit libraries
-from qiskit import execute, IBMQ, QuantumCircuit
+from qiskit import execute, QuantumCircuit
 from qiskit.providers.ibmq import *
 from qiskit.providers import aer as a
 from qiskit.providers import basicaer as ba
