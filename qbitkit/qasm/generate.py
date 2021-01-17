@@ -53,7 +53,7 @@ def gate(self=str('h'),
 
     Args:
         self(str): The name used to represent the gate in QASM. For example, a Hadamard Gate is 'h'. (default str('h'))
-        targets(list): A list of positive integers that will be used as a list of target qubits to apply the gate to. (default list([int(0)]))
+        targets(list): : List of positive ints specifying target qubits to apply the gate to. (default list([int(0)]))
     Returns:
         str: A string object containing the specified gate as QASM."""
     ntargets = 0
