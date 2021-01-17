@@ -7,7 +7,7 @@ def headers(qasm_version=float(2.0),
 
     Args:
         qasm_version(float): a floating point value describing the version number. (default float(2.0))
-        include(list): a list of strings describing what to import. (default list(['qelib1.inc']))
+        includes(list): a list of strings describing what to import. (default list(['qelib1.inc']))
     Returns:
         str: the generated headers to be placed at the top of a QASM string"""
     nincludes = int(0)
