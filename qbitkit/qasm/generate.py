@@ -12,7 +12,7 @@ def registers(c=2,
         str: A string object containing the generated QASM."""
     qreg_str = f"qreg q[{str(q)}];"
     creg_str = f"creg c[{str(c)}];"
-    reg_str = qreg_str +
+    reg_str = qreg_str + __linesep__ + creg_str + __linesep__
     return reg_str
 def gate(self=str('h'),
          targets=list([int(0)])):
