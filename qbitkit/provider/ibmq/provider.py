@@ -1,5 +1,5 @@
 # Importing standard Qiskit libraries
-from qiskit import execute, IBMQ
+from qiskit import execute, IBMQ, QuantumCircuit
 from qiskit.providers.ibmq import *
 from qiskit.providers import aer as a
 from qiskit.providers import basicaer as ba
@@ -65,16 +65,22 @@ class local:
             return device
 class job:
     def get_job(circuit=None,
+                qasm=str(""),
                 backend=None,
                 shots=8192):
         """Create a job with the least busy provider capable of fulfilling our request, then return the job object.
 
         Args:
             circuit (qiskit.providers.ibmq.job.IBMQ): the circuit to run on the QPU. (default None)
+            qasm (str): A string containing valid QASM 2.0 to run. Specifying this overrides circuit. (default str(""))
             backend (qiskit.providers.ibmq.IBMQBackend): the backend to use. (default None)
             shots (int): the number of shots or 'reads' to take when executing on QPU. (default 8192)"""
         IBMQ.load_account()
         provider = IBMQ.get_provider(hub='ibm-q')
+
+        if qasm != str(""):
+            circuit = QuantumCircuit.from_qasm_str(qasm)
+
         if backend == None:
             backend = least_busy(provider.backends(filters=lambda b: b.configuration().n_qubits >= 3 and
                                                                      not b.configuration().simulator and b.status().operational == True))
