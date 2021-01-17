@@ -37,6 +37,7 @@ job = p.job.get_job(device=p.quantum_device.get_device(
                     # Warning: Running this will cost a little under $4.
                     shots=10000 )
 # Show all of the results
+print(job.result())
 ```
 
 ## Documentation
