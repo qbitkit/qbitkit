@@ -13,7 +13,7 @@ class qbitctl:
                                             additional_notes='For more information on forthcoming qbitctl support, see https://github.com/qbitkit/qbitkit/issues/4')
         return qbitctl_support_status
 
-        get_support_status()
+        qbitctl.get_support_status()
     def __init__(self):
         qbitctl.get_support_status()
     class functions:
