@@ -90,12 +90,12 @@ class job:
         IBMQ.load_account()
         provider = IBMQ.get_provider(hub='ibm-q')
         filters = lambda b: b.configuration().n_qubits >= 3 and \
-            not b.configuration().simulator and b.status().operational == True
+            not b.configuration().simulator and b.status().operational is True
 
         if qasm != str(""):
             circuit = QuantumCircuit.from_qasm_str(qasm)
 
-        if backend == None:
+        if backend is None:
             backend = least_busy(provider.backends(filters=filters))
         job = execute(circuit,
                       backend,
@@ -114,9 +114,9 @@ class job:
         Returns:
             dict: the results from running the job"""
         result = job.result()
-        if show_graph == False:
+        if show_graph is False:
             return result
-        elif show_graph == True:
+        elif show_graph is True:
             meas_result = result
             plot_histogram(meas_result)
             return result
