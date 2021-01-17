@@ -30,10 +30,11 @@ class es_connect:
             elasticsearch_host (str): The hostname or IP address of the Elasticsearch server you are trying to authenticate to. (default '127.0.0.1')
             timeout (int): The timeout in seconds to use when waiting for the Elasticsearch server to respond. (default 60)"""
         es_connection = es.Elasticsearch([elasticsearch_host],
-                                        api_key=(api_key,
-                                                 api_id),
+                                         api_key=(api_key,
+                                                  api_id),
                                          timeout=timeout)
         return es_connection
+
     def using_http_auth(username='elastic',
                         password=None,
                         elasticsearch_host='127.0.0.1',
@@ -102,9 +103,9 @@ class es_write:
     class classic:
 
         def write(connection=None,
-                 index=util.auto_ilm(),
-                 doc=None,
-                 refresh=True):
+                  index=util.auto_ilm(),
+                  doc=None,
+                  refresh=True):
             """Sends the query to the specified Elasticsearch host, and returns the result of the indexing query we sent.
 
             Args:
@@ -115,7 +116,7 @@ class es_write:
                 dict: the response from the query we sent Elasticsearch"""
             result = connection.index(index=index,
                                       body=doc)
-            if refresh == True:
+            if refresh is True:
                 connection.indices.refresh(index=index)
             print(result)
             return result
