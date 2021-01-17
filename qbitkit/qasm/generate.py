@@ -1,6 +1,37 @@
 from os import linesep as __linesep__
 
 
+def headers(qasm_version=float(2.0),
+            includes=list(['qelib1.inc'])):
+    """Generate QASM 2.0 formatted headers.
+
+    Args:
+        qasm_version(float): a floating point value describing the version number. (default float(2.0))
+        include(list): a list of strings describing what to import. (default list(['qelib1.inc']))
+    Returns:
+        str: the generated headers to be placed at the top of a QASM string"""
+    nincludes = int(0)
+    niterations = int(0)
+    ver_float_to_str = str(qasm_version)
+    dq = '"'
+    include_formatted = ''
+    all_includes = ''
+    qasm_ver = f"OPENQASM {ver_float_to_str};"
+    for include in includes:
+        nincludes + 1
+    for include in includes:
+        niterations = niterations + 1
+        include_formatted = f"include {dq}{include}{dq};"
+        if niterations == 1:
+            all_includes = include_formatted
+        elif niterations > 1:
+            all_includes = all_includes + include_formatted
+        else:
+            all_includes = str("")
+    headers = f"{qasm_ver}{__linesep__}{all_includes}"
+    return headers
+
+
 def registers(c=2,
               q=2):
     """Generate a QASM String containing the specified number of classical and quantum registers.
