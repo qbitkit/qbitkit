@@ -111,6 +111,7 @@ class es_write:
             Args:
                 connection (dict): specify a connection to use when communicating with the Elasticsearch host. (default es_connect.get_connection())
                 index (str): specify the index template to use when writing to Elasticsearch. (default util.auto_ilm())
+                doc (dict): a dictionary containing the data you wish to write to Elasticsearch. (default None)
                 refresh (bool): when set to True, Elasticsearch will immediately refresh indices after we write to it. This makes documents available to search queries as soon as we send them to Elasticsearch. (default True)
             Returns:
                 dict: the response from the query we sent Elasticsearch"""
