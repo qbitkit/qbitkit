@@ -13,7 +13,7 @@ class util:
         Returns:
             str: index template formatted for ILM"""
         date = dt.now().strftime(strftime)
-        ilm_index=f"{index}-{date}"
+        ilm_index = f"{index}-{date}"
         return ilm_index
 
 
