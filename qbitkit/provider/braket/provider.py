@@ -4,7 +4,7 @@ from braket.devices import local_simulator as __local_simulator__
 
 class connection:
     def get_bucket(bucket=None,
-                   prefix='results'):
+                   prefix=None):
         """Get bucket from specified keyword arguments.
 
         Args:
