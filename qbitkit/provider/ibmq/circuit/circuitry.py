@@ -37,9 +37,11 @@ class circuit:
         creg = ClassicalRegister(ncreg, 'creg')
         qcir = QuantumCircuit(qreg, creg, ancl)
         return qcir
+
+
 class translate:
     def translate_gate(op='h',
-                       input_circuit=circuit.new(2,2,1),
+                       input_circuit=circuit.new(2, 2, 1),
                        targetA=0,
                        targetB=1,
                        targetC=2,
@@ -113,8 +115,8 @@ class translate:
             return input_circuit
         if op == 'ccnot':
             input_circuit = input_circuit.toffoli(targetA,
-                                                targetB,
-                                                targetC)
+                                                  targetB,
+                                                  targetC)
             return input_circuit
         if op == 'crz':
             input_circuit = input_circuit.crz(control_qubit=targetA,
