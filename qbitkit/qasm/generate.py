@@ -36,7 +36,7 @@ def gate(self=str('h'),
         else:
             target_str = str('')
         all_targets = all_targets + target_str
-    compiled_gate = self + all_targets
+    compiled_gate = self + ' ' + all_targets
     return compiled_gate
 def measurement(qreg=int(0),
                 creg=int(1)):
