@@ -1,6 +1,7 @@
 import elasticsearch as es
 from datetime import datetime as dt
 
+
 class util:
     def auto_ilm(index='qbitkit',
                  strftime='%Y-%m-%d'):
