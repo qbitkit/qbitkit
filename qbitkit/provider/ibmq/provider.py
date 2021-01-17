@@ -9,9 +9,12 @@ from qbitkit.error import error as qbitkit_error
 def get_support_status():
     ibmq_support_status = 'experimental'
     resource_name = 'IBM Quantum Experience'
+
+    additional_notes = f'For more information on forthcoming {resource_name} support, \
+    see https://github.com/brianlechthaler/qbitkit/issues/2'
     qbitkit_error.errors.support_status(feature_state=ibmq_support_status,
                                         resource_name=resource_name,
-                                        additional_notes=f'For more information on forthcoming {resource_name} support, see https://github.com/brianlechthaler/qbitkit/issues/2')
+                                        additional_notes=additional_notes)
     return ibmq_support_status
 
 get_support_status()
