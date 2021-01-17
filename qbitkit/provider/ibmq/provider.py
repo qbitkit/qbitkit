@@ -6,6 +6,7 @@ from qiskit.providers import basicaer as ba
 from qiskit.visualization import *
 from qbitkit.error import error as qbitkit_error
 
+
 def get_support_status():
     ibmq_support_status = 'experimental'
     resource_name = 'IBM Quantum Experience'
@@ -17,9 +18,12 @@ def get_support_status():
                                         additional_notes=additional_notes)
     return ibmq_support_status
 
+
 get_support_status()
 
 # Loading your IBM Q account(s)
+
+
 class connection:
     def get_provider(hub='ibm-q'):
         """Create an IBMQ provider with Qiskit to be used as a device in qbitkit
@@ -30,6 +34,8 @@ class connection:
             qiskit.providers.BaseProvider: the IBMQ provider"""
         provider = IBMQ.get_account(hub)
         return provider
+
+
 class local:
     def aer(simulator='qasm_simulator'):
         """Create an Aer simulator from Qiskit.
@@ -39,6 +45,7 @@ class local:
         Returns:
             qiskit.providers.BaseBackend: the Aer simulator from Qiskit"""
         a.get_backend(simulator)
+
     def basic_aer(simulator='qasm_simulator'):
         """Create a Basic Aer simulator from Qiskit.
 
@@ -66,6 +73,8 @@ class local:
             print(f"ERROR: Backend {backend} not found. Not returning anything.")
             device = None
             return device
+
+
 class job:
     def get_job(circuit=None,
                 qasm=str(""),
@@ -92,6 +101,7 @@ class job:
                       backend,
                       shots)
         return job
+
     def run_job(circuit=None,
                 job=None,
                 show_graph=False):
