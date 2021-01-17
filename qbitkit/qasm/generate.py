@@ -78,7 +78,7 @@ def gate(self=str('h'),
 
 
 def measurement(qreg=int(0),
-                creg=int(1)):
+                creg=int(0)):
     """Generate QASM that takes a measurement from a qubit and stores it in a classical register.
 
     Args:
