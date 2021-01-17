@@ -14,6 +14,8 @@ def registers(c=2,
     creg_str = f"creg c[{str(c)}];"
     reg_str = qreg_str + __linesep__ + creg_str + __linesep__
     return reg_str
+
+
 def gate(self=str('h'),
          targets=list([int(0)])):
     """Generate a gate from it's name as a string passed to self, and a list of targets passed to targets.
@@ -42,6 +44,8 @@ def gate(self=str('h'),
         all_targets = all_targets + target_str
     compiled_gate = self + ' ' + all_targets
     return compiled_gate
+
+
 def measurement(qreg=int(0),
                 creg=int(1)):
     """Generate QASM that takes a measurement from a qubit and stores it in a classical register.
