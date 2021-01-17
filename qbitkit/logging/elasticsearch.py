@@ -91,7 +91,7 @@ class es_read:
                 dict: Response from Elasticsearch to the query you send it."""
             res = connection.search(index=index,
                                     body=query)
-            return resel
+            return res
 
 
 class es_write:
