@@ -2,6 +2,12 @@ import dwavebinarycsp as _dbc
 
 
 def new(self='BINARY'):
+    """Create an empty constraint satisfaction problem.
+
+    Args:
+        self(dimod.vartype): A string describing the variable type (either SPIN or BINARY) (default 'BINARY')
+    Returns:
+        dwavebinarycsp.ConstraintSatisfactionProblem: An empty constraint satisfaction problem."""
     dbc = _dbc.ConstraintSatisfactionProblem(self)
     return dbc
 
