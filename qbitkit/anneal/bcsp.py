@@ -2,8 +2,7 @@ import dwavebinarycsp as _dbc
 
 
 def new(self='BINARY'):
-
-    dbc = _dbc.ConstraintSatisfactionProblem(vartype)
+    dbc = _dbc.ConstraintSatisfactionProblem(self)
     return dbc
 
 
