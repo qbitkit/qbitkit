@@ -1,5 +1,5 @@
-class braket:
-    class gate_model:
+class Braket:
+    class GateModel:
         def doc(job=None):
             """Create a dictionary object containing information from the results of a Braket task, then return it.
 
