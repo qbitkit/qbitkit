@@ -1,6 +1,6 @@
 import dwavebinarycsp as _dbc
 
-def new(vartype='BINARY'):
+def new(self='BINARY'):
   dbc = _dbc.ConstraintSatisfactionProblem(vartype)
   return dbc
 class convert:
