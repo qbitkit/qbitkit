@@ -15,7 +15,7 @@ class info:
         return gate_set
 
 
-class translate:
+class Translate:
     def translate_gate(op='h',
                        input_circuit=braket_circuit(),
                        targetA=0,
@@ -188,7 +188,7 @@ class translate:
             targetA = row['targetA']
             targetB = row['targetB']
             targetC = row['targetC']
-            circuit = translate.translate_gate(input_circuit=input_circuit,
+            circuit = Translate.translate_gate(input_circuit=input_circuit,
                                                op=qcgates,
                                                targetA=targetA,
                                                targetB=targetB,

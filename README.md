@@ -20,7 +20,7 @@ from qbitkit.provider.braket import provider as p
 from qbitkit.io.frame import frame as f
 
 # Define your DataFrame as a circuit, then translate it to your platform of choice.
-circuit = c.translate.df_circuit(df=f.get_frame(
+circuit = c.Translate.df_circuit(df=f.get_frame(
   data={'gate': ['h', 'cnot'],
         'targetA': [0, 0],
         'targetB': [None, 1],
