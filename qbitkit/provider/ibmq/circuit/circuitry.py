@@ -20,7 +20,7 @@ def get_support_status():
 get_support_status()
 
 
-class circuit:
+class Circuit:
     def new(nqreg=int(2),
             ncreg=int(2),
             nancl=int(2)):
@@ -39,7 +39,7 @@ class circuit:
         return qcir
 
 
-class translate:
+class Translate:
     def translate_gate(op='h',
                        input_circuit=circuit.new(2, 2, 1),
                        targetA=0,
