@@ -13,7 +13,7 @@ def get_support_status():
 
     additional_notes = f'For more information on forthcoming {resource_name} support, \
     see https://github.com/brianlechthaler/qbitkit/issues/2'
-    qbitkit_error.errors.support_status(feature_state=ibmq_support_status,
+    qbitkit_error.Errors.support_status(feature_state=ibmq_support_status,
                                         resource_name=resource_name,
                                         additional_notes=additional_notes)
     return ibmq_support_status

@@ -11,7 +11,7 @@ def get_support_status():
     additional_notes = additional_notes + resource_name + ' '
     additional_notes = additional_notes + 'support, see '
     additional_notes = additional_notes + issue_url + ' .'
-    qbitkit_error.errors.support_status(feature_state=ibmq_support_status,
+    qbitkit_error.Errors.support_status(feature_state=ibmq_support_status,
                                         resource_name=resource_name,
                                         additional_notes=additional_notes)
     return ibmq_support_status
