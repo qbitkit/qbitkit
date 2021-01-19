@@ -24,7 +24,7 @@ get_support_status()
 # Loading your IBM Q account(s)
 
 
-class connection:
+class Connection:
     def get_provider(hub='ibm-q'):
         """Create an IBMQ provider with Qiskit to be used as a device in qbitkit
 
@@ -36,7 +36,7 @@ class connection:
         return provider
 
 
-class local:
+class Local:
     def aer(simulator='qasm_simulator'):
         """Create an Aer simulator from Qiskit.
 
@@ -75,7 +75,7 @@ class local:
             return device
 
 
-class job:
+class Job:
     def get_job(circuit=None,
                 qasm=str(""),
                 backend=None,
