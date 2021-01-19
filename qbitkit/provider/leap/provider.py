@@ -4,7 +4,6 @@ from dwave.system import LeapHybridSampler as __LHSampler__
 from dwave.system import LeapHybridDQMSampler as __LHDQMSampler__
 
 
-
 class Annealing:
     def get_sampler(sampler=str('DWaveSampler'),
                     retry_interval=int(-1)):
