@@ -5,7 +5,7 @@ import numpy as np
 import string
 
 
-class info:
+class Info:
     def get_gates(self):
         """Return all usable gates from the Braket SDK. Takes no keyword arguments.
 
