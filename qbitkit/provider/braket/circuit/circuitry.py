@@ -1,6 +1,6 @@
 from braket.circuits import Circuit as braket_circuit
 from braket.circuits import Gate as braket_gate
-from qbitkit.io.frame import frame as fr
+from qbitkit.io.frame import Frame as fr
 import numpy as np
 import string
 

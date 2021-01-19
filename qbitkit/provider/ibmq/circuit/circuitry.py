@@ -1,6 +1,6 @@
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
 from qbitkit.error import error as qbitkit_error
-from qbitkit.io.frame import frame as fr
+from qbitkit.io.frame import Frame as fr
 
 
 def get_support_status():

@@ -2,7 +2,7 @@ import pandas as __pd__
 import qbitkit.io.file as __f__
 
 
-class frame:
+class Frame:
     def get_frame(data=None):
         """Return a pandas DataFrame optionally populated with specified data from keyword arguments
 

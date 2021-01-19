@@ -17,7 +17,7 @@ Here we make a Bell State and submit it to the Rigetti Aspen-8 Quantum Computer 
 # Import relevant qbitkit Libraries
 from qbitkit.provider.braket.circuit import circuitry as c
 from qbitkit.provider.braket import provider as p
-from qbitkit.io.frame import frame as f
+from qbitkit.io.frame import Frame as f
 
 # Define your DataFrame as a circuit, then translate it to your platform of choice.
 circuit = c.Translate.df_circuit(df=f.get_frame(
