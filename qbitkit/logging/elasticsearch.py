@@ -2,7 +2,7 @@ import elasticsearch as es
 from datetime import datetime as dt
 
 
-class util:
+class Utilities:
     def auto_ilm(index='qbitkit',
                  strftime='%Y-%m-%d'):
         """Automatically generates an index name for Elasticsearch to use when logging data to Elasticsearch. Doing this allows users to set up Index Lifecycle Management within Elasticsearch to define what happens to data past pre-defined retention periods.
@@ -17,7 +17,7 @@ class util:
         return ilm_index
 
 
-class es_connect:
+class ElasticsearchConnection:
     def using_api_key(api_key=None,
                       api_id=None,
                       elasticsearch_host='127.0.0.1',
@@ -80,8 +80,8 @@ class es_connect:
         return es_connection
 
 
-class es_read:
-    class classic:
+class ElasticsearchRead:
+    class Classic:
 
         def read(connection=None,
                  index='qbitkit-*',
@@ -99,8 +99,8 @@ class es_read:
             return res
 
 
-class es_write:
-    class classic:
+class ElasticsearchWrite:
+    class Classic:
 
         def write(connection=None,
                   index=util.auto_ilm(),
