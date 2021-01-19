@@ -12,6 +12,7 @@ All of this, in just 3 lines of code (not counting import statements, comments, 
 
 ### Example
 Here we make a Bell State and submit it to the Rigetti Aspen-8 Quantum Computer on AWS Braket.
+
 ```python
 # Import relevant qbitkit Libraries
 from qbitkit.provider.braket.circuit import circuitry as c
@@ -20,22 +21,22 @@ from qbitkit.io.frame import frame as f
 
 # Define your DataFrame as a circuit, then translate it to your platform of choice.
 circuit = c.translate.df_circuit(df=f.get_frame(
-    data={'gate' : ['h','cnot'], 
-          'targetA' : [0,0], 
-          'targetB' : [None, 1], 
-          'targetC' : [None, None],}))
+  data={'gate': ['h', 'cnot'],
+        'targetA': [0, 0],
+        'targetB': [None, 1],
+        'targetC': [None, None], }))
 # Run the circuit on the Rigetti Aspen-8 hosted on AWS Braket
-job = p.job.get_job(device=p.quantum_device.get_device(
-                        p.quantum_device.get_qpu_arn(
-                            # Pick the Aspen-8 Quantum Computer by Rigetti as our QPU
-                            vendor='rigetti', device='Aspen-8')),
-                    circuit=circuit,
-                    s3loc=p.connection.get_bucket(
-                      #Use the name of the bucket created at Braket onboarding.
-                      # You can always check your S3 Console to find this info.
-                      bucket='amazon-braket-YourID'), 
-                    # Warning: Running this will cost a little under $4.
-                    shots=10000 )
+job = p.Job.get_job(device=p.QuantumDevice.get_device(
+  p.QuantumDevice.get_qpu_arn(
+    # Pick the Aspen-8 Quantum Computer by Rigetti as our QPU
+    vendor='rigetti', device='Aspen-8')),
+  circuit=circuit,
+  s3loc=p.Connection.get_bucket(
+    # Use the name of the bucket created at Braket onboarding.
+    # You can always check your S3 Console to find this info.
+    bucket='amazon-braket-YourID'),
+  # Warning: Running this will cost a little under $4.
+  shots=10000)
 # Show all of the results
 print(job.result())
 ```
