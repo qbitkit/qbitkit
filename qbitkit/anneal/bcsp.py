@@ -14,33 +14,33 @@ def new(self='BINARY'):
 
 
 class Convert:
-    def to_bqm(self):
+    def to_bqm(self=None):
         """Stitch a given Constraint Solving Problem into a BQM.
 
         Args:
-            self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Solving Problem to stitch into a BQM.
+            self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Solving Problem to stitch into a BQM. (default None)
         Returns:
             dimod.binary_quadratic_model.BinaryQuadraticModel: BQM stitched together from the given Constraint Solving Problem.
 """
         bqm = __dbc__.stitch(self)
         return bqm
 
-    def to_ising(self):
+    def to_ising(self=None):
         """Convert a given Constraint Solving Problem to an Ising.
 
         Args:
-            self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Solving Problem to convert to an Ising.
+            self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Solving Problem to convert to an Ising. (default None)
         Returns:
             tuple: the specified Constraint Solving Problem expressed as an Ising."""
         bqm = Convert.to_bqm(self)
         ising = bqm.to_ising()
         return ising
 
-    def to_qubo(self):
+    def to_qubo(self=None):
         """Convert a given Constraint Solving Problem to a QUBO.
 
         Args:
-            self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Solving Problem to convert to a QUBO.
+            self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Solving Problem to convert to a QUBO. (default None)
         Returns:
             tuple: the specified CSP converted to a QUBO."""
         bqm = Convert.to_bqm(self)
@@ -55,8 +55,8 @@ class Solve:
         """Solves a given Constraint Satisfaction Problem using a given D-Wave Sampler.
 
         Args:
-            self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Satisfaction Problem to solve.
-            sampler(dimod.meta.SamplerABCMeta): The D-Wave sampler to use when solving the given CSP.
+            self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Satisfaction Problem to solve. (default None)
+            sampler(dimod.meta.SamplerABCMeta): The D-Wave sampler to use when solving the given CSP. (default None)
             shots(int): A positive integer describing the number of shots. Can not be higher than 10000. (default 1000)
         Returns:
             dict: a dictionary containing the results from the sampler."""
