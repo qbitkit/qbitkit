@@ -24,7 +24,10 @@ circuit = c.Translate.df_circuit(df=f.get_frame(
   data={'gate': ['h', 'cnot'],
         'targetA': [0, 0],
         'targetB': [None, 1],
-        'targetC': [None, None], }))
+        'targetC': [None, None],
+        'angle': [None, None],
+        'phi': [None, None],
+        'theta': [None, None]}))
 # Run the circuit on the Rigetti Aspen-8 hosted on AWS Braket
 job = p.Job.get_job(device=p.QuantumDevice.get_device(
   p.QuantumDevice.get_qpu_arn(
