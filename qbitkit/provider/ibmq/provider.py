@@ -64,10 +64,10 @@ class Local:
         Returns:
             qiskit.providers.BaseBackend: the simulator you chose"""
         if backend == 'basic_aer':
-            device = local.basic_aer(simulator=simulator)
+            device = Local.basic_aer(simulator=simulator)
             return device
         elif backend == 'aer':
-            device = local.aer(simulator=simulator)
+            device = Local.aer(simulator=simulator)
             return device
         else:
             print(f"ERROR: Backend {backend} not found. Not returning anything.")
