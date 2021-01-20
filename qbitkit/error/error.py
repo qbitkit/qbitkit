@@ -3,7 +3,12 @@ from datetime import datetime as dt
 
 class Log:
     def timestamp(self=None):
-        """Returns the current time and date with lots of precision."""
+        """Returns the current time and date with lots of precision.
+
+        Args:
+            self(NoneType): unused parameter that does absolutely nothing. (default None)
+        Returns:
+            str: string describing the current time and date."""
         now = dt.now()
         now = str(now)
         now = '[@' + now + ']: '
