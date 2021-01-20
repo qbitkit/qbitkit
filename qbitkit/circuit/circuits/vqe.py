@@ -63,7 +63,7 @@ def ansatz(a_theta=float(0.)):
                                                                                'targetB': [None],
                                                                                'targetC': [None],
                                                                                'phi': [None],
-                                                                               'theta': [3, -__np__.pi/2.],
+                                                                               'theta': [-__np__.pi/2.],
                                                                                'angle': [None]})
     # Put each piece of the circuit in a list we can iterate over
     pieces = [hartree_fock,
