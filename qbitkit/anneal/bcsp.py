@@ -12,7 +12,7 @@ def new(self='BINARY'):
     return dbc
 
 
-class convert:
+class Convert:
     def to_bqm(self):
         """Stitch a given Constraint Solving Problem into a BQM.
 
