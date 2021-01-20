@@ -41,7 +41,7 @@ class Circuit:
 
 class Translate:
     def translate_gate(op='h',
-                       input_circuit=circuit.new(2, 2, 1),
+                       input_circuit=Circuit.new(2, 2, 1),
                        targetA=0,
                        targetB=1,
                        targetC=2,
@@ -141,7 +141,7 @@ class Translate:
         return input_circuit
 
     def df_circuit(df=fr.get_frame(),
-                   input_circuit=circuit.new()):
+                   input_circuit=Circuit.new()):
         """Converts a Circuit DataFrame into a Qiskit QuantumCircuit by iterating over the DataFrame and turning each row of the dataframe into a gate or set of gates.
 
         Args:
@@ -154,7 +154,7 @@ class Translate:
             targetA = row['targetA']
             targetB = row['targetB']
             targetC = row['targetC']
-            circuit = translate.translate_gate(input_circuit=input_circuit,
+            circuit = Translate.translate_gate(input_circuit=input_circuit,
                                                op=qcgates,
                                                targetA=targetA,
                                                targetB=targetB,
