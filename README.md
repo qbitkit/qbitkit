@@ -47,7 +47,6 @@ For the time being, documentation is hosted at:
 
 ## Python Version Compatibility
 The following versions of Python are supported:
-* 3.6
 * 3.7
 * 3.8
 * 3.9
