@@ -57,6 +57,7 @@ class Solve:
         Args:
             self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Satisfaction Problem to solve.
             sampler(dimod.meta.SamplerABCMeta): The D-Wave sampler to use when solving the given CSP.
+            shots(int): A positive integer describing the number of shots. Can not be higher than 10000. (default 1000)
         Returns:
             dict: a dictionary containing the results from the sampler."""
         bqm = Convert.to_bqm(self)
