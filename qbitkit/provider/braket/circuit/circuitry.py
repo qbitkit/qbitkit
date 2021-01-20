@@ -175,14 +175,23 @@ class Translate:
             input_circuit = None
             return input_circuit
     def df_circuit(df=fr.get_frame(),
-                   input_circuit=braket_circuit()):
+                   input_circuit=braket_circuit(),
+                   fill_nan=True,
+                   fill_nan_value=int(-1)):
         """Converts a Circuit DataFrame into a Braket Circuit by iterating over the DataFrame and turning each row of the dataframe into a gate or set of gates.
 
         Args:
             df (pandas.DataFrame): specify a Circuit DataFrame to convert to a Braket Circuit. (default fr.get_frame())
             input_circuit (braket.circuits.Circuit): specify a circuit to append the translated circuit's contents to. (default braket_circuit())
+            fill_nan (bool): whether or not to replace NaN values with a specified value. (default True)
+            fill_nan_value (int): a value to replace NaN values with. (default int(-1))
         Returns:
             braket.circuits.Circuit: Braket Circuit translated from specified DataFrame"""
+
+        if fill_nan is True:
+            df = fr.fill_nan(df,
+                             fill_nan_value)
+
         for index, row in df.iterrows():
             qcgates = str(row['gate'])
             targetA = row['targetA']
