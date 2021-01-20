@@ -2,7 +2,7 @@ from datetime import datetime as dt
 
 
 class Log:
-    def timestamp(self):
+    def timestamp(self=None):
         """Returns the current time and date with lots of precision."""
         now = dt.now()
         now = str(now)
