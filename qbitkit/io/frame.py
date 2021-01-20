@@ -35,3 +35,15 @@ class Frame:
             __f__.excel.write(data_path=pth,
                               df=frame)
         return pth
+
+    def fill_nan(self=get_frame(),
+                 value=0):
+        """Fill NaN values with a specified value.
+
+        Args:
+            self(pandas.DataFrame): DataFrame to Fill NaN values on. (default get_frame())
+            value(int): Value to replace NaN values with. (default 0)
+        Returns:
+            pandas.DataFrame: DataFrame with NaN values replaced with the specified value."""
+        nan_values_replaced = self.fillna(value)
+        return nan_values_replaced
