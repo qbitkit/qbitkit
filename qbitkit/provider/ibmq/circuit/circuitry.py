@@ -1,6 +1,6 @@
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
 from qbitkit.error import error as qbitkit_error
-from qbitkit.io.frame import frame as fr
+from qbitkit.io.frame import Frame as fr
 
 
 def get_support_status():
@@ -11,7 +11,7 @@ def get_support_status():
     additional_notes = additional_notes + resource_name + ' '
     additional_notes = additional_notes + 'support, see '
     additional_notes = additional_notes + issue_url + ' .'
-    qbitkit_error.errors.support_status(feature_state=ibmq_support_status,
+    qbitkit_error.Errors.support_status(feature_state=ibmq_support_status,
                                         resource_name=resource_name,
                                         additional_notes=additional_notes)
     return ibmq_support_status
@@ -20,7 +20,7 @@ def get_support_status():
 get_support_status()
 
 
-class circuit:
+class Circuit:
     def new(nqreg=int(2),
             ncreg=int(2),
             nancl=int(2)):
@@ -37,9 +37,11 @@ class circuit:
         creg = ClassicalRegister(ncreg, 'creg')
         qcir = QuantumCircuit(qreg, creg, ancl)
         return qcir
-class translate:
+
+
+class Translate:
     def translate_gate(op='h',
-                       input_circuit=circuit.new(2,2,1),
+                       input_circuit=Circuit.new(2, 2, 1),
                        targetA=0,
                        targetB=1,
                        targetC=2,
@@ -113,8 +115,8 @@ class translate:
             return input_circuit
         if op == 'ccnot':
             input_circuit = input_circuit.toffoli(targetA,
-                                                targetB,
-                                                targetC)
+                                                  targetB,
+                                                  targetC)
             return input_circuit
         if op == 'crz':
             input_circuit = input_circuit.crz(control_qubit=targetA,
@@ -139,7 +141,7 @@ class translate:
         return input_circuit
 
     def df_circuit(df=fr.get_frame(),
-                   input_circuit=circuit.new()):
+                   input_circuit=Circuit.new()):
         """Converts a Circuit DataFrame into a Qiskit QuantumCircuit by iterating over the DataFrame and turning each row of the dataframe into a gate or set of gates.
 
         Args:
@@ -152,7 +154,7 @@ class translate:
             targetA = row['targetA']
             targetB = row['targetB']
             targetC = row['targetC']
-            circuit = translate.translate_gate(input_circuit=input_circuit,
+            circuit = Translate.translate_gate(input_circuit=input_circuit,
                                                op=qcgates,
                                                targetA=targetA,
                                                targetB=targetB,

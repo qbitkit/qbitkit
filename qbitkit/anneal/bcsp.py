@@ -1,8 +1,17 @@
 import dwavebinarycsp as _dbc
 
-def new(vartype='BINARY'):
-  dbc = _dbc.ConstraintSatisfactionProblem(vartype)
-  return dbc
+
+def new(self='BINARY'):
+    """Create an empty constraint satisfaction problem.
+
+    Args:
+        self(dimod.vartype): A string describing the variable type (either SPIN or BINARY) (default 'BINARY')
+    Returns:
+        dwavebinarycsp.ConstraintSatisfactionProblem: An empty constraint satisfaction problem."""
+    dbc = _dbc.ConstraintSatisfactionProblem(self)
+    return dbc
+
+
 class convert:
     def to_bqm(self):
         """Stitch a given Constraint Solving Problem into a BQM.
@@ -14,6 +23,7 @@ class convert:
 """
         bqm = _dbc.stitch(self)
         return bqm
+
     def to_ising(self):
         """Convert a given Constraint Solving Problem to an Ising.
 
@@ -24,6 +34,7 @@ class convert:
         bqm = convert.to_bqm(self)
         ising = bqm.to_ising()
         return ising
+
     def to_qubo(self):
         """Convert a given Constraint Solving Problem to a QUBO.
 

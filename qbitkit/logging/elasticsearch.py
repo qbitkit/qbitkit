@@ -1,7 +1,8 @@
 import elasticsearch as es
 from datetime import datetime as dt
 
-class util:
+
+class Utilities:
     def auto_ilm(index='qbitkit',
                  strftime='%Y-%m-%d'):
         """Automatically generates an index name for Elasticsearch to use when logging data to Elasticsearch. Doing this allows users to set up Index Lifecycle Management within Elasticsearch to define what happens to data past pre-defined retention periods.
@@ -12,11 +13,11 @@ class util:
         Returns:
             str: index template formatted for ILM"""
         date = dt.now().strftime(strftime)
-        ilm_index=f"{index}-{date}"
+        ilm_index = f"{index}-{date}"
         return ilm_index
 
 
-class es_connect:
+class ElasticsearchConnection:
     def using_api_key(api_key=None,
                       api_id=None,
                       elasticsearch_host='127.0.0.1',
@@ -29,10 +30,11 @@ class es_connect:
             elasticsearch_host (str): The hostname or IP address of the Elasticsearch server you are trying to authenticate to. (default '127.0.0.1')
             timeout (int): The timeout in seconds to use when waiting for the Elasticsearch server to respond. (default 60)"""
         es_connection = es.Elasticsearch([elasticsearch_host],
-                                        api_key=(api_key,
-                                                 api_id),
+                                         api_key=(api_key,
+                                                  api_id),
                                          timeout=timeout)
         return es_connection
+
     def using_http_auth(username='elastic',
                         password=None,
                         elasticsearch_host='127.0.0.1',
@@ -51,6 +53,7 @@ class es_connect:
                                                     password),
                                          timeout=timeout)
         return es_connection
+
     def get_connection(api_key=None,
                        api_id=None,
                        elasticsearch_host='127.0.0.1',
@@ -75,8 +78,10 @@ class es_connect:
                                                     http_password)
                                          )
         return es_connection
-class es_read:
-    class classic:
+
+
+class ElasticsearchRead:
+    class Classic:
 
         def read(connection=None,
                  index='qbitkit-*',
@@ -91,27 +96,28 @@ class es_read:
                 dict: Response from Elasticsearch to the query you send it."""
             res = connection.search(index=index,
                                     body=query)
-            return resel
+            return res
 
 
-class es_write:
-    class classic:
+class ElasticsearchWrite:
+    class Classic:
 
         def write(connection=None,
-                 index=util.auto_ilm(),
-                 doc=None,
-                 refresh=True):
+                  index=Utilities.auto_ilm(),
+                  doc=None,
+                  refresh=True):
             """Sends the query to the specified Elasticsearch host, and returns the result of the indexing query we sent.
 
             Args:
                 connection (dict): specify a connection to use when communicating with the Elasticsearch host. (default es_connect.get_connection())
                 index (str): specify the index template to use when writing to Elasticsearch. (default util.auto_ilm())
+                doc (dict): a dictionary containing the data you wish to write to Elasticsearch. (default None)
                 refresh (bool): when set to True, Elasticsearch will immediately refresh indices after we write to it. This makes documents available to search queries as soon as we send them to Elasticsearch. (default True)
             Returns:
                 dict: the response from the query we sent Elasticsearch"""
             result = connection.index(index=index,
                                       body=doc)
-            if refresh == True:
+            if refresh is True:
                 connection.indices.refresh(index=index)
             print(result)
             return result

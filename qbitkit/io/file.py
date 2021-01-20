@@ -4,13 +4,13 @@ from qbitkit.error import error as qbitkit_error
 
 def get_support_status():
     fileIO_support_status = 'experimental'
-    qbitkit_error.errors.support_status(feature_state=fileIO_support_status,
+    qbitkit_error.Errors.support_status(feature_state=fileIO_support_status,
                                         resource_name='file I/O')
     return fileIO_support_status
 
 get_support_status()
 
-class csv:
+class Csv:
     def read(data_path=None):
         """Read a CSV from a specified path.
 
@@ -31,7 +31,7 @@ class csv:
         df.to_csv(data_path)
         return data_path
 
-class json:
+class Json:
     def read(data_path=None):
         """Read JSON data from a file at a specified path.
 
@@ -54,7 +54,7 @@ class json:
         df.to_json(data_path)
         return data_path
 
-class excel:
+class Excel:
     def read(data_path=None):
         """Read Microsoft Office Excel data from a file at a specified path.
 

@@ -2,7 +2,7 @@ from braket.aws import AwsDevice as __AWS_Device__
 from braket.devices import local_simulator as __local_simulator__
 
 
-class connection:
+class Connection:
     def get_bucket(bucket=None,
                    prefix=None):
         """Get bucket from specified keyword arguments.
@@ -18,7 +18,7 @@ class connection:
               prefix)
         return s3
 
-class local:
+class Local:
     def sim(self):
         """Create a local simulator for AWS braket and return it.
 
@@ -29,7 +29,7 @@ class local:
         device = __local_simulator__
         return device
 
-class quantum_device:
+class QuantumDevice:
     def get_qpu_arn(vendor='ionq',
                     device='ionQdevice'):
         """Get ARN for a QPU based on specified vendor and device and return the ARN.
@@ -76,28 +76,28 @@ class quantum_device:
             return device_operations
         else:
             return device_operations
-class job:
+class Job:
     def get_job(device=None,
                 circuit=None,
                 s3loc=None,
                 shots=1000,
                 disable_qubit_rewiring=False):
-        """Create job from specified keyword arguments.
+        """Create Job from specified keyword arguments.
 
         Args:
             device (str): the AwsDevice() of the QPU or simulated QPU of your choice. (default None)
             circuit (braket.circuits.Circuit): the braket_circuit() of the translated circuit you wish to run on the QPU or simulated QPU. (default None)
-            shots (int): the number of shots, or reads that will be taken while executing the job on the QPU or simulated QPU (default 1000)
+            shots (int): the number of shots, or reads that will be taken while executing the Job on the QPU or simulated QPU (default 1000)
             s3loc (str): the bucket and result folder you wish to save/read results with (default None)
             disable_qubit_rewiring (bool): whether or not to disable qubit rewiring. You probably will not need to worry about using this argument in most cases. (default False)
         Returns:
             braket.aws.AwsQuantumTask: an AWS quantum task object"""
-        my_task = device.run(circuit=circuit,
-                             s3loc=s3loc,
+        my_task = device.run(task_specification=circuit,
+                             s3_destination_folder=s3loc,
                              shots=shots,
                              disable_qubit_rewiring=disable_qubit_rewiring)
         return my_task
-class annealing:
+class Annealing:
     def get_sampler(sampler=None,
                     bucket=None,
                     dwave_qpu="Advantage_system1"):

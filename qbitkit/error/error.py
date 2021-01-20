@@ -1,8 +1,8 @@
 from datetime import datetime as dt
 
 
-class log:
-    def timestamp():
+class Log:
+    def timestamp(self):
         """Returns the current time and date with lots of precision."""
         now = dt.now()
         now = str(now)
@@ -17,11 +17,11 @@ class log:
             print_msg (str): specify whether or not to print the message in addition to returning it as usual. (default False)
         Returns:
             str: timestamped and formatted message"""
-        message = str(log.timestamp()) + msg
+        message = str(Log.timestamp()) + msg
         if print_msg == True:
-            print(str(log.timestamp()), msg)
+            print(str(Log.timestamp()), msg)
         return message
-class errors:
+class Errors:
     def not_specified(resource=None,
                       level='Warning'):
         """Throw an error warning the user that a specified resource has not been specified.
@@ -30,7 +30,7 @@ class errors:
             resource (str): name of resource to use in error message. (default None)
             level (str): string with desired warning level (default 'Warning')"""
         message = f'{level}: No {resource} has been specified.'
-        log.msg(msg=message, print_msg=True)
+        Log.msg(msg=message, print_msg=True)
         return message
     def support_status(feature_state='experimental',
                        resource_name='this qbitkit feature',
@@ -44,6 +44,6 @@ class errors:
         Returns:
             str: the generated error message based on specified keyword arguments."""
         message = f"Support for {resource_name} is still in the '{feature_state}' stage. Please use with caution. {additional_notes}"
-        log.msg(msg=message,
+        Log.msg(msg=message,
                 print_msg=True)
         return message

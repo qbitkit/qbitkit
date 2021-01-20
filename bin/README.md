@@ -3,6 +3,9 @@
 ### `install.sh`
 * Description: Installs `qbitkit` into a new Python Virtual Environment.
 * Pre-requisites: You need Python3.x with the latest version of `pip` and `virtualenv` installed.
+### `install_without_venv.sh`
+* Description: Installs `qbitkit`.
+* Pre-requisites: You need Python3.x with the latest version of `pip` installed.
 ### `mkdocs.sh`
 * Description: Builds Documentation in specified format. For example, to build HTML documentation, `./mkdocs.sh html`
 * Pre-requisites: You need Python3.x with the latest version of `pip` and `virtualenv` installed.
