@@ -1,4 +1,4 @@
-import dwavebinarycsp as _dbc
+import dwavebinarycsp as __dbc__
 
 
 def new(self='BINARY'):
@@ -8,7 +8,7 @@ def new(self='BINARY'):
         self(dimod.vartype): A string describing the variable type (either SPIN or BINARY) (default 'BINARY')
     Returns:
         dwavebinarycsp.ConstraintSatisfactionProblem: An empty constraint satisfaction problem."""
-    dbc = _dbc.ConstraintSatisfactionProblem(self)
+    dbc = __dbc__.ConstraintSatisfactionProblem(self)
     return dbc
 
 
@@ -21,7 +21,7 @@ class Convert:
         Returns:
             dimod.binary_quadratic_model.BinaryQuadraticModel: BQM stitched together from the given Constraint Solving Problem.
 """
-        bqm = _dbc.stitch(self)
+        bqm = __dbc__.stitch(self)
         return bqm
 
     def to_ising(self):
