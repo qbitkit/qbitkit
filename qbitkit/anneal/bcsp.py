@@ -1,4 +1,5 @@
 import dwavebinarycsp as __dbc__
+from qbitkit.anneal import embed as __embed__
 
 
 def new(self='BINARY'):
@@ -45,3 +46,22 @@ class Convert:
         bqm = Convert.to_bqm(self)
         qubo = bqm.to_qubo()
         return qubo
+
+
+class Solve:
+    def solve(self=None,
+              sampler=None,
+              shots=int(1000)):
+        """Solves a given Constraint Satisfaction Problem using a given D-Wave Sampler.
+
+        Args:
+            self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Satisfaction Problem to solve.
+            sampler(dimod.meta.SamplerABCMeta): The D-Wave sampler to use when solving the given CSP.
+        Returns:
+            dict: a dictionary containing the results from the sampler."""
+        bqm = Convert.to_bqm(self)
+        embedded_sampler = __embed__.bqm(sampler,
+                                         bqm)
+        result = embedded_sampler.sample(bqm,
+                                         num_reads=shots)
+        return result
