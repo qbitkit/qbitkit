@@ -5,12 +5,12 @@ from dwave.system import LeapHybridDQMSampler as __LHDQMSampler__
 
 
 class Annealing:
-    def get_sampler(sampler=str('DWaveSampler'),
+    def get_sampler(self=str('DWaveSampler'),
                     retry_interval=int(-1)):
         """Create a new D-Wave Sampler based on a specified sampler type.
 
         Args:
-            sampler(str): D-Wave Sampler as a string. Can be 'DWaveSampler', 'DWaveCliqueSampler', 'LeapHybridSampler', or 'LeapHybridDQMSampler.' (default str('DWaveSampler'))
+            self(str): D-Wave Sampler as a string. Can be 'DWaveSampler', 'DWaveCliqueSampler', 'LeapHybridSampler', or 'LeapHybridDQMSampler.' (default str('DWaveSampler'))
             retry_interval(int): Interval in seconds to retry, or -1 to propogate SolverNotFound error to user (default int(-1))
         Returns:
             dimod.meta.SamplerABCMeta: A D-Wave Ocean SDK Plugin Sampler"""
