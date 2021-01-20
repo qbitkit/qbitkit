@@ -186,11 +186,31 @@ class Translate:
         for index, row in df.iterrows():
             qcgates = str(row['gate'])
             targetA = row['targetA']
-            targetB = row['targetB']
-            targetC = row['targetC']
-            angle = row['angle']
-            phi = row['phi']
-            theta = row['theta']
+            if 'targetB' in df.columns:
+                targetB = row['targetB']
+            else:
+                targetB = None
+
+            if 'targetC' in df.columns:
+                targetC = row['targetC']
+            else:
+                targetC = None
+
+            if 'angle' in df.columns:
+                angle = row['angle']
+            else:
+                angle = None
+
+            if 'phi' in df.columns:
+                phi = row['phi']
+            else:
+                phi = None
+
+            if 'theta' in df.columns:
+                theta = row['theta']
+            else:
+                theta = None
+
             circuit = Translate.translate_gate(input_circuit=input_circuit,
                                                op=qcgates,
                                                targetA=targetA,
