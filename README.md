@@ -45,7 +45,12 @@ print(job.result())
 For the time being, documentation is hosted at:
 * https://qbitkit-docs-temporary.neutralthreat.com
 
-
+## Python Version Compatibility
+The following versions of Python are supported:
+* 3.6
+* 3.7
+* 3.8
+Support is continually tested upon every commit to branch 'origin' for each Python version listed above.
 
 ## Installing `qbitkit`
 ### Anaconda3 (Windows/Mac/Linux)
