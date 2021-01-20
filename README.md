@@ -51,6 +51,7 @@ The following versions of Python are supported:
 * 3.7
 * 3.8
 * 3.9
+
 Support is continually tested upon every commit to branch 'origin' for each Python version listed above.
 
 ## Installing `qbitkit`
