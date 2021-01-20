@@ -103,7 +103,7 @@ class ElasticsearchWrite:
     class Classic:
 
         def write(connection=None,
-                  index=util.auto_ilm(),
+                  index=Utilities.auto_ilm(),
                   doc=None,
                   refresh=True):
             """Sends the query to the specified Elasticsearch host, and returns the result of the indexing query we sent.
