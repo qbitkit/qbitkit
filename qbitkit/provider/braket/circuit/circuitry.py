@@ -188,9 +188,15 @@ class Translate:
             targetA = row['targetA']
             targetB = row['targetB']
             targetC = row['targetC']
+            angle = row['angle']
+            phi = row['phi']
+            theta = row['theta']
             circuit = Translate.translate_gate(input_circuit=input_circuit,
                                                op=qcgates,
                                                targetA=targetA,
                                                targetB=targetB,
-                                               targetC=targetC)
+                                               targetC=targetC,
+                                               angle=angle,
+                                               phi=phi,
+                                               theta=theta)
         return circuit
