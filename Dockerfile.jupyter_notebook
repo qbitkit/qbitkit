@@ -1,6 +1,3 @@
-# Enable Jupyter Lab
-ENV JUPYTER_ENABLE_LAB=yes
-
 # Start from the base-notebook Jupyter Docker image
 FROM jupyter/base-notebook:latest
 
