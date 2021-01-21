@@ -30,9 +30,9 @@ class Solve:
         if auto_embed is True:
             embedded_sampler = __embed__.qubo(sampler,
                                               self)
-            result = embedded_sampler.sample(self,
-                                             num_reads=shots)
+            result = embedded_sampler.sample_qubo(self,
+                                                  num_reads=shots)
         elif auto_embed is False:
-            result = sampler.sample(self,
-                                    num_reads=shots)
+            result = sampler.sample_qubo(self,
+                                         num_reads=shots)
         return result
