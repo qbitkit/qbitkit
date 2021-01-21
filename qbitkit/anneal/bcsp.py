@@ -49,9 +49,9 @@ class Convert:
 
 
 class Solve:
-    def solve(self=None,
-              sampler=None,
-              shots=int(1000)):
+    def sampler(self=None,
+                sampler=None,
+                shots=int(1000)):
         """Solves a given Constraint Satisfaction Problem using a given D-Wave Sampler.
 
         Args:
