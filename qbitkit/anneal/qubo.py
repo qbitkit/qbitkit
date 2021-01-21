@@ -27,8 +27,6 @@ class Solve:
             auto_embed(bool): Whether or not to automatically embed the QUBO to the given sampler. (default True)
         Returns:
             dict: a dictionary containing the results from the sampler."""
-
-
         embedded_sampler = __embed__.qubo(sampler,
                                           self)
         result = embedded_sampler.sample(self,
