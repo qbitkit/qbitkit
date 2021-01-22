@@ -1,3 +1,4 @@
+from qbitkit.io.list import remove_value as __rmval__
 from qbitkit.qasm import generate as __gen__
 from qbitkit.io.frame import Frame as __fr__
 from os import linesep as __sep__
@@ -14,11 +15,7 @@ def gate(op=None,
     targetB(int): index of second target qubit to apply gate to for 2 and 3 qubit gates. (default None)
     targetB(int): index of the third target qubit to apply gate to for 3 qubit gates. (default None)"""
     targets = [targetA, targetB, targetC]
-    print(targets)
-    cleaned_targets = []
-    for target in targets:
-        if target is not None:
-            cleaned_targets.append(target)
+    cleaned_targets = __rmval__(op)
     qasm = __gen__.gate(op, cleaned_targets)
     return qasm
 
