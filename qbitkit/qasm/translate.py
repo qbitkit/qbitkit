@@ -3,6 +3,20 @@ from qbitkit.io.frame import Frame as __fr__
 from os import linesep as __sep__
 
 
+def gate(op=None,
+         targetA=None,
+         targetB=None,
+         targetC=None):
+    targets = [targetA, targetB, targetC]
+    print(targets)
+    cleaned_targets = []
+    for target in targets:
+        if target is not None:
+            cleaned_targets.append(target)
+    qasm = __gen__.gate(op, cleaned_targets)
+    return qasm
+
+
 def from_frame(self=None,
                qregs=5,
                cregs=5,
