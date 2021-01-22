@@ -3,12 +3,6 @@ import numpy as __np__
 
 
 class UCCSD(self=float(0.)):
-    """Create a UCCSD Ansatz.
-
-    Args:
-        self(float): Floating point describing the VQE parameter to be optimized. (default float(0.)
-    Returns:
-        pandas.DataFrame: Generated Ansatz circuit as a Pandas DataFrame."""
     def ansatz(a_theta=float(0.)):
         """Build a UCCSD ansatz circuit parametrized by a_theta per McArdle et al.
 
