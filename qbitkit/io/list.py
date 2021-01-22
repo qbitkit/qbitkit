@@ -6,8 +6,4 @@ def remove_value(self=list([]), value=None):
         value(*): Value to remove from list. Can be any value. (default None)
     Returns:
         list: List with specified values removed."""
-    cleaned_list = list([])
-    for item in self:
-        if item is not None:
-            cleaned_list = cleaned_list.append(item)
-    return cleaned_list
+    return [value for value in self if value]
