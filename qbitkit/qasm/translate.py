@@ -15,7 +15,7 @@ def gate(op=None,
     targetB(int): index of second target qubit to apply gate to for 2 and 3 qubit gates. (default None)
     targetB(int): index of the third target qubit to apply gate to for 3 qubit gates. (default None)"""
     targets = [targetA, targetB, targetC]
-    cleaned_targets = __rmval__(op)
+    cleaned_targets = __rmval__(targets, None)
     qasm = __gen__.gate(op, cleaned_targets)
     return qasm
 
