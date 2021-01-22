@@ -74,4 +74,4 @@ def from_frame(df=__fr__.get_frame(),
             circuit = circuit + __sep__ + qasmstr
         s = __sep__ + __sep__
         full_circuit = f"{__gen__.headers()}{s}{__gen__.registers(c=creg, q=qreg)}{s}{circuit}"
-        return circuit
+        return full_circuit
