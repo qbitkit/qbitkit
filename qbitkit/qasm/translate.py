@@ -7,6 +7,12 @@ def gate(op=None,
          targetA=None,
          targetB=None,
          targetC=None):
+    """Translate a single gate to QASM.
+
+    op(str): QASM2 gate to use.
+    targetA(int): index of first target qubit to apply gate to. (default None)
+    targetB(int): index of second target qubit to apply gate to for 2 and 3 qubit gates. (default None)
+    targetB(int): index of the third target qubit to apply gate to for 3 qubit gates. (default None)"""
     targets = [targetA, targetB, targetC]
     print(targets)
     cleaned_targets = []
