@@ -9,5 +9,5 @@ def remove_value(self=list([]), value=None):
     cleaned_list = list([])
     for item in self:
         if item is not None:
-            cleaned_list = self.append(item)
+            cleaned_list = cleaned_list.append(item)
     return cleaned_list
