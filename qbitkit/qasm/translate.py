@@ -20,75 +20,58 @@ def gate(op=None,
     return qasm
 
 
-def from_frame(self=None,
-               qregs=5,
-               cregs=5,
+def from_frame(df=__fr__.get_frame(),
+               qreg=5,
+               creg=5,
                fill_nan=True,
-               fill_nan_value=-1):
-    """Convert a DataFrame to a QASM2 string.
+               fill_nan_value=int(-1)):
+        """Converts a Circuit DataFrame into a Braket Circuit by iterating over the DataFrame and turning each row of the dataframe into a gate or set of gates.
 
-    Args:
-        self(pandas.DataFrame): a Pandas DataFrame to translate to QASM2.
-        qregs(int): Positive integer describing number of Qubits to use in the circuit, AKA the number of Quantum Registers. (default 5)
-        cregs(int): Positive integer describing number of classical registers to use in the circuit (default 5)
-        fill_nan(bool): whether or not to replace NaN values with a specified value. (default True)
-        fill_nan_value(int): a value to replace NaN values with if fill_nan is set to True. (default -1)
-    Returns:
-        str: Generated QASM2"""
+        Args:
+            df (pandas.DataFrame): specify a Circuit DataFrame to convert to a Braket Circuit. (default fr.get_frame())
+            qregs(int): Positive integer describing number of Qubits to use in the circuit, AKA the number of Quantum Registers. (default 5)
+            cregs(int): Positive integer describing number of classical registers to use in the circuit (default 5)            fill_nan (bool): whether or not to replace NaN values with a specified value. (default True)
+            fill_nan_value (int): a value to replace NaN values with. (default int(-1))
+        Returns:
+            braket.circuits.Circuit: Braket Circuit translated from specified DataFrame"""
 
-    if fill_nan is True:
-        df = __fr__.fill_nan(self,
+        if fill_nan is True:
+            df = __fr__.fill_nan(df,
                              fill_nan_value)
+        circuit = str("")
+        for index, row in df.iterrows():
+            qcgates = str(row['gate'])
+            targetA = row['targetA']
+            if 'targetB' in df.columns:
+                targetB = row['targetB']
+            else:
+                targetB = None
 
-    gates = list()
-    for index, row in self.iterrows():
+            if 'targetC' in df.columns:
+                targetC = row['targetC']
+            else:
+                targetC = None
 
-        qcgates = row['gate']
-        targetA = row['targetA']
+            if 'angle' in df.columns:
+                angle = row['angle']
+            else:
+                angle = None
 
-        if 'targetB' in df.columns:
-            targetB = row['targetB']
-        else:
-            targetB = None
+            if 'phi' in df.columns:
+                phi = row['phi']
+            else:
+                phi = None
 
-        if 'targetC' in df.columns:
-            targetC = row['targetC']
-        else:
-            targetC = None
+            if 'theta' in df.columns:
+                theta = row['theta']
+            else:
+                theta = None
 
-        if qcgates == 'measure':
-            dfgate = __gen__.measurement(qreg=targetA,
-                                         creg=targetB)
-        elif qcgates == 'cnot':
-            dfgate = 'cx'
-        elif qcgates == 'ccnot':
-            dfgate = 'ccx'
-        elif qcgates == 'i':
-            dfgate = 'id'
-        elif qcgates == 'si':
-            dfgate = 'sdg'
-        elif qcgates == 'ti':
-            dfgate = 'tdg'
-        else:
-            dfgate = qcgates
-
-        targetlist = list([targetA])
-
-        if targetB != None:
-            targetlist = targetlist.append(targetB)
-
-        if targetC != None:
-            targetlist = targetlist.append(targetC)
-
-        qasmgate = __gen__.gate(dfgate, targetlist)
-
-        gates = gates.append(qasmgate)
-
-    formatted_gates=str(__sep__)
-    for gate in gates:
-        qasm_formatted_gate = __gen__.gate(gate)
-        formatted_gates = f"{formatted_gates}{qasm_formatted_gate}{__sep__}"
-
-    formatted_qasm = f"{__gen__.headers()}{__sep__}{formatted_gates}"
-
-    return formatted_qasm
+            qasmstr = gate(op=qcgates,
+                           targetA=targetA,
+                           targetB=targetB,
+                           targetC=targetC,)
+            circuit = circuit + __sep__ + qasmstr
+        s = __sep__ + __sep__
+        full_circuit = f"{__gen__.headers()}{s}{__gen__.registers(c=creg, q=qreg)}{s}{circuit}"
+        return circuit
