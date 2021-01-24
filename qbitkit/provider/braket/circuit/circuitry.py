@@ -188,38 +188,61 @@ class Translate:
         Returns:
             braket.circuits.Circuit: Braket Circuit translated from specified DataFrame"""
 
+        # Replace NaN/None values in the DataFrame. This prevents errors when iterating over the DataFrame.
         if fill_nan is True:
             df = fr.fill_nan(df,
                              fill_nan_value)
 
+        # Iterate over each row in the DataFrame, so we can process each line one-by-one.
         for index, row in df.iterrows():
+            # Extract the name of the gate in the row and store it in a variable `qcgates`.
             qcgates = str(row['gate'])
+            # Extract first qubit target in the row, store it in `targetA`.
+            # # This is a required fieldm so we will skip checking if it exists.
             targetA = row['targetA']
+
+            # Check if the second qubit target is specified...
             if 'targetB' in df.columns:
+                # ... if it is, store it's value in targetB...
                 targetB = row['targetB']
             else:
+                # ... otherwise just set targetB to None.
                 targetB = None
 
+            # Check if the third qubit target is specified...
             if 'targetC' in df.columns:
+                # ... if it is, store it's value in targetC...
                 targetC = row['targetC']
             else:
+                # ... otherwise just set targetC to None.
                 targetC = None
 
+            # Check if the gate's angle parameter is set...
             if 'angle' in df.columns:
+                # ... if it is, store it's value in angle...
                 angle = row['angle']
             else:
+                # ... otherwise just set angle to None.
                 angle = None
 
+            # Check if the gate's phi parameter is set...
             if 'phi' in df.columns:
+                # ... if it is, store it's value in phi...
                 phi = row['phi']
             else:
+                # ... otherwise just set phi to None.
                 phi = None
 
+            # Check if the gate's theta parameter is specified...
             if 'theta' in df.columns:
+                # ... if it is, store it's value in theta...
                 theta = row['theta']
             else:
+                # ... otherwise just set theta to None.
                 theta = None
 
+            # Translate this row's values we just extracted into a quantum circuit
+            # # This also appends the circuit to the previous iteration(s) if there's >1 rows in the DataFrame.
             circuit = Translate.translate_gate(input_circuit=input_circuit,
                                                op=qcgates,
                                                targetA=targetA,
@@ -228,4 +251,5 @@ class Translate:
                                                angle=angle,
                                                phi=phi,
                                                theta=theta)
+        # Finally, return the completed circuit. Not too complex, eh?
         return circuit
