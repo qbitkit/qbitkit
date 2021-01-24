@@ -1,8 +1,8 @@
-from braket.circuits import Circuit as braket_circuit
-from braket.circuits import Gate as braket_gate
-from qbitkit.io.frame import Frame as fr
-import numpy as np
-import string
+from braket.circuits import Circuit as __braket_circuit__
+from braket.circuits import Gate as __braket_gate__
+from qbitkit.io.frame import Frame as __fr__
+import numpy as __np__
+import string as __str__
 
 
 class Info:
@@ -12,22 +12,22 @@ class Info:
         Returns:
             list: a list of all quantum logic gates in the Braket Python SDK."""
         # Get a list of all the gates by using a Comprehension to extract values from the SDK.
-        gate_set = [attr for attr in dir(braket_gate) if attr[0] in string.ascii_uppercase]
+        gate_set = [attr for attr in dir(__braket_gate__) if attr[0] in __str__.ascii_uppercase]
         # Return the list of gates
         return gate_set
 
 
 class Translate:
     def translate_gate(op='h',
-                       input_circuit=braket_circuit(),
+                       input_circuit=__braket_circuit__(),
                        targetA=0,
                        targetB=1,
                        targetC=2,
                        angle=0.15,
                        phi=0.15,
                        theta=0.15,
-                       unitary_matrix=np.array([[0,1],
-                                                [1,0]]),
+                       unitary_matrix=__np__.array([[0, 1],
+                                                    [1,0]]),
                        unitary_targets=[0]):
         """Translate individual circuit elements from a Circuit DataFrame into a Braket Circuit, returns a Braket Circuit.
 
@@ -210,8 +210,8 @@ class Translate:
             # Return a None if we can't translate the gate.
             input_circuit = None
             return input_circuit
-    def df_circuit(df=fr.get_frame(),
-                   input_circuit=braket_circuit(),
+    def df_circuit(df=__fr__.get_frame(),
+                   input_circuit=__braket_circuit__(),
                    fill_nan=True,
                    fill_nan_value=int(-1)):
         """Converts a Circuit DataFrame into a Braket Circuit by iterating over the DataFrame and turning each row of the dataframe into a gate or set of gates.
@@ -226,8 +226,8 @@ class Translate:
 
         # Replace NaN/None values in the DataFrame. This prevents errors when iterating over the DataFrame.
         if fill_nan is True:
-            df = fr.fill_nan(df,
-                             fill_nan_value)
+            df = __fr__.fill_nan(df,
+                                 fill_nan_value)
 
         # Iterate over each row in the DataFrame, so we can process each line one-by-one.
         for index, row in df.iterrows():
