@@ -6,9 +6,11 @@ import string as __str__
 
 
 class Info:
-    def get_gates(self):
+    def get_gates(self=None): # Parameter `self` does nothing.
         """Return all usable gates from the Braket SDK. Takes no keyword arguments.
 
+        Args:
+            self(None): Unused parameter, has no effect.
         Returns:
             list: a list of all quantum logic gates in the Braket Python SDK."""
         # Get a list of all the gates by using a Comprehension to extract values from the SDK.
@@ -18,17 +20,18 @@ class Info:
 
 
 class Translate:
-    def translate_gate(op='h',
-                       input_circuit=__braket_circuit__(),
-                       targetA=0,
-                       targetB=1,
-                       targetC=2,
-                       angle=0.15,
-                       phi=0.15,
-                       theta=0.15,
-                       unitary_matrix=__np__.array([[0, 1],
-                                                    [1,0]]),
-                       unitary_targets=[0]):
+    def translate_gate(op='h', # The Name of the gate to translate. Default is 'h' for Hadamard.
+                       input_circuit=__braket_circuit__(), # Input circuit to append generated circuit to.
+                       targetA=0, # First qubit target, required.
+                       targetB=1, # Second target qubit, required for 2 or 3 qubit gates.
+                       targetC=2, # Third target qubit, required for 3 qubit gates.
+                       angle=0.15, # An angle to set for the gate, if the gate supports such a setting.
+                       phi=0.15, # A phi value to set for the gate, if the gate supports such a setting.
+                       theta=0.15, # A theta value to set for the gate, if the gate supports such a setting.
+                       unitary_matrix=__np__.array([[0, 1], # A numpy matrix to use for the gate,
+                                                    [1,0]]),# # if the gate supports such a setting.
+                       unitary_targets=[0] # Targets to use for the unitary gate.
+                       ):
         """Translate individual circuit elements from a Circuit DataFrame into a Braket Circuit, returns a Braket Circuit.
 
         Args:
@@ -210,10 +213,10 @@ class Translate:
             # Return a None if we can't translate the gate.
             input_circuit = None
             return input_circuit
-    def df_circuit(df=__fr__.get_frame(),
-                   input_circuit=__braket_circuit__(),
-                   fill_nan=True,
-                   fill_nan_value=int(-1)):
+    def df_circuit(df=__fr__.get_frame(), # Specify a DataFrame to translate.
+                   input_circuit=__braket_circuit__(), # Specify a circuit to append translated circuit to.
+                   fill_nan=True, # Fill NaN values in DataFrame if True.
+                   fill_nan_value=int(-1)): # If fill_nan=True, fill NaN values in the dataframe with this value.
         """Converts a Circuit DataFrame into a Braket Circuit by iterating over the DataFrame and turning each row of the dataframe into a gate or set of gates.
 
         Args:
@@ -226,8 +229,9 @@ class Translate:
 
         # Replace NaN/None values in the DataFrame. This prevents errors when iterating over the DataFrame.
         if fill_nan is True:
-            df = __fr__.fill_nan(df,
-                                 fill_nan_value)
+            df = __fr__.fill_nan(
+                                 df, # the dataframe to operate on
+                                 fill_nan_value) # the value to replace NaN values with.
 
         # Iterate over each row in the DataFrame, so we can process each line one-by-one.
         for index, row in df.iterrows():
