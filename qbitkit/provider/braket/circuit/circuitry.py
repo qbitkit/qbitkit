@@ -11,7 +11,9 @@ class Info:
 
         Returns:
             list: a list of all quantum logic gates in the Braket Python SDK."""
+        # Get a list of all the gates by using a Comprehension to extract values from the SDK.
         gate_set = [attr for attr in dir(braket_gate) if attr[0] in string.ascii_uppercase]
+        # Return the list of gates
         return gate_set
 
 
@@ -202,8 +204,10 @@ class Translate:
                                                 targetB,
                                                 phi)
             return input_circuit
+        # Print an error in case something goes wrong.
         else:
             print(f"[ERROR]: Gate {op} not found. Returning an empty object with a value of None.")
+            # Return a None if we can't translate the gate.
             input_circuit = None
             return input_circuit
     def df_circuit(df=fr.get_frame(),
