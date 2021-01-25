@@ -5,7 +5,7 @@ steps:
     args: ['build','-t','us.gcr.io/$PROJECT_ID/qbitkit-build-then-host-docs:latest','-f','doc/sphinx/Dockerfile.build_then_host','./doc/sphinx/']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build','-t','us.gcr.io/$PROJECT_ID/qbitkit-build-then-host-site:latest','-f','doc/sphinx/Dockerfile.build_then_host_full','./doc/sphinx/']
-timeout: 1200s
+timeout: 2400s
 images:
   - 'us.gcr.io/$PROJECT_ID/qbitkit-notebook:latest'
   - 'us.gcr.io/$PROJECT_ID/qbitkit-build-then-host-docs:latest'
