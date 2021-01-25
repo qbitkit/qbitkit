@@ -9,7 +9,9 @@ def new(self='BINARY'):
         self(dimod.vartype): A string describing the variable type (either SPIN or BINARY) (default 'BINARY')
     Returns:
         dwavebinarycsp.ConstraintSatisfactionProblem: An empty constraint satisfaction problem."""
+    # Create an empty CSP.
     dbc = __dbc__.ConstraintSatisfactionProblem(self)
+    # Return the empty CSP.
     return dbc
 
 
@@ -22,7 +24,9 @@ class Convert:
         Returns:
             dimod.binary_quadratic_model.BinaryQuadraticModel: BQM stitched together from the given Constraint Solving Problem.
 """
+        # Convert the given CSP to a BQM.
         bqm = __dbc__.stitch(self)
+        # Return the BQM.
         return bqm
 
     def to_ising(self=None):
@@ -32,8 +36,11 @@ class Convert:
             self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Solving Problem to convert to an Ising. (default None)
         Returns:
             tuple: the specified Constraint Solving Problem expressed as an Ising."""
+        # Convert the given CSP to a BQM.
         bqm = Convert.to_bqm(self)
+        # Convert the BQM to an Ising.
         ising = bqm.to_ising()
+        # Return the Ising.
         return ising
 
     def to_qubo(self=None):
@@ -43,8 +50,11 @@ class Convert:
             self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Solving Problem to convert to a QUBO. (default None)
         Returns:
             tuple: the specified CSP converted to a QUBO."""
+        # Convert the given CSP to a BQM.
         bqm = Convert.to_bqm(self)
+        # Convert the BQM to a QUBO.
         qubo = bqm.to_qubo()
+        # Return the QUBO.
         return qubo
 
 
@@ -60,9 +70,13 @@ class Solve:
             shots(int): A positive integer describing the number of shots. Can not be higher than 10000. (default 1000)
         Returns:
             dict: a dictionary containing the results from the sampler."""
+        # Convert the CSP to a BQM.
         bqm = Convert.to_bqm(self)
+        # Embed the BQM on to the sampler.
         embedded_sampler = __embed__.bqm(sampler,
                                          bqm)
+        # Sample using the embedded sampler.
         result = embedded_sampler.sample(bqm,
                                          num_reads=shots)
+        # Return the result from sampling.
         return result
