@@ -12,60 +12,30 @@ class UCCSD(self=float(0.)):
             pandas.DataFrame: generated ansatz circuit as a Pandas DataFrame."""
         # Initialize Hartree-Fock State
         hartree_fock = __f__.Frame.get_frame(data={'gate': ['x', 'x'],
-                                                   'targetA': [2, 3],
-                                                   'targetB': [None, None],
-                                                   'targetC': [None, None],
-                                                   'phi': [None, None],
-                                                   'theta': [None, None],
-                                                   'angle': [None, None]})
+                                                   'targetA': [2, 3],})
         # Perform Initial Rotations to measure in Y & X bases
         initial_rots = __f__.Frame.get_frame(data={'gate': ['rx', 'h', 'h', 'h'],
                                                    'targetA': [3, 0, 1, 2],
-                                                   'targetB': [None, None, None, None],
-                                                   'targetC': [None, None, None, None],
-                                                   'phi': [None, None, None, None],
-                                                   'theta': [None, None, None, None],
                                                    'angle': [__np__.pi/2, None, None, None], })
         # Use Controlled NOTs to entangle all 4 qubits used in the ansatz
         entangle_with_cnots = __f__.Frame.get_frame(data={'gate': ['cnot', 'cnot', 'cnot'],
                                                           'targetA': [3, 2, 1],
-                                                          'targetB': [2, 1, 0],
-                                                          'targetC': [None, None, None],
-                                                          'phi': [None, None, None],
-                                                          'theta': [None, None, None],
-                                                          'angle': [None, None, None]})
+                                                          'targetB': [2, 1, 0],})
         # Perform the rotation in Z-basis
         rotation_in_z_basis = __f__.Frame.get_frame(data={'gate': 'rz',
                                                           'targetA': [0],
-                                                          'targetB': [None],
-                                                          'targetC': [None],
-                                                          'phi': [None],
-                                                          'theta': [a_theta],
-                                                          'angle': [None]})
+                                                          'theta': [a_theta],})
         # Uncompute rotations, step 1/3: using Controlled NOTs
         uncompute_rotations_with_cnots = __f__.Frame.get_frame(data={'gate': ['cnot', 'cnot', 'cnot'],
                                                                      'targetA': [3, 2, 1],
-                                                                     'targetB': [2, 1, 0],
-                                                                     'targetC': [None, None, None],
-                                                                     'phi': [None, None, None],
-                                                                     'theta': [None, None, None],
-                                                                     'angle': [None, None, None]})
+                                                                     'targetB': [2, 1, 0],})
         # Uncompute rotations, step 2/3: using Hadamards
         uncompute_rotations_with_hadamards = __f__.Frame.get_frame(data={'gate': ['h', 'h', 'h'],
-                                                                         'targetA': [3, 2, 1],
-                                                                         'targetB': [None, None, None],
-                                                                         'targetC': [None, None, None],
-                                                                         'phi': [None, None, None],
-                                                                         'theta': [None, None, None],
-                                                                         'angle': [None, None, None]})
+                                                                         'targetA': [3, 2, 1],})
         # Uncompute rotations, step 3/3: by rotating around X-axis
         uncompute_rotations_with_rotation_in_x_basis = __f__.Frame.get_frame(data={'gate': 'rz',
                                                                                    'targetA': [0],
-                                                                                   'targetB': [None],
-                                                                                   'targetC': [None],
-                                                                                   'phi': [None],
-                                                                                   'theta': [-__np__.pi/2.],
-                                                                                   'angle': [None]})
+                                                                                   'theta': [-__np__.pi/2.],})
         # Put each piece of the circuit in a list we can iterate over
         pieces = [hartree_fock,
                   initial_rots,
