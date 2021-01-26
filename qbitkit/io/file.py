@@ -18,7 +18,9 @@ class Csv:
             data_path (str): specify a path to read CSV data from. (default None)
         Returns:
             pandas.DataFrame: Pandas DataFrame from the contents of the CSV file we read"""
+        # Read a DataFrame from the specified path.
         df = pd.read_csv(data_path)
+        # Return the DataFrame.
         return df
     def write(data_path=None,
               df=pd.DataFrame()):
@@ -28,7 +30,9 @@ class Csv:
             data_path (str): specify a path to write the CSV data to. (default None)
         Returns:
             str: the path we wrote the CSV data to"""
+        # Write a CSV file to the specified path.
         df.to_csv(data_path)
+        # Return the path the data was written to.
         return data_path
 
 class Json:
@@ -39,7 +43,9 @@ class Json:
             data_path (str) specify a path to read JSON data from. (default None)
         Returns:
             pandas.DataFrame: Pandas DataFrame from the contents of the JSON file we read"""
+        # Read a JSON file from the specified path.
         df = pd.read_json(data_path)
+        # Return the DataFrame.
         return df
 
     def write(data_path=None,
@@ -51,7 +57,9 @@ class Json:
             df (pandas.DataFrame): DataFrame you wish to write to disk. (default pandas.DataFrame())
         Returns:
             str: the path you wrote the specified DataFrame to"""
+        # Write a JSON file to the specified path.
         df.to_json(data_path)
+        # Return the path the JSON data was written to.
         return data_path
 
 class Excel:
@@ -63,7 +71,9 @@ class Excel:
             df (pandas.DataFrame): DataFrame you wish to write to disk. (default pandas.DataFrame())
         Returns:
             str: the path you wrote the specified DataFrame to"""
+        # Read an Excel (XLSX) file from the specified path.
         df = pd.read_excel(data_path)
+        # Return the DataFrame.
         return df
     def write(data_path=None,
               df=pd.DataFrame()):
@@ -74,5 +84,7 @@ class Excel:
             df (pandas.DataFrame): DataFrame you wish to write to disk. (default pandas.DataFrame())
         Returns:
             str: the path you wrote the specified DataFrame to."""
+        # Write an Excel (XLSX) file to the specified path.
         df.to_(data_path)
+        # Return the path the Excel (XLSX) file was written to.
         return data_path
