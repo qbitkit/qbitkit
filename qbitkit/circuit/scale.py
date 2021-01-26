@@ -11,7 +11,8 @@ def circuit(circuit=None,
         provider(qbitkit_provider): specify a provider from qbitkit to use when appending gates (default None)
     Returns:
         provider_specific_quantum_circuit: scaled up provider-specific quantum circuit"""
-    for x in range(iterations):
+    iteration_range = range(iterations)
+    for x in iteration_range:
         circuit = provider.circuit.scale.append(circuit)
     return circuit
 def frame(frame=f.Frame.get_frame(),
@@ -23,6 +24,7 @@ def frame(frame=f.Frame.get_frame(),
         iterations(int): the number of times to append the Pandas DataFrame to itself. (default 1)
     Returns:
         pandas.DataFrame: scaled up Pandas DataFrame"""
-    for x in range(iterations):
+    iteration_range = range(iterations)
+    for x in iteration_range:
         frame = frame.append(frame)
     return frame
