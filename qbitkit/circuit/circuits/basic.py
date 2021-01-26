@@ -9,8 +9,7 @@ def bell(append=None):
         pandas.DataFrame: Pandas DataFrame containing the Bell State Circuit, or a DataFrame you specified with the Bell State Circuit appended to it."""
     bellFrame = f.Frame.get_frame(data={'gate': ['h', 'cnot'],
                                         'targetA': [0, 0],
-                                        'targetB': [None, 1],
-                                        'targetC': [None, None], })
+                                        'targetB': [None, 1],})
     if append == None:
         return bellFrame
     elif append != None:
