@@ -1,5 +1,4 @@
 import pandas as pd
-import os as pyos
 from qbitkit.error import error as qbitkit_error
 
 def get_support_status():
