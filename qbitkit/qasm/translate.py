@@ -40,8 +40,8 @@ def from_frame(df=__fr__.get_frame(),
 
         Args:
             df (pandas.DataFrame): specify a Circuit DataFrame to convert to a Braket Circuit. (default fr.get_frame())
-            qregs(int): Positive integer describing number of Qubits to use in the circuit, AKA the number of Quantum Registers. (default 5)
-            cregs(int): Positive integer describing number of classical registers to use in the circuit (default 5)            fill_nan (bool): whether or not to replace NaN values with a specified value. (default True)
+            qreg(int): Positive integer describing number of Qubits to use in the circuit, AKA the number of Quantum Registers. (default 5)
+            creg(int): Positive integer describing number of classical registers to use in the circuit (default 5)            fill_nan (bool): whether or not to replace NaN values with a specified value. (default True)
             fill_nan_value (int): a value to replace NaN values with. (default int(-1))
         Returns:
             braket.circuits.Circuit: Braket Circuit translated from specified DataFrame"""
