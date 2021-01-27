@@ -1,4 +1,15 @@
 from os import linesep as __linesep__
+from qbitkit.error.error import Errors as __err__
+
+
+def get_support_status():
+    fileIO_support_status = 'experimental'
+    __err__.support_status(feature_state=fileIO_support_status,
+                           resource_name='QASM2 Generation')
+    return fileIO_support_status
+
+
+get_support_status()
 
 
 def headers(qasm_version=float(2.0),
