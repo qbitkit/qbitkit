@@ -23,9 +23,11 @@ class Log:
         Returns:
             str: timestamped and formatted message"""
         message = str(Log.timestamp()) + msg
-        if print_msg == True:
+        if print_msg is True:
             print(str(Log.timestamp()), msg)
         return message
+
+
 class Errors:
     def not_specified(resource=None,
                       level='Warning'):
@@ -37,6 +39,7 @@ class Errors:
         message = f'{level}: No {resource} has been specified.'
         Log.msg(msg=message, print_msg=True)
         return message
+
     def support_status(feature_state='experimental',
                        resource_name='this qbitkit feature',
                        additional_notes=None):
