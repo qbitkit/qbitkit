@@ -1,4 +1,4 @@
-from datetime import datetime as dt
+from datetime import datetime as __dt__
 
 
 class Log:
@@ -9,7 +9,7 @@ class Log:
             self(NoneType): unused parameter that does absolutely nothing. (default None)
         Returns:
             str: string describing the current time and date."""
-        now = dt.now()
+        now = __dt__.now()
         now = str(now)
         now = '[@' + now + ']: '
         return now
