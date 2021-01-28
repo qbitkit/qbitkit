@@ -1,11 +1,11 @@
-import pandas as pd
-from qbitkit.error import error as qbitkit_error
+import pandas as __pd__
+from qbitkit.error import error as __qbitkit_error__
 
 
 def get_support_status():
     fileIO_support_status = 'experimental'
-    qbitkit_error.Errors.support_status(feature_state=fileIO_support_status,
-                                        resource_name='file I/O')
+    __qbitkit_error__.Errors.support_status(feature_state=fileIO_support_status,
+                                            resource_name='file I/O')
     return fileIO_support_status
 
 
@@ -21,11 +21,11 @@ class Csv:
         Returns:
             pandas.DataFrame: Pandas DataFrame from the contents of the CSV file we read"""
         # Read a DataFrame from the specified path.
-        df = pd.read_csv(data_path)
+        df = __pd__.read_csv(data_path)
         # Return the DataFrame.
         return df
     def write(data_path=None,
-              df=pd.DataFrame()):
+              df=__pd__.DataFrame()):
         """Write a CSV to a specified path.
 
         Args:
@@ -47,12 +47,12 @@ class Json:
         Returns:
             pandas.DataFrame: Pandas DataFrame from the contents of the JSON file we read"""
         # Read a JSON file from the specified path.
-        df = pd.read_json(data_path)
+        df = __pd__.read_json(data_path)
         # Return the DataFrame.
         return df
 
     def write(data_path=None,
-              df=pd.DataFrame()):
+              df=__pd__.DataFrame()):
         """Write JSON data to a file at a specified path.
 
         Args:
@@ -76,12 +76,12 @@ class Excel:
         Returns:
             str: the path you wrote the specified DataFrame to"""
         # Read an Excel (XLSX) file from the specified path.
-        df = pd.read_excel(data_path)
+        df = __pd__.read_excel(data_path)
         # Return the DataFrame.
         return df
 
     def write(data_path=None,
-              df=pd.DataFrame()):
+              df=__pd__.DataFrame()):
         """Write Microsoft Office Excel data to a file at a specified path.
 
         Args:
