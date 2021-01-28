@@ -12,11 +12,12 @@ class Connection:
             prefix (str): name of the folder inside the bucket to save/read results with(default None)
         Returns:
             str: S3 bucket for communicating with Braket"""
-        if prefix == None:
+        if prefix is None:
             prefix = "results"
         s3 = (bucket,
               prefix)
         return s3
+
 
 class Local:
     def sim(self):
@@ -29,6 +30,7 @@ class Local:
         device = __local_simulator__
         return device
 
+
 class QuantumDevice:
     def get_qpu_arn(vendor='ionq',
                     device='ionQdevice'):
@@ -39,12 +41,13 @@ class QuantumDevice:
             device (str): the device you would like to choose as your QPU (default 'ionQdevice')
         Returns:
             str: selected QPU ARN"""
-        if vendor == None:
+        if vendor is None:
             print('Warning: No quantum vendor specified')
-        if device == None:
+        if device is None:
             print('Warning: No quantum device specified')
         arn = 'arn:aws:braket:::device/qpu/' + vendor + '/' + device
         return arn
+
     def get_sim_arn(vendor='amazon',
                     device='sv1'):
         """Get ARN for a simulator from the specified vendor and device and return it.
@@ -56,6 +59,7 @@ class QuantumDevice:
             str: ARN of selected simulator."""
         arn = 'arn:aws:braket:::device/quantum-simulator/' + vendor + '/' + device
         return arn
+
     def get_device(arn=get_sim_arn()):
         """Get device from specified ARN and return it as an AwsDevice().
 
@@ -68,14 +72,16 @@ class QuantumDevice:
     def get_device_ops(device=None,
                        print_result=False):
         device_operations = device.properties.dict()['action']['braket.ir.jaqcd.program']['supportedOperations']
-        if print_result == True:
+        if print_result is True:
             print('Quantum Gates supported by {}:\n {}'.format(device,
                                                                device_operations))
             return device_operations
-        elif print_result == False:
+        elif print_result is False:
             return device_operations
         else:
             return device_operations
+
+
 class Job:
     def get_job(device=None,
                 circuit=None,
@@ -97,6 +103,8 @@ class Job:
                              shots=shots,
                              disable_qubit_rewiring=disable_qubit_rewiring)
         return my_task
+
+
 class Annealing:
     def get_sampler(sampler=None,
                     bucket=None,
