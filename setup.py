@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="qbitkit", # Replace with your own username
+    name="qbitkit",
     version="origin",
     author="qbitkit Team",
     author_email="brianlechthaler@protonmail.ch",
