@@ -1,5 +1,5 @@
-import elasticsearch as es
-from datetime import datetime as dt
+import elasticsearch as __es__
+from datetime import datetime as __dt__
 
 
 class Utilities:
@@ -13,7 +13,7 @@ class Utilities:
         Returns:
             str: index template formatted for ILM"""
         # Get the date in the given strftime formatting.
-        date = dt.now().strftime(strftime)
+        date = __dt__.now().strftime(strftime)
         # Create a string with the index name, followed by a dash, followed by the date in the given strftime format.
         ilm_index = f"{index}-{date}"
         # Return the generated index name.
@@ -33,10 +33,10 @@ class ElasticsearchConnection:
             elasticsearch_host (str): The hostname or IP address of the Elasticsearch server you are trying to authenticate to. (default '127.0.0.1')
             timeout (int): The timeout in seconds to use when waiting for the Elasticsearch server to respond. (default 60)"""
         # Create an Elasticsearch connection object from specified parameters.
-        es_connection = es.Elasticsearch([elasticsearch_host],
-                                         api_key=(api_key,
+        es_connection = __es__.Elasticsearch([elasticsearch_host],
+                                             api_key=(api_key,
                                                   api_id),
-                                         timeout=timeout)
+                                             timeout=timeout)
         # Return the Elasticsearch Connection object.
         return es_connection
 
@@ -54,10 +54,10 @@ class ElasticsearchConnection:
         Returns:
             elasticsearch.Elasticsearch: Elasticsearch connection object for reading/writing data to Elasticsearch"""
         # Create an Elasticsearch connection object rom specified parameters.
-        es_connection = es.Elasticsearch([elasticsearch_host],
-                                         http_auth=(username,
+        es_connection = __es__.Elasticsearch([elasticsearch_host],
+                                             http_auth=(username,
                                                     password),
-                                         timeout=timeout)
+                                             timeout=timeout)
         # Return the Elasticsearch Connection object.
         return es_connection
 
@@ -78,13 +78,13 @@ class ElasticsearchConnection:
         Returns:
             dict: The Elasticsearch connection generated from specified keyword parameters"""
         # Create an Elasticsearch Connection object from specified parameters.
-        es_connection = es.Elasticsearch([elasticsearch_host],
-                                         api_key=(api_key,
+        es_connection = __es__.Elasticsearch([elasticsearch_host],
+                                             api_key=(api_key,
                                                   api_id),
-                                         timeout=timeout,
-                                         http_auth=(http_user,
+                                             timeout=timeout,
+                                             http_auth=(http_user,
                                                     http_password)
-                                         )
+                                             )
         # Return the Elasticsearch Connection object.
         return es_connection
 
