@@ -1,9 +1,10 @@
 # Importing standard Qiskit libraries
-from qiskit import execute, QuantumCircuit
-from qiskit.providers.ibmq import *
+from qiskit import execute
+from qiskit import QuantumCircuit
+from qiskit.providers.ibmq import IBMQ, least_busy
 from qiskit.providers import aer as a
 from qiskit.providers import basicaer as ba
-from qiskit.visualization import *
+from qiskit.visualization import plot_histogram
 from qbitkit.error import error as qbitkit_error
 
 
