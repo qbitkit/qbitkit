@@ -1,4 +1,4 @@
-from qbitkit.io import frame as f
+from qbitkit.io import frame as __f__
 
 def circuit(circuit=None,
             iterations=1,
@@ -19,7 +19,7 @@ def circuit(circuit=None,
         circuit = provider.circuit.scale.append(circuit)
     # Return scaled-up circuit.
     return circuit
-def frame(frame=f.Frame.get_frame(),
+def frame(frame=__f__.Frame.get_frame(),
           iterations=1):
     """Scale a circuit Pandas DataFrame by appending a given Pandas DataFrame to iteself for a specified number of iterations
 
