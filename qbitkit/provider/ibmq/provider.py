@@ -1,11 +1,12 @@
 # Importing standard Qiskit libraries
-from qiskit import execute
-from qiskit import QuantumCircuit
-from qiskit.providers.ibmq import IBMQ, least_busy
-from qiskit.providers import aer as a
-from qiskit.providers import basicaer as ba
-from qiskit.visualization import plot_histogram
-from qbitkit.error import error as qbitkit_error
+from qiskit import execute as __execute__
+from qiskit import QuantumCircuit as __QuantumCircuit__
+from qiskit.providers.ibmq import IBMQ as __IBMQ__
+from qiskit.providers.ibmq import least_busy as __least_busy__
+from qiskit.providers import aer as __a__
+from qiskit.providers import basicaer as __ba__
+from qiskit.visualization import plot_histogram as __plot_histogram__
+from qbitkit.error import error as __qbitkit_error__
 
 
 def get_support_status():
@@ -14,9 +15,9 @@ def get_support_status():
 
     additional_notes = f'For more information on forthcoming {resource_name} support, \
     see https://github.com/brianlechthaler/qbitkit/issues/2'
-    qbitkit_error.Errors.support_status(feature_state=ibmq_support_status,
-                                        resource_name=resource_name,
-                                        additional_notes=additional_notes)
+    __qbitkit_error__.Errors.support_status(feature_state=ibmq_support_status,
+                                            resource_name=resource_name,
+                                            additional_notes=additional_notes)
     return ibmq_support_status
 
 
@@ -33,7 +34,7 @@ class Connection:
             hub (str): The hub to pick IBM Q machines from. (default 'ibm-q')
         Returns:
             qiskit.providers.BaseProvider: the IBMQ provider"""
-        provider = IBMQ.get_account(hub)
+        provider = __IBMQ__.get_account(hub)
         return provider
 
 
@@ -45,7 +46,7 @@ class Local:
             simulator(str): Name of the simulator to use (default 'qasm_simulator')
         Returns:
             qiskit.providers.BaseBackend: the Aer simulator from Qiskit"""
-        a.get_backend(simulator)
+        __a__.get_backend(simulator)
 
     def basic_aer(simulator='qasm_simulator'):
         """Create a Basic Aer simulator from Qiskit.
@@ -54,7 +55,7 @@ class Local:
             simulator(str): Name of the simulator to use (default 'qasm_simulator')
         Returns:
             qiskit.providers.BaseBackend: the BasicAer simulator from Qiskit"""
-        ba.get_backend(simulator)
+        __ba__.get_backend(simulator)
     def sim(simulator='qasm_simulator',
             backend='basic_aer'):
         """Create an IBMQ Simulator.
@@ -88,19 +89,19 @@ class Job:
             qasm (str): A string containing valid QASM 2.0 to run. Specifying this overrides circuit. (default str(""))
             backend (qiskit.providers.ibmq.IBMQBackend): the backend to use. (default None)
             shots (int): the number of shots or 'reads' to take when executing on QPU. (default 8192)"""
-        IBMQ.load_account()
-        provider = IBMQ.get_provider(hub='ibm-q')
+        __IBMQ__.load_account()
+        provider = __IBMQ__.get_provider(hub='ibm-q')
         filters = lambda b: b.configuration().n_qubits >= 3 and \
             not b.configuration().simulator and b.status().operational is True
 
         if qasm != str(""):
-            circuit = QuantumCircuit.from_qasm_str(qasm)
+            circuit = __QuantumCircuit__.from_qasm_str(qasm)
 
         if backend is None:
-            backend = least_busy(provider.backends(filters=filters))
-        job = execute(circuit,
-                      backend,
-                      shots)
+            backend = __least_busy__(provider.backends(filters=filters))
+        job = __execute__(circuit,
+                          backend,
+                          shots)
         return job
 
     def run_job(circuit=None,
@@ -119,7 +120,7 @@ class Job:
             return result
         elif show_graph is True:
             meas_result = result
-            plot_histogram(meas_result)
+            __plot_histogram__(meas_result)
             return result
         else:
             return result
