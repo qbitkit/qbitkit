@@ -1,6 +1,6 @@
 from qiskit import QuantumCircuit as __Quantum_Circuit__
 from qiskit import QuantumRegister as __Quantum_Register__
-from qiskit import Classical_Register as __Classical_Register__
+from qiskit import ClassicalRegister as __Classical_Register__
 from qbitkit.error import error as __qk_err__
 from qbitkit.io.frame import Frame as fr
 
