@@ -27,7 +27,7 @@ spec:
         app: qk-ipynb
     spec:
       containers:
-        - image: gcr.io/qbitkit/github.com/qbitkit/qbitkit
+        - image: us.gcr.io/$PROJECT_ID/qbitkit-notebook:latest
           imagePullPolicy: Always
           name: qbitkit-notebook-1
 ---
