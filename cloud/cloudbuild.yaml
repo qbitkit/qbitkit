@@ -11,4 +11,4 @@ timeout: 1800s
 images:
   - 'us.gcr.io/$PROJECT_ID/qbitkit-notebook:latest'
 #  - 'us.gcr.io/$PROJECT_ID/qbitkit-build-then-host-docs:latest'
-  - 'us.gcr.io/$PROJECT_ID/qbitkit-build-then-host-site:latest'
+#  - 'us.gcr.io/$PROJECT_ID/qbitkit-build-then-host-site:latest'
