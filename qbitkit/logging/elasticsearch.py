@@ -1,5 +1,5 @@
-import elasticsearch as es
-from datetime import datetime as dt
+import elasticsearch as __es__
+from datetime import datetime as __dt__
 
 
 class Utilities:
@@ -12,8 +12,11 @@ class Utilities:
             strftime (str): strftime formatting to use when representing timestamp in index name
         Returns:
             str: index template formatted for ILM"""
-        date = dt.now().strftime(strftime)
+        # Get the date in the given strftime formatting.
+        date = __dt__.now().strftime(strftime)
+        # Create a string with the index name, followed by a dash, followed by the date in the given strftime format.
         ilm_index = f"{index}-{date}"
+        # Return the generated index name.
         return ilm_index
 
 
@@ -29,10 +32,12 @@ class ElasticsearchConnection:
             api_id (str): The API ID for authenticating to Elasticsearch. (default None)
             elasticsearch_host (str): The hostname or IP address of the Elasticsearch server you are trying to authenticate to. (default '127.0.0.1')
             timeout (int): The timeout in seconds to use when waiting for the Elasticsearch server to respond. (default 60)"""
-        es_connection = es.Elasticsearch([elasticsearch_host],
-                                         api_key=(api_key,
+        # Create an Elasticsearch connection object from specified parameters.
+        es_connection = __es__.Elasticsearch([elasticsearch_host],
+                                             api_key=(api_key,
                                                   api_id),
-                                         timeout=timeout)
+                                             timeout=timeout)
+        # Return the Elasticsearch Connection object.
         return es_connection
 
     def using_http_auth(username='elastic',
@@ -48,10 +53,12 @@ class ElasticsearchConnection:
             timeout (int) The timeout in seconds to use when waiting for the Elasticsearch server to respond. (default 60)
         Returns:
             elasticsearch.Elasticsearch: Elasticsearch connection object for reading/writing data to Elasticsearch"""
-        es_connection = es.Elasticsearch([elasticsearch_host],
-                                         http_auth=(username,
+        # Create an Elasticsearch connection object rom specified parameters.
+        es_connection = __es__.Elasticsearch([elasticsearch_host],
+                                             http_auth=(username,
                                                     password),
-                                         timeout=timeout)
+                                             timeout=timeout)
+        # Return the Elasticsearch Connection object.
         return es_connection
 
     def get_connection(api_key=None,
@@ -70,13 +77,15 @@ class ElasticsearchConnection:
             http_password (str) set the password to use with authenticating to Elasticsearch over HTTP. (default None)
         Returns:
             dict: The Elasticsearch connection generated from specified keyword parameters"""
-        es_connection = es.Elasticsearch([elasticsearch_host],
-                                         api_key=(api_key,
+        # Create an Elasticsearch Connection object from specified parameters.
+        es_connection = __es__.Elasticsearch([elasticsearch_host],
+                                             api_key=(api_key,
                                                   api_id),
-                                         timeout=timeout,
-                                         http_auth=(http_user,
+                                             timeout=timeout,
+                                             http_auth=(http_user,
                                                     http_password)
-                                         )
+                                             )
+        # Return the Elasticsearch Connection object.
         return es_connection
 
 
@@ -94,8 +103,10 @@ class ElasticsearchRead:
                 query (str): set the query to run against the specified Elasticsearch host. (default {"query": {"match_all": {}}})
             Returns:
                 dict: Response from Elasticsearch to the query you send it."""
+            # Send a search query to Elasticsearch against the specified index using the specified query body.
             res = connection.search(index=index,
                                     body=query)
+            # Return the result we get back from Elasticsearch.
             return res
 
 
@@ -115,9 +126,14 @@ class ElasticsearchWrite:
                 refresh (bool): when set to True, Elasticsearch will immediately refresh indices after we write to it. This makes documents available to search queries as soon as we send them to Elasticsearch. (default True)
             Returns:
                 dict: the response from the query we sent Elasticsearch"""
+            # Write the specified document to the specified index.
             result = connection.index(index=index,
                                       body=doc)
+            # Check if refresh is enabled
             if refresh is True:
+                # Refresh the index we wrote to, to ensure what we wrote is immediately available to new search queries.
                 connection.indices.refresh(index=index)
+            # Print the result of the query.
             print(result)
+            # Return the result of the query.
             return result

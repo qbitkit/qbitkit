@@ -1,0 +1,52 @@
+# qbitkit Documentation Kubernetes Deployment
+# Creates deployment `qk-docs` with 3 replicas
+# Intended for qbitkit developer's internal use
+# (c) Copyright 2021 qbitkit. All rights reserved.
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: qk-docs
+  name: qk-docs
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: qk-docs
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: qk-docs
+    spec:
+      containers:
+        - image: us.gcr.io/$PROJECT_ID/qbitkit-build-then-host-docs:latest
+          imagePullPolicy: Always
+          name: qbitkit-docs-1
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: qk-docs
+  name: qk-docs-hpa-ybsd
+  namespace: default
+spec:
+  maxReplicas: 5
+  metrics:
+    - resource:
+        name: cpu
+        targetAverageUtilization: 80
+      type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: qk-docs

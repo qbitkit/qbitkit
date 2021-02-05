@@ -11,7 +11,8 @@ Once you've translated a DataFrame to your platform of choice, for example AWS B
 All of this, in just 3 lines of code (not counting import statements, comments, whitespace lines, or printing results.) 
 
 ### Example
-Here we make a Bell State and submit it to the Rigetti Aspen-8 Quantum Computer on AWS Braket.
+Here we make a Bell State and submit it to the Rigetti Aspen-8 Superconducting Quantum Computer on AWS Braket. 
+You can change `get_qpu_ar`n to `get_sim_arn` and clear the existing parameters if you want a simulator available 24/7, or switch out `rigetti` and `Aspen-8` with `ionq` and `ionQdevice` to use high Quantum Volume, extremely low gate error ion trapping quantum. Welcome to the future.
 
 ```python
 # Import relevant qbitkit Libraries
@@ -23,15 +24,11 @@ from qbitkit.io.frame import Frame as f
 circuit = c.Translate.df_circuit(df=f.get_frame(
   data={'gate': ['h', 'cnot'],
         'targetA': [0, 0],
-        'targetB': [None, 1],
-        'targetC': [None, None],
-        'angle': [None, None],
-        'phi': [None, None],
-        'theta': [None, None]}))
+        'targetB': [None, 1],}))
 # Run the circuit on the Rigetti Aspen-8 hosted on AWS Braket
 job = p.Job.get_job(device=p.QuantumDevice.get_device(
   p.QuantumDevice.get_qpu_arn(
-    # Pick the Aspen-8 Quantum Computer by Rigetti as our QPU
+    # Pick the Aspen-8 Quantum Computer by Rigetti as our QPU (IonQ works too!)
     vendor='rigetti', device='Aspen-8')),
   circuit=circuit,
   s3loc=p.Connection.get_bucket(
@@ -122,7 +119,7 @@ Support is continually tested upon every commit to branch 'origin' for each Pyth
     * Public
     * Released: January 1st, 2021
 * Status:
-    * Active development as of December 16th
+    * Active development as of December 16th, 2020
 * Health:
     * Green (healthy)
     * Preparing for v1.0.0 (stable)

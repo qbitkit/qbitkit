@@ -1,9 +1,5 @@
 #!/bin/sh
 echo "Usage: ./update_site.sh <make subcommand> <path to copy site to>"
-echo "Updating APT..."
-sudo apt-get update > /dev/null
-echo "Upgrading APT..."
-sudo apt-get upgrade -y -qq > /dev/null
 echo "Pulling latest updates from git..."
 git pull
 . ../doc/sphinx/venv/bin/activate

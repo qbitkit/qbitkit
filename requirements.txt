@@ -23,3 +23,6 @@ elasticsearch
 
 # qbitctl Dependencies
 click
+
+# D-Wave Qiskit Plugin
+dwave-qiskit-plugin

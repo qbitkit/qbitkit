@@ -12,11 +12,16 @@ class Connection:
             prefix (str): name of the folder inside the bucket to save/read results with(default None)
         Returns:
             str: S3 bucket for communicating with Braket"""
-        if prefix == None:
+        # Check if prefix is set to its default value.
+        if prefix is None:
+            # Set prefix value to "results".
             prefix = "results"
+        # Create tuple from specified values.
         s3 = (bucket,
               prefix)
+        # Return generated tuple.
         return s3
+
 
 class Local:
     def sim(self):
@@ -26,8 +31,11 @@ class Local:
             self(None): An unused argument.
         Returns:
             braket.devices.local_simulator: the local simulator device for Braket"""
+        # Create a local simulator.
         device = __local_simulator__
+        # Return the local simulator.
         return device
+
 
 class QuantumDevice:
     def get_qpu_arn(vendor='ionq',
@@ -39,12 +47,19 @@ class QuantumDevice:
             device (str): the device you would like to choose as your QPU (default 'ionQdevice')
         Returns:
             str: selected QPU ARN"""
-        if vendor == None:
+        # Check if vendor is set to its default value.
+        if vendor is None:
+            # Throw a warning about not having a vendor specified.
             print('Warning: No quantum vendor specified')
-        if device == None:
+        # Check if device is set to its default value.
+        if device is None:
+            # Throw a warning about not having a vendor specified.
             print('Warning: No quantum device specified')
+        # Build ARN.
         arn = 'arn:aws:braket:::device/qpu/' + vendor + '/' + device
+        # Return generated ARN.
         return arn
+
     def get_sim_arn(vendor='amazon',
                     device='sv1'):
         """Get ARN for a simulator from the specified vendor and device and return it.
@@ -54,8 +69,11 @@ class QuantumDevice:
             device (str): the name of the simulator you wish to use as your (simulated) QPU (default 'sv1')
         Returns:
             str: ARN of selected simulator."""
+        # Build ARN from specified values.
         arn = 'arn:aws:braket:::device/quantum-simulator/' + vendor + '/' + device
+        # Return ARN.
         return arn
+
     def get_device(arn=get_sim_arn()):
         """Get device from specified ARN and return it as an AwsDevice().
 
@@ -63,19 +81,31 @@ class QuantumDevice:
             arn (str): the ARN of the device you would like to use (default get_sim_arn())
         Returns:
             braket.aws.AwsDevice: AWS Quantum Device from specified ARN."""
+        # Get device from specified ARN.
         device = __AWS_Device__(arn)
+        # Return new device.
         return device
     def get_device_ops(device=None,
                        print_result=False):
+        # Get the device's properties dictionary, extract values we need.
         device_operations = device.properties.dict()['action']['braket.ir.jaqcd.program']['supportedOperations']
-        if print_result == True:
+        # Check if print_result is enabled.
+        if print_result is True:
+            # Print the quantum gates.
             print('Quantum Gates supported by {}:\n {}'.format(device,
                                                                device_operations))
+            # Return the quantum gates.
             return device_operations
-        elif print_result == False:
+        # Check if print_result is disabled.
+        elif print_result is False:
+            # Return the quantum gates.
             return device_operations
+        # Check if any other value is speccified for print_result.
         else:
+            # Return the quantum gates.
             return device_operations
+
+
 class Job:
     def get_job(device=None,
                 circuit=None,
@@ -92,11 +122,15 @@ class Job:
             disable_qubit_rewiring (bool): whether or not to disable qubit rewiring. You probably will not need to worry about using this argument in most cases. (default False)
         Returns:
             braket.aws.AwsQuantumTask: an AWS quantum task object"""
+        # Create a Quantum Task from the specified values.
         my_task = device.run(task_specification=circuit,
                              s3_destination_folder=s3loc,
                              shots=shots,
                              disable_qubit_rewiring=disable_qubit_rewiring)
+        # Return the new Quantum Task.
         return my_task
+
+
 class Annealing:
     def get_sampler(sampler=None,
                     bucket=None,
@@ -109,6 +143,8 @@ class Annealing:
             dwave_qpu (str): the D-Wave QPU model you wish to use for Quantum Annealing (default 'Advantage_system1')
         Returns:
             braket.ocean_plugin.braket_dwave_sampler.BraketDWaveSampler: An AWS Braket D-Wave Ocean SDK Plugin Sampler"""
+        # Create a new D-Wave sampler based on the specified values.
         new_sampler = sampler(s3_destination_folder=bucket,
                               arn=f"arn:aws:braket:::device/qpu/d-wave/{dwave_qpu}")
+        # Return the new D-Wave sampler.
         return new_sampler

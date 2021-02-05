@@ -22,7 +22,7 @@ USER jovyan
 
 # Configure container startup
 ENTRYPOINT ["tini", "-g", "--"]
-CMD ["start-notebook.sh"]
+CMD start-notebook.sh
 
 # Copy the repository root to /git/qbitkit inside the container
 COPY . /git/qbitkit

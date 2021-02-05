@@ -1,10 +1,12 @@
-import setuptools
+from setuptools import find_packages as __findpkg__
+from setuptools import setup as __setup__
+
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-setuptools.setup(
-    name="qbitkit", # Replace with your own username
+__setup__(
+    name="qbitkit",
     version="origin",
     author="qbitkit Team",
     author_email="brianlechthaler@protonmail.ch",
@@ -12,7 +14,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/qbitkit/qbitkit",
-    packages=setuptools.find_packages(),
+    packages=__findpkg__(),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: Apache 2.0 License",

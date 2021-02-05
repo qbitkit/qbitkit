@@ -1,5 +1,7 @@
-from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
-from qbitkit.error import error as qbitkit_error
+from qiskit import QuantumCircuit as __Quantum_Circuit__
+from qiskit import QuantumRegister as __Quantum_Register__
+from qiskit import ClassicalRegister as __Classical_Register__
+from qbitkit.error import error as __qk_err__
 from qbitkit.io.frame import Frame as fr
 
 
@@ -11,9 +13,9 @@ def get_support_status():
     additional_notes = additional_notes + resource_name + ' '
     additional_notes = additional_notes + 'support, see '
     additional_notes = additional_notes + issue_url + ' .'
-    qbitkit_error.Errors.support_status(feature_state=ibmq_support_status,
-                                        resource_name=resource_name,
-                                        additional_notes=additional_notes)
+    __qk_err__.Errors.support_status(feature_state=ibmq_support_status,
+                                     resource_name=resource_name,
+                                     additional_notes=additional_notes)
     return ibmq_support_status
 
 
@@ -32,10 +34,10 @@ class Circuit:
             nancl (int): a positive integer describing the number of ancilla registers that will be used in the new quantum circuit. (default None)
         Returns:
             qiskit.QuantumCircuit: an empty Qiskit quantum circuit"""
-        qreg = QuantumRegister(nqreg, 'qreg')
-        ancl = QuantumRegister(nancl, 'ancl')
-        creg = ClassicalRegister(ncreg, 'creg')
-        qcir = QuantumCircuit(qreg, creg, ancl)
+        qreg = __Quantum_Register__(nqreg, 'qreg')
+        ancl = __Quantum_Register__(nancl, 'ancl')
+        creg = __Classical_Register__(ncreg, 'creg')
+        qcir = __Quantum_Circuit__(qreg, creg, ancl)
         return qcir
 
 

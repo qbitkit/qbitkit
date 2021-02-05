@@ -1,0 +1,52 @@
+# qbitkit Full Site Kubernetes Deployment
+# Creates deployment `qk-site` with 3 replicas
+# Intended for qbitkit developer's internal use
+# (c) Copyright 2021 qbitkit. All rights reserved.
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: qk-site
+  name: qk-site
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: qk-site
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: qk-site
+    spec:
+      containers:
+        - image: us.gcr.io/$PROJECT_ID/qbitkit-build-then-host-site:latest
+          imagePullPolicy: Always
+          name: qbitkit-site-1
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: qk-site
+  name: qk-site-hpa-ybsd
+  namespace: default
+spec:
+  maxReplicas: 5
+  metrics:
+    - resource:
+        name: cpu
+        targetAverageUtilization: 80
+      type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: qk-site
