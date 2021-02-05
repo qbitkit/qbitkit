@@ -1,6 +1,6 @@
-from dwave.system.composites import EmbeddingComposite as _ec
-import minorminer as _mm
-from dwave.embedding import embed_qubo
+from dwave.system.composites import EmbeddingComposite as __ec__
+import minorminer as __mm__
+from dwave.embedding import embed_qubo as __embed_qubo__
 from dwave.embedding import embed_ising as __embed_ising__
 
 
@@ -12,7 +12,7 @@ def composite(sampler=None):
     Returns:
         dwave.system.composites.EmbeddingComposite: An EmbeddingComposite based on the specified sampler."""
     # Create an EmbeddingComposite from the specified sampler.
-    EmbeddingCompositeSampler = _ec(sampler)
+    EmbeddingCompositeSampler = __ec__(sampler)
     # Return the embedded sampler.
     return EmbeddingCompositeSampler
 
@@ -29,12 +29,12 @@ def qubo(sampler=None,
     # Get the topology data of the D-Wave QPU for the given sampler.
     _, target_edgelist, target_adjacency = sampler.structure
     # Find the embedding based on the given QUBO and the target edges from the topology data..
-    embedding = _mm.find_embedding(qubo,
-                                   target_edgelist)
+    embedding = __mm__.find_embedding(qubo,
+                                      target_edgelist)
     # Create embedding from the QUBO.
-    qubo_embedded = embed_qubo(qubo,
-                               embedding,
-                               target_adjacency)
+    qubo_embedded = __embed_qubo__(qubo,
+                                   embedding,
+                                   target_adjacency)
     # Return the generated embedding.
     return qubo_embedded
 
@@ -51,8 +51,8 @@ def ising(sampler=None,
     # Get the topology data of the D-Wave QPU from the given sampler.
     _, target_edgelist, target_adjacency = sampler.structure
     # Find the embedding based on the given Ising and target edges from the topology data.
-    embedding = _mm.find_embedding(ising,
-                                   target_edgelist)
+    embedding = __mm__.find_embedding(ising,
+                                      target_edgelist)
     # Create embedding from the Ising.
     ising_embedded = __embed_ising__(ising,
                                      embedding,
@@ -73,8 +73,8 @@ def bqm(sampler=None,
     # Get the topology data of the D-Wave QPU from the given sampler.
     _, target_edgelist, target_adjacency = sampler.structure
     # Find the embedding based on the given BQM and target edges from the topology data.
-    embedding = _mm.find_embedding(bqm,
-                                   target_edgelist)
+    embedding = __mm__.find_embedding(bqm,
+                                      target_edgelist)
     # Create embedding from the BQM.
     bqm_embedded = __embed_ising__(bqm,
                                    embedding,
