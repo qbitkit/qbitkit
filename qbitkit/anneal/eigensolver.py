@@ -23,6 +23,7 @@ class Solve:
                            num_reads=shots)
         # Return the data read from the QPU.
         return sample
+
     def numpy(self=None):
         """Solve a Weighted Pauli Operator using Numpy.
         Args:
