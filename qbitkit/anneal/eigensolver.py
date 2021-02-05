@@ -4,6 +4,24 @@ from qbitkit.anneal.embed import composite as __ec__
 
 
 class Solve:
+    def get_solver(self='DWaveMinimumEigensolver'):
+        """Get a D-Wave MinimumEigensolver, or NumPyMinimumEigensolver.
+        Args:
+            self(str): Solver Type to use. Can be DWaveMinimumEigensolver, or NumPyMinimumEigensolver. (default 'DWaveMinimumEigensolver')
+        Returns:
+            qiskit.aqua.algorithms.minimum_eigen_solvers: A MinimumEigensolver"""
+        # Check if specified Solver Type is DWaveMinimumEigensolver.
+        if self is 'DWaveMinimumEigensolver':
+            # Use DWaveMinimumEigensolver() as solver.
+            solver = __dwmes__
+        # Check if specified Solver Type is NumPyMinimumEigensolver.
+        elif self is 'NumPyMinimumEigensolver':
+            # Use NumPyMinimumEigensolver as solver.
+            solver = __npmes__
+        else:
+            # Give error if invalid Solver Type specified.
+            print(f"[Error] Invalid Solver Type: {str(self)}.")
+        return solver
     def sampler(self=None,
                 sampler=None,
                 shots=int(1000)):
