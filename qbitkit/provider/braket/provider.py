@@ -166,6 +166,6 @@ class Annealing:
 
         # Create a new D-Wave sampler based on the specified values.
         new_sampler = sampler(s3_destination_folder=bucket,
-                              arn=f"arn:aws:braket:::device/qpu/d-wave/{dwave_qpu}")
+                              device_arn=f"arn:aws:braket:::device/qpu/d-wave/{dwave_qpu}")
         # Return the new D-Wave sampler.
         return new_sampler
