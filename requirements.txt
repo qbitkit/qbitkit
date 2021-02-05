@@ -14,7 +14,7 @@ amazon-braket-sdk
 amazon-braket-ocean-plugin
 
 # General-Purpose:
-numpy==1.19.3
+numpy
 pandas
 datetime
 
