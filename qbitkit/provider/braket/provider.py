@@ -151,8 +151,18 @@ class Annealing:
         # Check if specified sampler is the BraketSampler.
         elif sampler_type is 'BraketSampler':
             sampler = __bsamp__()
-        #
-        else
+        # Throw an error if something invalid was specified.
+        else:
+            # Assemble first part of message.
+            first = str(f"[Error] Invalid Sampler Type Specified: {str(sampler_type)}.")
+            # Assemble second part of message.
+            last = str(f"Try specifying 'BraketDWaveSampler' or 'BraketSampler' instead. Default is BraketDWaveSampler")
+            # Assemble final message.
+            message = str(first) + str(last)
+            # Print final message.
+            print(message)
+            # Return nothing.
+            return None
 
         # Create a new D-Wave sampler based on the specified values.
         new_sampler = sampler(s3_destination_folder=bucket,
