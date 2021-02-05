@@ -11,11 +11,11 @@ class Solve:
         Returns:
             qiskit.aqua.algorithms.minimum_eigen_solvers: A MinimumEigensolver"""
         # Check if specified Solver Type is DWaveMinimumEigensolver.
-        if self is 'DWaveMinimumEigensolver':
+        if self == 'DWaveMinimumEigensolver':
             # Use DWaveMinimumEigensolver() as solver.
             solver = __dwmes__
         # Check if specified Solver Type is NumPyMinimumEigensolver.
-        elif self is 'NumPyMinimumEigensolver':
+        elif self == 'NumPyMinimumEigensolver':
             # Use NumPyMinimumEigensolver as solver.
             solver = __npmes__
         else:
