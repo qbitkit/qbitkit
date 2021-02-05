@@ -147,10 +147,10 @@ class Annealing:
             braket.ocean_plugin.braket_dwave_sampler.BraketDWaveSampler: An AWS Braket D-Wave Ocean SDK Plugin Sampler"""
         # Check if specified sampler is the BraketDWaveSampler.
         if sampler_type is 'BraketDWaveSampler':
-            sampler = __bdwsamp__()
+            sampler = __bdwsamp__
         # Check if specified sampler is the BraketSampler.
         elif sampler_type is 'BraketSampler':
-            sampler = __bsamp__()
+            sampler = __bsamp__
         # Throw an error if something invalid was specified.
         else:
             # Assemble first part of message.
