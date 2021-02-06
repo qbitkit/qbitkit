@@ -5,8 +5,8 @@ FROM ubuntu:latest
 ENV GIT_BRANCH=origin
 
 # Get apt-get Dependencies:
-RUN apt update
-RUN apt upgrade
+RUN apt-get update
+RUN apt-get upgrade -y
 RUN apt-get install -y python3-pip make git sudo
 
 # Make Sure Python 3.x Pip is up-to-date:
