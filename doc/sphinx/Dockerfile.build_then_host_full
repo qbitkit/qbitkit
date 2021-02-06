@@ -1,16 +1,13 @@
 # Start From NGINX Running on Alpine Linux (stable):
-FROM nginx:stable-alpine
+FROM ubuntu:latest
 
 # Set Build Configuration Variables:
 ENV GIT_BRANCH=origin
 
-# Get Alpine Linux Package Manager (APK) Dependencies:
-RUN apk update
-RUN apk upgrade
-RUN apk add py3-pip
-RUN apk add make
-RUN apk add git
-RUN apk add sudo
+# Get apt-get Dependencies:
+RUN apt update
+RUN apt upgrade
+RUN apt-get install -y python3-pip make git sudo
 
 # Make Sure Python 3.x Pip is up-to-date:
 RUN python3 -m pip install -U pip
@@ -31,7 +28,4 @@ RUN cd /qk/bin;/bin/sh update_site.sh html /usr/share/nginx/html
 RUN rm -rf /qk
 
 # Remove packages we only needed for building docs, this makes the built docker image a little smaller.
-RUN apk del py3-pip
-RUN apk del make
-RUN apk del git
-RUN apk del sudo
+RUN apt-get purge -y python3-pip make git sudo
