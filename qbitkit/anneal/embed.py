@@ -79,7 +79,7 @@ def bqm(sampler=None,
                                       target_edgelist)
     # Create embedding from the QUBO converted from specified BQM.
     qubo_embedded = __embed_qubo__(qubo,
-                                  embedding,
-                                  target_adjacency)
+                                   embedding,
+                                   target_adjacency)
     # Return the generated embedding.
     return qubo_embedded
