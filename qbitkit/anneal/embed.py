@@ -63,7 +63,7 @@ def ising(sampler=None,
 
 def bqm(sampler=None,
         bqm=None):
-    """Create embedding for a specified sampler from a specified BQM.
+    """Create embedding for a specified sampler from a specified BQM by converting it to QUBO and embedding the QUBO.
 
     Args:
         sampler(dimod.meta.SamplerABCMeta): A D-Wave Ocean SDK Sampler. (default None)
