@@ -290,3 +290,6 @@ doc/sphinx/_build/html/objects.inv
 doc/sphinx/_build/html/py-modindex.html
 doc/sphinx/_build/html/search.html
 doc/sphinx/_build/html/searchindex.js
+
+# Random Cache Folder
+cache/
