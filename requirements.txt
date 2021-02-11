@@ -8,6 +8,8 @@ minorminer
 qiskit
 ## IBMQ Qiskit:
 qiskit-ibmq-provider
+## D-Wave Qiskit Plugin
+dwave-qiskit-plugin
 
 # AWS Braket Dependencies:
 amazon-braket-sdk
@@ -23,6 +25,3 @@ elasticsearch
 
 # qbitctl Dependencies
 click
-
-# D-Wave Qiskit Plugin
-dwave-qiskit-plugin
