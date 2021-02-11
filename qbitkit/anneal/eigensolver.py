@@ -42,12 +42,18 @@ class Solve:
         # Return the data read from the QPU.
         return sample
 
-    def numpy(self=None):
+    def numpy(self=None,
+              silent=False):
         """Solve a Weighted Pauli Operator using Numpy.
         Args:
             self(qiskit.aqua.operators.legacy.weighted_pauli_operator.WeightedPauliOperator): Weighted Pauli Operator to attempt to solve. (default None)
+            silent(bool): If True, warning will be suppressed. If False, warning will be shown. (default False)
         Returns:
             qiskit.aqua.operators.legacy.weighted_pauli_operator.WeightedPauliOperator: Exact solution to specified Weighted Pauli Operator."""
+        # Check if silent is set to False.
+        if silent is False:
+            # Display a warning.
+            print("[Warning] This will break for large problems.")
         # Try Solving Weighted Pauli Operator
         # This will not work for large-scale problems and may produce interesting/funny error messages from Numpy.
         attempt_that_likely_will_fail = __npmes__(self)
