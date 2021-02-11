@@ -2,7 +2,7 @@ from qbitkit.io import frame as __f__
 import numpy as __np__
 
 
-class UCCSD(self=float(0.)):
+class UCCSD:
     def ansatz(a_theta=float(0.)):
         """Build a UCCSD ansatz circuit parametrized by a_theta per McArdle et al.
 

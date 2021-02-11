@@ -119,7 +119,7 @@ Support is continually tested upon every commit to branch 'origin' for each Pyth
     * Public
     * Released: January 1st, 2021
 * Status:
-    * Active development as of December 16th, 2020
+    * Active development since December 15th, 2020
 * Health:
     * Green (healthy)
     * Preparing for v1.0.0 (stable)

@@ -1,5 +1,7 @@
 from braket.aws import AwsDevice as __AWS_Device__
 from braket.devices import local_simulator as __local_simulator__
+from braket.ocean_plugin import BraketDWaveSampler as __bdwsamp__
+from braket.ocean_plugin import BraketSampler as __bsamp__
 
 
 class Connection:
@@ -132,19 +134,38 @@ class Job:
 
 
 class Annealing:
-    def get_sampler(sampler=None,
+    def get_sampler(sampler_type='BraketDWaveSampler',
                     bucket=None,
                     dwave_qpu="Advantage_system1"):
         """Create a new D-Wave Sampler for Braket based on a specified D-Wave QPU.
 
         Args:
-            sampler(braket.ocean_plugin.BraketDWaveSampler): a D-Wave Sampler from the Braket Ocean SDK plugin. (default None)
+            sampler_type(str): a D-Wave Sampler from the Braket Ocean SDK plugin. (default 'BraketDWaveSampler')
             bucket (str): the s3 bucket you wish to use for communication with the D-Wave QPU (default None)
             dwave_qpu (str): the D-Wave QPU model you wish to use for Quantum Annealing (default 'Advantage_system1')
         Returns:
             braket.ocean_plugin.braket_dwave_sampler.BraketDWaveSampler: An AWS Braket D-Wave Ocean SDK Plugin Sampler"""
+        # Check if specified sampler is the BraketDWaveSampler.
+        if sampler_type == 'BraketDWaveSampler':
+            sampler = __bdwsamp__
+        # Check if specified sampler is the BraketSampler.
+        elif sampler_type == 'BraketSampler':
+            sampler = __bsamp__
+        # Throw an error if something invalid was specified.
+        else:
+            # Assemble first part of message.
+            first = str(f"[Error] Invalid Sampler Type Specified: {str(sampler_type)}.")
+            # Assemble second part of message.
+            last = str(f"Try specifying 'BraketDWaveSampler' or 'BraketSampler' instead. Default is BraketDWaveSampler")
+            # Assemble final message.
+            message = str(first) + str(last)
+            # Print final message.
+            print(message)
+            # Return nothing.
+            return None
+
         # Create a new D-Wave sampler based on the specified values.
         new_sampler = sampler(s3_destination_folder=bucket,
-                              arn=f"arn:aws:braket:::device/qpu/d-wave/{dwave_qpu}")
+                              device_arn=f"arn:aws:braket:::device/qpu/d-wave/{dwave_qpu}")
         # Return the new D-Wave sampler.
         return new_sampler

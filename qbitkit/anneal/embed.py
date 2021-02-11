@@ -63,21 +63,23 @@ def ising(sampler=None,
 
 def bqm(sampler=None,
         bqm=None):
-    """Create embedding for a specified sampler from a specified BQM.
+    """Create embedding for a specified sampler from a specified BQM by converting it to QUBO and embedding the QUBO.
 
     Args:
         sampler(dimod.meta.SamplerABCMeta): A D-Wave Ocean SDK Sampler. (default None)
         bqm(dimod.binary_quadratic_model.BinaryQuadraticModel): A tuple containing the BQM to map onto the given sampler's QPU topology. (default None)
     Returns:
         dict: The given BQM mapped to the given sampler's QPU topology."""
+    # Convert BQM to QUBO.
+    qubo, offset = bqm.to_qubo()
     # Get the topology data of the D-Wave QPU from the given sampler.
     _, target_edgelist, target_adjacency = sampler.structure
-    # Find the embedding based on the given BQM and target edges from the topology data.
-    embedding = __mm__.find_embedding(bqm,
+    # Find the embedding based on the QUBO we just converted from BQM and target edges from the topology data.
+    embedding = __mm__.find_embedding(qubo,
                                       target_edgelist)
-    # Create embedding from the BQM.
-    bqm_embedded = __embed_ising__(bqm,
+    # Create embedding from the QUBO converted from specified BQM.
+    qubo_embedded = __embed_qubo__(qubo,
                                    embedding,
                                    target_adjacency)
     # Return the generated embedding.
-    return bqm_embedded
+    return qubo_embedded

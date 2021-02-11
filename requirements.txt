@@ -8,13 +8,15 @@ minorminer
 qiskit
 ## IBMQ Qiskit:
 qiskit-ibmq-provider
+## D-Wave Qiskit Plugin
+dwave-qiskit-plugin
 
 # AWS Braket Dependencies:
 amazon-braket-sdk
 amazon-braket-ocean-plugin
 
 # General-Purpose:
-numpy==1.19.3
+numpy
 pandas
 datetime
 
@@ -23,6 +25,3 @@ elasticsearch
 
 # qbitctl Dependencies
 click
-
-# D-Wave Qiskit Plugin
-dwave-qiskit-plugin

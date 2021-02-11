@@ -4,6 +4,24 @@ from qbitkit.anneal.embed import composite as __ec__
 
 
 class Solve:
+    def get_solver(self='DWaveMinimumEigensolver'):
+        """Get a D-Wave MinimumEigensolver, or NumPyMinimumEigensolver.
+        Args:
+            self(str): Solver Type to use. Can be DWaveMinimumEigensolver, or NumPyMinimumEigensolver. (default 'DWaveMinimumEigensolver')
+        Returns:
+            qiskit.aqua.algorithms.minimum_eigen_solvers: A MinimumEigensolver"""
+        # Check if specified Solver Type is DWaveMinimumEigensolver.
+        if self == 'DWaveMinimumEigensolver':
+            # Use DWaveMinimumEigensolver() as solver.
+            solver = __dwmes__
+        # Check if specified Solver Type is NumPyMinimumEigensolver.
+        elif self == 'NumPyMinimumEigensolver':
+            # Use NumPyMinimumEigensolver as solver.
+            solver = __npmes__
+        else:
+            # Give error if invalid Solver Type specified.
+            print(f"[Error] Invalid Solver Type: {str(self)}.")
+        return solver
     def sampler(self=None,
                 sampler=None,
                 shots=int(1000)):
@@ -24,12 +42,18 @@ class Solve:
         # Return the data read from the QPU.
         return sample
 
-    def numpy(self=None):
+    def numpy(self=None,
+              silent=False):
         """Solve a Weighted Pauli Operator using Numpy.
         Args:
             self(qiskit.aqua.operators.legacy.weighted_pauli_operator.WeightedPauliOperator): Weighted Pauli Operator to attempt to solve. (default None)
+            silent(bool): If True, warning will be suppressed. If False, warning will be shown. (default False)
         Returns:
             qiskit.aqua.operators.legacy.weighted_pauli_operator.WeightedPauliOperator: Exact solution to specified Weighted Pauli Operator."""
+        # Check if silent is set to False.
+        if silent is False:
+            # Display a warning.
+            print("[Warning] This will break for large problems.")
         # Try Solving Weighted Pauli Operator
         # This will not work for large-scale problems and may produce interesting/funny error messages from Numpy.
         attempt_that_likely_will_fail = __npmes__(self)
