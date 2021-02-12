@@ -216,7 +216,14 @@ class Translate:
     def df_circuit(df=__fr__.get_frame(), # Specify a DataFrame to translate.
                    input_circuit=__braket_circuit__(), # Specify a circuit to append translated circuit to.
                    fill_nan=True, # Fill NaN values in DataFrame if True.
-                   fill_nan_value=int(-1)): # If fill_nan=True, fill NaN values in the dataframe with this value.
+                   fill_nan_value=int(-1),
+                   gate='gate',
+                   targetA='targetA',
+                   targetB='targetB',
+                   targetC='targetC',
+                   angle='angle',
+                   phi='phi',
+                   theta='theta'): # If fill_nan=True, fill NaN values in the dataframe with this value.
         """Converts a Circuit DataFrame into a Braket Circuit by iterating over the DataFrame and turning each row of the dataframe into a gate or set of gates.
 
         Args:
@@ -224,6 +231,13 @@ class Translate:
             input_circuit (braket.circuits.Circuit): specify a circuit to append the translated circuit's contents to. (default braket_circuit())
             fill_nan (bool): whether or not to replace NaN values with a specified value. (default True)
             fill_nan_value (int): a value to replace NaN values with. (default int(-1))
+            gate(str): Field name for the first target qubit. (default 'gate')
+            targetA(str): Field name for the first target qubit. (default 'targetA')
+            targetB(str): Field name for the second target qubit. (default 'targetB')
+            targetC(str): Field name for the third target qubit. (default 'targetC')
+            angle(str): Field name for the first target qubit. (default 'angle')
+            phi(str): Field name for the first target qubit. (default 'phi')
+            theta(str): Field name for the first target qubit. (default 'theta')
         Returns:
             braket.circuits.Circuit: Braket Circuit translated from specified DataFrame"""
 
@@ -236,60 +250,60 @@ class Translate:
         # Iterate over each row in the DataFrame, so we can process each line one-by-one.
         for index, row in df.iterrows():
             # Extract the name of the gate in the row and store it in a variable `qcgates`.
-            qcgates = str(row['gate'])
-            # Extract first qubit target in the row, store it in `targetA`.
+            qcgates = str(row[gate])
+            # Extract first qubit target in the row, store it in `targetA_val`.
             # # This is a required fieldm so we will skip checking if it exists.
-            targetA = row['targetA']
+            targetA_val = row[targetA]
 
             # Check if the second qubit target is specified...
-            if 'targetB' in df.columns:
-                # ... if it is, store it's value in targetB...
-                targetB = row['targetB']
+            if targetB in df.columns:
+                # ... if it is, store it's value in targetB_val...
+                targetB_val = row[targetB]
             else:
                 # ... otherwise just set targetB to None.
-                targetB = None
+                targetB_val = None
 
             # Check if the third qubit target is specified...
-            if 'targetC' in df.columns:
-                # ... if it is, store it's value in targetC...
-                targetC = row['targetC']
+            if targetC in df.columns:
+                # ... if it is, store it's value in targetC_val...
+                targetC_val = row[targetC]
             else:
                 # ... otherwise just set targetC to None.
-                targetC = None
+                targetC_val = None
 
             # Check if the gate's angle parameter is set...
-            if 'angle' in df.columns:
+            if angle in df.columns:
                 # ... if it is, store it's value in angle...
-                angle = row['angle']
+                angle_val = row[angle]
             else:
                 # ... otherwise just set angle to None.
-                angle = None
+                angle_val = None
 
             # Check if the gate's phi parameter is set...
-            if 'phi' in df.columns:
+            if phi in df.columns:
                 # ... if it is, store it's value in phi...
-                phi = row['phi']
+                phi_val = row[phi]
             else:
                 # ... otherwise just set phi to None.
-                phi = None
+                phi_val = None
 
             # Check if the gate's theta parameter is specified...
-            if 'theta' in df.columns:
+            if theta in df.columns:
                 # ... if it is, store it's value in theta...
-                theta = row['theta']
+                theta_val = row[theta]
             else:
                 # ... otherwise just set theta to None.
-                theta = None
+                theta_val = None
 
             # Translate this row's values we just extracted into a quantum circuit
             # # This also appends the circuit to the previous iteration(s) if there's >1 rows in the DataFrame.
             circuit = Translate.translate_gate(input_circuit=input_circuit,
                                                op=qcgates,
-                                               targetA=targetA,
-                                               targetB=targetB,
-                                               targetC=targetC,
-                                               angle=angle,
-                                               phi=phi,
-                                               theta=theta)
+                                               targetA=targetA_val,
+                                               targetB=targetB_val,
+                                               targetC=targetC_val,
+                                               angle=angle_val,
+                                               phi=phi_val,
+                                               theta=theta_val)
         # Finally, return the completed circuit. Not too complex, eh?
         return circuit
