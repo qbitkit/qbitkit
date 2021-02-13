@@ -79,32 +79,42 @@ def registers(c=None,
 
 
 def gate(self=str('h'),
-         targets=list([int(0)])):
+         targetA=None,
+         targetB=None,
+         targetC=None):
     """Generate a gate from it's name as a string passed to self, and a list of targets passed to targets.
 
     Args:
         self(str): The name used to represent the gate in QASM. For example, a Hadamard Gate is 'h'. (default str('h'))
-        targets(list): : List of positive ints specifying target qubits to apply the gate to. (default list([int(0)]))
+        targetA(int): First target qubit. (default None)
+        targetB(int): Second target qubit. (default None)
+        targetC(int): Third target qubit. (default None)
     Returns:
         str: A string object containing the specified gate as QASM."""
-    ntargets = 0
-    ngenerated_targets = 0
-    target_str = ''
-    all_targets = ''
-    for target in targets:
-        ntargets = ntargets + 1
-    for target in targets:
-        ngenerated_targets = ngenerated_targets + 1
-        if ngenerated_targets == 1:
-            target_str = str(f' q[{str(target)}],')
-        if ngenerated_targets == ntargets:
-            target_str = str(f'q[{str(target)}];')
-        elif ngenerated_targets < ntargets:
-            target_str = str(f'q[{str(target)}],')
-        else:
-            target_str = str('')
-        all_targets = all_targets + target_str
-    compiled_gate = self + ' ' + all_targets
+    # Create an empty string for variable 'targets'
+    targets = ''
+    # Check if targetA is not a default value.
+    # Generate first target qubit.
+    targetA_qasm = f'q[{int(targetA)}]'
+    # Add translated target to 'targets'.
+    targets = targets + targetA_qasm
+    # Check if targetB is not a default value.
+    if targetB is not None and targetB > 0:
+        # Generate second target qubit.
+        targetB_qasm = f', q[{int(targetB)}]'
+        # Add translated target to 'targets'.
+        targets = targets + targetB_qasm
+    # Check if targetC is not a default value.
+    if targetC is not None and targetC > 0:
+        # Generate third target qubit.
+        targetC_qasm = f', q[{int(targetC)}]'
+        # Add translated instruction to 'targets'.
+        targets = targets + targetC_qasm
+
+    # Compile gate instruction by combining the gate name with the target specification(s).
+    compiled_gate = f'{self} ' + f'{targets};'
+
+    # Return compiled gate.
     return compiled_gate
 
 
