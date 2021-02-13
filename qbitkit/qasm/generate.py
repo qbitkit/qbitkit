@@ -57,11 +57,19 @@ def registers(c=None,
     if q is not None:
         # Create qregs string.
         qreg_str = f"qreg q[{str(q)}];"
+    # Check if qregs are set to None.
+    elif q is None:
+        # Set qregs string to an empty string.
+        qreg_str = ''
 
     # Check if cregs have been specified.
     if c is not None:
         # Create cregs string.
         creg_str = f"creg c[{str(c)}];"
+    # Check if cregs is set to None.
+    elif c is None:
+        # Set cregs string to an empty string.
+        creg_str = ''
 
     # Assemble full string containing classical and quantum registers separated by the OS's line separator.
     reg_str = qreg_str + __linesep__ + creg_str + __linesep__
