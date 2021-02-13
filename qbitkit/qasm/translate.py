@@ -2,17 +2,6 @@ from qbitkit.io.list import remove_value as __rmval__
 from qbitkit.qasm import generate as __gen__
 from qbitkit.io.frame import Frame as __fr__
 from os import linesep as __sep__
-from qbitkit.error.error import Errors as __err__
-
-
-def get_support_status():
-    fileIO_support_status = 'experimental'
-    __err__.support_status(feature_state=fileIO_support_status,
-                           resource_name='QASM2 Generation')
-    return fileIO_support_status
-
-
-get_support_status()
 
 
 def from_frame(df=__fr__.get_frame(),
