@@ -43,18 +43,30 @@ def headers(qasm_version=float(2.0),
     return headers
 
 
-def registers(c=2,
-              q=2):
+def registers(c=None,
+              q=None):
     """Generate a QASM String containing the specified number of classical and quantum registers.
 
     Args:
-        c(int): The number of Classic registers. (default 2)
-        q(int): The number of Quantum registers, in other words the number of logical Qubits. (default 2)
+        c(int): The number of Classic registers. (default None)
+        q(int): The number of Quantum registers, in other words the number of logical Qubits. (default None)
     Returns:
         str: A string object containing the generated QASM."""
-    qreg_str = f"qreg q[{str(q)}];"
-    creg_str = f"creg c[{str(c)}];"
+
+    # Check if qregs have been specified.
+    if q is not None:
+        # Create qregs string.
+        qreg_str = f"qreg q[{str(q)}];"
+
+    # Check if cregs have been specified.
+    if c is not None:
+        # Create cregs string.
+        creg_str = f"creg c[{str(c)}];"
+
+    # Assemble full string containing classical and quantum registers separated by the OS's line separator.
     reg_str = qreg_str + __linesep__ + creg_str + __linesep__
+
+    # Return generated QASM registers.
     return reg_str
 
 
