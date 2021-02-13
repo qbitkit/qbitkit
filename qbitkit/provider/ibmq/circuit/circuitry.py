@@ -2,7 +2,7 @@ from qiskit import QuantumCircuit as __Quantum_Circuit__
 from qiskit import QuantumRegister as __Quantum_Register__
 from qiskit import ClassicalRegister as __Classical_Register__
 from qbitkit.error import error as __qk_err__
-from qbitkit.io.frame import Frame as fr
+from qbitkit.io.frame import Frame as __fr__
 
 
 def get_support_status():
@@ -155,7 +155,7 @@ class Translate:
             input_circuit = None
         return input_circuit
 
-    def df_circuit(df=fr.get_frame(),
+    def df_circuit(df=__fr__.get_frame(),
                    input_circuit=Circuit.new()):
         """Converts a Circuit DataFrame into a Qiskit QuantumCircuit by iterating over the DataFrame and turning each row of the dataframe into a gate or set of gates.
 
