@@ -15,22 +15,6 @@ def get_support_status():
 get_support_status()
 
 
-def gate(op=None,
-         targetA=None,
-         targetB=None,
-         targetC=None):
-    """Translate a single gate to QASM.
-
-    op(str): QASM2 gate to use.
-    targetA(int): index of first target qubit to apply gate to. (default None)
-    targetB(int): index of second target qubit to apply gate to for 2 and 3 qubit gates. (default None)
-    targetB(int): index of the third target qubit to apply gate to for 3 qubit gates. (default None)"""
-    targets = [targetA, targetB, targetC]
-    cleaned_targets = __rmval__(targets, None)
-    qasm = __gen__.gate(op, cleaned_targets)
-    return qasm
-
-
 def from_frame(df=__fr__.get_frame(),
                qreg=5,
                creg=5,
@@ -89,10 +73,10 @@ def from_frame(df=__fr__.get_frame(),
             qasmstr = __gen__.measurement(creg=row['targetB'],
                                           qreg=row['targetA'])
         else:
-            qasmstr = gate(op=qcgates,
-                           targetA=targetA,
-                           targetB=targetB,
-                           targetC=targetC,)
+            qasmstr = __gen__.gate(qcgates,
+                                   targetA=targetA,
+                                   targetB=targetB,
+                                   targetC=targetC,)
 
         circuit = circuit + __sep__ + qasmstr
     s = __sep__ + __sep__
