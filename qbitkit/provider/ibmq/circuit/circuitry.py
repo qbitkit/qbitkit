@@ -42,6 +42,19 @@ class Circuit:
 
 
 class Translate:
+    def from_qasm(
+            qasm=str('')):
+        """Create a new Qiskit QuantumCircuit from a QASM 2.0 string.
+
+        Args:
+            qasm(str): String containing valid QASM 2.0. (default str(''))
+        Returns:
+            qiskit.circuit.QuantumCircuit: Circuit created from specified QASM 2.0."""
+        # Create a new QuantumCircuit from specified QASM string.
+        circuit = __Quantum_Circuit__.from_qasm_str(
+            qasm_str=str(qasm))
+        # Return new QuantumCircuit translated from a QASM string.
+        return circuit
     def translate_gate(op='h',
                        input_circuit=Circuit.new(2, 2, 1),
                        targetA=0,
