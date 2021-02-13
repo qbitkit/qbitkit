@@ -78,14 +78,14 @@ def from_frame(df=__fr__.get_frame(),
         else:
             theta = None
 
-        if gate == 'cnot':
-            gate = 'cx'
-        elif gate == 'ccnot':
-            gate = 'ccx'
+        if qcgates == 'cnot':
+            qcgates = 'cx'
+        elif qcgates == 'ccnot':
+            qcgates = 'ccx'
         else:
-            gate = gate
+            qcgates = qcgates
 
-        if gate == 'm':
+        if qcgates == 'm':
             qasmstr = __gen__.measurement(creg=row['targetB'],
                                           qreg=row['targetA'])
         else:
