@@ -122,6 +122,6 @@ Support is continually tested upon every commit to branch 'origin' for each Pyth
     * Active development since December 15th, 2020
 * Health:
     * Green (healthy)
-    * Preparing for v1.0.0 (stable)
+    * Preparing for v0.1.0 (stable)
     * Code examples needed  
     * Extensive testing will still be necessary prior to public release
