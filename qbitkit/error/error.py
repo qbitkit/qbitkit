@@ -51,7 +51,11 @@ class Errors:
             additional_notes (str): Tack on a note to the end of the warning (default None)
         Returns:
             str: the generated error message based on specified keyword arguments."""
-        message = f"Support for {resource_name} is still in the '{feature_state}' stage. Please use with caution. {additional_notes}"
+        if additional_notes is None:
+            notes = ''
+        else:
+            notes = additional_notes
+        message = f"Support for {resource_name} is now in the '{feature_state}' stage. Please use with caution. {notes}"
         Log.msg(msg=message,
                 print_msg=True)
         return message

@@ -10,7 +10,7 @@ Gates are defined using a Pandas DataFrame that can be automatically translated 
 Once you've translated a DataFrame to your platform of choice, for example AWS Braket or IBMQ, all you have to do is run it and check the results.
 All of this, in just 3 lines of code (not counting import statements, comments, whitespace lines, or printing results.) 
 
-### Example
+### :bar_chart: Example
 Here we make a Bell State and submit it to the Rigetti Aspen-8 Superconducting Quantum Computer on AWS Braket. 
 You can change `get_qpu_ar`n to `get_sim_arn` and clear the existing parameters if you want a simulator available 24/7, or switch out `rigetti` and `Aspen-8` with `ionq` and `ionQdevice` to use high Quantum Volume, extremely low gate error ion trapping quantum. Welcome to the future.
 
@@ -41,19 +41,19 @@ job = p.Job.get_job(device=p.QuantumDevice.get_device(
 print(job.result())
 ```
 
-## Documentation
+## :books: Documentation
 For the time being, documentation is hosted at:
-* https://qbitkit-docs-temporary.neutralthreat.com
+* :pencil: https://qbitkit-docs-temporary.neutralthreat.com
 
-## Python Version Compatibility
+## :snake: :package: Python Version Compatibility
 The following versions of Python are supported:
-* 3.7
-* 3.8
-* 3.9
+* :snake: 3.7
+* :snake: 3.8
+* :snake: 3.9
 
 Support is continually tested upon every commit to branch 'origin' for each Python version listed above.
 
-## Installing `qbitkit`
+## :snake: :package: :arrow_down: Installing `qbitkit`
 ### Anaconda3 (Windows/Mac/Linux)
 1) Download Anaconda3:
 * Click [this link](https://www.anaconda.com/products/individual) to download Anaconda3 from the official page for Anaconda Individual Edition
@@ -108,20 +108,23 @@ Support is continually tested upon every commit to branch 'origin' for each Pyth
 3) Install requirements, then use `setup.py` to build `qbitkit` then install `qbitkit` into the virtualenv: 
 * `pip install -r requirements.txt && python setup.py build && python setup.py install`
 
-## Features of `qbitkit`
+## :symbols: Features of `qbitkit`
 * With such a diverse range of quantum hardware and cloud services providing that hardware to end users, having to rewrite the same circuits 2-3 times is not uncommon. With `qbitkit`, hardware and cloud providers are abstracted and made as simple to use as possible. Stop re-inventing the wheel, and start actually innovating with the ease of use and flexibility of `qbitkit`.
 * Define your circuit using a Pandas DataFrame, translate it to your quantum provider of choice, and run it -- in just a few lines of code.
 * Running quantum circuits often requires costly hardware access and long wait times. It is therefore beneficial to keep track of your results so you don't have to re-run experiments to reproduce the results. For this reason, we included support for **logging** to Elasticsearch, with support for other ways to log your data coming soon.
 * Check the *Issues* tab at the top of this repository's page to see features we're working on now and the status of implementing those features into `qbitkit`
 
-## Project Lifecycle
+## :arrows_counterclockwise: Project Lifecycle
 * Visibility: 
-    * Public
-    * Released: January 1st, 2021
+    * :eyes: Public
+    * :calendar: Released: January 1st, 2021
 * Status:
-    * Active development since December 15th, 2020
+    * :calendar: Active development since December 15th, 2020
+    * :alarm_clock: At least 1 commit per day since inception.
 * Health:
-    * Green (healthy)
-    * Preparing for v1.0.0 (stable)
-    * Code examples needed  
-    * Extensive testing will still be necessary prior to public release
+    * :white_check_mark: Green (healthy)
+    * :rocket: Preparing for v0.1.0 (stable)
+    * :pencil: Code examples needed  
+    * :clipboard: Extensive testing will still be necessary prior to public release
+
+⚛ |2021> `qbitkit` Team
