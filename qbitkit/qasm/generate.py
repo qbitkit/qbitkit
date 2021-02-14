@@ -74,8 +74,8 @@ def gate(self=str('h'),
          Utheta=None,
          Uphi=None,
          Ulambda=None,
-         unitary_name=None,
-         unitary_params=None):
+         custom_name=None,
+         custom_params=None):
     """Generate a gate from it's name as a string passed to self, and a list of targets passed to targets.
 
     Args:
@@ -86,8 +86,8 @@ def gate(self=str('h'),
         Utheta(str): Theta value for U-gates. (default None)
         Uphi(str): Phi value for U-gates. (default None)
         Ulambda(str): Lambda value for U-gates. (default None)
-        unitary_name(str): Name for user-defined unitary gate. (default None)
-        unitary_params(str): Parameters for user-defined unitary gate. (default None)
+        custom_name(str): Name for user-defined opaque gate declarations, unitary gate declarations, and user-defined unitary gates. (default None)
+        custom_params(str): Parameters for user-defined opaque gate declarations, unitary gate declarations, and user-defined unitary gates. (default None)
     Returns:
         str: A string object containing the specified gate as QASM."""
     # Check if a U gate was specified.
@@ -122,7 +122,15 @@ def gate(self=str('h'),
     # Check if specified gate is a unitary gate.
     if self == 'unitary':
         # Compile unitary gate.
-        compiled_gate = f'{unitary_name}({unitary_params}) {targets};'
+        compiled_gate = f'{custom_name}({custom_params}) {targets};'
+    # Check if gate is declaring a unitary gate.
+    elif self == 'gate':
+        # Compile unitary gate declaration.
+        compiled_gate = f'gate {custom_name}({custom_params}) {targets};'
+    # Check if gate is declaring an opaque gate.
+    elif self == 'opaque':
+        # Compile opaque gate declaration.
+        compiled_gate = f'opaque {custom_name}({custom_params}) {targets};'
 
     # Return compiled gate.
     return compiled_gate
