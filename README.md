@@ -47,9 +47,9 @@ For the time being, documentation is hosted at:
 
 ## :snake: :package: Python Version Compatibility
 The following versions of Python are supported:
-* :snake: 3.7
-* :snake: 3.8
-* :snake: 3.9
+* :snake: Python 3.7
+* :snake: Python 3.8
+* :snake: Python 3.9
 
 Support is continually tested upon every commit to branch 'origin' for each Python version listed above.
 
