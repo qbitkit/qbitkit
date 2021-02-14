@@ -70,7 +70,10 @@ def registers(c=None,
 def gate(self=str('h'),
          targetA=None,
          targetB=None,
-         targetC=None):
+         targetC=None,
+         Utheta=None,
+         Uphi=None,
+         Ulambda=None):
     """Generate a gate from it's name as a string passed to self, and a list of targets passed to targets.
 
     Args:
@@ -78,8 +81,17 @@ def gate(self=str('h'),
         targetA(int): First target qubit. (default None)
         targetB(int): Second target qubit. (default None)
         targetC(int): Third target qubit. (default None)
+        Utheta(str): Theta value for U-gates. (default None)
+        Uphi(str): Phi value for U-gates. (default None)
+        Ulambda(str): Lambda value for U-gates. (default None)
     Returns:
         str: A string object containing the specified gate as QASM."""
+    # Check if a U gate was specified.
+    if self == 'U':
+        # Compile a U gate.
+        compiled_gate = f'U({Utheta},{Uphi},{Ulambda}) q[{targetA}];'
+        # Return compiled U gate.
+        return compiled_gate
     # Create an empty string for variable 'targets'
     targets = ''
     # Check if targetA is not a default value.
