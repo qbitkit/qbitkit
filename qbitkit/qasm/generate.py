@@ -1,6 +1,18 @@
 from os import linesep as __linesep__
 
 
+def comment(self=str('')):
+    """Generate a single-line QASM 2.0 comment from a string.
+
+    Args:
+        self(str): String to add as a comment in QASM 2.0 (default str(''))
+    Returns:
+        str: Generated QASM 2.0 comment."""
+    # Generate QASM 2.0 comment from self parameter.
+    qasm_comment = f'// {str(self)}'
+    # Return generated QASM 2.0.
+    return qasm_comment
+
 def headers(qasm_version=float(2.0),
             includes=list(['qelib1.inc'])):
     """Generate QASM 2.0 formatted headers.
