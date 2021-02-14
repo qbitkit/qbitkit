@@ -1,26 +1,8 @@
 from qiskit import QuantumCircuit as __Quantum_Circuit__
 from qiskit import QuantumRegister as __Quantum_Register__
 from qiskit import ClassicalRegister as __Classical_Register__
-from qbitkit.error import error as __qk_err__
 from qbitkit.io.frame import Frame as __fr__
 from qbitkit.qasm import translate as __qasm_t__
-
-
-def get_support_status():
-    ibmq_support_status = 'experimental'
-    resource_name = 'IBM Quantum Experience'
-    issue_url = 'https://github.com/qbitkit/qbitkit/issues/2'
-    additional_notes = 'For more information on forthcoming '
-    additional_notes = additional_notes + resource_name + ' '
-    additional_notes = additional_notes + 'support, see '
-    additional_notes = additional_notes + issue_url + ' .'
-    __qk_err__.Errors.support_status(feature_state=ibmq_support_status,
-                                     resource_name=resource_name,
-                                     additional_notes=additional_notes)
-    return ibmq_support_status
-
-
-get_support_status()
 
 
 class Circuit:
