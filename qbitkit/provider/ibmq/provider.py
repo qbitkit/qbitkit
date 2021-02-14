@@ -1,4 +1,3 @@
-# Importing standard Qiskit libraries
 from qiskit import execute as __execute__
 from qiskit import QuantumCircuit as __QuantumCircuit__
 from qiskit.providers.ibmq import IBMQ as __IBMQ__
