@@ -8,9 +8,6 @@ from qiskit.providers import basicaer as __ba__
 from qiskit.visualization import plot_histogram as __plot_histogram__
 
 
-# Loading your IBM Q account(s)
-
-
 class Connection:
     def get_provider(hub='ibm-q'):
         """Create an IBMQ provider with Qiskit to be used as a device in qbitkit
