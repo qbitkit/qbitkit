@@ -73,7 +73,9 @@ def gate(self=str('h'),
          targetC=None,
          Utheta=None,
          Uphi=None,
-         Ulambda=None):
+         Ulambda=None,
+         unitary_name=None,
+         unitary_params=None):
     """Generate a gate from it's name as a string passed to self, and a list of targets passed to targets.
 
     Args:
@@ -84,6 +86,8 @@ def gate(self=str('h'),
         Utheta(str): Theta value for U-gates. (default None)
         Uphi(str): Phi value for U-gates. (default None)
         Ulambda(str): Lambda value for U-gates. (default None)
+        unitary_name(str): Name for user-defined unitary gate. (default None)
+        unitary_params(str): Parameters for user-defined unitary gate. (default None)
     Returns:
         str: A string object containing the specified gate as QASM."""
     # Check if a U gate was specified.
@@ -114,6 +118,11 @@ def gate(self=str('h'),
 
     # Compile gate instruction by combining the gate name with the target specification(s).
     compiled_gate = f'{self} ' + f'{targets};'
+
+    # Check if specified gate is a unitary gate.
+    if self == 'unitary':
+        # Compile unitary gate.
+        compiled_gate = f'{unitary_name}({unitary_params}) {targets};'
 
     # Return compiled gate.
     return compiled_gate
