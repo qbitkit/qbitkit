@@ -22,6 +22,24 @@ class Circuit:
         creg = __Classical_Register__(ncreg, 'creg')
         qcir = __Quantum_Circuit__(qreg, creg, ancl)
         return qcir
+    def add_measurements(self=new(),
+                         measure=str('active')):
+        """Automatically append measurements to a circuit. You can choose to measure 'all' for all qubits specified as quantum registers, 'active' for all qubits with gates, or None to measure nothing.
+
+        Args:
+            self(qiskit.QuantumCircuit): Circuit to add measurements to. (default qbitkit.provider.ibmq.circuit.circuitry.Circuit.new())
+            measure(str): What qubits to measure. Choose between 'all', 'active', or None. (default 'active')
+        Returns:
+            qiskit.QuantumCircuit: Qiskit QuantumCircuit with measurements appended to it."""
+        if measure == 'all':
+            circuit = self.measure_all()
+        elif measure == 'active':
+            circuit = self.measure_active()
+        elif measure is None:
+            circuit = self
+        else:
+            circuit = self
+        return circuit
 
 
 class Translate:
