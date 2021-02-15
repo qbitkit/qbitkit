@@ -1,4 +1,3 @@
-from qbitkit.io.list import remove_value as __rmval__
 from qbitkit.qasm import generate as __gen__
 from qbitkit.io.frame import Frame as __fr__
 from os import linesep as __sep__
