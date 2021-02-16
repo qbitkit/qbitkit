@@ -4,7 +4,7 @@ from qiskit import Aer as __a__
 from qiskit import BasicAer as __ba__
 
 
-class TestAerSimulators(__ut__.TestCase):
+class TestAerSimulatorCreation(__ut__.TestCase):
     def test_aer_creation(self):
         qiskit_aer_type = type(__a__.get_backend('qasm_simulator'))
         qbitkit_aer_type = type(__p__.Local.aer())
