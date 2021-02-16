@@ -55,3 +55,6 @@ class TestGeneration(__ut__.TestCase):
                   f"---> Actual Output: {actual_value}")
             actual_equals_expected = False
         self.assertEqual(actual_equals_expected,True)
+
+if __name__ == '__main__':
+    __ut__.main()
