@@ -2,8 +2,8 @@ from qiskit import execute as __execute__
 from qiskit import QuantumCircuit as __QuantumCircuit__
 from qiskit.providers.ibmq import IBMQ as __IBMQ__
 from qiskit.providers.ibmq import least_busy as __least_busy__
-from qiskit.providers import aer as __a__
-from qiskit.providers import basicaer as __ba__
+from qiskit import Aer as __a__
+from qiskit import BasicAer as __ba__
 from qiskit.visualization import plot_histogram as __plot_histogram__
 
 
@@ -27,7 +27,9 @@ class Local:
             simulator(str): Name of the simulator to use (default 'qasm_simulator')
         Returns:
             qiskit.providers.BaseBackend: the Aer simulator from Qiskit"""
-        __a__.get_backend(simulator)
+        backend = None
+        backend = __a__.get_backend(simulator)
+        return backend
 
     def basic_aer(simulator='qasm_simulator'):
         """Create a Basic Aer simulator from Qiskit.
@@ -36,7 +38,9 @@ class Local:
             simulator(str): Name of the simulator to use (default 'qasm_simulator')
         Returns:
             qiskit.providers.BaseBackend: the BasicAer simulator from Qiskit"""
-        __ba__.get_backend(simulator)
+        backend = None
+        backend = __ba__.get_backend(simulator)
+        return backend
     def sim(simulator='qasm_simulator',
             backend='basic_aer'):
         """Create an IBMQ Simulator.
