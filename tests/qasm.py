@@ -7,7 +7,7 @@ from numpy.random import randint as __rand__
 
 # TestCase for QASM Generation (qbitkit.qasm.generate)
 class TestGeneration(__ut__.TestCase):
-    def headers(self):
+    def test_headers(self):
         # Set expectation of result when running test
         expected_headers = f"""OPENQASM 2.0;{__sep__}include "qelib1.inc";"""
         # Initialize variables
@@ -22,7 +22,7 @@ class TestGeneration(__ut__.TestCase):
                   f"--> Here's what we got: {__sep__}'{headers}'")
             correct_headers = False
         self.assertEqual(correct_headers, True)
-    def measurements(self):
+    def test_measurements(self):
         # Initialize variables
         test_q = __rand__(0, 1024)
         test_c = __rand__(0, 1024)
@@ -41,9 +41,9 @@ class TestGeneration(__ut__.TestCase):
                   f"---> Actual Value: '{str(actual_measurements)}'")
             actual_expected_match = False
         self.assertEqual(actual_expected_match, True)
-    def single_qubit_gates(self):
+    def test_single_qubit_gates(self):
         test_q = __rand__(0,1024)
-        expected_value = f"h [{test_q}"
+        expected_value = f"h [{test_q}]"
         actual_value = __g__.gate('h',
                                   targetA=test_q)
         actual_equals_expected = False
@@ -55,3 +55,7 @@ class TestGeneration(__ut__.TestCase):
                   f"---> Actual Output: {actual_value}")
             actual_equals_expected = False
         self.assertEqual(actual_equals_expected,True)
+
+
+if __name__ == '__main__':
+    __ut__.main()
