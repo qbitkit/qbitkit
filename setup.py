@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 __setup__(
     name="qbitkit",
-    version="origin",
+    version="0.1.0",
     author="qbitkit Team",
     author_email="brianlechthaler@protonmail.ch",
     description="Quantum Computing, for Humans.",
