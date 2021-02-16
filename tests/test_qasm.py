@@ -53,7 +53,9 @@ class TestGeneration(__ut__.TestCase):
             actual_equals_expected = True
         else:
             print("-->Actual output does not match expected output.",
+                  __sep__,
                   f"---> Expected Output: '{expected_value}'",
+                  __sep__,
                   f"---> Actual Output: '{actual_value}'")
             actual_equals_expected = False
         self.assertEqual(actual_equals_expected,True)
