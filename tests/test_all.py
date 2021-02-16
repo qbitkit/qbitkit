@@ -1,4 +1,4 @@
-import qasm as __test_qasm__
+import test_qasm as __test_qasm__
 import unittest as __ut__
 
 
