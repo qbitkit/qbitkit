@@ -60,6 +60,30 @@ class TestGeneration(__ut__.TestCase):
             actual_equals_expected = False
         self.assertEqual(actual_equals_expected,True)
 
+    def test_triple_qubit_gates(self):
+        test_q0 = __rand__(0, 2048)
+        test_q1 = __rand__(0, 2048)
+        test_q2 = __rand__(0, 2048)
+        test_gate = 'cx'
+        test_targets = f'q[{test_q0}], q[{test_q1}], q[{test_q2}]'
+        expected_value = f'{test_gate} {test_targets};'
+        actual_value = __g__.gate(test_gate, # Gate Spec
+                                  test_q0, # TargetA Spec
+                                  test_q1, # TargetB Spec
+                                  test_q2) # TargetC Spec
+        expected_equals_actual = False
+        if actual_value == expected_value:
+            print(f"--> Success! {__sep__}",
+                  f"---> Expected value: '{expected_value}'",
+                  f"= Actual Value: {actual_value}")
+            expected_equals_actual = True
+        else:
+            print("--> Actual Output Did not Match Expected Output.",
+                  f"{__sep__}---> Expected Output: '{expected_value}'",
+                  f"{__sep__}---> Actual Value: '{actual_value}'")
+            expected_equals_actual = False
+        self.assertEqual(expected_equals_actual, True)
+
 
 if __name__ == '__main__':
     __ut__.main()
