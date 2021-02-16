@@ -38,7 +38,7 @@ class TestGeneration(__ut__.TestCase):
         else:
             print("--> Actual and Expected Values Differ.",
                   __sep__,
-                  f"---> Expected Value: '{str(expected_measurements)}'"
+                  f"---> Expected Value: '{str(expected_measurements)}'",
                   __sep__,
                   f"---> Actual Value: '{str(actual_measurements)}'")
             actual_expected_match = False
