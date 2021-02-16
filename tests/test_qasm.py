@@ -27,7 +27,7 @@ class TestGeneration(__ut__.TestCase):
         test_q = __rand__(0, 1024)
         test_c = __rand__(0, 1024)
         actual_expected_match = False
-        # Set expeced value
+        # Set expected value
         expected_measurements = f"measure q[{test_q}] -> c[{test_c}];"
         # Get actual value
         actual_measurements = __g__.measurement(test_q,
@@ -37,13 +37,15 @@ class TestGeneration(__ut__.TestCase):
             actual_expected_match = True
         else:
             print("--> Actual and Expected Values Differ.",
+                  __sep__,
                   f"---> Expected Value: '{str(expected_measurements)}'",
+                  __sep__,
                   f"---> Actual Value: '{str(actual_measurements)}'")
             actual_expected_match = False
         self.assertEqual(actual_expected_match, True)
     def test_single_qubit_gates(self):
         test_q = __rand__(0,1024)
-        expected_value = f"h [{test_q}];"
+        expected_value = f"h q[{test_q}];"
         actual_value = __g__.gate('h',
                                   targetA=test_q)
         actual_equals_expected = False
@@ -51,8 +53,8 @@ class TestGeneration(__ut__.TestCase):
             actual_equals_expected = True
         else:
             print("-->Actual output does not match expected output.",
-                  f"---> Expected Output: {expected_value}",
-                  f"---> Actual Output: {actual_value}")
+                  f"---> Expected Output: '{expected_value}'",
+                  f"---> Actual Output: '{actual_value}'")
             actual_equals_expected = False
         self.assertEqual(actual_equals_expected,True)
 
