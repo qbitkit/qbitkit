@@ -27,7 +27,7 @@ class TestGeneration(__ut__.TestCase):
         test_q = __rand__(0, 1024)
         test_c = __rand__(0, 1024)
         actual_expected_match = False
-        # Set expeced value
+        # Set expected value
         expected_measurements = f"measure q[{test_q}] -> c[{test_c}];"
         # Get actual value
         actual_measurements = __g__.measurement(test_q,
