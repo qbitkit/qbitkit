@@ -1,6 +1,18 @@
 from os import linesep as __linesep__
 
 
+def comment(self=str('')):
+    """Generate a single-line QASM 2.0 comment from a string.
+
+    Args:
+        self(str): String to add as a comment in QASM 2.0 (default str(''))
+    Returns:
+        str: Generated QASM 2.0 comment."""
+    # Generate QASM 2.0 comment from self parameter.
+    qasm_comment = f'// {str(self)}'
+    # Return generated QASM 2.0.
+    return qasm_comment
+
 def headers(qasm_version=float(2.0),
             includes=list(['qelib1.inc'])):
     """Generate QASM 2.0 formatted headers.
@@ -10,15 +22,25 @@ def headers(qasm_version=float(2.0),
         includes(list): a list of strings describing what to import. (default list(['qelib1.inc']))
     Returns:
         str: the generated headers to be placed at the top of a QASM string"""
+    # Initialize Variables
+    ## Counter for include statements
     nincludes = int(0)
+    ## Counter for iterations
     niterations = int(0)
+    ## Convert QASM version float to a string
     ver_float_to_str = str(qasm_version)
+    ## Double Quote
     dq = '"'
+    ## Formatted include statement
     include_formatted = ''
+    ## All include statements concatenated into one string
     all_includes = ''
+    ## QASM version statement
     qasm_ver = f"OPENQASM {ver_float_to_str};"
+    # Count number of include statements we need to make
     for include in includes:
         nincludes + 1
+    # Iterate over include statements, formatting each statement accordingly.
     for include in includes:
         niterations = niterations + 1
         include_formatted = f"include {dq}{include}{dq};"
@@ -28,7 +50,9 @@ def headers(qasm_version=float(2.0),
             all_includes = all_includes + include_formatted
         else:
             all_includes = str("")
+    # Concatenate all headers into one string
     headers = f"{qasm_ver}{__linesep__}{all_includes}"
+    # Return generated headers
     return headers
 
 
@@ -145,5 +169,7 @@ def measurement(qreg=int(0),
         creg(int): Number of the Classical Register to store the measurement to. (default 1)
     Returns:
         str: Generated QASM containing measurement instruction."""
+    # Generate a measurement argument for QASM 2.0.
     meas_str = f'measure q[{str(qreg)}] -> c[{str(creg)}];'
+    # Return generated measurement argument.
     return meas_str

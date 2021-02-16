@@ -1,4 +1,3 @@
-from qbitkit.io.list import remove_value as __rmval__
 from qbitkit.qasm import generate as __gen__
 from qbitkit.io.frame import Frame as __fr__
 from os import linesep as __sep__
@@ -51,6 +50,11 @@ def from_frame(df=__fr__.get_frame(),
         else:
             theta = None
 
+        if 'params' in df.columns:
+            params = row['params']
+        else:
+            params = None
+
         if qcgates == 'cnot':
             qcgates = 'cx'
         elif qcgates == 'ccnot':
@@ -61,6 +65,12 @@ def from_frame(df=__fr__.get_frame(),
         if qcgates == 'm':
             qasmstr = __gen__.measurement(creg=row['targetB'],
                                           qreg=row['targetA'])
+        elif params is not None:
+            qasmstr = __gen__.gate(targetA=targetA,
+                                   targetB=targetB,
+                                   targetC=targetC,
+                                   custom_name=qcgates,
+                                   custom_params=params)
         else:
             qasmstr = __gen__.gate(qcgates,
                                    targetA=targetA,

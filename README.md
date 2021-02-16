@@ -1,8 +1,8 @@
-<img src="https://gist.githubusercontent.com/brianlechthaler/8137558340cc322e2d3acc1a740540d6/raw/1da63bfff411b1647e277e9b265939346fc5c845/qbitkit.svg" alt="qbitkit Official Logo (you may need to enable JavaScript to see this!)">
+<img src="https://raw.githubusercontent.com/qbitkit/qbitkit/origin/doc/assets/qbitkit-logo-rasterized.svg" alt="qbitkit Official Logo (you may need to enable JavaScript to see this!)">
 
 
 
-# ⚛ `qbitkit` [Docs](https://qbitkit-docs-temporary.neutralthreat.com/index.html) ![CodeQL](https://github.com/qbitkit/qbitkit/workflows/CodeQL/badge.svg) 
+# ⚛ `qbitkit` [Docs](https://qbitkit-docs-temporary.neutralthreat.com/index.html) ![CodeQL](https://github.com/qbitkit/qbitkit/workflows/CodeQL/badge.svg) ![PyTest](https://github.com/qbitkit/qbitkit/workflows/PyTest%20Unit%20Testing/badge.svg) ![Flake8](https://github.com/qbitkit/qbitkit/workflows/Flake8%20Linting/badge.svg)
 
 #### Quantum Computing, for Humans.
 `qbitkit` is a set of high-level abstractions to make writing software for quantum computers easier. 
@@ -47,9 +47,9 @@ For the time being, documentation is hosted at:
 
 ## :snake: :package: Python Version Compatibility
 The following versions of Python are supported:
-* :snake: 3.7
-* :snake: 3.8
-* :snake: 3.9
+* :snake: Python 3.7
+* :snake: Python 3.8
+* :snake: Python 3.9
 
 Support is continually tested upon every commit to branch 'origin' for each Python version listed above.
 
