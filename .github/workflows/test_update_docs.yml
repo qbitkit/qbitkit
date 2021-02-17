@@ -24,4 +24,5 @@ jobs:
       run: |
         cd bin
         bash install.sh
-        bash update_docs.sh html
+        mkdir -p /tmp/docs
+        bash update_docs.sh html /tmp/docs
