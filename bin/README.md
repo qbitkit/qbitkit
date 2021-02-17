@@ -6,7 +6,7 @@
 ### ![install_without_venv.sh](https://github.com/qbitkit/qbitkit/workflows/Test%20Install%20(no%20venv)%20Script/badge.svg) `install_without_venv.sh`
 * Description: Installs `qbitkit`.
 * Pre-requisites: You need Python3.x with the latest version of `pip` installed.
-### `mkdocs.sh`
+### ![mkdocs.sh](https://github.com/qbitkit/qbitkit/workflows/mkdocs.sh/badge.svg) `mkdocs.sh`
 * Description: Builds Documentation in specified format. For example, to build HTML documentation, `./mkdocs.sh html`
 * Pre-requisites: You need Python3.x with the latest version of `pip` and `virtualenv` installed.
 ## For Developers:
