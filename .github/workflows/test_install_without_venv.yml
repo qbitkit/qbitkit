@@ -19,4 +19,5 @@ jobs:
         python-version: 3.9
     - name: Install qbitkit using script bin/install_without_venv.sh
       run: |
-        bash bin/install_without_venv.sh
+        cd bin
+        bash install_without_venv.sh
