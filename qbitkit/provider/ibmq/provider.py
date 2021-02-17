@@ -58,7 +58,7 @@ class Remote:
             hub (str): The hub to pick IBM Q machines from. (default 'ibm-q')
         Returns:
             qiskit.providers.BaseProvider: the IBMQ provider"""
-        provider = __IBMQ__.get_account(hub)
+        provider = __IBMQ__.load_account(hub)
         return provider
     def auto_backend(provider=None,
                      qubits=3,
