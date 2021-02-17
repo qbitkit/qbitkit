@@ -7,18 +7,6 @@ from qiskit import BasicAer as __ba__
 from qiskit.visualization import plot_histogram as __plot_histogram__
 
 
-class Connection:
-    def get_provider(hub='ibm-q'):
-        """Create an IBMQ provider with Qiskit to be used as a device in qbitkit
-
-        Args:
-            hub (str): The hub to pick IBM Q machines from. (default 'ibm-q')
-        Returns:
-            qiskit.providers.BaseProvider: the IBMQ provider"""
-        provider = __IBMQ__.get_account(hub)
-        return provider
-
-
 class Local:
     def aer(simulator='qasm_simulator'):
         """Create an Aer simulator from Qiskit.
@@ -60,6 +48,18 @@ class Local:
             print(f"ERROR: Backend {backend} not found. Not returning anything.")
             device = None
             return device
+
+
+class Remote:
+    def get_provider(hub='ibm-q'):
+        """Create an IBMQ provider with Qiskit to be used as a device in qbitkit
+
+        Args:
+            hub (str): The hub to pick IBM Q machines from. (default 'ibm-q')
+        Returns:
+            qiskit.providers.BaseProvider: the IBMQ provider"""
+        provider = __IBMQ__.get_account(hub)
+        return provider
 
 
 class Job:
