@@ -66,7 +66,11 @@ class Remote:
         """Automatically select a simulator from a provider based on keyword parameters.
 
         Args:
-            provider:"""
+            provider(qiskit.providers.ibmq.accountprovider.AccountProvider): Qiskit AccountProvider object. (default None)
+            qubits(int): Minimum qubit count necessary for a device to be selected. (default 3)
+            simulator(bool): If set to True, allows automatic selection of classically simulated quantum devices. (defeault False)
+        Returns:
+            qiskit.providers.ibmq.ibmqbackend.IBMQBackend: Qiskit IBMQBackend object."""
         if simulator == False:
             filters = lambda b: b.configuration().n_qubits >= qubits and \
                                 not b.configuration().simulator and \
