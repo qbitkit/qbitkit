@@ -60,6 +60,26 @@ class Remote:
             qiskit.providers.BaseProvider: the IBMQ provider"""
         provider = __IBMQ__.get_account(hub)
         return provider
+    def auto_backend(provider=get_provider(),
+                     qubits=3,
+                     simulator=False):
+        """Automatically select a simulator from a provider based on keyword parameters.
+
+        Args:
+            provider("""
+        if simulator == False:
+            filters = lambda b: b.configuration().n_qubits >= qubits and \
+                                not b.configuration().simulator and \
+                                b.status().operational is True
+        else:
+            filters = lambda b: b.configuration().n_qubits >= qubits and \
+                                b.configuration().simulator and \
+                                b.status().operational is True
+
+        backend = __least_busy__(
+            provider.backends(
+                filters=filters))
+        return backend
 
 
 class Job:
