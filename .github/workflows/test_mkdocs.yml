@@ -20,4 +20,4 @@ jobs:
     - name: Install qbitkit using script bin/install_without_venv.sh
       run: |
         cd bin
-        bash mkdocs.sh
+        bash mkdocs.sh html
