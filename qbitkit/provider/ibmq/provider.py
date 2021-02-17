@@ -63,10 +63,7 @@ class Remote:
     def auto_backend(provider=get_provider(),
                      qubits=3,
                      simulator=False):
-        """Automatically select a simulator from a provider based on keyword parameters.
-
-        Args:
-            provider("""
+        """Automatically select a simulator from a provider based on keyword parameters."""
         if simulator == False:
             filters = lambda b: b.configuration().n_qubits >= qubits and \
                                 not b.configuration().simulator and \
