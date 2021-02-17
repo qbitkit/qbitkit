@@ -35,4 +35,4 @@ jobs:
     - name: Build Documentation
       run: |
         cd doc/sphinx
-        time make -j $(nproc)
+        time make -j $(nproc) html
