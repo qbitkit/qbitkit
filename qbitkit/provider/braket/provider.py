@@ -1,5 +1,5 @@
 from braket.aws import AwsDevice as __AWS_Device__
-from braket.devices import local_simulator as __local_simulator__
+from braket.devices import LocalSimulator as __local_simulator__
 from braket.ocean_plugin import BraketDWaveSampler as __bdwsamp__
 from braket.ocean_plugin import BraketSampler as __bsamp__
 
