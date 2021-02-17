@@ -1,6 +1,6 @@
 # `qbitkit` Shell Scripts
 ## For End-Users:
-### ![install.sh](https://github.com/qbitkit/qbitkit/workflows/install.sh/badge.svg) `install.sh`
+### ![install.sh](https://github.com/qbitkit/qbitkit/workflows/Test%20Install%20Script/badge.svg) `install.sh`
 * Description: Installs `qbitkit` into a new Python Virtual Environment.
 * Pre-requisites: You need Python3.x with the latest version of `pip` and `virtualenv` installed.
 ### ![install_without_venv.sh](https://github.com/qbitkit/qbitkit/workflows/Test%20Install%20(no%20venv)%20Script/badge.svg) `install_without_venv.sh`
