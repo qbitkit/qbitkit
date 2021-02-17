@@ -2,7 +2,9 @@
 
 
 
-# ⚛ `qbitkit` [Docs](https://qbitkit-docs-temporary.neutralthreat.com/index.html) ![CodeQL](https://github.com/qbitkit/qbitkit/workflows/CodeQL/badge.svg) ![PyTest](https://github.com/qbitkit/qbitkit/workflows/PyTest%20Unit%20Testing/badge.svg) ![Flake8](https://github.com/qbitkit/qbitkit/workflows/Flake8%20Linting/badge.svg)
+# ⚛ `qbitkit` [Docs](https://qbitkit-docs-temporary.neutralthreat.com/index.html) 
+
+![CodeQL](https://github.com/qbitkit/qbitkit/workflows/CodeQL/badge.svg) ![PyTest](https://github.com/qbitkit/qbitkit/workflows/PyTest%20Unit%20Testing/badge.svg) ![Flake8](https://github.com/qbitkit/qbitkit/workflows/Flake8%20Linting/badge.svg)
 
 #### Quantum Computing, for Humans.
 `qbitkit` is a set of high-level abstractions to make writing software for quantum computers easier. 
