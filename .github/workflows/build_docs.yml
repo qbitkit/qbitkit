@@ -1,0 +1,38 @@
+name: Sphinx Documentation
+
+on:
+  push:
+    branches: [ origin ]
+  pull_request:
+    branches: [ origin ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install -U flake8 pytest
+        if [ -f requirements.txt ]; then pip install -Ur requirements.txt; fi
+    - name: Install qbitkit
+      run: |
+        python setup.py build
+        python setup.py install
+    - name: Install Documentation Dependencies
+      run: |
+        pip install -Ur doc/sphinx/requirements.txt
+    - name: Build Documentation
+      run: |
+        cd docs/sphinx
+        time make -j $(nproc)
