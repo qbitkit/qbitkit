@@ -34,5 +34,5 @@ jobs:
         pip install -Ur doc/sphinx/requirements.txt
     - name: Build Documentation
       run: |
-        cd docs/sphinx
+        cd doc/sphinx
         time make -j $(nproc)
