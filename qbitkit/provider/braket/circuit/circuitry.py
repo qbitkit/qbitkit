@@ -47,6 +47,14 @@ class Translate:
             unitary_targets (list): a list of targets for the unitary. (default [0])
         Returns:
             braket.circuits.Circuit: Quantum circuit for Braket with gate we translated appended to it"""
+        # Ensure Parameters are Correct Variable Type
+        targetA = int(targetA)
+        targetB = int(targetB)
+        targetC = int(targetC)
+        angle = float(angle)
+        phi = float(phi)
+        theta = float(theta)
+
         # Unitary Gate
         if op == 'unitary':
             input_circuit = input_circuit.unitary(matrix=unitary_matrix,
