@@ -11,7 +11,7 @@ def __cmd_runner__(cmd=None):
     return stdout_raw
 def __process_stdout__(stdout=None):
     stdout_str = str(stdout.decode('utf-8'))
-    stdout_fix = stdout_str.strip('\n')
+    stdout_fix = stdout_str.strip(__ls__)
     return stdout_fix
 def __get_branch_name__(self=None):
     git_cmd = ["git", "rev-parse",
