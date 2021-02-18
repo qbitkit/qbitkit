@@ -24,6 +24,9 @@
 ### ![mkrelease.sh](https://github.com/qbitkit/qbitkit/workflows/mkrelease.sh/badge.svg) `mkrelease.sh`
 * Description: Build a Python Release from the current repository
 * Pre-requisites: You need Python3.x with the latest version of `pip` and `virtualenv` installed.
+### ![new_branch.sh](https://github.com/qbitkit/qbitkit/workflows/mkrelease.sh/badge.svg) `new_branch.sh`
+* Description: Switch branch from `origin` (old branch name) to `main` (new branch name.)
+* Pre-Requisites: `git`, though it's quite likely you already have this ready to go if you are reading this README.
 ### `sign_release.sh`
 * Description: Use Qubes Split GPG to securely sign releases.
 * Pre-requisites: You need Qubes OS installed and up-to-date with 
