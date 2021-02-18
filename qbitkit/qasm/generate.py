@@ -114,6 +114,16 @@ def gate(self=str('h'),
         custom_params(str): Parameters for user-defined opaque gate declarations, unitary gate declarations, and user-defined unitary gates. (default None)
     Returns:
         str: A string object containing the specified gate as QASM."""
+    # Ensure Integer Variables Have Correct Types
+    if targetA is not None:
+        targetA = int(targetA)
+
+    if targetB is not None:
+        targetB = int(targetB)
+
+    if targetC is not None:
+        targetC = int(targetC)
+
     # Check if a U gate was specified.
     if self == 'U':
         # Compile a U gate.
@@ -169,6 +179,13 @@ def measurement(qreg=int(0),
         creg(int): Number of the Classical Register to store the measurement to. (default 1)
     Returns:
         str: Generated QASM containing measurement instruction."""
+    # Ensure Integer Variables Have Correct Types
+    if qreg is not None:
+        qreg = int(qreg)
+
+    if creg is not None:
+        creg = int(creg)
+
     # Generate a measurement argument for QASM 2.0.
     meas_str = f'measure q[{str(qreg)}] -> c[{str(creg)}];'
     # Return generated measurement argument.
