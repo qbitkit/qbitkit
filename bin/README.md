@@ -28,7 +28,7 @@
 * Description: Build a Python Release from the current repository
 * Pre-requisites: You need Python3.x with the latest version of `pip` and `virtualenv` installed.
 ### `new_branch.sh`
-##### ![new_branch.sh](https://github.com/qbitkit/qbitkit/workflows/mkrelease.sh/badge.svg)
+##### ![new_branch.sh](https://github.com/qbitkit/qbitkit/workflows/new_branch.sh/badge.svg)
 * Description: Switch branch from `origin` (old branch name) to `main` (new branch name.)
 * Pre-Requisites: `git`, though it's quite likely you already have this ready to go if you are reading this README.
 ### `sign_release.sh`
