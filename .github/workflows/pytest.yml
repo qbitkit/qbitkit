@@ -5,9 +5,9 @@ name: PyTest Unit Testing
 
 on:
   push:
-    branches: [ origin ]
+    branches: [ main ]
   pull_request:
-    branches: [ origin ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -31,4 +31,4 @@ jobs:
         python setup.py install
     - name: Test with pytest
       run: |
-        pytest
+        time pytest -v

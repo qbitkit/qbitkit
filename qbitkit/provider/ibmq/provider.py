@@ -7,18 +7,6 @@ from qiskit import BasicAer as __ba__
 from qiskit.visualization import plot_histogram as __plot_histogram__
 
 
-class Connection:
-    def get_provider(hub='ibm-q'):
-        """Create an IBMQ provider with Qiskit to be used as a device in qbitkit
-
-        Args:
-            hub (str): The hub to pick IBM Q machines from. (default 'ibm-q')
-        Returns:
-            qiskit.providers.BaseProvider: the IBMQ provider"""
-        provider = __IBMQ__.get_account(hub)
-        return provider
-
-
 class Local:
     def aer(simulator='qasm_simulator'):
         """Create an Aer simulator from Qiskit.
@@ -60,6 +48,42 @@ class Local:
             print(f"ERROR: Backend {backend} not found. Not returning anything.")
             device = None
             return device
+
+
+class Remote:
+    def get_provider(hub='ibm-q'):
+        """Create an IBMQ provider with Qiskit to be used as a device in qbitkit
+
+        Args:
+            hub (str): The hub to pick IBM Q machines from. (default 'ibm-q')
+        Returns:
+            qiskit.providers.BaseProvider: the IBMQ provider"""
+        provider = __IBMQ__.load_account(hub)
+        return provider
+    def auto_backend(provider=None,
+                     qubits=3,
+                     simulator=False):
+        """Automatically select a simulator from a provider based on keyword parameters.
+
+        Args:
+            provider(qiskit.providers.ibmq.accountprovider.AccountProvider): Qiskit AccountProvider object. (default None)
+            qubits(int): Minimum qubit count necessary for a device to be selected. (default 3)
+            simulator(bool): If set to True, allows automatic selection of classically simulated quantum devices. (defeault False)
+        Returns:
+            qiskit.providers.ibmq.ibmqbackend.IBMQBackend: Qiskit IBMQBackend object."""
+        if simulator == False:
+            filters = lambda b: b.configuration().n_qubits >= qubits and \
+                                not b.configuration().simulator and \
+                                b.status().operational is True
+        else:
+            filters = lambda b: b.configuration().n_qubits >= qubits and \
+                                b.configuration().simulator and \
+                                b.status().operational is True
+
+        backend = __least_busy__(
+            provider.backends(
+                filters=filters))
+        return backend
 
 
 class Job:

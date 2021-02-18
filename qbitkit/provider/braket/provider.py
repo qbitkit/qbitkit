@@ -1,5 +1,5 @@
 from braket.aws import AwsDevice as __AWS_Device__
-from braket.devices import local_simulator as __local_simulator__
+from braket.devices import LocalSimulator as __local_simulator__
 from braket.ocean_plugin import BraketDWaveSampler as __bdwsamp__
 from braket.ocean_plugin import BraketSampler as __bsamp__
 
@@ -26,11 +26,11 @@ class Connection:
 
 
 class Local:
-    def sim(self):
-        """Create a local simulator for AWS braket and return it.
+    def sim(self=None):
+        """Create a local simulator for AWS Braket and return it.
 
         Args:
-            self(None): An unused argument.
+            self(None): An unused argument. (default None)
         Returns:
             braket.devices.local_simulator: the local simulator device for Braket"""
         # Create a local simulator.

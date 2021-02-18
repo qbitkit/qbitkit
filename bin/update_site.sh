@@ -1,6 +1,7 @@
 #!/bin/sh
 echo "Usage: ./update_site.sh <make subcommand> <path to copy site to>"
 echo "Pulling latest updates from git..."
+bash ./new_branch.sh
 git pull
 . ../doc/sphinx/venv/bin/activate
 echo "Ensuring dependencies are up-to-date..."
