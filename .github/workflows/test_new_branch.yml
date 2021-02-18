@@ -1,4 +1,4 @@
-name: Test Install (no venv) Script
+name: new_branch.sh
 
 on:
   push:
