@@ -2,9 +2,9 @@ name: update_site.sh
 
 on:
   push:
-    branches: [ origin ]
+    branches: [ main ]
   pull_request:
-    branches: [ origin ]
+    branches: [ main ]
 
 jobs:
   build:

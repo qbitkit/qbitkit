@@ -2,9 +2,9 @@ name: Test Install (no venv) Script
 
 on:
   push:
-    branches: [ origin ]
+    branches: [ main ]
   pull_request:
-    branches: [ origin ]
+    branches: [ main ]
 
 jobs:
   build:
