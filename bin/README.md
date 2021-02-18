@@ -13,18 +13,22 @@
 ### *tested in scripts `update_docs.sh` and `update_site.sh`* `copy_docs.sh`
 * Description: Copies compiled documentation to a specified folder, for example `/var/www/html`.
 * Pre-requisites: You need Python3.x with the latest version of `pip` and `virtualenv` installed.
-### ![update_docs.sh](https://github.com/qbitkit/qbitkit/workflows/update_docs.sh/badge.svg) `update_docs.sh <make subcommand> <copy docs to this path>`
+### `update_docs.sh <make subcommand> <copy docs to this path>`
+#### ![update_docs.sh](https://github.com/qbitkit/qbitkit/workflows/update_docs.sh/badge.svg) 
 * Description: Pulls new changes from `git`, wipes <copy docs to this path>, and copies documentation to it. Exactly like the syntax of `mkdocs.sh`, you **must** specify the type of docs to output, for example `html`: `./update_docs.sh html /var/www/html`
 * Pre-requisites: You need Python3.x with the latest version of `pip` and `virtualenv` installed.
 * Notes: Once you've verified running this script works, add a `cron` job to your system's `crontab` to make sure you're always hosting the latest version of `qbitkit`'s documentation.
-### ![update_site.sh](https://github.com/qbitkit/qbitkit/workflows/update_site.sh/badge.svg) `update_site.sh <make subcommand> <copy site to this path>`
+### `update_site.sh <make subcommand> <copy site to this path>`
+#### ![update_site.sh](https://github.com/qbitkit/qbitkit/workflows/update_site.sh/badge.svg)
 * Description: Pulls new changes from `git`, wipes <copy site to this path>, and copies documentation and site to it. Exactly like the syntax of `mkdocs.sh` and `update_docs.sh`, you **must** specify the type of docs to output, for example `html`: `./update_docs.sh html /var/www/html`
 * Pre-requisites: You need Python3.x with the latest version of `pip` and `virtualenv` installed.
 * Notes: Once you've verified running this script works, add a `cron` job to your system's `crontab` to make sure you're always hosting the latest version of `qbitkit`'s documentation.
-### ![mkrelease.sh](https://github.com/qbitkit/qbitkit/workflows/mkrelease.sh/badge.svg) `mkrelease.sh`
+### `mkrelease.sh`
+#### ![mkrelease.sh](https://github.com/qbitkit/qbitkit/workflows/mkrelease.sh/badge.svg) 
 * Description: Build a Python Release from the current repository
 * Pre-requisites: You need Python3.x with the latest version of `pip` and `virtualenv` installed.
-### ![new_branch.sh](https://github.com/qbitkit/qbitkit/workflows/mkrelease.sh/badge.svg) `new_branch.sh`
+### `new_branch.sh`
+##### ![new_branch.sh](https://github.com/qbitkit/qbitkit/workflows/mkrelease.sh/badge.svg)
 * Description: Switch branch from `origin` (old branch name) to `main` (new branch name.)
 * Pre-Requisites: `git`, though it's quite likely you already have this ready to go if you are reading this README.
 ### `sign_release.sh`
