@@ -121,12 +121,12 @@ Support is continually tested upon every commit to branch 'origin' for each Pyth
     * :eyes: Public
     * :calendar: Released: January 1st, 2021
 * Status:
-    * :calendar: Active development since December 15th, 2020
-    * :alarm_clock: At least 1 commit per day since inception.
+    * :calendar: In active development since December 15th, 2020
+    * :alarm_clock: >=1 commit(s) made every day since the repository was created
 * Health:
     * :white_check_mark: Green (healthy)
     * :rocket: Preparing for v0.1.0 (stable)
-    * :pencil: Code examples needed  
-    * :clipboard: Extensive testing will still be necessary prior to public release
+    * :pencil: Code examples and more documentation than just API doc needed (see issue #42)  
+    * :clipboard: More unit tests are needed
 
 ⚛ |2021> `qbitkit` Team
