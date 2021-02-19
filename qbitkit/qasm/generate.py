@@ -190,3 +190,30 @@ def measurement(qreg=int(0),
     meas_str = f'measure q[{str(qreg)}] -> c[{str(creg)}];'
     # Return generated measurement argument.
     return meas_str
+
+def if_statement(creg_name=str('c'),
+                 operator=str('=='),
+                 creg_val=int(0),
+                 gate_name=str('x'),
+                 targetA=int(0),
+                 targetB=int(1),
+                 targetC=int(2),
+                 Utheta=None,
+                 Uphi=None,
+                 Ulambda=None,
+                 custom_name=None,
+                 custom_params=None):
+    # Ensure Variables Have Correct Types
+    creg_name = str(creg_name)
+    operator = str(operator)
+    creg_val = str(int(creg_val))
+    gate_name = str(gate_name)
+    targetA = str(int(targetA))
+    # Compile gate to apply if statement is fulfilled
+    compiled_gate = gate(gate_name, targetA, targetB,
+                         targetC, Utheta, Uphi, Ulambda,
+                         custom_name, custom_params)
+    # Compile if statement
+    if_str = f'if ({creg_name}{operator}{creg_val}) {compiled_gate};'
+    # Return compiled if statement
+    return if_str
