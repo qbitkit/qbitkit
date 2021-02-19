@@ -13,6 +13,7 @@ def comment(self=str('')):
     # Return generated QASM 2.0.
     return qasm_comment
 
+
 def headers(qasm_version=float(2.0),
             includes=list(['qelib1.inc'])):
     """Generate QASM 2.0 formatted headers.
@@ -23,19 +24,19 @@ def headers(qasm_version=float(2.0),
     Returns:
         str: the generated headers to be placed at the top of a QASM string"""
     # Initialize Variables
-    ## Counter for include statements
+    # Counter for include statements
     nincludes = int(0)
-    ## Counter for iterations
+    # Counter for iterations
     niterations = int(0)
-    ## Convert QASM version float to a string
+    # Convert QASM version float to a string
     ver_float_to_str = str(qasm_version)
-    ## Double Quote
+    # Double Quote
     dq = '"'
-    ## Formatted include statement
+    # Formatted include statement
     include_formatted = ''
-    ## All include statements concatenated into one string
+    # All include statements concatenated into one string
     all_includes = ''
-    ## QASM version statement
+    # QASM version statement
     qasm_ver = f"OPENQASM {ver_float_to_str};"
     # Count number of include statements we need to make
     for include in includes:
@@ -190,6 +191,7 @@ def measurement(qreg=int(0),
     meas_str = f'measure q[{str(qreg)}] -> c[{str(creg)}];'
     # Return generated measurement argument.
     return meas_str
+
 
 def if_statement(creg_name=str('c'),
                  operator=str('=='),
