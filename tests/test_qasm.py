@@ -1,12 +1,13 @@
 # Unit test for qbitkit.qasm module
-import unittest as __ut__
+from unittest import main as __ut_main__
 from os import linesep as __sep__
 from qbitkit.qasm import generate as __g__
 from numpy.random import randint as __rand__
+from qktest import QKTestCase as __tc__
 
 
 # TestCase for QASM Generation (qbitkit.qasm.generate)
-class TestGeneration(__ut__.TestCase):
+class TestGeneration(__tc__):
     def test_headers(self):
         # Set expectation of result when running test
         expected_headers = f"""OPENQASM 2.0;{__sep__}include "qelib1.inc";"""
@@ -107,4 +108,4 @@ class TestGeneration(__ut__.TestCase):
 
 
 if __name__ == '__main__':
-    __ut__.main()
+    __ut_main__()

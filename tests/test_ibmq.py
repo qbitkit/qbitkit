@@ -1,10 +1,11 @@
-import unittest as __ut__
+from unittest import main as __ut_main__
 from qbitkit.provider.ibmq import provider as __p__
 from qiskit import Aer as __a__
 from qiskit import BasicAer as __ba__
+from qktest import QKTestCase as __tc__
 
 
-class TestAerSimulatorCreation(__ut__.TestCase):
+class TestAerSimulatorCreation(__tc__):
     def test_aer_creation(self):
         qiskit_aer_type = type(__a__.get_backend('qasm_simulator'))
         qbitkit_aer_type = type(__p__.Local.aer())
@@ -28,4 +29,4 @@ class TestAerSimulatorCreation(__ut__.TestCase):
 
 
 if __name__ == '__main__':
-    __ut__.main()
+    __ut_main__()
