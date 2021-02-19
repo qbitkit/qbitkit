@@ -3,7 +3,7 @@ from unittest import main as __ut_main__
 from os import linesep as __sep__
 from qbitkit.qasm import generate as __g__
 from numpy.random import randint as __rand__
-from qktest import QKTestCase as __tc__
+from tests.qktest import QKTestCase as __tc__
 
 
 # TestCase for QASM Generation (qbitkit.qasm.generate)

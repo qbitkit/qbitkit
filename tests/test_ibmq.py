@@ -2,7 +2,7 @@ from unittest import main as __ut_main__
 from qbitkit.provider.ibmq import provider as __p__
 from qiskit import Aer as __a__
 from qiskit import BasicAer as __ba__
-from qktest import QKTestCase as __tc__
+from tests.qktest import QKTestCase as __tc__
 
 
 class TestAerSimulatorCreation(__tc__):

@@ -1,7 +1,7 @@
 import unittest.main as __ut_main__
 from qbitkit.provider.braket import provider as __p__
 from braket.circuits import Circuit as __c__
-from qktest import QKTestCase as __tc__
+from tests.qktest import QKTestCase as __tc__
 
 
 def state_prep(self=None):
