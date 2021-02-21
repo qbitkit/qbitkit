@@ -31,7 +31,7 @@ class Annealing:
             new_sampler = __LHSampler__(retry_interval=retry_interval)
         elif self == 'LeapHybridDQMSampler':
             # Create a LeapHybridDQMSampler
-            new_sampler == __LHDQMSampler__(retry_interval=retry_interval)
+            new_sampler = __LHDQMSampler__(retry_interval=retry_interval)
         # Check if sampler does not meet any of the above conditions
         else:
             # Set sampler to return as None
