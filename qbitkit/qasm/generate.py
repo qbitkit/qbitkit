@@ -92,6 +92,73 @@ def registers(c=None,
     return reg_str
 
 
+def measurement(qreg=int(0),
+                creg=int(0)):
+    """Generate QASM that takes a measurement from a qubit and stores it in a classical register.
+
+    Args:
+        qreg(int): Number of the Qubit to measure. (default 0)
+        creg(int): Number of the Classical Register to store the measurement to. (default 1)
+    Returns:
+        str: Generated QASM containing measurement instruction."""
+    # Ensure Integer Variables Have Correct Types
+    if qreg is not None:
+        qreg = int(qreg)
+
+    if creg is not None:
+        creg = int(creg)
+
+    # Generate a measurement argument for QASM 2.0.
+    meas_str = f'measure q[{str(qreg)}] -> c[{str(creg)}];'
+    # Return generated measurement argument.
+    return meas_str
+
+
+def if_statement(creg_name=str('c'),
+                 operator=str('=='),
+                 creg_val=int(0),
+                 gate_name=str('x'),
+                 targetA=None,
+                 targetB=None,
+                 targetC=None,
+                 Utheta=None,
+                 Uphi=None,
+                 Ulambda=None,
+                 custom_name=None,
+                 custom_params=None):
+    """Generate a gate controlled by a classical if statement as a QASM string from specified parameters.
+
+        Args:
+            creg_name(str): Classical register to run if statement against. (default 'c')
+            operator(str): Operator to compare values with. (default str('=='))
+            creg_val(int): Value to compare with creg_name. (default int(0))
+            gate_name(str): The name used to represent the gate in QASM. For example, a Hadamard Gate is 'h'. (default str('h'))
+            targetA(int): First target qubit. (default None)
+            targetB(int): Second target qubit. (default None)
+            targetC(int): Third target qubit. (default None)
+            Utheta(str): Theta value for U-gates. (default None)
+            Uphi(str): Phi value for U-gates. (default None)
+            Ulambda(str): Lambda value for U-gates. (default None)
+            custom_name(str): Name for user-defined opaque gate declarations, unitary gate declarations, and user-defined unitary gates. (default None)
+            custom_params(str): Parameters for user-defined opaque gate declarations, unitary gate declarations, and user-defined unitary gates. (default None)
+        Returns:
+            str: A string object containing the specified gate as QASM."""
+    # Ensure Variables Have Correct Types
+    creg_name = str(creg_name)
+    operator = str(operator)
+    creg_val = str(int(creg_val))
+    gate_name = str(gate_name)
+    targetA = str(int(targetA))
+    # Compile gate to apply if statement is fulfilled
+    compiled_gate = gate(gate_name, targetA, targetB,
+                         targetC, Utheta, Uphi, Ulambda,
+                         custom_name, custom_params)
+    # Compile if statement
+    if_str = f'if ({creg_name}{operator}{creg_val}) {compiled_gate}'
+    # Return compiled if statement
+    return if_str
+
+
 def gate(self=str('h'),
          targetA=None,
          targetB=None,
@@ -166,73 +233,8 @@ def gate(self=str('h'),
     elif self == 'opaque':
         # Compile opaque gate declaration.
         compiled_gate = f'opaque {custom_name}({custom_params}) {targets};'
+    elif self == 'if':
+        compiled_gate = if_statement()
 
     # Return compiled gate.
     return compiled_gate
-
-
-def measurement(qreg=int(0),
-                creg=int(0)):
-    """Generate QASM that takes a measurement from a qubit and stores it in a classical register.
-
-    Args:
-        qreg(int): Number of the Qubit to measure. (default 0)
-        creg(int): Number of the Classical Register to store the measurement to. (default 1)
-    Returns:
-        str: Generated QASM containing measurement instruction."""
-    # Ensure Integer Variables Have Correct Types
-    if qreg is not None:
-        qreg = int(qreg)
-
-    if creg is not None:
-        creg = int(creg)
-
-    # Generate a measurement argument for QASM 2.0.
-    meas_str = f'measure q[{str(qreg)}] -> c[{str(creg)}];'
-    # Return generated measurement argument.
-    return meas_str
-
-
-def if_statement(creg_name=str('c'),
-                 operator=str('=='),
-                 creg_val=int(0),
-                 gate_name=str('x'),
-                 targetA=None,
-                 targetB=None,
-                 targetC=None,
-                 Utheta=None,
-                 Uphi=None,
-                 Ulambda=None,
-                 custom_name=None,
-                 custom_params=None):
-    """Generate a gate controlled by a classical if statement as a QASM string from specified parameters.
-
-        Args:
-            creg_name(str): Classical register to run if statement against. (default 'c')
-            operator(str): Operator to compare values with. (default str('=='))
-            creg_val(int): Value to compare with creg_name. (default int(0))
-            gate_name(str): The name used to represent the gate in QASM. For example, a Hadamard Gate is 'h'. (default str('h'))
-            targetA(int): First target qubit. (default None)
-            targetB(int): Second target qubit. (default None)
-            targetC(int): Third target qubit. (default None)
-            Utheta(str): Theta value for U-gates. (default None)
-            Uphi(str): Phi value for U-gates. (default None)
-            Ulambda(str): Lambda value for U-gates. (default None)
-            custom_name(str): Name for user-defined opaque gate declarations, unitary gate declarations, and user-defined unitary gates. (default None)
-            custom_params(str): Parameters for user-defined opaque gate declarations, unitary gate declarations, and user-defined unitary gates. (default None)
-        Returns:
-            str: A string object containing the specified gate as QASM."""
-    # Ensure Variables Have Correct Types
-    creg_name = str(creg_name)
-    operator = str(operator)
-    creg_val = str(int(creg_val))
-    gate_name = str(gate_name)
-    targetA = str(int(targetA))
-    # Compile gate to apply if statement is fulfilled
-    compiled_gate = gate(gate_name, targetA, targetB,
-                         targetC, Utheta, Uphi, Ulambda,
-                         custom_name, custom_params)
-    # Compile if statement
-    if_str = f'if ({creg_name}{operator}{creg_val}) {compiled_gate}'
-    # Return compiled if statement
-    return if_str
