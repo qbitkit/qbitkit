@@ -2,6 +2,9 @@
 from unittest import main as __ut_main__
 from os import linesep as __sep__
 from qbitkit.qasm import generate as __g__
+from qbitkit.qasm import translate as __t__
+from qbitkit.provider.ibmq import provider as __p__
+from qbitkit.provider.ibmq.circuit import circuitry as __c__
 from numpy.random import randint as __rand__
 from tests.qktest import QKTestCase as __tc__
 
@@ -79,6 +82,23 @@ class TestGeneration(__tc__):
         expected_equals_actual = __tc__.compare(expected_value,
                                                 actual_value)
         self.assertEqual(expected_equals_actual, True)
+
+
+class TestTranslation(__tc__):
+    def test_df_to_ibmq(self):
+        nshots = 1000
+        testing_df = __tc__.example_frame(scale_qubit=5)
+        testing_dev = __p__.Local.sim()
+        testing_qasm = __t__.from_frame(testing_df)
+        testing_circ = __c__.Translate.from_qasm(testing_qasm)
+        test_run = __p__.Job.get_job(circuit=testing_circ,
+                                     backend=testing_dev,
+                                     shots=nshots)
+        expected_counts = {'11111': nshots}
+        test_counts = test_run.result().get_counts()
+        self.assertEqual(expected_counts,
+                         test_counts)
+
 
 
 if __name__ == '__main__':
