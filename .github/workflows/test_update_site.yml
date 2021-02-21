@@ -23,6 +23,10 @@ jobs:
     - name: Install qbitkit using script bin/install_without_venv.sh
       run: |
         cd bin
-        bash install.sh
+        bash install_without_venv.sh
+    - name: Make a temporary directory to test copying docs to
+      run: |
         mkdir -p /tmp/docs
+    - name: Test script bin/update_site.sh
+      run: |
         bash update_site.sh html /tmp/docs
