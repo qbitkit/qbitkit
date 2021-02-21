@@ -98,10 +98,6 @@ class Job:
             qasm (str): A string containing valid QASM 2.0 to run. Specifying this overrides circuit. (default str(""))
             backend (qiskit.providers.ibmq.IBMQBackend): the backend to use. (default None)
             shots (int): the number of shots or 'reads' to take when executing on QPU. (default 8192)"""
-        __IBMQ__.load_account()
-        provider = __IBMQ__.get_provider(hub='ibm-q')
-        filters = lambda b: b.configuration().n_qubits >= 3 and \
-            not b.configuration().simulator and b.status().operational is True
 
         if qasm != str(""):
             circuit = __QuantumCircuit__.from_qasm_str(qasm)
