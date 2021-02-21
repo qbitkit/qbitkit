@@ -25,14 +25,14 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install -U flake8 pytest
         if [ -f requirements.txt ]; then pip install -Ur requirements.txt; fi
-    - name: Install qbitkit
+    - name: Install qbitkit.
       run: |
         python setup.py build
         python setup.py install
-    - name: Install Documentation Dependencies
+    - name: Install Documentation Dependencies.
       run: |
         pip install -Ur doc/sphinx/requirements.txt
-    - name: Build Documentation
+    - name: Build Documentation.
       run: |
         echo "Compiling Documentation with $(nproc) Cores..."
         cd doc/sphinx

@@ -20,14 +20,14 @@ jobs:
     - name: Install nginx
       run: |
         sudo apt install -y nginx
-    - name: Install qbitkit using script bin/install_without_venv.sh
+    - name: Install qbitkit using script bin/install_without_venv.sh.
       run: |
         cd bin
         bash install_without_venv.sh
-    - name: Make a temporary directory to test copying docs to
+    - name: Make a temporary directory to test copying docs to.
       run: |
         mkdir -p /tmp/docs
-    - name: Test script bin/update_site.sh
+    - name: Test script bin/update_site.sh.
       run: |
         cd bin
         bash update_site.sh html /tmp/docs
