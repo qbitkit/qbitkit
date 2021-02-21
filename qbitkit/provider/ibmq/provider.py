@@ -103,7 +103,8 @@ class Job:
             circuit = __QuantumCircuit__.from_qasm_str(qasm)
 
         if backend is None:
-            backend = __least_busy__(provider.backends(filters=filters))
+            backend = Remote.auto_backend()
+
         job = __execute__(circuit,
                           backend,
                           shots)
