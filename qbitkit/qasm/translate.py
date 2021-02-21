@@ -62,6 +62,11 @@ def from_frame(df=__fr__.get_frame(),
         else:
             qcgates = qcgates
 
+        if qcgates == 'if':
+            qasmstr == __gen__.if_statement(creg_name=targetA,
+                                            operator=targetB,
+                                            creg_val=targetC)
+
         if qcgates == 'm':
             qasmstr = __gen__.measurement(creg=row['targetB'],
                                           qreg=row['targetA'])
