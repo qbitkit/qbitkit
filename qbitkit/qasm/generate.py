@@ -228,14 +228,22 @@ def if_statement(creg_name=str('c'),
     operator = str(operator)
     creg_val = str(int(creg_val))
     gate_name = str(gate_name)
-    targetA = str(int(targetA))
-    targetB = str(int(targetB))
-    targetC = str(int(targetC))
-    Utheta = str(float(Utheta))
-    Uphi = str(float(Uphi))
-    Ulambda = str(float(Ulambda))
-    custom_name = str(custom_name)
-    custom_params = str(custom_params)
+    if targetA is not None:
+        targetA = str(int(targetA))
+    if targetB is not None:
+        targetB = str(int(targetB))
+    if targetC is not None:
+        targetC = str(int(targetC))
+    if Utheta is not None:
+        Utheta = str(float(Utheta))
+    if Uphi is not None:
+        Uphi = str(float(Uphi))
+    if Ulambda is not None:
+        Ulambda = str(float(Ulambda))
+    if custom_name is not None:
+        custom_name = str(custom_name)
+    if custom_params is not None:
+        custom_params = str(custom_params)
 
     # Compile gate to apply if statement is fulfilled
     compiled_gate = gate(gate_name, targetA, targetB,
