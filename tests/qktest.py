@@ -23,7 +23,7 @@ class QKTestCase(__tc__):
                       scale_qubit=8):
         xgate = {'gate' : QKTestCase.repeater('x', scale_qubit),
                  'targetA' : QKTestCase.ranger(scale_qubit)}
-        meas = {'gate' : QKTestCase.repeater('x',
+        meas = {'gate' : QKTestCase.repeater('m',
                                              scale_qubit),
                 'targetA' : QKTestCase.ranger(scale_qubit),
                 'targetB' : QKTestCase.ranger(scale_qubit)}
