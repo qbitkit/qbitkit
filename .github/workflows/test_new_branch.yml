@@ -17,7 +17,7 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
-    - name: Install qbitkit using script bin/install_without_venv.sh
+    - name: Test script bin/new_branch.sh
       run: |
         cd bin
         bash new_branch.sh
