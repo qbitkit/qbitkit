@@ -26,8 +26,11 @@ class Local:
             simulator(str): Name of the simulator to use (default 'qasm_simulator')
         Returns:
             qiskit.providers.BaseBackend: the BasicAer simulator from Qiskit"""
+        # Initialize variables
         backend = None
+        # Get backend
         backend = __ba__.get_backend(simulator)
+        # Return backend
         return backend
     def sim(simulator='qasm_simulator',
             backend='basic_aer'):
@@ -38,15 +41,25 @@ class Local:
             backend (str): the backend to use. can be 'aer' or 'basic_aer'. (default 'basic_aer')
         Returns:
             qiskit.providers.BaseBackend: the simulator you chose"""
+        # Check if requested simulator is basic_aer
         if backend == 'basic_aer':
+            # Create a basic_aer simulator
             device = Local.basic_aer(simulator=simulator)
+            # Return basic_aer simulator
             return device
+        # Check if requested simulator is aer
         elif backend == 'aer':
+            # Create an aer simulator
             device = Local.aer(simulator=simulator)
+            # Return aer simulator
             return device
+        # In any other case
         else:
+            # Throw a soft error
             print(f"ERROR: Backend {backend} not found. Not returning anything.")
+            # Set device variable to None
             device = None
+            # Return None
             return device
 
 
@@ -58,7 +71,9 @@ class Remote:
             hub (str): The hub to pick IBM Q machines from. (default 'ibm-q')
         Returns:
             qiskit.providers.BaseProvider: the IBMQ provider"""
+        # Create a provider object from specified hub name.
         provider = __IBMQ__.load_account(hub)
+        # Return new provider object.
         return provider
     def auto_backend(provider=None,
                      qubits=3,
@@ -71,18 +86,22 @@ class Remote:
             simulator(bool): If set to True, allows automatic selection of classically simulated quantum devices. (defeault False)
         Returns:
             qiskit.providers.ibmq.ibmqbackend.IBMQBackend: Qiskit IBMQBackend object."""
+        # Check whether or not we should include simulators in our search.
         if simulator == False:
+            # Get least busy device, only looking for hardware devices.
             filters = lambda b: b.configuration().n_qubits >= qubits and \
                                 not b.configuration().simulator and \
                                 b.status().operational is True
         else:
+            # Get least busy device, including simulators in search for devices.
             filters = lambda b: b.configuration().n_qubits >= qubits and \
                                 b.configuration().simulator and \
                                 b.status().operational is True
-
+        # Get backend.
         backend = __least_busy__(
             provider.backends(
                 filters=filters))
+        # Return backend.
         return backend
 
 
@@ -129,12 +148,19 @@ class Job:
             show_graph (bool): whether or not to show a graph of the measurement probabilities. (default False)
         Returns:
             dict: the results from running the job"""
+        # Read result into variable result.
         result = job.result()
+        # Check if we should not display a graph of probabilities
         if show_graph is False:
+            # Just return result
             return result
+        # Check if we should display a graph of probabilities
         elif show_graph is True:
-            meas_result = result
-            __plot_histogram__(meas_result)
+            # Plot a Histogram from Results
+            __plot_histogram__(result)
+            # Return results
             return result
+        # In any other case
         else:
+            # Just return result
             return result
