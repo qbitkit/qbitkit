@@ -14,7 +14,7 @@ All of this, in just 3 lines of code (not counting import statements, comments, 
 
 ### :bar_chart: Example
 Here we make a Bell State and submit it to the Rigetti Aspen-8 Superconducting Quantum Computer on AWS Braket. 
-You can change `get_qpu_ar`n to `get_sim_arn` and clear the existing parameters if you want a simulator available 24/7, or switch out `rigetti` and `Aspen-8` with `ionq` and `ionQdevice` to use high Quantum Volume, extremely low gate error ion trapping quantum. Welcome to the future.
+You can change `get_qpu_arn` to `get_sim_arn` and clear the existing parameters if you want a simulator available 24/7, or switch out `rigetti` and `Aspen-8` with `ionq` and `ionQdevice` to use high Quantum Volume, extremely low gate error ion trapping quantum. Welcome to the future.
 
 ```python
 # Import relevant qbitkit Libraries
