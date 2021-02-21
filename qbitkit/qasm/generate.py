@@ -215,19 +215,28 @@ def if_statement(creg_name=str('c'),
             targetA(int): First target qubit. (default None)
             targetB(int): Second target qubit. (default None)
             targetC(int): Third target qubit. (default None)
-            Utheta(str): Theta value for U-gates. (default None)
-            Uphi(str): Phi value for U-gates. (default None)
-            Ulambda(str): Lambda value for U-gates. (default None)
+            Utheta(float): Theta value for U-gates. (default None)
+            Uphi(float): Phi value for U-gates. (default None)
+            Ulambda(float): Lambda value for U-gates. (default None)
             custom_name(str): Name for user-defined opaque gate declarations, unitary gate declarations, and user-defined unitary gates. (default None)
             custom_params(str): Parameters for user-defined opaque gate declarations, unitary gate declarations, and user-defined unitary gates. (default None)
         Returns:
             str: A string object containing the specified gate as QASM."""
+
     # Ensure Variables Have Correct Types
     creg_name = str(creg_name)
     operator = str(operator)
     creg_val = str(int(creg_val))
     gate_name = str(gate_name)
     targetA = str(int(targetA))
+    targetB = str(int(targetB))
+    targetC = str(int(targetC))
+    Utheta = str(float(Utheta))
+    Uphi = str(float(Uphi))
+    Ulambda = str(float(Ulambda))
+    custom_name = str(custom_name)
+    custom_params = str(custom_params)
+
     # Compile gate to apply if statement is fulfilled
     compiled_gate = gate(gate_name, targetA, targetB,
                          targetC, Utheta, Uphi, Ulambda,
