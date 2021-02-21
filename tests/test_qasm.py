@@ -66,6 +66,13 @@ class TestGeneration(__tc__):
         expected_equals_actual = __tc__.compare(expected_value,
                                                 actual_value)
         self.assertEqual(expected_equals_actual, True)
+    def test_comments(self):
+        expected_value = "// Hello, World!"
+        actual_value = __g__.comment('Hello, World!')
+        expected_equals_actual = False
+        expected_equals_actual = __tc__.compare(expected_value,
+                                                actual_value)
+        self.assertEqual(expected_equals_actual, True)
 
 
 if __name__ == '__main__':
