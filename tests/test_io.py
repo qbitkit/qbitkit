@@ -1,6 +1,7 @@
 from tests.qktest import QKTestCase as __tc__
 from qbitkit.io import list as __lst__
 from numpy.random import randint as __rng__
+from unittest import main as __ut_main__
 
 
 class TestListTools(__tc__):
@@ -20,3 +21,7 @@ class TestListTools(__tc__):
         expected_list = __tc__.ranger(niterations)
         self.assertEqual(test_list,
                          expected_list)
+
+
+if __name__ == '__main__':
+    __ut_main__()
