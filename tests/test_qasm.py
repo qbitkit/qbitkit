@@ -73,6 +73,12 @@ class TestGeneration(__tc__):
         expected_equals_actual = __tc__.compare(expected_value,
                                                 actual_value)
         self.assertEqual(expected_equals_actual, True)
+    def test_if_statement(self):
+        expected_value = 'if (c==0) x q[0];'
+        actual_value = __g__.if_statement('c','==',0,'x',0)
+        expected_equals_actual = __tc__.compare(expected_value,
+                                                actual_value)
+        self.assertEqual(expected_equals_actual, True)
 
 
 if __name__ == '__main__':
