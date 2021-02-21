@@ -233,8 +233,6 @@ def gate(self=str('h'),
     elif self == 'opaque':
         # Compile opaque gate declaration.
         compiled_gate = f'opaque {custom_name}({custom_params}) {targets};'
-    elif self == 'if':
-        compiled_gate = if_statement()
 
     # Return compiled gate.
     return compiled_gate
