@@ -216,6 +216,6 @@ def if_statement(creg_name=str('c'),
                          targetC, Utheta, Uphi, Ulambda,
                          custom_name, custom_params)
     # Compile if statement
-    if_str = f'if ({creg_name}{operator}{creg_val}) {compiled_gate};'
+    if_str = f'if ({creg_name}{operator}{creg_val}) {compiled_gate}'
     # Return compiled if statement
     return if_str
