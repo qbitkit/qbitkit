@@ -105,9 +105,9 @@ class Job:
         if backend is None:
             backend = Remote.auto_backend()
 
-        job = __execute__(circuit,
-                          backend,
-                          shots)
+        job = __execute__(experiments=circuit,
+                          backend=backend,
+                          shots=shots)
         return job
 
     def run_job(circuit=None,
