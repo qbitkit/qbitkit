@@ -101,9 +101,11 @@ class Job:
 
         if qasm != str(""):
             circuit = __QuantumCircuit__.from_qasm_str(qasm)
+        
+        num_qubits = circuit.num_qubits
 
         if backend is None:
-            backend = Remote.auto_backend()
+            backend = Remote.auto_backend(qubits=num_qubits)
 
         job = __execute__(experiments=circuit,
                           backend=backend,
