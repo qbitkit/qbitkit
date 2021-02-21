@@ -21,9 +21,8 @@ class QKTestCase(__tc__):
 
     def example_frame(measurements=True,
                       scale_qubit=8):
-        xgate = {'gate' : QKTestCase.ranger(scale_qubit),
-                 'targetA' : QKTestCase.repeater('x',
-                                                 scale_qubit)}
+        xgate = {'gate' : QKTestCase.repeater('x', scale_qubit),
+                 'targetA' : QKTestCase.ranger(scale_qubit)}
         meas = {'gate' : QKTestCase.repeater('x',
                                              scale_qubit),
                 'targetA' : QKTestCase.ranger(scale_qubit),
