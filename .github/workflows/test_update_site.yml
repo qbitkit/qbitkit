@@ -29,4 +29,5 @@ jobs:
         mkdir -p /tmp/docs
     - name: Test script bin/update_site.sh
       run: |
+        cd bin
         bash update_site.sh html /tmp/docs
