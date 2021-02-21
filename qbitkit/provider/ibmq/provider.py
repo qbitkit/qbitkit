@@ -99,14 +99,20 @@ class Job:
             backend (qiskit.providers.ibmq.IBMQBackend): the backend to use. (default None)
             shots (int): the number of shots or 'reads' to take when executing on QPU. (default 8192)"""
 
+        # Check if qasm parameter is not it's default value
         if qasm != str(""):
+            # Create circuit from QASM
             circuit = __QuantumCircuit__.from_qasm_str(qasm)
-        
+
+        # Get the number of qubits used in the specified QuantumCircuit
         num_qubits = circuit.num_qubits
 
+        # Check if backend is specified
         if backend is None:
+            # Automatically pick the least busy backend
             backend = Remote.auto_backend(qubits=num_qubits)
 
+        # Run QuantumCircuit
         job = __execute__(experiments=circuit,
                           backend=backend,
                           shots=shots)
