@@ -14,3 +14,9 @@ class TestListTools(__tc__):
                                         repeats=niterations)
         self.assertEquals(test_list,
                           expected_list)
+    def test_count_range(self):
+        niterations = __rng__(0,256)
+        test_list = __lst__.count_range(end=niterations)
+        expected_list = __tc__.ranger(niterations)
+        self.assertEqual(test_list,
+                         expected_list)
