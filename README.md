@@ -2,7 +2,7 @@
 
 
 
-# ⚛ `qbitkit` [Docs](https://qbitkit-docs-temporary.neutralthreat.com/index.html) 
+# ⚛ `qbitkit` [Docs](https://qbitkit-docs-temporary.neutralthreat.com/index.html) ![mkdocs.sh](https://github.com/qbitkit/qbitkit/workflows/mkdocs.sh/badge.svg) ![update_docs.sh](https://github.com/qbitkit/qbitkit/workflows/update_docs.sh/badge.svg)
 
 ![CodeQL](https://github.com/qbitkit/qbitkit/workflows/CodeQL/badge.svg) ![PyTest](https://github.com/qbitkit/qbitkit/workflows/PyTest%20Unit%20Testing/badge.svg) ![Flake8](https://github.com/qbitkit/qbitkit/workflows/Flake8%20Linting/badge.svg)
 
