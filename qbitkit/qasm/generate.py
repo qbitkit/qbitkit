@@ -205,6 +205,23 @@ def if_statement(creg_name=str('c'),
                  Ulambda=None,
                  custom_name=None,
                  custom_params=None):
+    """Generate a gate controlled by a classical if statement as a QASM string from specified parameters.
+
+        Args:
+            creg_name(str): Classical register to run if statement against. (default 'c')
+            operator(str): Operator to compare values with. (default str('=='))
+            creg_val(int): Value to compare with creg_name. (default int(0))
+            gate_name(str): The name used to represent the gate in QASM. For example, a Hadamard Gate is 'h'. (default str('h'))
+            targetA(int): First target qubit. (default None)
+            targetB(int): Second target qubit. (default None)
+            targetC(int): Third target qubit. (default None)
+            Utheta(str): Theta value for U-gates. (default None)
+            Uphi(str): Phi value for U-gates. (default None)
+            Ulambda(str): Lambda value for U-gates. (default None)
+            custom_name(str): Name for user-defined opaque gate declarations, unitary gate declarations, and user-defined unitary gates. (default None)
+            custom_params(str): Parameters for user-defined opaque gate declarations, unitary gate declarations, and user-defined unitary gates. (default None)
+        Returns:
+            str: A string object containing the specified gate as QASM."""
     # Ensure Variables Have Correct Types
     creg_name = str(creg_name)
     operator = str(operator)
