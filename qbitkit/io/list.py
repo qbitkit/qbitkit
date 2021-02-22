@@ -15,6 +15,7 @@ def fill_range(fill=str('m'),
         append.append(fill)
     return append
 
+
 def count_range(start=int(0),
                 end=int(9),
                 append=None):
@@ -40,6 +41,7 @@ def count_range(start=int(0),
         generated_list.append(int(iteration))
 
     return generated_list
+
 
 def count(lst=None):
     """Count items in a specified list.
