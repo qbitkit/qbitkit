@@ -20,17 +20,17 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-    - name: Install nginx.
-      run: |
-        sudo apt install -y nginx
-    - name: Install qbitkit using script bin/install_without_venv.sh.
-      run: |
-        cd bin
-        bash install_without_venv.sh
-    - name: Make a temporary directory to test copying documentation to.
-      run: |
-        mkdir -p /tmp/docs
-    - name: Test script update_docs.sh.
-      run: |
-        cd bin
-        bash update_docs.sh html /tmp/docs
+       - name: Install nginx.
+        run: |
+          sudo apt install -y nginx
+      - name: Install qbitkit using script bin/install_without_venv.sh.
+        run: |
+          cd bin
+          bash install_without_venv.sh
+      - name: Make a temporary directory to test copying documentation to.
+        run: |
+          mkdir -p /tmp/docs
+      - name: Test script update_docs.sh.
+        run: |
+          cd bin
+          bash update_docs.sh html /tmp/docs

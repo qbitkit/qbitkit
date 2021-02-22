@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-    - name: Install qbitkit using script bin/install_without_venv.sh.
-      run: |
-        cd bin
-        bash install_without_venv.sh
+      - name: Install qbitkit using script bin/install_without_venv.sh.
+        run: |
+          cd bin
+          bash install_without_venv.sh
