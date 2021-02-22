@@ -27,9 +27,16 @@ def count_range(start=int(0),
     Returns:
         list: Generated list.
     """
+
     specified_range = range(int(start),
                             int(end))
-    generated_list = list([])
+
+    if append is None:
+        generated_list = list([])
+    else:
+        generated_list = append
+
     for iteration in specified_range:
         generated_list.append(int(iteration))
+
     return generated_list
