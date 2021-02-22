@@ -40,3 +40,22 @@ def count_range(start=int(0),
         generated_list.append(int(iteration))
 
     return generated_list
+
+def count(lst=None):
+    """Count items in a specified list.
+
+    Args:
+        lst(list): The list to count items from. (default None)
+    Returns:
+        int: Count of items in specified list."""
+    # Initialize Variables
+    lst = list(lst)
+    item_count = 0
+
+    # Iterate over specified list
+    for item in lst:
+        # Add 1 to item counter for each item in the list
+        item_count + 1
+
+    # Return the number of items in the specified list
+    return item_count
