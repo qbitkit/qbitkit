@@ -97,6 +97,7 @@ def gate(self=str('h'),
          targetB=None,
          targetC=None,
          angle=None,
+         theta=None,
          Utheta=None,
          Uphi=None,
          Ulambda=None,
@@ -110,6 +111,7 @@ def gate(self=str('h'),
         targetB(int): Second target qubit. (default None)
         targetC(int): Third target qubit. (default None)
         angle(float): Angle to specify in Radians for rotation gates like RX, RY, RZ. (default None)
+        theta(float): Theta value in to specify for rotation gates like RX, RY, RZ. Exactly the same as the angle parameter. (default None)
         Utheta(str): Theta value for U-gates. (default None)
         Uphi(str): Phi value for U-gates. (default None)
         Ulambda(str): Lambda value for U-gates. (default None)
@@ -119,6 +121,10 @@ def gate(self=str('h'),
         str: A string object containing the specified gate as QASM."""
     angle_gates = ['rx', 'ry', 'rz',
                    'crx', 'cry', 'crz']
+
+    if angle is None and theta is not None:
+        angle = theta
+
     # Ensure Integer Variables Have Correct Types
     if targetA is not None:
         targetA = int(targetA)
