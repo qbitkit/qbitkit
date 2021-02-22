@@ -120,7 +120,9 @@ def gate(self=str('h'),
     Returns:
         str: A string object containing the specified gate as QASM."""
     angle_gates = ['rx', 'ry', 'rz',
-                   'crx', 'cry', 'crz']
+                   'crx', 'cry', 'crz',
+                   'rxx', 'ryy', 'rzz',
+                   'rzx', 'p']
 
     if angle is None and theta is not None:
         angle = theta
