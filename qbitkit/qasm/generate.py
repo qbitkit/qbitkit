@@ -96,6 +96,7 @@ def gate(self=str('h'),
          targetA=None,
          targetB=None,
          targetC=None,
+         angle=None,
          Utheta=None,
          Uphi=None,
          Ulambda=None,
@@ -108,6 +109,7 @@ def gate(self=str('h'),
         targetA(int): First target qubit. (default None)
         targetB(int): Second target qubit. (default None)
         targetC(int): Third target qubit. (default None)
+        angle(float): Angle to specify in Radians for rotation gates like RX, RY, RZ. (default None)
         Utheta(str): Theta value for U-gates. (default None)
         Uphi(str): Phi value for U-gates. (default None)
         Ulambda(str): Lambda value for U-gates. (default None)
@@ -115,6 +117,8 @@ def gate(self=str('h'),
         custom_params(str): Parameters for user-defined opaque gate declarations, unitary gate declarations, and user-defined unitary gates. (default None)
     Returns:
         str: A string object containing the specified gate as QASM."""
+    angle_gates = ['rx', 'ry', 'rz',
+                   'crx', 'cry', 'crz']
     # Ensure Integer Variables Have Correct Types
     if targetA is not None:
         targetA = int(targetA)
@@ -166,6 +170,8 @@ def gate(self=str('h'),
     elif self == 'opaque':
         # Compile opaque gate declaration.
         compiled_gate = f'opaque {custom_name}({custom_params}) {targets};'
+    elif self in angle_gates:
+        compiled_gate = f'{self} ({angle}) {targets};'
 
     # Return compiled gate.
     return compiled_gate
