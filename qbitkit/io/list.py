@@ -55,7 +55,7 @@ def count(lst=None):
     # Iterate over specified list
     for item in lst:
         # Add 1 to item counter for each item in the list
-        item_count + 1
+        item_count = item_count + 1
 
     # Return the number of items in the specified list
     return item_count
