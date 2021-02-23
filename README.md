@@ -2,7 +2,7 @@
 
 
 
-# ⚛ `qbitkit` [Docs](https://qbitkit-docs-temporary.neutralthreat.com/index.html) 
+# ⚛ `qbitkit` [Docs](https://qbitkit.readthedocs.io/en/latest/) 
 
 [![Sphinx Documentation](https://github.com/qbitkit/qbitkit/actions/workflows/build_docs.yml/badge.svg)](https://github.com/qbitkit/qbitkit/actions/workflows/build_docs.yml)
 ![CodeQL](https://github.com/qbitkit/qbitkit/workflows/CodeQL/badge.svg) 
@@ -48,7 +48,7 @@ print(job.result())
 
 ## :books: Documentation
 For the time being, documentation is hosted at:
-* :pencil: https://qbitkit-docs-temporary.neutralthreat.com
+* :pencil: https://qbitkit.readthedocs.io/en/latest/
 
 ## :snake: :package: Python Version Compatibility
 The following versions of Python are supported:
