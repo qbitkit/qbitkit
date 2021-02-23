@@ -68,8 +68,8 @@ def from_frame(df=__fr__.get_frame(),
                                            creg_val=targetC)
 
         if qcgates == 'm':
-            qasmstr = __gen__.measurement(creg=row['targetB'],
-                                          qreg=row['targetA'])
+            qasmstr = __gen__.measurement(creg=targetB,
+                                          qreg=targetA)
         elif params is not None:
             qasmstr = __gen__.gate(targetA=targetA,
                                    targetB=targetB,
