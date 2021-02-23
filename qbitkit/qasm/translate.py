@@ -18,6 +18,10 @@ def from_frame(df=__fr__.get_frame(),
     Returns:
         str: QASM string translated from specified DataFrame"""
 
+    angle_gates = ['rx', 'ry', 'rz',
+                   'crx', 'cry', 'crz',
+                   'rxx', 'ryy', 'rzz',
+                   'rzx', 'p']
     if fill_nan is True:
         df = __fr__.fill_nan(df,
                          fill_nan_value)
@@ -55,6 +59,7 @@ def from_frame(df=__fr__.get_frame(),
         else:
             params = None
 
+
         if qcgates == 'cnot':
             qcgates = 'cx'
         elif qcgates == 'ccnot':
@@ -75,6 +80,17 @@ def from_frame(df=__fr__.get_frame(),
                                    targetC=targetC,
                                    custom_name=qcgates,
                                    custom_params=params)
+        elif qcgates in angle_gates:
+            if angle is None and theta is not None:
+                angle = theta
+            elif angle is None and phi is not None:
+                angle = phi
+
+            qasmstr = __gen__.gate(qcgates,
+                                   targetA=targetA,
+                                   targetB=targetB,
+                                   targetC=targetC,
+                                   angle=angle)
         else:
             qasmstr = __gen__.gate(qcgates,
                                    targetA=targetA,
