@@ -66,8 +66,7 @@ def from_frame(df=__fr__.get_frame(),
             qasmstr = __gen__.if_statement(creg_name=targetA,
                                            operator=targetB,
                                            creg_val=targetC)
-
-        if qcgates == 'm':
+        elif qcgates == 'm':
             qasmstr = __gen__.measurement(creg=targetB,
                                           qreg=targetA)
         elif params is not None:
