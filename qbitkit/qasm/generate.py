@@ -151,13 +151,13 @@ def gate(self=str('h'),
     # Add translated target to 'targets'.
     targets = targets + targetA_qasm
     # Check if targetB is not a default value.
-    if targetB is not None and targetB > 0:
+    if targetB is not None and targetB >= 0:
         # Generate second target qubit.
         targetB_qasm = f', q[{targetB}]'
         # Add translated target to 'targets'.
         targets = targets + targetB_qasm
     # Check if targetC is not a default value.
-    if targetC is not None and targetC > 0:
+    if targetC is not None and targetC >= 0:
         # Generate third target qubit.
         targetC_qasm = f', q[{targetC}]'
         # Add translated instruction to 'targets'.
