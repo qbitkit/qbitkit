@@ -75,7 +75,8 @@ def from_frame(df=__fr__.get_frame(),
             qasmstr = __gen__.measurement(creg=targetB,
                                           qreg=targetA)
         elif params is not None:
-            qasmstr = __gen__.gate(targetA=targetA,
+            qasmstr = __gen__.gate(self=qcgates,
+                                   targetA=targetA,
                                    targetB=targetB,
                                    targetC=targetC,
                                    custom_name=qcgates,
@@ -100,7 +101,7 @@ def from_frame(df=__fr__.get_frame(),
                                        targetC=targetC,
                                        angle=phi)
         else:
-            qasmstr = __gen__.gate(qcgates,
+            qasmstr = __gen__.gate(self=qcgates,
                                    targetA=targetA,
                                    targetB=targetB,
                                    targetC=targetC,)
