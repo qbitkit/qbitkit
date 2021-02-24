@@ -81,16 +81,24 @@ def from_frame(df=__fr__.get_frame(),
                                    custom_name=qcgates,
                                    custom_params=params)
         elif qcgates in angle_gates:
-            if angle is None and theta is not None:
-                angle = theta
-            elif angle is None and phi is not None:
-                angle = phi
-
-            qasmstr = __gen__.gate(qcgates,
-                                   targetA=targetA,
-                                   targetB=targetB,
-                                   targetC=targetC,
-                                   angle=angle)
+            if angle is not None and angle != -1.0:
+                qasmstr = __gen__.gate(self=qcgates,
+                                       targetA=targetA,
+                                       targetB=targetB,
+                                       targetC=targetC,
+                                       angle=angle)
+            elif theta is not None and theta != -1.0:
+                qasmstr = __gen__.gate(self=qcgates,
+                                       targetA=targetA,
+                                       targetB=targetB,
+                                       targetC=targetC,
+                                       angle=theta)
+            elif phi is not None and phi != -1.0:
+                qasmstr = __gen__.gate(self=qcgates,
+                                       targetA=targetA,
+                                       targetB=targetB,
+                                       targetC=targetC,
+                                       angle=phi)
         else:
             qasmstr = __gen__.gate(qcgates,
                                    targetA=targetA,
