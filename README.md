@@ -33,8 +33,8 @@ circuit = c.Translate.df_circuit(df=f.get_frame(
 # Run the circuit on the Rigetti Aspen-8 hosted on AWS Braket
 job = p.Job.get_job(device=p.QuantumDevice.get_device(
   p.QuantumDevice.get_qpu_arn(
-    # Pick the Aspen-8 Quantum Computer by Rigetti as our QPU (IonQ works too!)
-    vendor='rigetti', device='Aspen-8')),
+    # Pick the Aspen-9 Quantum Computer by Rigetti as our QPU (IonQ works too!)
+    vendor='rigetti', device='Aspen-9')),
   circuit=circuit,
   s3loc=p.Connection.get_bucket(
     # Use the name of the bucket created at Braket onboarding.
