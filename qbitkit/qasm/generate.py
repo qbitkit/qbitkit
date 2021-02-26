@@ -238,10 +238,14 @@ def if_statement(creg_name=str('c'),
             str: A string object containing the specified gate as QASM."""
 
     # Ensure Variables Have Correct Types
-    creg_name = str(creg_name)
-    operator = str(operator)
-    creg_val = str(int(creg_val))
-    gate_name = str(gate_name)
+    if creg_name is not None:
+        creg_name = str(creg_name)
+    if operator is not None:
+        operator = str(operator)
+    if creg_val is not None:
+        creg_val = str(int(creg_val))
+    if gate_name is not None:
+        gate_name = str(gate_name)
     if targetA is not None:
         targetA = str(int(targetA))
     if targetB is not None:
