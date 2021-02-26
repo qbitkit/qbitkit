@@ -10,19 +10,27 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ 3.7, 3.8, 3.9 ]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
-    - name: Install nginx
-      run: |
-        sudo apt install -y nginx
-    - name: Install qbitkit using script bin/install_without_venv.sh
-      run: |
-        cd bin
-        bash install.sh
-        mkdir -p /tmp/docs
-        bash update_site.sh html /tmp/docs
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install nginx
+        run: |
+          sudo apt install -y nginx
+      - name: Install qbitkit using script bin/install_without_venv.sh.
+        run: |
+          cd bin
+          bash install_without_venv.sh
+      - name: Make a temporary directory to test copying docs to.
+        run: |
+          mkdir -p /tmp/docs
+      - name: Test script bin/update_site.sh.
+        run: |
+          cd bin
+          bash update_site.sh html /tmp/docs

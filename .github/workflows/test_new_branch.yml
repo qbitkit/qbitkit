@@ -1,4 +1,4 @@
-name: Test Install (no venv) Script
+name: new_branch.sh
 
 on:
   push:
@@ -10,14 +10,17 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ 3.7, 3.8, 3.9 ]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
-    - name: Install qbitkit using script bin/install_without_venv.sh
-      run: |
-        cd bin
-        bash new_branch.sh
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test script bin/new_branch.sh.
+        run: |
+          cd bin
+          bash new_branch.sh

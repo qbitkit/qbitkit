@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-qbitkit Official Documentation
+⚛📝 qbitkit Official Documentation
 ===================================
 
 qbitkit is a framework that makes quantum computing a little easier by offering developers high-level abstractions to perform various tasks useful to quantum computing.

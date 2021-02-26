@@ -1,2 +1,5 @@
 # Unit Testing
 pytest
+
+# Linting
+flake8

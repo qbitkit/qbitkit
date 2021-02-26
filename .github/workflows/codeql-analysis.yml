@@ -34,11 +34,11 @@ jobs:
         # https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
 
     steps:
-    - name: Checkout repository
+    - name: Checkout repository.
       uses: actions/checkout@v2
 
     # Initializes the CodeQL tools for scanning.
-    - name: Initialize CodeQL
+    - name: Initialize CodeQL.
       uses: github/codeql-action/init@v1
       with:
         languages: ${{ matrix.language }}
@@ -58,5 +58,5 @@ jobs:
        bash
        cd bin ; bash ./install_without_venv.sh
 
-    - name: Perform CodeQL Analysis
+    - name: Perform CodeQL Analysis.
       uses: github/codeql-action/analyze@v1

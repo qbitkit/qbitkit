@@ -13,6 +13,7 @@ def comment(self=str('')):
     # Return generated QASM 2.0.
     return qasm_comment
 
+
 def headers(qasm_version=float(2.0),
             includes=list(['qelib1.inc'])):
     """Generate QASM 2.0 formatted headers.
@@ -23,19 +24,19 @@ def headers(qasm_version=float(2.0),
     Returns:
         str: the generated headers to be placed at the top of a QASM string"""
     # Initialize Variables
-    ## Counter for include statements
+    # Counter for include statements
     nincludes = int(0)
-    ## Counter for iterations
+    # Counter for iterations
     niterations = int(0)
-    ## Convert QASM version float to a string
+    # Convert QASM version float to a string
     ver_float_to_str = str(qasm_version)
-    ## Double Quote
+    # Double Quote
     dq = '"'
-    ## Formatted include statement
+    # Formatted include statement
     include_formatted = ''
-    ## All include statements concatenated into one string
+    # All include statements concatenated into one string
     all_includes = ''
-    ## QASM version statement
+    # QASM version statement
     qasm_ver = f"OPENQASM {ver_float_to_str};"
     # Count number of include statements we need to make
     for include in includes:
@@ -95,6 +96,8 @@ def gate(self=str('h'),
          targetA=None,
          targetB=None,
          targetC=None,
+         angle=None,
+         theta=None,
          Utheta=None,
          Uphi=None,
          Ulambda=None,
@@ -107,6 +110,8 @@ def gate(self=str('h'),
         targetA(int): First target qubit. (default None)
         targetB(int): Second target qubit. (default None)
         targetC(int): Third target qubit. (default None)
+        angle(float): Angle to specify in Radians for rotation gates like RX, RY, RZ. (default None)
+        theta(float): Theta value in to specify for rotation gates like RX, RY, RZ. Exactly the same as the angle parameter. (default None)
         Utheta(str): Theta value for U-gates. (default None)
         Uphi(str): Phi value for U-gates. (default None)
         Ulambda(str): Lambda value for U-gates. (default None)
@@ -114,6 +119,14 @@ def gate(self=str('h'),
         custom_params(str): Parameters for user-defined opaque gate declarations, unitary gate declarations, and user-defined unitary gates. (default None)
     Returns:
         str: A string object containing the specified gate as QASM."""
+    angle_gates = ['rx', 'ry', 'rz',
+                   'crx', 'cry', 'crz',
+                   'rxx', 'ryy', 'rzz',
+                   'rzx', 'p']
+
+    if angle is None and theta is not None:
+        angle = theta
+
     # Ensure Integer Variables Have Correct Types
     if targetA is not None:
         targetA = int(targetA)
@@ -134,19 +147,19 @@ def gate(self=str('h'),
     targets = ''
     # Check if targetA is not a default value.
     # Generate first target qubit.
-    targetA_qasm = f'q[{int(targetA)}]'
+    targetA_qasm = f'q[{targetA}]'
     # Add translated target to 'targets'.
     targets = targets + targetA_qasm
     # Check if targetB is not a default value.
-    if targetB is not None and targetB > 0:
+    if targetB is not None and targetB >= 0:
         # Generate second target qubit.
-        targetB_qasm = f', q[{int(targetB)}]'
+        targetB_qasm = f', q[{targetB}]'
         # Add translated target to 'targets'.
         targets = targets + targetB_qasm
     # Check if targetC is not a default value.
-    if targetC is not None and targetC > 0:
+    if targetC is not None and targetC >= 0:
         # Generate third target qubit.
-        targetC_qasm = f', q[{int(targetC)}]'
+        targetC_qasm = f', q[{targetC}]'
         # Add translated instruction to 'targets'.
         targets = targets + targetC_qasm
 
@@ -165,6 +178,8 @@ def gate(self=str('h'),
     elif self == 'opaque':
         # Compile opaque gate declaration.
         compiled_gate = f'opaque {custom_name}({custom_params}) {targets};'
+    elif self in angle_gates:
+        compiled_gate = f'{self} ({angle}) {targets};'
 
     # Return compiled gate.
     return compiled_gate
@@ -190,3 +205,69 @@ def measurement(qreg=int(0),
     meas_str = f'measure q[{str(qreg)}] -> c[{str(creg)}];'
     # Return generated measurement argument.
     return meas_str
+
+
+def if_statement(creg_name=str('c'),
+                 operator=str('=='),
+                 creg_val=int(0),
+                 gate_name=str('x'),
+                 targetA=None,
+                 targetB=None,
+                 targetC=None,
+                 Utheta=None,
+                 Uphi=None,
+                 Ulambda=None,
+                 custom_name=None,
+                 custom_params=None):
+    """Generate a gate controlled by a classical if statement as a QASM string from specified parameters.
+
+        Args:
+            creg_name(str): Classical register to run if statement against. (default 'c')
+            operator(str): Operator to compare values with. (default str('=='))
+            creg_val(int): Value to compare with creg_name. (default int(0))
+            gate_name(str): The name used to represent the gate in QASM. For example, a Hadamard Gate is 'h'. (default str('h'))
+            targetA(int): First target qubit. (default None)
+            targetB(int): Second target qubit. (default None)
+            targetC(int): Third target qubit. (default None)
+            Utheta(float): Theta value for U-gates. (default None)
+            Uphi(float): Phi value for U-gates. (default None)
+            Ulambda(float): Lambda value for U-gates. (default None)
+            custom_name(str): Name for user-defined opaque gate declarations, unitary gate declarations, and user-defined unitary gates. (default None)
+            custom_params(str): Parameters for user-defined opaque gate declarations, unitary gate declarations, and user-defined unitary gates. (default None)
+        Returns:
+            str: A string object containing the specified gate as QASM."""
+
+    # Ensure Variables Have Correct Types
+    if creg_name is not None:
+        creg_name = str(creg_name)
+    if operator is not None:
+        operator = str(operator)
+    if creg_val is not None:
+        creg_val = str(int(creg_val))
+    if gate_name is not None:
+        gate_name = str(gate_name)
+    if targetA is not None:
+        targetA = str(int(targetA))
+    if targetB is not None:
+        targetB = str(int(targetB))
+    if targetC is not None:
+        targetC = str(int(targetC))
+    if Utheta is not None:
+        Utheta = str(float(Utheta))
+    if Uphi is not None:
+        Uphi = str(float(Uphi))
+    if Ulambda is not None:
+        Ulambda = str(float(Ulambda))
+    if custom_name is not None:
+        custom_name = str(custom_name)
+    if custom_params is not None:
+        custom_params = str(custom_params)
+
+    # Compile gate to apply if statement is fulfilled
+    compiled_gate = gate(gate_name, targetA, targetB,
+                         targetC, Utheta, Uphi, Ulambda,
+                         custom_name, custom_params)
+    # Compile if statement
+    if_str = f'if ({creg_name}{operator}{creg_val}) {compiled_gate}'
+    # Return compiled if statement
+    return if_str

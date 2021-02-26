@@ -1,5 +1,5 @@
 from dwave.system.composites import EmbeddingComposite as __ec__
-import minorminer as __mm__
+from minorminer import find_embedding as __find_embed__
 from dwave.embedding import embed_qubo as __embed_qubo__
 from dwave.embedding import embed_ising as __embed_ising__
 
@@ -29,8 +29,8 @@ def qubo(sampler=None,
     # Get the topology data of the D-Wave QPU for the given sampler.
     _, target_edgelist, target_adjacency = sampler.structure
     # Find the embedding based on the given QUBO and the target edges from the topology data..
-    embedding = __mm__.find_embedding(qubo,
-                                      target_edgelist)
+    embedding = __find_embed__(qubo,
+                               target_edgelist)
     # Create embedding from the QUBO.
     qubo_embedded = __embed_qubo__(qubo,
                                    embedding,
@@ -51,8 +51,8 @@ def ising(sampler=None,
     # Get the topology data of the D-Wave QPU from the given sampler.
     _, target_edgelist, target_adjacency = sampler.structure
     # Find the embedding based on the given Ising and target edges from the topology data.
-    embedding = __mm__.find_embedding(ising,
-                                      target_edgelist)
+    embedding = __find_embed__(ising,
+                               target_edgelist)
     # Create embedding from the Ising.
     ising_embedded = __embed_ising__(ising,
                                      embedding,
@@ -75,8 +75,8 @@ def bqm(sampler=None,
     # Get the topology data of the D-Wave QPU from the given sampler.
     _, target_edgelist, target_adjacency = sampler.structure
     # Find the embedding based on the QUBO we just converted from BQM and target edges from the topology data.
-    embedding = __mm__.find_embedding(qubo,
-                                      target_edgelist)
+    embedding = __find_embed__(qubo,
+                               target_edgelist)
     # Create embedding from the QUBO converted from specified BQM.
     qubo_embedded = __embed_qubo__(qubo,
                                    embedding,

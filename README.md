@@ -2,9 +2,12 @@
 
 
 
-# ⚛ `qbitkit` [Docs](https://qbitkit-docs-temporary.neutralthreat.com/index.html) 
+# ⚛ `qbitkit` [Docs](https://qbitkit.readthedocs.io/en/latest/) 
 
-![CodeQL](https://github.com/qbitkit/qbitkit/workflows/CodeQL/badge.svg) ![PyTest](https://github.com/qbitkit/qbitkit/workflows/PyTest%20Unit%20Testing/badge.svg) ![Flake8](https://github.com/qbitkit/qbitkit/workflows/Flake8%20Linting/badge.svg)
+[![Sphinx Documentation](https://github.com/qbitkit/qbitkit/actions/workflows/build_docs.yml/badge.svg)](https://github.com/qbitkit/qbitkit/actions/workflows/build_docs.yml)
+![CodeQL](https://github.com/qbitkit/qbitkit/workflows/CodeQL/badge.svg) 
+![PyTest](https://github.com/qbitkit/qbitkit/actions/workflows/pytest.yml/badge.svg)
+![Flake8](https://github.com/qbitkit/qbitkit/actions/workflows/flake8.yml/badge.svg)
 
 #### Quantum Computing, for Humans.
 `qbitkit` is a set of high-level abstractions to make writing software for quantum computers easier. 
@@ -14,7 +17,7 @@ All of this, in just 3 lines of code (not counting import statements, comments, 
 
 ### :bar_chart: Example
 Here we make a Bell State and submit it to the Rigetti Aspen-8 Superconducting Quantum Computer on AWS Braket. 
-You can change `get_qpu_ar`n to `get_sim_arn` and clear the existing parameters if you want a simulator available 24/7, or switch out `rigetti` and `Aspen-8` with `ionq` and `ionQdevice` to use high Quantum Volume, extremely low gate error ion trapping quantum. Welcome to the future.
+You can change `get_qpu_arn` to `get_sim_arn` and clear the existing parameters if you want a simulator available 24/7, or switch out `rigetti` and `Aspen-8` with `ionq` and `ionQdevice` to use high Quantum Volume, extremely low gate error ion trapping quantum. Welcome to the future.
 
 ```python
 # Import relevant qbitkit Libraries
@@ -30,8 +33,8 @@ circuit = c.Translate.df_circuit(df=f.get_frame(
 # Run the circuit on the Rigetti Aspen-8 hosted on AWS Braket
 job = p.Job.get_job(device=p.QuantumDevice.get_device(
   p.QuantumDevice.get_qpu_arn(
-    # Pick the Aspen-8 Quantum Computer by Rigetti as our QPU (IonQ works too!)
-    vendor='rigetti', device='Aspen-8')),
+    # Pick the Aspen-9 Quantum Computer by Rigetti as our QPU (IonQ works too!)
+    vendor='rigetti', device='Aspen-9')),
   circuit=circuit,
   s3loc=p.Connection.get_bucket(
     # Use the name of the bucket created at Braket onboarding.
@@ -45,7 +48,7 @@ print(job.result())
 
 ## :books: Documentation
 For the time being, documentation is hosted at:
-* :pencil: https://qbitkit-docs-temporary.neutralthreat.com
+* :pencil: https://qbitkit.readthedocs.io/en/latest/
 
 ## :snake: :package: Python Version Compatibility
 The following versions of Python are supported:
@@ -121,12 +124,12 @@ Support is continually tested upon every commit to branch 'origin' for each Pyth
     * :eyes: Public
     * :calendar: Released: January 1st, 2021
 * Status:
-    * :calendar: Active development since December 15th, 2020
-    * :alarm_clock: At least 1 commit per day since inception.
+    * :calendar: In active development since December 15th, 2020
+    * :alarm_clock: >=1 commit(s) made every day since the repository was created
 * Health:
     * :white_check_mark: Green (healthy)
     * :rocket: Preparing for v0.1.0 (stable)
-    * :pencil: Code examples needed  
-    * :clipboard: Extensive testing will still be necessary prior to public release
+    * :pencil: Code examples and more documentation than just API doc needed (see issue #42)  
+    * :clipboard: More unit tests are needed
 
 ⚛ |2021> `qbitkit` Team

@@ -15,15 +15,26 @@ class Annealing:
         Returns:
             dimod.meta.SamplerABCMeta: A D-Wave Ocean SDK Plugin Sampler"""
 
+        # Initialize variable 'new_sampler'
         new_sampler = None
+        # Check if requested sampler is DWaveSampler
         if self == 'DWaveSampler':
+            # Create a DWaveSampler
             new_sampler = __DWSampler__(retry_interval=retry_interval)
+        # Check if requested samlper is DWaveCliqueSampler
         elif self == 'DWaveCliqueSampler':
+            # Create a DWaveCliqueSampler
             new_sampler = __DWCSampler__(retry_interval=retry_interval)
+        # Check if requested sampler is LeapHybridSampler
         elif self == 'LeapHybridSampler':
+            # Create a LeapHybridSampler
             new_sampler = __LHSampler__(retry_interval=retry_interval)
         elif self == 'LeapHybridDQMSampler':
-            new_sampler == __LHDQMSampler__(retry_interval=retry_interval)
+            # Create a LeapHybridDQMSampler
+            new_sampler = __LHDQMSampler__(retry_interval=retry_interval)
+        # Check if sampler does not meet any of the above conditions
         else:
+            # Set sampler to return as None
             new_sampler = None
+        # Return the sampler we just created
         return new_sampler

@@ -8,16 +8,20 @@ def from_frame(df=__fr__.get_frame(),
                creg=5,
                fill_nan=True,
                fill_nan_value=int(-1)):
-    """Converts a Circuit DataFrame into a Braket Circuit by iterating over the DataFrame and turning each row of the dataframe into a gate or set of gates.
+    """Converts a Circuit DataFrame into a QASM string by iterating over the DataFrame and turning each row of the dataframe into a gate or set of gates.
 
     Args:
-        df (pandas.DataFrame): specify a Circuit DataFrame to convert to a Braket Circuit. (default fr.get_frame())
+        df (pandas.DataFrame): specify a Circuit DataFrame to convert to a QASM string. (default fr.get_frame())
         qreg(int): Positive integer describing number of Qubits to use in the circuit, AKA the number of Quantum Registers. (default 5)
         creg(int): Positive integer describing number of classical registers to use in the circuit (default 5)            fill_nan (bool): whether or not to replace NaN values with a specified value. (default True)
         fill_nan_value (int): a value to replace NaN values with. (default int(-1))
     Returns:
-        braket.circuits.Circuit: Braket Circuit translated from specified DataFrame"""
+        str: QASM string translated from specified DataFrame"""
 
+    angle_gates = ['rx', 'ry', 'rz',
+                   'crx', 'cry', 'crz',
+                   'rxx', 'ryy', 'rzz',
+                   'rzx', 'p']
     if fill_nan is True:
         df = __fr__.fill_nan(df,
                          fill_nan_value)
@@ -55,6 +59,7 @@ def from_frame(df=__fr__.get_frame(),
         else:
             params = None
 
+
         if qcgates == 'cnot':
             qcgates = 'cx'
         elif qcgates == 'ccnot':
@@ -62,17 +67,41 @@ def from_frame(df=__fr__.get_frame(),
         else:
             qcgates = qcgates
 
-        if qcgates == 'm':
-            qasmstr = __gen__.measurement(creg=row['targetB'],
-                                          qreg=row['targetA'])
+        if qcgates == 'if':
+            qasmstr = __gen__.if_statement(creg_name=targetA,
+                                           operator=targetB,
+                                           creg_val=targetC)
+        elif qcgates == 'm':
+            qasmstr = __gen__.measurement(creg=targetB,
+                                          qreg=targetA)
         elif params is not None:
-            qasmstr = __gen__.gate(targetA=targetA,
+            qasmstr = __gen__.gate(self=qcgates,
+                                   targetA=targetA,
                                    targetB=targetB,
                                    targetC=targetC,
                                    custom_name=qcgates,
                                    custom_params=params)
+        elif qcgates in angle_gates:
+            if angle is not None and angle != -1.0:
+                qasmstr = __gen__.gate(self=qcgates,
+                                       targetA=targetA,
+                                       targetB=targetB,
+                                       targetC=targetC,
+                                       angle=angle)
+            elif theta is not None and theta != -1.0:
+                qasmstr = __gen__.gate(self=qcgates,
+                                       targetA=targetA,
+                                       targetB=targetB,
+                                       targetC=targetC,
+                                       angle=theta)
+            elif phi is not None and phi != -1.0:
+                qasmstr = __gen__.gate(self=qcgates,
+                                       targetA=targetA,
+                                       targetB=targetB,
+                                       targetC=targetC,
+                                       angle=phi)
         else:
-            qasmstr = __gen__.gate(qcgates,
+            qasmstr = __gen__.gate(self=qcgates,
                                    targetA=targetA,
                                    targetB=targetB,
                                    targetC=targetC,)
