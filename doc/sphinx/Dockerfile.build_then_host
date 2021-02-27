@@ -2,7 +2,7 @@
 FROM nginx:stable-alpine
 
 # Set Build Configuration Variables:
-ENV GIT_BRANCH=origin
+ENV GIT_BRANCH=main
 
 # Get Alpine Linux Package Manager (APK) Dependencies:
 RUN apk update
