@@ -4,6 +4,9 @@ FROM ubuntu:latest
 # Set Build Configuration Variables:
 ENV GIT_BRANCH=main
 
+# Set Timezone to UTC
+RUN timedatectl set-timezone UTC
+
 # Get apt-get Dependencies:
 RUN apt-get update
 RUN apt-get upgrade -y
