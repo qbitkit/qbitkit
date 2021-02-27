@@ -5,7 +5,7 @@ FROM ubuntu:latest
 ENV GIT_BRANCH=main
 
 # Set Timezone to UTC
-ln -sf /usr/share/zoneinfo/GMT /etc/localtime
+RUN ln -sf /usr/share/zoneinfo/GMT /etc/localtime
 
 # Get apt-get Dependencies:
 RUN apt-get update
