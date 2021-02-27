@@ -2,7 +2,7 @@
 FROM ubuntu:latest
 
 # Set Build Configuration Variables:
-ENV GIT_BRANCH=origin
+ENV GIT_BRANCH=main
 
 # Get apt-get Dependencies:
 RUN apt-get update
