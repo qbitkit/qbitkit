@@ -1,6 +1,7 @@
 from qbitkit.io import frame as __f__
 from unittest import TestCase as __tc__
 from os import linesep as __sep__
+from numpy import pi as __pi__
 
 
 class QKTestCase(__tc__):
@@ -36,9 +37,11 @@ class QKTestCase(__tc__):
 
         return frame
     def example_frame_with_rotations(measurements=True,
-                                     scale_qubit=8):
+                                     scale_qubit=8,
+                                     theta=float(__pi__/2)):
         rygate = {'gate' : QKTestCase.repeater('ry', scale_qubit),
-                  'targetA': QKTestCase.ranger(scale_qubit)}
+                  'targetA': QKTestCase.ranger(scale_qubit),
+                  'theta': theta}
         meas = {'gate': QKTestCase.repeater('m', scale_qubit),
                 'targetA': QKTestCase.ranger(scale_qubit)}
         ry_frame = __f__.get_frame(data=rygate)
