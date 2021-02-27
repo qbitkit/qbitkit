@@ -35,6 +35,21 @@ class QKTestCase(__tc__):
             frame = xgates_frame.append(measurements_frame)
 
         return frame
+    def example_frame_with_rotations(measurements=True,
+                                     scale_qubit=8):
+        rygate = {'gate' : QKTestCase.repeater('ry', scale_qubit),
+                  'targetA': QKTestCase.ranger(scale_qubit)}
+        meas = {'gate': QKTestCase.repeater('m', scale_qubit),
+                'targetA': QKTestCase.ranger(scale_qubit)}
+        ry_frame = __f__.get_frame(data=rygate)
+        m_frame = __f__.get_frame(data=meas)
+        if measurements == False:
+            compiled_frame = ry_frame
+        elif measurements == True:
+            compiled_frame = ry_frame.append(m_frame)
+        else:
+            compiled_frame = rygate
+        return compiled_frame
     def compare(actual_value=None,
                 expected_value=None):
         expected_equals_actual = False
