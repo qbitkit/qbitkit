@@ -6,6 +6,7 @@ from qbitkit.qasm import translate as __t__
 from qbitkit.provider.ibmq import provider as __p__
 from qbitkit.provider.ibmq.circuit import circuitry as __c__
 from numpy.random import randint as __rand__
+from numpy import pi as __pi__
 from tests.qktest import QKTestCase as __tc__
 
 
@@ -82,6 +83,19 @@ class TestGeneration(__tc__):
         expected_equals_actual = __tc__.compare(expected_value,
                                                 actual_value)
         self.assertEqual(expected_equals_actual, True)
+
+
+class TestGateGeneration(__tc__):
+    def test_ry(self):
+        nrand = 256
+        tgtA = __rand__(nrand)
+        theta = float(__pi__ / 2)
+        ry_gate = __g__.gate('ry',
+                             tgtA,
+                             theta=theta)
+        expected_output = f'ry ({theta}) q[{tgtA}];'
+        self.assertEqual(expected_output,
+                         ry_gate)
 
 
 class TestTranslation(__tc__):
