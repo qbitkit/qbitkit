@@ -132,4 +132,4 @@ Support is continually tested upon every commit to branch 'origin' for each Pyth
     * :pencil: Code examples and more documentation than just API doc needed (see issue #42)  
     * :clipboard: More unit tests are needed
 
-⚛ |2021> `qbitkit` Team
+2021 ⚛ `qbitkit` Team
