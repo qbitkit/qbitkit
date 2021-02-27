@@ -11,8 +11,6 @@ virtualenv -p python3 venv
 pip install -U pip
 # Install dependencies for building documentation
 pip install -Ur requirements.txt
-# Set default AWS region
-aws configure set region us-east-1
 # Go to repository root
 cd ../..
 # Install qbitkit dependencies
