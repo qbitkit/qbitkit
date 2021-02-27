@@ -4,10 +4,8 @@ FROM ubuntu:latest
 # Set Build Configuration Variables:
 ENV GIT_BRANCH=main
 
-# Install timedatectl
-RUN apt-get install -y timedatectl
 # Set Timezone to UTC
-RUN timedatectl set-timezone UTC
+ln -sf /usr/share/zoneinfo/GMT /etc/localtime
 
 # Get apt-get Dependencies:
 RUN apt-get update
