@@ -31,4 +31,4 @@ RUN cd /qk/bin;/bin/sh update_site.sh html /usr/share/nginx/html
 RUN rm -rf /qk
 
 # Remove packages we only needed for building docs, this makes the built docker image a little smaller.
-RUN apt-get purge -y python3-pip make git sudo
+RUN apt-get purge -y python3-pip make git
