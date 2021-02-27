@@ -4,6 +4,8 @@ FROM ubuntu:latest
 # Set Build Configuration Variables:
 ENV GIT_BRANCH=main
 
+# Install timedatectl
+RUN apt-get install -y timedatectl
 # Set Timezone to UTC
 RUN timedatectl set-timezone UTC
 
