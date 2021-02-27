@@ -7,7 +7,7 @@ ENV GIT_BRANCH=main
 # Get apt-get Dependencies:
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install -y python3-pip make git sudo
+RUN apt-get install -y python3-pip make git sudo nginx
 
 # Make Sure Python 3.x Pip is up-to-date:
 RUN python3 -m pip install -U pip
