@@ -1,7 +1,7 @@
 steps:
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:debian_component_based'
     entrypoint: 'bash'
-    args: ['cd', 'bin', '&&', 'bash', './gsutil.sh', $PROJECT_ID, $_GCS_LOCATION]
+    args: ['./.gcs_upload_hook.sh', $PROJECT_ID, $_GCS_LOCATION]
 timeout: 1800s
 options:
   machine_type: 'N1_HIGHCPU_8'
