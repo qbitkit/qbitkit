@@ -4,4 +4,4 @@ steps:
     args: ['./.gcs_upload_hook.sh', $_DOC_FORMAT, $_GCS_LOCATION]
 timeout: 300s
 options:
-  machine_type: 'N1_HIGHCPU_32'
+  machine_type: 'N1_HIGHCPU_8'
