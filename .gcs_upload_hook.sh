@@ -1,3 +1,3 @@
 #!/bin/sh
 cd bin
-/bin/sh ./gcs_upload.sh "$1" "$2"
+/bin/sh ./upload_to_gcs.sh "$1" "$2"
