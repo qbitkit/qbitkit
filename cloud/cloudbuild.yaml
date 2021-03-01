@@ -1,7 +1,0 @@
-#steps:
-  #
-#timeout: 1800s
-#options:
-#  machine_type: 'N1_HIGHCPU_8'
-#images:
-  #
