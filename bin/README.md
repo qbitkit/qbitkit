@@ -35,6 +35,9 @@
 ##### [![mksite.sh](https://github.com/qbitkit/qbitkit/actions/workflows/test_mksite.yml/badge.svg)](https://github.com/qbitkit/qbitkit/actions/workflows/test_mksite.yml)
 * Description: Builds site and documentation.
 * Pre-requisites: You need Python3.x with the latest version of `pip` and `virtualenv` installed.
+### `upload_to_gcs.sh`
+* Description: Builds site and documentation, then uploads it to a specified location in Google Cloud Storage.
+* Pre-requisites: `gsutil`, required IAM authentication (likely in the form of a Service Account) to perform operations on Cloud Storage resources.
 ### `sign_release.sh`
 * Description: Use Qubes Split GPG to securely sign releases.
 * Pre-requisites: You need Qubes OS installed and up-to-date with 
