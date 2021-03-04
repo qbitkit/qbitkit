@@ -8,7 +8,24 @@ from qbitkit.provider.ibmq.circuit import circuitry as __c__
 from numpy.random import randint as __rand__
 from numpy import pi as __pi__
 from tests.qktest import QKTestCase as __tc__
+from qbitkit.circuit.circuits import vqe as __vqe__
 
+
+class TestVQE(__tc__):
+    def test_uccsd_ansatz(self):
+        nshots = 10000
+        testing_df = __vqe__.UCCSD.ansatz(a_theta=__pi__)
+        testing_dev = __p__.Local.sim()
+        testing_qasm = __t__.from_frame(testing_df)
+        testing_circ = __c__.Translate.from_qasm(testing_qasm)
+        testing_circ.measure_all()
+        test_run = __p__.Job.get_job(circuit=testing_circ,
+                                     backend=testing_dev,
+                                     shots=nshots)
+        expected_test_result = {'01100 00000': 10000}
+        actual_test_result = test_run.result().get_counts()
+        self.assertEqual(expected_test_result,
+                         actual_test_result)
 
 # TestCase for QASM Generation (qbitkit.qasm.generate)
 class TestGeneration(__tc__):

@@ -3,3 +3,7 @@ pytest
 
 # Linting
 flake8
+
+# IPython & Jupyter for debugging and new feature development
+ipython
+jupyterlab

@@ -2,7 +2,7 @@
 FROM nginx:stable-alpine
 
 # Set Build Configuration Variables:
-ENV GIT_BRANCH=origin
+ENV GIT_BRANCH=main
 
 # Get Alpine Linux Package Manager (APK) Dependencies:
 RUN apk update
@@ -13,10 +13,10 @@ RUN apk add git
 RUN apk add sudo
 
 # Make Sure Python 3.x Pip is up-to-date:
-RUN python3 -m pip install -U pip
+RUN python3 -m pip install --no-cache-dir -U pip
 
 # Make sure Python Virtual Environments (virtualenv) is installed before we initiate the build process by calling the mkdocs.sh script:
-RUN python3 -m pip install -U virtualenv
+RUN python3 -m pip install --no-cache-dir -U virtualenv
 
 # Clone the qbitkit repository on the specified $GIT_BRANCH:
 RUN git clone -b $GIT_BRANCH https://github.com/qbitkit/qbitkit.git /qk

@@ -30,23 +30,3 @@ spec:
         - image: us.gcr.io/$PROJECT_ID/qbitkit-build-then-host-docs:latest
           imagePullPolicy: Always
           name: qbitkit-docs-1
----
-apiVersion: autoscaling/v2beta1
-kind: HorizontalPodAutoscaler
-metadata:
-  labels:
-    app: qk-docs
-  name: qk-docs-hpa-ybsd
-  namespace: default
-spec:
-  maxReplicas: 5
-  metrics:
-    - resource:
-        name: cpu
-        targetAverageUtilization: 80
-      type: Resource
-  minReplicas: 1
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: qk-docs

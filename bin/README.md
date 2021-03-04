@@ -30,8 +30,15 @@
 ### `new_branch.sh`
 ##### ![new_branch.sh](https://github.com/qbitkit/qbitkit/workflows/new_branch.sh/badge.svg)
 * Description: Switch branch from `origin` (old branch name) to `main` (new branch name.)
-* Pre-Requisites: `git`, though it's quite likely you already have this ready to go if you are reading this README.
+* Pre-Requisites: `git`, though it's quite likely you already have this ready to go if you are reading this README. 
+### `mksite.sh`
+##### [![mksite.sh](https://github.com/qbitkit/qbitkit/actions/workflows/test_mksite.yml/badge.svg)](https://github.com/qbitkit/qbitkit/actions/workflows/test_mksite.yml)
+* Description: Builds site and documentation.
+* Pre-requisites: You need Python3.x with the latest version of `pip` and `virtualenv` installed.
+### `upload_to_gcs.sh`
+* Description: Builds site and documentation, then uploads it to a specified location in Google Cloud Storage.
+* Pre-requisites: `gsutil`, required IAM authentication (likely in the form of a Service Account) to perform operations on Cloud Storage resources.
 ### `sign_release.sh`
 * Description: Use Qubes Split GPG to securely sign releases.
 * Pre-requisites: You need Qubes OS installed and up-to-date with 
-* Notes: You **must** take the highest possible precautions when building and signing new releases. **Do not use GPG without a Smart Card!** Even if you have your keys in a separate VM and access them with Qubes Spit GPG, your key material is still stored on your system's disk. For the highest level of security, please make sure to use a Smart Card device such as a Smart Card with a USB Smart Card reader or a Yubikey. I use my personal Yubikey 4 in conjunction with Qubes Split GPG to sign all `qbitkit` releases with the highest possible levels of security. To build new releases, new disposable machines are started to build a release, and destroyed immediately afterwards. This significantly decreases the amount of state the system holds, thus making it more difficult for an adversary to compromise the building and signing process. 
+* Notes: You **must** take the highest possible precautions when building and signing new releases. **Do not use GPG without a Smart Card!** Even if you have your keys in a separate VM and access them with Qubes Spit GPG, your key material is still stored on your system's disk. For the highest level of security, please make sure to use a Smart Card device such as a Smart Card with a USB Smart Card reader or a Yubikey. I use my personal Yubikey 4 in conjunction with Qubes Split GPG to sign all `qbitkit` releases with the highest possible levels of security. To build new releases, new disposable machines are started to build a release, and destroyed immediately afterwards. This significantly decreases the amount of state the system holds, thus making it more difficult for an adversary to compromise the building and signing process.

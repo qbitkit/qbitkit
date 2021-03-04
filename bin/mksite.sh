@@ -23,3 +23,9 @@ python setup.py install
 cd doc/sphinx
 # Build documentation
 make $1
+# Inject homepage
+echo "Injecting homepage..."
+mkdir -p homepage/docs
+mv _build/html/* homepage/docs
+rm -rf _build/html/*
+mv homepage/* _build/html/
