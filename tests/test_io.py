@@ -13,19 +13,19 @@ class TestListTools(__tc__):
                                        append=None)
         expected_list = __tc__.repeater(value=fill_val,
                                         repeats=niterations)
-        self.assertEquals(test_list,
+        self.assertEqual(test_list,
                           expected_list)
     def test_count_range(self):
         niterations = __rng__(0,256)
         test_list = __lst__.count_range(end=niterations)
         expected_list = __tc__.ranger(niterations)
-        self.assertEquals(test_list,
+        self.assertEqual(test_list,
                           expected_list)
     def test_count(self):
         expected_count = __rng__(0,256)
         test_list = __lst__.count_range(end=expected_count)
         test_count = __lst__.count(lst=test_list)
-        self.assertEquals(test_count,
+        self.assertEqual(test_count,
                           expected_count)
 
 
