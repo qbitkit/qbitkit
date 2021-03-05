@@ -32,7 +32,11 @@ def frame(frame=__f__.Frame.get_frame(),
     Returns:
         pandas.DataFrame: scaled up Pandas DataFrame"""
     # Create a range based on the number of iterations, so we can iterate a set number of times.
-    iteration_range = range(iterations)
+    if type(iterations) == type(int(1)):
+        iteration_range = range(int(iterations))
+    else:
+        iteration_range = [0]
+
     # Iterate once for every item in the range.
     for x in iteration_range:
         # Append the DataFrame to itself.
