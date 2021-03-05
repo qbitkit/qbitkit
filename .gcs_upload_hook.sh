@@ -1,5 +1,5 @@
 #!/bin/sh
-cd bin
+cd bin || exit
 apt-get update
 apt-get upgrade -y
 apt-get install -y python3-pip python3-virtualenv time
