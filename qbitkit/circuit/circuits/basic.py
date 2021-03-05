@@ -1,4 +1,5 @@
 from qbitkit.io import frame as __f__
+from qbitkit.io import list as __l__
 
 
 def bell(append=None):
@@ -40,3 +41,22 @@ def ghz(append=None):
     else:
         ghzFrameAppended = append.append(ghzFrame)
         return ghzFrameAppended
+
+    def qrng(bits=int(5)):
+        """Generate a simple quantum random number generator circuit.
+
+        Args:
+            bits(int): Number of qubits to use in generated circuit. (default int(5))
+        Returns:
+            pandas.DataFrame: DataFrame containing generated QRNG circuit."""
+        if type(bits) != type(int(1)):
+            bits = 5
+
+        gate_spec = __l__.fill_range('h', bits)
+        tgtA_spec = __l__.count_range(start=0,
+                                      end=bits)
+
+        rngdict = {'gate': gate_spec,
+                   'targetA': tgtA_spec}
+        rngframe = __f__.Frame.get_frame(data=rngdict)
+        return rngframe
