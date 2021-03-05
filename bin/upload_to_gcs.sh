@@ -5,4 +5,4 @@ echo "Building $1 Site + Docs ..."
 echo "Removing venv directory used to build documentation ..."
 rm -rf ../docs/venv/
 echo "Uploading $1 docs to $2 with gsutil ..."
-gsutil -m rsync -r ../doc/sphinx/_build/html/* "gs://$2"
+gsutil -m rsync -r ../doc/sphinx/_build/html/ "gs://$2"
