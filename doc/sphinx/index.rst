@@ -14,6 +14,8 @@ You can track the progress of our continued documentation efforts here: https://
 Indices and tables
 ==================
 
+* :doc:`glossary`
+* :doc:`qubit`
 * :doc:`gates`
 * :doc:`_apidoc/modules`
 * :ref:`genindex`
