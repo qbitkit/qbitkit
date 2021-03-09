@@ -13,10 +13,15 @@ qbitkit
 * :doc:`gates`
 
 
+Learn Quantum Computing
+=======================
+
+* :doc:`qubit`
+
+
 Indices and tables
 ==================
 
-* :doc:`qubit`
 * :doc:`_apidoc/modules`
 * :ref:`genindex`
 * :ref:`modindex`
