@@ -6,12 +6,17 @@ While the API for qbitkit is at this point fully documented, documentation besid
 You can track the progress of our continued documentation efforts here: https://github.com/qbitkit/qbitkit/issues/42
 
 
+qbitkit
+=======
+
+* :doc:`glossary`
+* :doc:`gates`
+
+
 Indices and tables
 ==================
 
-* :doc:`glossary`
 * :doc:`qubit`
-* :doc:`gates`
 * :doc:`_apidoc/modules`
 * :ref:`genindex`
 * :ref:`modindex`
