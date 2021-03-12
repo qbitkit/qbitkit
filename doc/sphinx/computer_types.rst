@@ -31,8 +31,8 @@ as follows:
 4) One 'global' laser shining through all qubits sets the tempo like a drummer in a band, and each qubit has its own laser. When a qubit's own laser interferes with the global laser, the qubit's state is precisely altered to achieve the desired state
 5) Once it's time to read out the state of the qubits, each qubit's laser shines on it's own qubit and the light of the laser is measured. The state of each qubit, be it |1> or |0> can be deduced based on whether or not the laser was able to shine through a given qubit.
 
-Photonic Qubits
-===============
+3. Photonic Qubits
+==================
 When you think about the future of quantum computing, what comes to mind is a smaller
 form factor. Cryogenics is a massive pain to set up and maintain over time, adding
 a significant amount of bulk and cost to quantum hardware endeavors. So, just like
