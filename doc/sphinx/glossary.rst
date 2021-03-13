@@ -50,6 +50,12 @@ making our explanations of things more accessible.
         * This process of cooling the QPU back down after encoding is referred to as re-thermalization.
         * You can also re-thermalize after sampling the energy landscape with each read or 'shot' you take, reducing heat leading to noise introduced by the readout process.
 
+5) Interferometry
+    * One of the most important parts of any quantum computer is the ability to manipulate the qubit's spin.
+    * Interferometry refers to a mechanism used to control the state of each qubit.
+    * The implementation of interferometry depends on the architecture of the quantum computer in question.
+        * See :doc:`computer_types` for a quick rundown of different quantum computing architectures.
+
 1. qbitkit-Specific Jargon
 ==========================
 0) DataFrame
