@@ -56,7 +56,19 @@ making our explanations of things more accessible.
     * The implementation of interferometry depends on the architecture of the quantum computer in question.
         * See :doc:`computer_types` for a quick rundown of different quantum computing architectures.
 
-1. qbitkit-Specific Jargon
+1. Computer Science Jargon
+==========================
+1) Big O Notation
+    * Common way to describe how much work there is to be done relative to the size of the problem space.
+    * Where :math:`N` is the size of the problem space
+        * For example, :math:`N` in the context of prime factorization of an 8-bit prime is equal to :math:`8`.
+    * Linear Scaling Example: :math:`O(N)`
+        * Example: Simple arithmetic such as addition
+    * Logarithmic Scaling Example: :math:`O(\log(N))`
+    * Exponential Scaling Example: :math:`O(2^{N})`
+    * Quadratic Scaling Example: :math:`O(\sqrt{N})`
+
+2. qbitkit-Specific Jargon
 ==========================
 0) DataFrame
     * Object from the popular Python data science library Pandas
