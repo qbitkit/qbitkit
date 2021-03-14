@@ -66,7 +66,9 @@ making our explanations of things more accessible.
         * Example: Simple arithmetic such as addition
     * Logarithmic Scaling Example: :math:`O(\log(N))`
     * Exponential Scaling Example: :math:`O(2^{N})`
+        * Example: Brute force prime factorization is :math:`2^{b}-1` where :math:`b` is the number of bits
     * Quadratic Scaling Example: :math:`O(\sqrt{N})`
+        * Example: Grover's Algorithm
 
 2. qbitkit-Specific Jargon
 ==========================
