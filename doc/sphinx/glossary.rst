@@ -12,7 +12,7 @@ making our explanations of things more accessible.
 
 1) Bra-Ket notation
     * Bra: :math:`\langle f |`
-        * Denotes a linear form :math:`f:V \rightarrow \mathbb{C}`
+        * Denotes a linear form :math:`f: V \rightarrow \mathbb{C}`
             * e.g. a linear map mapping all of the vectors in :math:`\left V` to a number on complex plane :math:`\mathbb{C}`
     * Ket: :math:`| v \rangle`
         * Denotes a vector, :math:`\left v`, in a complex vector space :math:`\left V`.
