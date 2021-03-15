@@ -19,7 +19,7 @@ making our explanations of things more accessible.
         * Represents the state of a quantum system.
     * If you let the linear functional :math:`\langle f |` act on vector :math:`| v \rangle`, you would write this out as:
         * :math:`\langle f| v\rangle \in \mathbb{C}`
-    * Bra-Ket: :math:`\langle x \middle| y \rangle`
+    * Bra-Ket: :math:`\langle x | y \rangle`
     * Also known as Dirac notation
 
 1) Lazy Bra-Ket notation
