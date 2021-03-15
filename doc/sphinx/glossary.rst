@@ -25,7 +25,7 @@ making our explanations of things more accessible.
 1) Lazy Bra-Ket notation
     * Bra: `<f|`
         * Denotes a linear form `f` :math:`:V \rightarrow \mathbb{C}`
-            * e.g. a linear map mapping all of the vectors in :math:`\left V` to a number on complex plane :math:`\mathbb{C}`
+            * e.g. a linear map mapping all of the vectors in :math:`V` to a number on complex plane :math:`\mathbb{C}`
     * Ket: `|v>`
         * Denotes a vector, `v`, in a complex vector space :math:`V`.
         * Represents the state of a quantum system.
