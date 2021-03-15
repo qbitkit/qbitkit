@@ -2,9 +2,9 @@ name: mksite.sh
 
 on:
   push:
-    branches: [ main ]
+    branches: [ scripts ]
   pull_request:
-    branches: [ main ]
+    branches: [ scripts ]
 
 jobs:
   build:

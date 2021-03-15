@@ -2,9 +2,9 @@ name: new_branch.sh
 
 on:
   push:
-    branches: [ main ]
+    branches: [ scripts ]
   pull_request:
-    branches: [ main ]
+    branches: [ scripts ]
 
 jobs:
   build:
