@@ -293,3 +293,7 @@ doc/sphinx/_build/html/searchindex.js
 
 # Random Cache Folder
 cache/
+
+# Sphinx Documentation  
+_apidoc/
+_build/
