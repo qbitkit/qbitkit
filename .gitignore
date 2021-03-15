@@ -2,13 +2,10 @@
 Untitled*.ipynb
 
 # Example Virtual Environment in README.md
-venv
-venv/*
+venv/
 
 # JetBrains PyCharm
-.idea
-.idea/*
-*.idea/
+.idea/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -40,8 +37,6 @@ share/python-wheels/
 MANIFEST
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
 
@@ -126,7 +121,7 @@ venv.bak/
 .ropeproject
 
 # mkdocs documentation
-/site
+site/
 
 # mypy
 .mypy_cache/
