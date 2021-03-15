@@ -2,9 +2,9 @@ name: Test Install Script
 
 on:
   push:
-    branches: [ main ]
+    branches: [ scripts ]
   pull_request:
-    branches: [ main ]
+    branches: [ scripts ]
 
 jobs:
   build:
