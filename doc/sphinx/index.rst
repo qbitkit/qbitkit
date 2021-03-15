@@ -11,7 +11,7 @@ qbitkit
 
 * :doc:`glossary`
 * :doc:`gates`
-* :doc:`provider`
+* :doc:`providers`
 
 
 Learn Quantum Computing
