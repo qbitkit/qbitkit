@@ -14,3 +14,10 @@ quantum service vendors:
         * Free for public machines
         * IBM does not publicly list the pricing of priority access to public systems or access to systems not available to the public.
     * Supports ``qbitkit.circuit`` for IBMQ Cloud simulators, as well as whatever IBM Q hardware your account has access to.
+
+* D-Wave Leap
+    * US Pricing Formula:
+        * :math:`p=s+2000h`
+            * Where :math:`p` is total cost, :math:`s` is any applicable taxes, and :math:`h` is the amount of time spent actively using any quantum annealing hardware.
+            * Customers with a Canada-based billing address don't seem to be subject to tax, so if you live in Canada make sure to use :math:`s=0` in the above pricing formula.
+    * Supports ``qbitkit.anneal`` for D-Wave 2000Q as well as the brand-new Advantage System v1 with over 5000 qubits
