@@ -31,8 +31,8 @@ def save_str(self=str(''),
     Returns:
         dict: Input parameters specified."""
     # Convert variables
-    if string is not None:
-        string = str(string)
+    if self is not None:
+        string = str(self)
 
     if filename is not None:
         filename = str(filename)
