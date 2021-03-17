@@ -16,7 +16,7 @@ amazon-braket-sdk
 amazon-braket-ocean-plugin
 
 # General-Purpose:
-numpy==1.20.0
+numpy
 pandas
 datetime
 matplotlib
