@@ -23,4 +23,5 @@ For example, with two bits you can store these 4 values:
 * 11
 
 Each bit you add exponentially increases the total number of possible values that
-can be stored.
+can be stored. Mathematically speaking, the number of values that can be expressed
+with :math:`n` bits is equal to exactly :math:`2^{n}`.

@@ -56,6 +56,12 @@ making our explanations of things more accessible.
     * The implementation of interferometry depends on the architecture of the quantum computer in question.
         * See :doc:`computer_types` for a quick rundown of different quantum computing architectures.
 
+6) QPU
+    * Commonly used acronym for Quantum Processing Unit
+    * Can be used to describe any quantum computing hardware
+    * D-Wave seems to use this acronym in their documentation more than any other vendor
+    * Fits nicely with acronyms used to describe different classical computing architectures (CPU, GPU, TPU)
+
 1. Computer Science Jargon
 ==========================
 1) Big O Notation

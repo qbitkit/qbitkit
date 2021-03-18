@@ -27,9 +27,9 @@ What happens every time a shot is taken on an ion trap quantum computer is summa
 as follows:
 1) A laser is used to ionize an atom of Ytterbium.
 2) An ion trap uses electromagnetic force to hold a chain of these ions in a linear array.
-3) A laser is used to both set the spin of all qubits to up (|0> in lazy braket) and cool the qubits down using the doppler effect to the point where atoms nearly stop moving
+3) A laser is used to both set the spin of all qubits to up (:math:`|0\rangle` in lazy braket) and cool the qubits down using the doppler effect to the point where atoms nearly stop moving
 4) One 'global' laser shining through all qubits sets the tempo like a drummer in a band, and each qubit has its own laser. When a qubit's own laser interferes with the global laser, the qubit's state is precisely altered to achieve the desired state
-5) Once it's time to read out the state of the qubits, each qubit's laser shines on it's own qubit and the light of the laser is measured. The state of each qubit, be it |1> or |0> can be deduced based on whether or not the laser was able to shine through a given qubit.
+5) Once it's time to read out the state of the qubits, each qubit's laser shines on it's own qubit and the light of the laser is measured. The state of each qubit, be it :math:`|1\rangle` or :math:`|0\rangle` can be deduced based on whether or not the laser was able to shine through a given qubit.
 
 3. Photonic Qubits
 ==================
@@ -49,5 +49,5 @@ Each shot starts with a single photon emitter on each qubit, well, emitting a si
 photon. These photons travel down optical channels that in spots have been doped to
 allow programmable control of the state of the photon as it passes through its channel.
 Once it's time to read out the state of the photon, a single photon counter is used
-to measure whether the photon made it all the way through its channel (making its value |1>),
-or if it instead did not make it (thus making its value |0>).
+to measure whether the photon made it all the way through its channel (making its value :math:`|1\rangle`),
+or if it instead did not make it (thus making its value :math:`|0\rangle`).
