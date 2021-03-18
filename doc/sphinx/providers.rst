@@ -20,4 +20,5 @@ quantum service vendors:
         * :math:`p=s+2000h`
             * Where :math:`p` is total cost, :math:`s` is any applicable taxes, and :math:`h` is the amount of time spent actively using any quantum annealing hardware.
             * Customers with a Canada-based billing address don't seem to be subject to tax, so if you live in Canada make sure to use :math:`s=0` in the above pricing formula.
+            * *psst* AWS Braket is cheaper for small experiments and doesn't require a monthly plan
     * Supports ``qbitkit.anneal`` for D-Wave 2000Q as well as the brand-new Advantage System v1 with over 5000 qubits
