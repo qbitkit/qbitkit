@@ -12,15 +12,38 @@
 #
 from os.path import sep as pathsep
 from datetime import datetime as dt
+from subprocess import run as __exe__
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+
+# -- Helper Functions --------------------------------------------------------
+def __get_commit_sha__(branch=str('HEAD')):
+    """Get the SHA1 sum of the current commit.
+
+    Args:
+        branch(str): Branch to run command against. (default str('HEAD'))
+    Returns:
+        str: SHA1 sum of the current commit."""
+    # Define the command we want to use in order to get the current commit SHA hash.
+    commit_cmd = list(['git',
+                       'rev-parse',
+                       str(branch)])
+    # Execute command for grabbing current commit SHA, capturing output from STDOUT.
+    commit_run = __exe__(commit_cmd,
+                         capture_output=True)
+    # Get just the captured STDOUT from executing the git command.
+    commit_out = commit_cmd.stdout
+    # Decode the output captured from STDOUT so that it's just a regular string.
+    commit_sha = str(commit_out.decode())
+    # Return STDOUT as a string.
+    return str(commit_sha)
 
 # -- Project information -----------------------------------------------------
 
 project = 'qbitkit'
 author = f'{project} Team'
-copyright = f'{dt.now().year}, {author}'
+copyright = f'{dt.now().year}, {author} (built '
 
 # -- General configuration ---------------------------------------------------
 
