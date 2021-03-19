@@ -43,7 +43,7 @@ def __get_commit_sha__(branch=str('HEAD')):
 
 project = 'qbitkit'
 author = f'{project} Team'
-copyright = f'{dt.now().year}, {author} (built '
+copyright = f'{dt.now().year}, {author}'
 
 # -- General configuration ---------------------------------------------------
 
