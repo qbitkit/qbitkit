@@ -39,33 +39,33 @@ def __get_commit_sha__(branch=str('HEAD')):
     # Return STDOUT as a string.
     return str(commit_sha)
 
-    def __get_copyright__(project_name=str('qbitkit'),
-                          git_branch=str('HEAD'),
-                          git_url=str('https://github.com/qbitkit/qbitkit'),
-                          git_commit_path=str('commit')):
-        """Generate copyright slug for use in the footer of every page of the documentation.
+def __get_copyright__(project_name=str('qbitkit'),
+                      git_branch=str('HEAD'),
+                      git_url=str('https://github.com/qbitkit/qbitkit'),
+                      git_commit_path=str('commit')):
+    """Generate copyright slug for use in the footer of every page of the documentation.
 
-        Args:
-            project_name(str): Name of the project to use in the copyright slug. (default str('qbitkit'))
-            git_branch(str): Branch to use when getting current commit SHA. (default str('HEAD'))
-            git_url(str): Git Repository URL. Don't end it with a /. (default str('https://github.com/qbitkit/qbitkit'))
-            git_commit_path(str): Path appended to git_url where info about commits is stored. (default str('commit'))
-        Returns:
-            str: Generated copyright slug."""
-        # Get Current Year.
-        year = f'{str(dt.now().year)}, '
-        # Set author.
-        author = f'{str(project_name)} Team.'
-        # Set build date.
-        last_update = f'`This page was built on {str(dt.now().date)}. '
-        # Get current git commit SHA1.
-        git_commit = __get_commit_sha__(str(git_branch))
-        # Make last update notice a link to the commit it was built from.
-        commit_url = f'<{str(git_url)}/{str(git_commit_path)}/{str(git_commit)}>`_'
-        # Assemble copyright slug.
-        copyright_slug = f"{str(year)}{str(author)}{str(last_update)}{str(commit_url)}"
-        # Return copyright slug.
-        return str(copyright_slug)
+    Args:
+        project_name(str): Name of the project to use in the copyright slug. (default str('qbitkit'))
+        git_branch(str): Branch to use when getting current commit SHA. (default str('HEAD'))
+        git_url(str): Git Repository URL. Don't end it with a /. (default str('https://github.com/qbitkit/qbitkit'))
+        git_commit_path(str): Path appended to git_url where info about commits is stored. (default str('commit'))
+    Returns:
+        str: Generated copyright slug."""
+    # Get Current Year.
+    year = f'{str(dt.now().year)}, '
+    # Set author.
+    author = f'{str(project_name)} Team.'
+    # Set build date.
+    last_update = f'`This page was built on {str(dt.now().date)}. '
+    # Get current git commit SHA1.
+    git_commit = __get_commit_sha__(str(git_branch))
+    # Make last update notice a link to the commit it was built from.
+    commit_url = f'<{str(git_url)}/{str(git_commit_path)}/{str(git_commit)}>`_'
+    # Assemble copyright slug.
+    copyright_slug = f"{str(year)}{str(author)}{str(last_update)}{str(commit_url)}"
+    # Return copyright slug.
+    return str(copyright_slug)
 
 
 # -- Project information -----------------------------------------------------
