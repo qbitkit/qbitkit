@@ -33,7 +33,7 @@ def __get_commit_sha__(branch=str('HEAD')):
     commit_run = __exe__(commit_cmd,
                          capture_output=True)
     # Get just the captured STDOUT from executing the git command.
-    commit_out = commit_cmd.stdout
+    commit_out = commit_run.stdout
     # Decode the output captured from STDOUT so that it's just a regular string.
     commit_sha = str(commit_out.decode())
     # Return STDOUT as a string.
