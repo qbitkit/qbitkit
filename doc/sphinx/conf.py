@@ -57,7 +57,7 @@ def __get_copyright__(project_name=str('qbitkit'),
     # Set author.
     author = f'{str(project_name)} Team.'
     # Set build date.
-    last_update = f'`This page was built on {str(dt.now().date)}. '
+    last_update = f'`This page was built on {str(dt.now().date())}. '
     # Get current git commit SHA1.
     git_commit = __get_commit_sha__(str(git_branch))
     # Make last update notice a link to the commit it was built from.
