@@ -19,6 +19,7 @@ Learn Quantum Computing
 
 * :doc:`qubit`
 * :doc:`computer_types`
+* :doc:`stack`
 
 
 Indices and tables
