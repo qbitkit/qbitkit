@@ -179,7 +179,7 @@ def gate(self=str('h'),
         # Compile opaque gate declaration.
         compiled_gate = f'opaque {custom_name}({custom_params}) {targets};'
     elif self in angle_gates:
-        compiled_gate = f'{self} ({angle}) {targets};'
+        compiled_gate = f'{self}({angle}) {targets};'
 
     # Return compiled gate.
     return compiled_gate
