@@ -93,7 +93,7 @@ class TestGateGeneration(__tc__):
         ry_gate = __g__.gate('ry',
                              tgtA,
                              theta=theta)
-        expected_output = f'ry ({theta}) q[{tgtA}];'
+        expected_output = f'ry({theta}) q[{tgtA}];'
         self.assertEqual(expected_output,
                          ry_gate)
 
