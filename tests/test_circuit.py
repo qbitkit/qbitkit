@@ -35,31 +35,27 @@ class TestGeneration(__tc__):
         # Get actual value
         headers = __g__.headers()
         # Check if headers are what they should be
-        correct_headers = __tc__.compare(expected_headers,
-                                         headers)
-        self.assertEqual(correct_headers, True)
+        self.assertEqual(expected_headers,
+                         headers)
     def test_measurements(self):
         # Initialize variables
         test_q = __rand__(0, 1024)
         test_c = __rand__(0, 1024)
-        actual_expected_match = False
         # Set expected value
         expected_measurements = f"measure q[{test_q}] -> c[{test_c}];"
         # Get actual value
         actual_measurements = __g__.measurement(test_q,
                                                 test_c)
         # Check if actual and expected values match as they should
-        actual_expected_match = __tc__.compare(expected_measurements,
-                                               actual_measurements)
-        self.assertEqual(actual_expected_match, True)
+        self.assertEqual(expected_measurements,
+                         actual_measurements)
     def test_single_qubit_gates(self):
         test_q = __rand__(0,1024)
         expected_value = f"h q[{test_q}];"
         actual_value = __g__.gate('h',
                                   targetA=test_q)
-        actual_equals_expected = __tc__.compare(expected_value,
-                                                actual_value)
-        self.assertEqual(actual_equals_expected,True)
+        self.assertEqual(expected_value,
+                         actual_value)
 
     def test_triple_qubit_gates(self):
         test_q0 = __rand__(0, 2048)
@@ -72,9 +68,8 @@ class TestGeneration(__tc__):
                                   test_q0, # TargetA Spec
                                   test_q1, # TargetB Spec
                                   test_q2) # TargetC Spec
-        expected_equals_actual = __tc__.compare(expected_value,
-                                                actual_value)
-        self.assertEqual(expected_equals_actual, True)
+        self.assertEqual(expected_value,
+                         actual_value)
     def test_double_qubit_gates(self):
         test_q0 = __rand__(0, 2048)
         test_q1 = __rand__(0, 2048)
@@ -84,22 +79,18 @@ class TestGeneration(__tc__):
         actual_value = __g__.gate(test_gate, # Gate Spec
                                   test_q0, # TargetA Spec
                                   test_q1) # TargetB Spec
-        expected_equals_actual = __tc__.compare(expected_value,
-                                                actual_value)
-        self.assertEqual(expected_equals_actual, True)
+        self.assertEqual(expected_value,
+                         actual_value)
     def test_comments(self):
         expected_value = "// Hello, World!"
         actual_value = __g__.comment('Hello, World!')
-        expected_equals_actual = False
-        expected_equals_actual = __tc__.compare(expected_value,
-                                                actual_value)
-        self.assertEqual(expected_equals_actual, True)
+        self.assertEqual(expected_value,
+                         actual_value)
     def test_if_statement(self):
         expected_value = 'if (c==0) x q[0];'
         actual_value = __g__.if_statement('c','==',0,'x',0)
-        expected_equals_actual = __tc__.compare(expected_value,
-                                                actual_value)
-        self.assertEqual(expected_equals_actual, True)
+        self.assertEqual(expected_value,
+                         actual_value)
 
 
 class TestGateGeneration(__tc__):
