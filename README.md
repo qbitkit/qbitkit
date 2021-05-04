@@ -125,7 +125,7 @@ Support is continually tested upon every commit to branch 'origin' for each Pyth
     * :calendar: Released: January 1st, 2021
 * Status:
     * :calendar: In active development since December 15th, 2020
-    * :alarm_clock: >=1 commit(s) made every day since the repository was created
+    * :alarm_clock: >=1 commit(s) made every week since the repository was created
 * Health:
     * :white_check_mark: Green (healthy)
     * :rocket: Preparing for v0.1.0 (stable)
