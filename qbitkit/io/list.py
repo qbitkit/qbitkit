@@ -21,13 +21,7 @@ def count_range(start=int(0),
     Returns:
         list: Generated list.
     """
-    
-    specified_range = range(int(start),
-                            int(end))
-    
-    generated_list = [int(i) for i in specified_range]
-
-    return generated_list
+    return [int(i) for i in range(int(start), int(end))]
 
 
 def count(lst=None):
