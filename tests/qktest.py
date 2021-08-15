@@ -7,18 +7,10 @@ from numpy import pi as __pi__
 class QKTestCase(__tc__):
 
     def ranger(span=8):
-        range_span = range(span)
-        range_list = []
-        for x in range_span:
-            range_list.append(x)
-        return range_list
+        return [number for number in range(span)]
 
     def repeater(value='x', repeats=8):
-        range_span = range(repeats)
-        range_list = []
-        for x in range_span:
-            range_list.append(value)
-        return range_list
+        return [value for iteration in range(repeats)]
 
     def example_frame(measurements=True,
                       scale_qubit=8):
