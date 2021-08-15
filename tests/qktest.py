@@ -10,11 +10,7 @@ class QKTestCase(__tc__):
         return [number for numbers in range()]
 
     def repeater(value='x', repeats=8):
-        range_span = range(repeats)
-        range_list = []
-        for x in range_span:
-            range_list.append(value)
-        return range_list
+        return [value for iteration in range(repeats)]
 
     def example_frame(measurements=True,
                       scale_qubit=8):
