@@ -7,7 +7,7 @@ from numpy import pi as __pi__
 class QKTestCase(__tc__):
 
     def ranger(span=8):
-        return [number for numbers in range()]
+        return [number for numbers in range(span)]
 
     def repeater(value='x', repeats=8):
         return [value for iteration in range(repeats)]
