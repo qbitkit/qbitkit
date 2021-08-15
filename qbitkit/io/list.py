@@ -17,14 +17,12 @@ def fill_range(fill=str('m'),
 
 
 def count_range(start=int(0),
-                end=int(9),
-                append=None):
+                end=int(9)):
     """Count between values start and end, appending each value to a list.
 
     Args:
         start(int): Number to start counting at. (default int(0))
         end(int): Number to stop counting at. (default int(9))
-        append(list): List to append generated list to, if set to None function will not append to anything. (default None)
     Returns:
         list: Generated list.
     """
