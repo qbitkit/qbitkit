@@ -9,8 +9,7 @@ class TestListTools(__tc__):
         fill_val = 'x'
         niterations = __rng__(0,256)
         test_list = __lst__.fill_range(fill=fill_val,
-                                       iterations=niterations,
-                                       append=None)
+                                       iterations=niterations)
         expected_list = __tc__.repeater(value=fill_val,
                                         repeats=niterations)
         self.assertEqual(test_list,
