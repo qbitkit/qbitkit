@@ -8,10 +8,7 @@ def fill_range(fill=str('m'),
         append(list): List to append generated list to. If None, does not append to a list. (default None)
     Return:
         list: Generated list."""
-    append = []
-    for iteration in range(iterations):
-        append.append(fill)
-    return append
+    return [fill for iteration in range(iterations)]
 
 
 def count_range(start=int(0),
