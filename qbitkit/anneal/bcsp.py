@@ -42,12 +42,8 @@ class Convert:
             self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Solving Problem to convert to a QUBO. (default None)
         Returns:
             tuple: the specified CSP converted to a QUBO."""
-        # Convert the given CSP to a BQM.
-        bqm = Convert.to_bqm(self)
-        # Convert the BQM to a QUBO.
-        qubo = bqm.to_qubo()
-        # Return the QUBO.
-        return qubo
+        # Return the QUBO converted from given CSP.
+        return Convert.to_bqm(self).to_qubo()
 
 
 class Solve:
@@ -62,13 +58,10 @@ class Solve:
             shots(int): A positive integer describing the number of shots. Can not be higher than 10000. (default 1000)
         Returns:
             dict: a dictionary containing the results from the sampler."""
-        # Convert the CSP to a BQM.
-        bqm = Convert.to_bqm(self)
-        # Embed the BQM on to the sampler.
-        embedded_sampler = __embed__.bqm(sampler,
-                                         bqm)
-        # Sample using the embedded sampler.
-        result = embedded_sampler.sample(bqm,
-                                         num_reads=shots)
         # Return the result from sampling.
-        return result
+        return __embed__.bqm(
+            sampler,
+            sampler.Convert.to_bqm(self)
+        ).sample(
+            sampler.Convert.to_bqm(self),
+            num_reads=shots)
