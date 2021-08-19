@@ -22,10 +22,8 @@ class Convert:
         Returns:
             dimod.binary_quadratic_model.BinaryQuadraticModel: BQM stitched together from the given Constraint Solving Problem.
 """
-        # Convert the given CSP to a BQM.
-        bqm = __dbc__.stitch(self)
         # Return the BQM.
-        return bqm
+        return __dbc__.stitch(self)
 
     def to_ising(self=None):
         """Convert a given Constraint Solving Problem to an Ising.
