@@ -9,10 +9,8 @@ def new(self='BINARY'):
         self(dimod.vartype): A string describing the variable type (either SPIN or BINARY) (default 'BINARY')
     Returns:
         dwavebinarycsp.ConstraintSatisfactionProblem: An empty constraint satisfaction problem."""
-    # Create an empty CSP.
-    dbc = __dbc__.ConstraintSatisfactionProblem(self)
-    # Return the empty CSP.
-    return dbc
+    # Return an empty CSP.
+    return __dbc__.ConstraintSatisfactionProblem(self)
 
 
 class Convert:
