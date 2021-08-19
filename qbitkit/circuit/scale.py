@@ -12,10 +12,8 @@ def circuit(circuit=None,
         provider(qbitkit_provider): specify a provider from qbitkit to use when appending gates (default None)
     Returns:
         provider_specific_quantum_circuit: scaled up provider-specific quantum circuit"""
-    # Create a range based on the number of iterations, so we can iterate a set number of times.
-    iteration_range = range(iterations)
     # Iterate once for every item in the range.
-    for x in iteration_range:
+    for x in range(iterations):
         # Append circuit to itself.
         circuit = provider.circuit.scale.append(circuit)
     # Return scaled-up circuit.
