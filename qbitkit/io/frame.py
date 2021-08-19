@@ -9,10 +9,8 @@ class Frame:
             data (dict): specify data to populate the Pandas DataFrame with. (default None)
         Returns:
             pandas.DataFrame: Empty DataFrame or dataframe populated with data specified using the 'data' keyword argument."""
-        # Create a DataFrame from specified data.
-        df = __pd__.DataFrame(data=data)
-        # Return generated DataFrame.
-        return df
+        # Create and return a DataFrame from specified data.
+        return __pd__.DataFrame(data=data)
 
     def fill_nan(self=get_frame(),
                  value=0):
