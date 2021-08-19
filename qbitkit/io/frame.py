@@ -12,16 +12,14 @@ class Frame:
         # Create and return a DataFrame from specified data.
         return __pd__.DataFrame(data=data)
 
-    def fill_nan(self=get_frame(),
+    def fill_nan(input=get_frame(),
                  value=0):
         """Fill NaN values with a specified value.
 
         Args:
-            self(pandas.DataFrame): DataFrame to Fill NaN values on. (default get_frame())
+            input(pandas.DataFrame): DataFrame to Fill NaN values on. (default get_frame())
             value(int): Value to replace NaN values with. (default 0)
         Returns:
             pandas.DataFrame: DataFrame with NaN values replaced with the specified value."""
-        # Replace NaN values with the specified value.
-        nan_values_replaced = self.fillna(value)
         # Return the DataFrame with NaN values replaced with the specified value.
-        return nan_values_replaced
+        return input.fillna(value)
