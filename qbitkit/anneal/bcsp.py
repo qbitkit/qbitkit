@@ -32,12 +32,8 @@ class Convert:
             self(dwavebinarycsp.ConstraintSatisfactionProblem): The Constraint Solving Problem to convert to an Ising. (default None)
         Returns:
             tuple: the specified Constraint Solving Problem expressed as an Ising."""
-        # Convert the given CSP to a BQM.
-        bqm = Convert.to_bqm(self)
-        # Convert the BQM to an Ising.
-        ising = bqm.to_ising()
-        # Return the Ising.
-        return ising
+        # Return the Ising converted from given CSP.
+        return Convert.to_bqm(self).to_ising()
 
     def to_qubo(self=None):
         """Convert a given Constraint Solving Problem to a QUBO.
