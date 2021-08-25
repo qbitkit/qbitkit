@@ -1,28 +1,2 @@
-# D-Wave Dependencies:
-dwave-ocean-sdk
-dimod
-dwavebinarycsp
-minorminer
-
-# Qiskit:
-qiskit
-## IBMQ Qiskit:
-qiskit-ibmq-provider
-## D-Wave Qiskit Plugin
-dwave-qiskit-plugin
-
-# AWS Braket Dependencies:
-amazon-braket-sdk
-amazon-braket-ocean-plugin
-
-# General-Purpose:
-numpy
+# General purpose
 pandas
-datetime
-matplotlib
-
-# Logging Dependencies:
-elasticsearch
-
-# qbitctl Dependencies
-click
