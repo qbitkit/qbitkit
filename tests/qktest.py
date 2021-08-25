@@ -1,4 +1,4 @@
-from qbitkit.io import frame as __f__
+from pandas import DataFrame as __f__
 from unittest import TestCase as __tc__
 from os import linesep as __sep__
 from numpy import pi as __pi__
@@ -20,8 +20,8 @@ class QKTestCase(__tc__):
                                              scale_qubit),
                 'targetA' : QKTestCase.ranger(scale_qubit),
                 'targetB' : QKTestCase.ranger(scale_qubit)}
-        xgates_frame = __f__.Frame.get_frame(data=xgate)
-        measurements_frame = __f__.Frame.get_frame(data=meas)
+        xgates_frame = __f__()
+        measurements_frame = __f__()
         if measurements == False:
             frame = xgates_frame
         elif measurements == True:
