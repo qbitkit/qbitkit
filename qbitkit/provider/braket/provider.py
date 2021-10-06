@@ -136,7 +136,7 @@ class Job:
 class Annealing:
     def get_sampler(sampler_type='BraketDWaveSampler',
                     bucket=None,
-                    dwave_qpu="Advantage_system1"):
+                    dwave_qpu="Advantage_system4"):
         """Create a new D-Wave Sampler for Braket based on a specified D-Wave QPU.
 
         Args:
